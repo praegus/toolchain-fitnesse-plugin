@@ -1,0 +1,59 @@
+{
+	"action" : "${action}",
+	<#if params??>
+	"params" : ${params}
+	<#else>
+	"params" : {
+	<#if validationGuids??>
+	"validationGuids" : [${validationGuids}],
+	</#if>
+	<#if username??>
+	"username" : "${username}",
+	"password" : "${password}"
+	</#if>
+	<#if guids??>
+	"guids" : [${guids}],
+	</#if>
+	<#if ids??>
+	"ids" : [${ids}],
+	</#if>
+	<#if xpath??>
+	"xpath" : "${xpath}",
+	</#if>
+	<#if constraints??>
+	"constraints" : "${constraints}",
+	</#if>
+	<#if sort??>
+	"sort" : ${sort},
+	</#if>
+	<#if applyto??>
+	"applyto" : "${applyto}",
+	</#if>
+	<#if gridid??>
+	"gridid" : "${gridid}",
+	</#if>
+	<#if schema??>
+	"schema" : ${schema},
+	</#if>
+	<#if count??>
+	"count" : ${count?c},
+	</#if>
+	<#if aggregates??>
+	"aggregates" : ${aggregates?c}
+	</#if>
+	<#if actionName??>
+	"actionname" : "${actionName}",
+	</#if>
+	<#if asyncid??>
+	"asyncid" : "${asyncid}"
+	</#if>
+	}
+	</#if>
+	<#if actionName??>,
+	"changes" : {<#if changes??>${changes}</#if>},
+	<#if objects??>
+	"objects": [${objects}],
+	</#if>
+	"context" : [<#if contextGuids??>${contextGuids}</#if>]
+	</#if>
+}
