@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-            <version>1.1.2-SNAPSHOT</version>
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
