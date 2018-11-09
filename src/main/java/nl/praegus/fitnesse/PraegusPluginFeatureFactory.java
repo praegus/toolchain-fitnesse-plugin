@@ -17,9 +17,9 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(slimTableFactory, "debug script", PausingTable.class);
     }
 
-    private void add(SlimTableFactory factory, String prefix, Class<? extends SlimTable> tableType) {
-        factory.addTableType(prefix, tableType);
-        LOG.info("Added Slim table type: " + prefix + ": " + tableType.getName());
+    private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
+        factory.addTableType(key, tableType);
+        LOG.info("Added Slim table type: " + key + ": " + tableType.getName());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
         factory.addResponder(key, responder);
-        LOG.info("Loaded responder " + key + ": " + responder.getName());
+        LOG.info("Autoloaded responder " + key + ": " + responder.getName());
     }
 
 }
