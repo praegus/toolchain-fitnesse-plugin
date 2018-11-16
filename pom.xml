@@ -4,7 +4,10 @@
 
     <groupId>nl.praegus</groupId>
     <artifactId>toolchain-fitnesse-plugin</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <url>https://gitlab.com/praegus/toolchain-fitnesse-plugin</url>
+    <name>Praegus Toolchain plugin</name>
+    <description>Auto-register autocomplete responder and add debug script table</description>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -88,7 +91,7 @@
         </plugins>
     </build>
     <packaging>jar</packaging>
-    <description>Plugin that adds custom features to FitNesse</description>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -119,6 +122,32 @@
             <id>release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.4</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.3</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
