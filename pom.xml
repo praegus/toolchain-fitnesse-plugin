@@ -4,7 +4,7 @@
 
     <groupId>nl.praegus</groupId>
     <artifactId>toolchain-fitnesse-plugin</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -111,7 +111,7 @@
         <connection>scm:git:git@gitlab.com:praegus/toolchain-fitnesse-plugin.git</connection>
         <url>https://gitlab.com/praegus/toolchain-fitnesse-plugin.git</url>
         <developerConnection>scm:git:git@gitlab.com:praegus/toolchain-fitnesse-plugin.git</developerConnection>
-        <tag>toolchain-fitnesse-plugin-1.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <profiles>
