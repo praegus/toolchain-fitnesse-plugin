@@ -30,7 +30,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
         factory.addResponder(key, responder);
-        LOG.info("Autoloaded responder " + key + ": " + responder.getName());
+        LOG.info("Autoloaded responder " + key + ": " + responder.getName() + "(Set your theme to bootstrap-plus!)");
     }
 
 }

@@ -37,7 +37,6 @@ public class PausingTable extends ScriptTable {
 
     private SlimAssertion createPauseAssertion(int lastCol, int row) {
         String nextInstruction = "Next: " + getRowContents(row);
-        //String nextInstruction = "Next: " + getRowContents(row +1);
         Instruction instruction = callFunction(getTableType() + "Actor", "pause", nextInstruction);
         return makeAssertion(instruction, new RowExpectation(lastCol, row) {
             @Override
@@ -55,7 +54,6 @@ public class PausingTable extends ScriptTable {
             result.append(String.format(" | %s", cellContent));
         }
         result.append(" |\r\n");
-
         return result.toString();
     }
 }
