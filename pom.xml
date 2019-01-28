@@ -15,15 +15,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.tcnh</groupId>
+            <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20181214</version>
+            <version>20190127</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-            <version>1.1.3</version>
+            <version>1.1.4</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
