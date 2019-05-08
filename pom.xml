@@ -17,18 +17,18 @@
         <dependency>
             <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20190421</version>
+            <version>20190508</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-            <version>1.1.10</version>
+            <version>1.1.11</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.10</version>
+            <version>1.0.11</version>
         </dependency>
     </dependencies>
 
