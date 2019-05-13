@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.11</version>
+            <version>1.0.12</version>
         </dependency>
     </dependencies>
 
