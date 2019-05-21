@@ -26,9 +26,9 @@
             <version>1.1.11</version>
         </dependency>
         <dependency>
-            <groupId>com.github.tcnh</groupId>
+            <groupId>nl.praegus</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.12</version>
+            <version>1.0.13</version>
         </dependency>
     </dependencies>
 
@@ -82,7 +82,7 @@
                 <configuration>
                     <serverId>staging</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
                 <goals>
                     <goal>deploy</goal>

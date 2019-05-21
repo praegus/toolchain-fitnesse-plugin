@@ -1,12 +1,12 @@
 package nl.praegus.fitnesse;
 
-import com.github.tcnh.fitnesse.responders.AutoCompleteResponder;
 import fitnesse.Responder;
 import fitnesse.plugins.PluginException;
 import fitnesse.plugins.PluginFeatureFactoryBase;
 import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
+import nl.praegus.fitnesse.responders.AutoCompleteResponder;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
