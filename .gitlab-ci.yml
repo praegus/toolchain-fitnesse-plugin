@@ -17,11 +17,11 @@ cache:
 build:
   stage: build
   script: mvn $MAVEN_CLI_OPTS test
-  image: "maven:3.6.0-jdk-8-alpine"
+  image: "maven-git:latest"
   tags:
-    - mvn
+    - maven-git
   artifacts:
-    name: "$PROJECT_NAME"
+    name: $PROJECT_NAME
     expire_in: 1 hour
     paths:
       - target/*
@@ -32,9 +32,9 @@ build:
 sonar:
   stage: sonar
   script: mvn sonar:sonar -Dsonar.projectKey=$PROJECT_NAME -Dsonar.host.url=$SONAR_ENDPOINT -Dsonar.login=$SONAR_LOGIN
-  image: "maven:3.6.0-jdk-8-alpine"
+  image: "maven-git:latest"
   tags:
-    - mvn
+    - maven-git
   except:
     - development
     - master
@@ -42,29 +42,25 @@ sonar:
 release:
   stage: release
   script:
-    - apk add --no-cache gnupg
     - export GNUPGHOME=.gnupg
     - echo "${GPG_KEY}" | gpg --batch --import
     - mvn $MAVEN_CLI_OPTS versions:set -DremoveSnapshot
     - mvn $MAVEN_CLI_OPTS -P release -DskipTests -Dgpg.passphrase=${GPG_PASS} deploy
-  image: "maven:3.6.0-jdk-8-alpine"
+  image: "maven-git:latest"
   artifacts:
-    name: "$PROJECT_NAME"
+    name: $PROJECT_NAME
     expire_in: 1 week
     paths:
       - target/*
   only:
     - master
   tags:
-    - mvn
+    - maven-git
 
 update-version:
   stage: update-version
-  image: "maven:3.6.0-jdk-8-alpine"
+  image: "maven-git:latest"
   script:
-    - apk update && apk upgrade && apk add --no-cache bash git openssh
-    - git config --global user.email "macmini@praegus.nl"
-    - git config --global user.name "macmini"
     - git checkout -B "$CI_BUILD_REF_NAME"
     - mvn -B $MAVEN_CLI_OPTS release:update-versions -DautoVersionSubmodules=true
     - git add '*pom.xml'
@@ -73,4 +69,4 @@ update-version:
   only:
     - master
   tags:
-    - mvn
+    - maven-git
