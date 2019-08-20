@@ -24,7 +24,7 @@ public class PausingTable extends ScriptTable {
     }
 
     @Override
-    protected List<SlimAssertion> invokeAction(int startingCol, int endingCol, int row, SlimExpectation expectation) throws SyntaxError  {
+    protected List<SlimAssertion> invokeAction(int startingCol, int endingCol, int row, SlimExpectation expectation) throws SyntaxError {
         List<SlimAssertion> assertions = new ArrayList<>();
         pauseOnRow(assertions, row);
         assertions.addAll(super.invokeAction(startingCol, endingCol, row, expectation));
@@ -57,4 +57,5 @@ public class PausingTable extends ScriptTable {
         result.append(" |\r\n");
         return result.toString();
     }
+
 }

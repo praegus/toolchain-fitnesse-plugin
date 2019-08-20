@@ -14,12 +14,13 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     @Override
     public void registerSlimTables(SlimTableFactory slimTableFactory) throws PluginException {
         super.registerSlimTables(slimTableFactory);
+        LOG.info("[Toolchain Plugin] Registering debug script table. Be sure to add 'pause test fixture' from nl.praegus:toolchain-fixtures as a library");
         add(slimTableFactory, "debug script", PausingTable.class);
     }
 
     private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
         factory.addTableType(key, tableType);
-        LOG.info("Added Slim table type: " + key + ": " + tableType.getName());
+        LOG.info("[Toolchain Plugin] Added Slim table type: " + key + ": " + tableType.getName());
     }
 
     @Override
@@ -30,13 +31,12 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
         factory.addResponder(key, responder);
-        LOG.info("Autoloaded responder " + key + ": " + responder.getName());
+        LOG.info("[Toolchain Plugin] Autoloaded responder " + key + ": " + responder.getName());
     }
 
     @Override
     public String getDefaultTheme() {
-
-        LOG.info("Set theme to bootstrap-plus");
+        LOG.info("[Toolchain Plugin] Setting theme to bootstrap-plus");
         return "bootstrap-plus";
     }
 }
