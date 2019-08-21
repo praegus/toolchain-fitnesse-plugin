@@ -1,6 +1,6 @@
 stages:
 - build
-- sonar
+#- sonar
 - release
 - update-version
 
@@ -29,15 +29,15 @@ build:
   - development
   - master
 
-sonar:
-  stage: sonar
-  script: mvn sonar:sonar -Dsonar.projectKey=$PROJECT_NAME -Dsonar.host.url=$SONAR_ENDPOINT -Dsonar.login=$SONAR_LOGIN
-  image: "maven:3.6.0-jdk-8-alpine"
-  tags:
-  - mvn
-  except:
-  - development
-  - master
+#sonar:
+#  stage: sonar
+#  script: mvn sonar:sonar -Dsonar.projectKey=$PROJECT_NAME -Dsonar.host.url=$SONAR_ENDPOINT -Dsonar.login=$SONAR_LOGIN
+#  image: "maven:3.6.0-jdk-8-alpine"
+#  tags:
+#  - mvn
+#  except:
+#  - development
+#  - master
 
 release:
   stage: release
