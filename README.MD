@@ -1,3 +1,4 @@
+[![Maven Central](https://img.shields.io/maven-central/v/nl.praegus/toolchain-fitnesse-plugin.svg?maxAge=21600)](https://mvnrepository.com/artifact/nl.praegus/toolchain-fitnesse-plugin)
 ## Toolchain FitNesse Plugin
 
 A project to quick start and speed up automation using FitNesse and Hsac fitnesse fixtures combined with bootstrap-plus, AutoCompleteResponder and in-table debug features.

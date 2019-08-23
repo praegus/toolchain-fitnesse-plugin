@@ -4,7 +4,7 @@
 
     <groupId>nl.praegus</groupId>
     <artifactId>toolchain-fitnesse-plugin</artifactId>
-    <url>https://gitlab.com/praegus/toolchain-fitnesse-plugin</url>
+    <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
     <name>Praegus Toolchain plugin</name>
     <description>Auto-register autocomplete responder and add debug script table</description>
     <version>1.17-SNAPSHOT</version>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20190620</version>
+            <version>20190716</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -113,9 +113,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@gitlab.com:praegus/toolchain-fitnesse-plugin.git</connection>
-        <url>https://gitlab.com/praegus/toolchain-fitnesse-plugin.git</url>
-        <developerConnection>scm:git:git@gitlab.com:praegus/toolchain-fitnesse-plugin.git</developerConnection>
+        <connection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</connection>
+        <url>https://github.com/praegus/toolchain-fitnesse-plugin.git</url>
+        <developerConnection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
