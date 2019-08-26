@@ -18,7 +18,7 @@ See https://github.com/praegus/fitnesse-autocomplete-responder
 `| debug script |` instead of `| script |`
 This will pause execution before each script table row and prompt the user to continue of stop the test, informing the user what the next instruction will be.
 
-Note: make sure to not commit these tables when using tests in a CI run, or better yet, set a system property called `nodebug` and assign it the value `true` when running your tests. This will cause a pause call to stop the test (instead of causing an infinite wait)*[]:
+Note: make sure to not commit these tables when using tests in a CI run, or better yet, set a system property called `nodebug` and assign it the value `true` when running your tests. This will cause a pause call to stop the test (instead of causing an infinite wait).
 
 ### Conditional script table
 #### Usage
