@@ -7,7 +7,7 @@
     <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
     <name>Praegus Toolchain plugin</name>
     <description>Auto-register autocomplete responder and add debug script table</description>
-    <version>1.19-SNAPSHOT</version>
+    <version>1.18.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -116,7 +116,7 @@
         <connection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</connection>
         <url>https://github.com/praegus/toolchain-fitnesse-plugin.git</url>
         <developerConnection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>toolchain-fitnesse-plugin-1.18.1</tag>
     </scm>
 
     <profiles>
