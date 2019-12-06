@@ -27,6 +27,7 @@ Note: make sure to not commit these tables when using tests in a CI run, or bett
 | boolean expression         |
 | normal script instructions |
 ```
+Expressions can contain slim symbols or wiki variables. A Javascript executor is used.
 When the expression is true, the table will continue as a normal script table.
 Otherwise, all instructions in the table will be skipped.
 
