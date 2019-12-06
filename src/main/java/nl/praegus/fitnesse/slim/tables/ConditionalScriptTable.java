@@ -31,7 +31,7 @@ public class ConditionalScriptTable extends ScriptTable {
     // returns a list of statements
     protected List<SlimAssertion> instructionsForRow(int row) throws TestExecutionException {
         List<SlimAssertion> assertions;
-        if (row > 1 && !conditionResult) {
+        if (null == getParent() && row > 1 && !conditionResult) {
             assertions = skip(row);
         } else {
             assertions = super.instructionsForRow(row);
