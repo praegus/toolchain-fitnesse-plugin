@@ -30,9 +30,9 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     @Override
     public void registerResponders(ResponderFactory responderFactory) throws PluginException {
         super.registerResponders(responderFactory);
-        LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder.");
+        LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder (?autoComplete).");
         add(responderFactory, "autoComplete", AutoCompleteResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TocResponder.");
+        LOG.info("[Toolchain Plugin] Registering TocResponder (?tableOfContents).");
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
     }
 

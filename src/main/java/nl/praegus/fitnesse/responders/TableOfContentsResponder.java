@@ -83,7 +83,6 @@ public class TableOfContentsResponder implements SecureResponder {
         return result;
     }
 
-
     @Override
     public SecureOperation getSecureOperation() {
         return new SecureReadOperation();
