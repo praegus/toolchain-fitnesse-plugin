@@ -31,7 +31,7 @@ public class ConditionalScriptTable extends ScriptTable {
     // returns a list of statements
     protected List<SlimAssertion> instructionsForRow(int row) throws TestExecutionException {
         List<SlimAssertion> assertions;
-        if (row > 1 && !conditionResult) {
+        if (null == getParent() && row > 1 && !conditionResult) {
             assertions = skip(row);
         } else {
             assertions = super.instructionsForRow(row);
@@ -42,13 +42,13 @@ public class ConditionalScriptTable extends ScriptTable {
     @Override
     protected List<SlimAssertion> invokeAction(int startingCol, int endingCol, int row, SlimExpectation expectation) throws SyntaxError {
         List<SlimAssertion> assertions = new ArrayList<>();
-        if (row == 1) {
-            if (table.getColumnCountInRow(row) > 1) {
-                throw new SyntaxError("Conditional script tables can contain only the condition in the first row");
+        if (null == getParent() && row == 1) {
+            if (this.table.getColumnCountInRow(row) > 1) {
+                throw new SyntaxError("Conditional script tables can contain only the condition in the first row.");
             }
             String expr = this.table.getCellContents(0, row);
             try {
-                conditionResult = Boolean.valueOf(new SlimExpressionEvaluator().evaluate(replaceSymbols(expr)).toString());
+                conditionResult = Boolean.parseBoolean(new SlimExpressionEvaluator().evaluate(replaceSymbols(expr)).toString());
             } catch (IllegalArgumentException e) {
                 throw new SyntaxError(e.getMessage());
             }
