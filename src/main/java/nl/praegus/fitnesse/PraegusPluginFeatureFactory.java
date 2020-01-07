@@ -7,6 +7,7 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
+import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
@@ -29,13 +30,14 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     @Override
     public void registerResponders(ResponderFactory responderFactory) throws PluginException {
         super.registerResponders(responderFactory);
-        LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder.");
+        LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder (?autoComplete).");
         add(responderFactory, "autoComplete", AutoCompleteResponder.class);
+        LOG.info("[Toolchain Plugin] Registering TocResponder (?tableOfContents).");
+        add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
         factory.addResponder(key, responder);
-        //LOG.info("[Toolchain Plugin] Autoloaded responder " + key + ": " + responder.getName());
     }
 
     @Override
