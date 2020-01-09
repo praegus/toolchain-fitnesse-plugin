@@ -5,17 +5,15 @@ import fitnesse.authentication.SecureResponder;
 import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
-import org.json.XML;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import util.FileUtil;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
 
 public class FitNesseVersionResponder implements SecureResponder{
 
@@ -26,8 +24,9 @@ public class FitNesseVersionResponder implements SecureResponder{
        File pom = new File(thisFilePath.getParent()+"/pom.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document pomContent = dBuilder.parse(pom);
-        response.setContent(String.valueOf(pomContent));
+       Document pomContent = dBuilder.parse(pom);
+        NodeList version = pomContent.getElementsByTagName("fitnesse.version");
+        response.setContent(version.item(0).getTextContent());
         return response;
     }
 
