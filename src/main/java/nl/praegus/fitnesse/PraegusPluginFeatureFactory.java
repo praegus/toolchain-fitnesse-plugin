@@ -7,6 +7,7 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
+import nl.praegus.fitnesse.responders.FitNesseToolchainVersionResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.FitNesseVersionResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
@@ -39,6 +40,9 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
         LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
         add(responderFactory, "fitNesseVersion", FitNesseVersionResponder.class);
+
+        LOG.info("[Toolchain Plugin] Registering FitNesseToolchainVersionResponder (?fitNesseToolchainVersion).");
+        add(responderFactory, "fitNesseToolchainVersion", FitNesseToolchainVersionResponder.class);
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
