@@ -58,11 +58,14 @@ public class TableOfContentsResponder implements SecureResponder {
 
     private JSONObject getPageInfo(SourcePage page) {
         JSONObject pageInfo = new JSONObject();
-        pageInfo.append("name", GracefulNamer.regrace(page.getName()));
-        pageInfo.append("type", getBooleanPropertiesClasses(page));
-        pageInfo.append("help", page.getProperty(WikiPageProperty.HELP));
-        pageInfo.append("tags", page.getProperty(WikiPageProperty.SUITES));
-        pageInfo.append("path", page.getFullPath());
+        pageInfo.put("name", GracefulNamer.regrace(page.getName()));
+        pageInfo.put("type", getBooleanPropertiesClasses(page));
+        pageInfo.put("help", page.getProperty(WikiPageProperty.HELP));
+        String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
+        for(String tag: tags) {
+            pageInfo.append("tags", tag);
+        }
+        pageInfo.put("path", page.getFullPath());
         for (SourcePage p : getSortedChildren(page)) {
             pageInfo.append("children", getPageInfo(p));
         }
@@ -78,8 +81,12 @@ public class TableOfContentsResponder implements SecureResponder {
         } else {
             result += "static";
         }
-        if (sourcePage.hasProperty(WikiImportProperty.PROPERTY_NAME)) result += " linked";
-        if (sourcePage.hasProperty(WikiPageProperty.PRUNE)) result += " pruned";
+        if (sourcePage.hasProperty(WikiImportProperty.PROPERTY_NAME)) {
+            result += " linked";
+        }
+        if (sourcePage.hasProperty(WikiPageProperty.PRUNE)) {
+            result += " pruned";
+        }
         return result;
     }
 
