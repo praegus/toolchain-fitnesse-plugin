@@ -25,7 +25,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
         factory.addTableType(key, tableType);
-        //LOG.info("[Toolchain Plugin] Added Slim table type: " + key + ": " + tableType.getName());
     }
 
     @Override
