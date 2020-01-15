@@ -11,7 +11,6 @@ import fitnesse.testsystems.slim.tables.ScriptTable;
 import fitnesse.testsystems.slim.tables.SlimAssertion;
 import fitnesse.testsystems.slim.tables.SlimExpectation;
 import fitnesse.testsystems.slim.tables.SyntaxError;
-import fitnesse.wikitext.parser.SourcePage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
