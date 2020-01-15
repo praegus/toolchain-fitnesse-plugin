@@ -24,7 +24,6 @@ public class ConditionalScriptTable extends ScriptTable {
 
     public ConditionalScriptTable(Table table, String tableId, SlimTestContext context) {
         super(table, tableId, context);
-        this.fromConditionalScenario= true;
     }
 
     public ConditionalScriptTable(Table table, String tableId, SlimTestContext context, boolean fromConditionalScenario) {
