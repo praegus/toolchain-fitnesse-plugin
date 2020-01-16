@@ -51,7 +51,7 @@ The expression can reference slim symbols by name, as if they were variables.
 | someVar == 'abc'                                            |
 | script steps                                                |
 ```
-#####Limitations
+##### Limitations
 
 Conditional scenario's can be used in the same script table, however in that case the expression will only know the slim context as it exists when the table is called.
 The expression context cannot be updated within the same table.
