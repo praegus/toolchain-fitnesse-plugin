@@ -6,9 +6,7 @@ import fitnesse.plugins.PluginFeatureFactoryBase;
 import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
-import nl.praegus.fitnesse.responders.AutoCompleteResponder;
-import nl.praegus.fitnesse.responders.UpdateTagsResponder;
-import nl.praegus.fitnesse.responders.TableOfContentsResponder;
+import nl.praegus.fitnesse.responders.*;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
@@ -36,6 +34,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
+        LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
