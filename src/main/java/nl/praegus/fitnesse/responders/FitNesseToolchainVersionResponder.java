@@ -19,17 +19,17 @@ import java.io.IOException;
 public class FitNesseToolchainVersionResponder implements SecureResponder {
     private SimpleResponse FitNesseToolchainVersionResponse() throws IOException, ParserConfigurationException, SAXException {
         SimpleResponse response = new SimpleResponse();
-
+        //get pom.xml file path
         File thisFilePath = new File(System.getProperty("user.dir"));
         File pom = new File(thisFilePath.getParent()+"/pom.xml");
-
-
+        // parse pom content
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document pomContent = dBuilder.parse(pom);
+        // get node in pom
         NodeList version = pomContent.getElementsByTagName("toolchain-plugin.version");
+        //fill and return response
         response.setContent(version.item(0).getTextContent());
-
         return response;
     }
 
