@@ -31,7 +31,7 @@ public class DashboardTestHistoryResponder implements SecureResponder{
         HtmlPage page = context.pageFactory.newPage();
         // testHistory is the data we need
         page.put("testHistory", testHistory);
-        page.setMainTemplate("");
+        page.setMainTemplate("DashboardTestHistory");
         SimpleResponse response = new SimpleResponse();
         response.setContent(page.html(request));
         return response;
