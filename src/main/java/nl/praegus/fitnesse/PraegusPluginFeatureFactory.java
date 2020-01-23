@@ -34,11 +34,10 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
-
         LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
 
-        add(responderFactory, "dashboardTestHistory", DashboardTestHistoryResponder.class);
-        LOG.info("[Toolchain Plugin] Registering DashboardTestHistoryResponder (?dashboardTestHistory).");
+        add(responderFactory, "testHistory", TestHistoryResponder.class);
+        LOG.info("[Toolchain Plugin] Registering TestHistoryResponder (?testHistory).");
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
