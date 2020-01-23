@@ -5,6 +5,7 @@ import fitnesse.wiki.PathParser;
 import util.FileUtil;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
@@ -57,8 +58,12 @@ public class TestHistory {
         List<TestHistoryLine> testHistoryLineList = new ArrayList();
 
         for (int i=0; i<pagenamesarray.length; i++){
+            int totalOfFailures = getPageHistory(pagenamesarray[i]).getFailures();
+            int totalOfPasses = getPageHistory(pagenamesarray[i]).getPasses();
+            LocalDateTime whatDate = getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            PageHistory.BarGraph lastResults = getPageHistory(pagenamesarray[i]).getBarGraph();
 
-            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),getPageHistory(pagenamesarray[i]).getFailures(),getPageHistory(pagenamesarray[i]).getPasses(),getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),getPageHistory(pagenamesarray[i]).getBarGraph()));
+            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),totalOfFailures, totalOfPasses, whatDate, lastResults));
         }
 
         TestHistory testhistory = new TestHistory();
