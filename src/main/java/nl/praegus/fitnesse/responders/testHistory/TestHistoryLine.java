@@ -1,4 +1,4 @@
-package fitnesse.reporting.history;
+package nl.praegus.fitnesse.responders.testHistory;
 
 import com.sun.tools.javac.util.List;
 
