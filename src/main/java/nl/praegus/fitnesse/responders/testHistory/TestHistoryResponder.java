@@ -15,8 +15,6 @@ import org.apache.velocity.VelocityContext;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,27 +37,9 @@ public class TestHistoryResponder implements SecureResponder {
     }
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
-        String[] pagenamesarray = testHistory.getPageNames().toArray(new String[0]);
-
-
-
-
-
-
-        TestHistoryLine tablecontent[] = new TestHistoryLine[pagenamesarray.length];
-List testHistoryLineList = new ArrayList();
-
-        for (int i=0; i<pagenamesarray.length; i++){
-
-            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),testHistory.getPageHistory(pagenamesarray[i]).getFailures(),testHistory.getPageHistory(pagenamesarray[i]).getPasses(),testHistory.getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),testHistory.getPageHistory(pagenamesarray[i]).getBarGraph()));
-
-        }
-        TestHistory testhistory = new TestHistory();
-        List sorted = testhistory.getSortedLines(testHistoryLineList);
-
+       List sorted = testHistory.getHistoryLineList();
         HtmlPage page = context.pageFactory.newPage();
 
-        //TestHistoryLine testHistoryLine = new TestHistoryLine("j",1,1,1);
         page.setTitle("Test History");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");

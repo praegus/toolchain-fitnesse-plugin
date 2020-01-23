@@ -5,6 +5,7 @@ import fitnesse.wiki.PathParser;
 import util.FileUtil;
 
 import java.io.File;
+import java.time.ZoneId;
 import java.util.*;
 
 import static java.util.Comparator.*;
@@ -49,6 +50,22 @@ public class TestHistory {
         List sorted = (List) lijstje.stream()
                 .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
                 .collect(toList());
+
+        return sorted;
+    }
+
+    public List getHistoryLineList(){
+        String[] pagenamesarray = getPageNames().toArray(new String[0]);
+        TestHistoryLine tablecontent[] = new TestHistoryLine[pagenamesarray.length];
+        List testHistoryLineList = new ArrayList();
+
+        for (int i=0; i<pagenamesarray.length; i++){
+
+            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),getPageHistory(pagenamesarray[i]).getFailures(),getPageHistory(pagenamesarray[i]).getPasses(),getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),getPageHistory(pagenamesarray[i]).getBarGraph()));
+        }
+
+        TestHistory testhistory = new TestHistory();
+        List sorted = testhistory.getSortedLines(testHistoryLineList);
 
         return sorted;
     }
