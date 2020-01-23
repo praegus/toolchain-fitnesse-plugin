@@ -45,12 +45,12 @@ public class TestHistory {
         }
     }
 
-    public List<TestHistoryLine> getSortedLines() {
-
-        return testHistoryLineList
-                .stream()
+    public List<TestHistoryLine> getSortedLines(List lijstje) {
+        List sorted = (List) lijstje.stream()
                 .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
                 .collect(toList());
+
+        return sorted;
     }
 
     private void readHistoryDirectory(File historyDirectory) {

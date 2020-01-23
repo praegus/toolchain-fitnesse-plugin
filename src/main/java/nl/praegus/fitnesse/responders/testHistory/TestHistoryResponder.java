@@ -16,12 +16,14 @@ import org.apache.velocity.VelocityContext;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class TestHistoryResponder implements SecureResponder {
 
     private FitNesseContext context;
+    private Object TestHistoryLine;
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws UnsupportedEncodingException {
@@ -40,19 +42,21 @@ public class TestHistoryResponder implements SecureResponder {
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
         String[] pagenamesarray = testHistory.getPageNames().toArray(new String[0]);
 
-        TestHistory TestHistory = new TestHistory();
+
+
 
 
 
         TestHistoryLine tablecontent[] = new TestHistoryLine[pagenamesarray.length];
+List testHistoryLineList = new ArrayList();
 
         for (int i=0; i<pagenamesarray.length; i++){
 
-          tablecontent[i] = new TestHistoryLine(String.valueOf(pagenamesarray[i]),1,1,testHistory.getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),1,1,testHistory.getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()));
 
         }
-
-        List sorted = testHistory.getSortedLines();
+        TestHistory testhistory = new TestHistory();
+        List sorted = testhistory.getSortedLines(testHistoryLineList);
 
         HtmlPage page = context.pageFactory.newPage();
 
@@ -65,7 +69,7 @@ public class TestHistoryResponder implements SecureResponder {
         page.setMainTemplate("testHistory");
         SimpleResponse response = new SimpleResponse();
 
- response.setContent(String.valueOf(sorted));
+ response.setContent(sorted.get(0));
         return response;
     }
 
