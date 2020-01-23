@@ -23,7 +23,6 @@ import java.util.List;
 public class TestHistoryResponder implements SecureResponder {
 
     private FitNesseContext context;
-    private Object TestHistoryLine;
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws UnsupportedEncodingException {
@@ -65,11 +64,11 @@ List testHistoryLineList = new ArrayList();
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
         page.put("viewLocation", request.getResource());
-        page.put("testHistory", testHistory);
+        page.put("testHistory", sorted);
         page.setMainTemplate("testHistory");
         SimpleResponse response = new SimpleResponse();
 
- response.setContent(sorted.get(0));
+        response.setContent(page.html(request));
         return response;
     }
 
