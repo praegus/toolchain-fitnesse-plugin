@@ -8,6 +8,6 @@ public class TestHistoryTest {
 
     @Test
     public void test() {
-        TestHistory testHistory = new TestHistory();
+       // TestHistory testHistory = new TestHistory();
     }
 }

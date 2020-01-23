@@ -1,24 +1,22 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
-
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import fitnesse.wiki.PathParser;
-import org.apache.velocity.VelocityContext;
-
 import fitnesse.FitNesseContext;
 import fitnesse.authentication.SecureOperation;
 import fitnesse.authentication.SecureReadOperation;
 import fitnesse.authentication.SecureResponder;
+import fitnesse.html.template.HtmlPage;
+import fitnesse.html.template.PageTitle;
 import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.Response.Format;
 import fitnesse.http.SimpleResponse;
-import fitnesse.html.template.HtmlPage;
-import fitnesse.html.template.PageTitle;
+import fitnesse.wiki.PathParser;
+import org.apache.velocity.VelocityContext;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.time.ZoneId;
+import java.util.List;
 
 
 public class TestHistoryResponder implements SecureResponder {
@@ -42,7 +40,7 @@ public class TestHistoryResponder implements SecureResponder {
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
         String[] pagenamesarray = testHistory.getPageNames().toArray(new String[0]);
 
-       // TestHistory testHistory = new TestHistory();
+        TestHistory TestHistory = new TestHistory();
 
 
 
@@ -50,7 +48,7 @@ public class TestHistoryResponder implements SecureResponder {
 
         for (int i=0; i<pagenamesarray.length; i++){
 
-          tablecontent[i] = new TestHistoryLine(String.valueOf(pagenamesarray[i]),1,1,testHistory.getPageHistory(pagenamesarray[i]).getMaxDate());
+          tablecontent[i] = new TestHistoryLine(String.valueOf(pagenamesarray[i]),1,1,testHistory.getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 
         }
 

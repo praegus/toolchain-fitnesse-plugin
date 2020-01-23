@@ -6,10 +6,9 @@ import util.FileUtil;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.Comparator.*;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 public class TestHistory {
     private List<TestHistoryLine> testHistoryLineList = new ArrayList<>();
@@ -22,6 +21,10 @@ public class TestHistory {
 
     public TestHistory(File historyDirectory, String pageName) {
         readPageHistoryDirectory(historyDirectory, pageName);
+    }
+
+    public TestHistory() {
+
     }
 
 
