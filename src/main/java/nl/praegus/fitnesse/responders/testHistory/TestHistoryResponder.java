@@ -38,6 +38,7 @@ public class TestHistoryResponder implements SecureResponder {
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
         HtmlPage page = context.pageFactory.newPage();
+        TestHistoryLine testHistoryLine = new TestHistoryLine("j",1,1);
         page.setTitle("Test History");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
@@ -45,7 +46,7 @@ public class TestHistoryResponder implements SecureResponder {
         page.put("testHistory", testHistory);
         page.setMainTemplate("testHistory");
         SimpleResponse response = new SimpleResponse();
-        response.setContent(page.html(request));
+        response.setContent(pageName);
         return response;
     }
 
