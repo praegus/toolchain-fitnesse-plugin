@@ -1,4 +1,4 @@
-package nl.praegus.fitnesse.responders;
+package nl.praegus.fitnesse.responders.testHistory;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;

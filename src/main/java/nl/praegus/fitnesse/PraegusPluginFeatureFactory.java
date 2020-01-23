@@ -7,6 +7,7 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import nl.praegus.fitnesse.responders.*;
+import nl.praegus.fitnesse.responders.testHistory.TestHistoryResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
