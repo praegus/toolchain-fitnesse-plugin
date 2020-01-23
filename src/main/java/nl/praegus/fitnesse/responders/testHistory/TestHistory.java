@@ -46,18 +46,15 @@ public class TestHistory {
         }
     }
 
-    public List<TestHistoryLine> getSortedLines(List lijstje) {
-        List sorted = (List) lijstje.stream()
+    public List<TestHistoryLine> getSortedLines(List<TestHistoryLine> LineList) {
+        return LineList.stream()
                 .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
                 .collect(toList());
-
-        return sorted;
     }
 
-    public List getHistoryLineList(){
+    public List<TestHistoryLine> getHistoryLineList(){
         String[] pagenamesarray = getPageNames().toArray(new String[0]);
-        TestHistoryLine tablecontent[] = new TestHistoryLine[pagenamesarray.length];
-        List testHistoryLineList = new ArrayList();
+        List<TestHistoryLine> testHistoryLineList = new ArrayList();
 
         for (int i=0; i<pagenamesarray.length; i++){
 
@@ -65,9 +62,8 @@ public class TestHistory {
         }
 
         TestHistory testhistory = new TestHistory();
-        List sorted = testhistory.getSortedLines(testHistoryLineList);
 
-        return sorted;
+        return testhistory.getSortedLines(testHistoryLineList);
     }
 
     private void readHistoryDirectory(File historyDirectory) {
