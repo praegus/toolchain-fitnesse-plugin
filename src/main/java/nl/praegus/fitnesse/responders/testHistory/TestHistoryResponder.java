@@ -1,9 +1,11 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import nl.praegus.fitnesse.responders.testHistory.TestHistory;
 import fitnesse.wiki.PathParser;
 import org.apache.velocity.VelocityContext;
 
@@ -17,6 +19,7 @@ import fitnesse.http.Response.Format;
 import fitnesse.http.SimpleResponse;
 import fitnesse.html.template.HtmlPage;
 import fitnesse.html.template.PageTitle;
+
 
 public class TestHistoryResponder implements SecureResponder {
 
@@ -37,8 +40,25 @@ public class TestHistoryResponder implements SecureResponder {
     }
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
+        String[] pagenamesarray = testHistory.getPageNames().toArray(new String[0]);
+
+       // TestHistory testHistory = new TestHistory();
+
+
+
+        TestHistoryLine tablecontent[] = new TestHistoryLine[pagenamesarray.length];
+
+        for (int i=0; i<pagenamesarray.length; i++){
+
+          tablecontent[i] = new TestHistoryLine(String.valueOf(pagenamesarray[i]),1,1,testHistory.getPageHistory(pagenamesarray[i]).getMaxDate());
+
+        }
+
+        List sorted = testHistory.getSortedLines();
+
         HtmlPage page = context.pageFactory.newPage();
-        TestHistoryLine testHistoryLine = new TestHistoryLine("j",1,1);
+
+        //TestHistoryLine testHistoryLine = new TestHistoryLine("j",1,1,1);
         page.setTitle("Test History");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
@@ -46,7 +66,8 @@ public class TestHistoryResponder implements SecureResponder {
         page.put("testHistory", testHistory);
         page.setMainTemplate("testHistory");
         SimpleResponse response = new SimpleResponse();
-        response.setContent(pageName);
+
+ response.setContent(String.valueOf(sorted));
         return response;
     }
 

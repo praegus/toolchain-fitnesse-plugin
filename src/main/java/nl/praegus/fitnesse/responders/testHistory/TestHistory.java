@@ -6,6 +6,10 @@ import util.FileUtil;
 
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
 
 public class TestHistory {
     private List<TestHistoryLine> testHistoryLineList = new ArrayList<>();
@@ -20,16 +24,6 @@ public class TestHistory {
         readPageHistoryDirectory(historyDirectory, pageName);
     }
 
-    private void readHistoryDirectory(File historyDirectory) {
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if (isValidFile(file))
-                pageDirectoryMap.put(file.getName(), file);
-    }
-
-    private boolean isValidFile(File file) {
-        return file.isDirectory() && file.list().length > 0 && PathParser.isWikiPath(file.getName());
-    }
 
     public Set<String> getPageNames() {
         return new TreeSet<>(pageDirectoryMap.keySet());
@@ -46,6 +40,25 @@ public class TestHistory {
             else
                 return pageHistory;
         }
+    }
+
+    public List<TestHistoryLine> getSortedLines() {
+
+        return testHistoryLineList
+                .stream()
+                .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
+                .collect(toList());
+    }
+
+    private void readHistoryDirectory(File historyDirectory) {
+        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
+        for (File file : pageDirectories)
+            if (isValidFile(file))
+                pageDirectoryMap.put(file.getName(), file);
+    }
+
+    private boolean isValidFile(File file) {
+        return file.isDirectory() && file.list().length > 0 && PathParser.isWikiPath(file.getName());
     }
 
     private void readPageHistoryDirectory(File historyDirectory, String pageName) {
