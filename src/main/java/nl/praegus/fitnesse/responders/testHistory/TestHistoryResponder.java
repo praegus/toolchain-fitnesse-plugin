@@ -3,7 +3,7 @@ package nl.praegus.fitnesse.responders.testHistory;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 
-import fitnesse.reporting.history.TestHistory;
+import nl.praegus.fitnesse.responders.testHistory.TestHistory;
 import fitnesse.wiki.PathParser;
 import org.apache.velocity.VelocityContext;
 
