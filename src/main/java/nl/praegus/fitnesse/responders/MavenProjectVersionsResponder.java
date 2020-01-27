@@ -42,6 +42,8 @@ public class MavenProjectVersionsResponder implements SecureResponder {
     }
 
     private JSONArray dependenciesInfo = new JSONArray();
+    private SimpleResponse response = new SimpleResponse();
+    private int status = 200;
 
     @Override
     public SecureOperation getSecureOperation() {
@@ -53,14 +55,14 @@ public class MavenProjectVersionsResponder implements SecureResponder {
         getDependencyInformation();
         getPluginVersionInformation();
 
-        SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
-        response.setStatus(200);
+        response.setStatus(status);
         response.setContentType("application/json");
         response.setContent(dependenciesInfo.toString(3));
 
         return response;
     }
+
 
     private void getPluginVersionInformation () {
         String pluginGroup = "nl.praegus";
@@ -80,22 +82,28 @@ public class MavenProjectVersionsResponder implements SecureResponder {
             Model model = reader.read(new FileReader(System.getProperty("user.dir") + "/../pom.xml"));
             List<Dependency> dependencies = model.getDependencies();
             for (Dependency dep : dependencies) {
-                String group = dep.getGroupId();
-                String artifact = dep.getArtifactId();
-                String version = dep.getVersion();
-                if(!IGNORE_DEPENDENCIES.contains(artifact)) {
-
-                    JSONObject dependencyInfo = new JSONObject();
-                    dependencyInfo.put("groupid", group);
-                    dependencyInfo.put("artifactid", artifact);
-                    dependencyInfo.put("currentVersion", translateVersion(version, model));
-                    dependencyInfo.put("latest", getLatestVersion(group, artifact));
-                    dependenciesInfo.put(dependencyInfo);
+                if (status == 200) {
+                    String group = dep.getGroupId();
+                    String artifact = dep.getArtifactId();
+                    String version = dep.getVersion();
+                    if(!IGNORE_DEPENDENCIES.contains(artifact)) {
+                        JSONObject dependencyInfo = new JSONObject();
+                        dependencyInfo.put("groupid", group);
+                        dependencyInfo.put("artifactid", artifact);
+                        dependencyInfo.put("currentVersion", translateVersion(version, model));
+                        dependencyInfo.put("latest", getLatestVersion(group, artifact));
+                        dependenciesInfo.put(dependencyInfo);
+                    }
                 }
             }
 
         } catch (IOException | XmlPullParserException e) {
-            System.out.println(e.getMessage());
+            status = 500;
+            JSONObject error = new JSONObject();
+            error.put("error", "No valid pom.xml was found in your project's root folder (are you using maven?)");
+            error.put("message", e.getMessage());
+            error.put("stacktrace", e.getStackTrace());
+            dependenciesInfo.put(error);
         }
 
     }
