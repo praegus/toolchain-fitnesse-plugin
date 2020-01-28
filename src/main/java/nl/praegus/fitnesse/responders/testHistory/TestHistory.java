@@ -63,7 +63,11 @@ public class TestHistory {
             LocalDateTime whatDate = getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             PageHistory.BarGraph lastResults = getPageHistory(pagenamesarray[i]).getBarGraph();
 
-            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),totalOfFailures, totalOfPasses, whatDate, lastResults));
+            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),
+                    totalOfFailures,
+                    totalOfPasses,
+                    whatDate,
+                    lastResults));
         }
 
         TestHistory testhistory = new TestHistory();
