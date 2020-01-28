@@ -56,7 +56,6 @@ public class TestHistory {
     public List<TestHistoryLine> getHistoryLineList(){
         String[] pagenamesarray = getPageNames().toArray(new String[0]);
         List<TestHistoryLine> testHistoryLineList = new ArrayList();
-
         for (int i=0; i<pagenamesarray.length; i++){
             int totalOfFailures = getPageHistory(pagenamesarray[i]).getFailures();
             int totalOfPasses = getPageHistory(pagenamesarray[i]).getPasses();
@@ -72,6 +71,7 @@ public class TestHistory {
         }
 
         TestHistory testhistory = new TestHistory();
+
 
         return testhistory.getSortedLines(testHistoryLineList);
     }
