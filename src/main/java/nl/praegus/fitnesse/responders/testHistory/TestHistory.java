@@ -7,6 +7,7 @@ import util.FileUtil;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static java.util.Comparator.*;
@@ -47,32 +48,36 @@ public class TestHistory {
         }
     }
 
-    public List<TestHistoryLine> getSortedLines(List<TestHistoryLine> LineList) {
+    public static List<TestHistoryLine> getSortedLines(List<TestHistoryLine> LineList) {
+        // sort list using stream and return it
         return LineList.stream()
                 .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
                 .collect(toList());
     }
 
     public List<TestHistoryLine> getHistoryLineList(){
+        //inits
         String[] pagenamesarray = getPageNames().toArray(new String[0]);
         List<TestHistoryLine> testHistoryLineList = new ArrayList();
+        TestHistory testhistory = new TestHistory();
+        // loop for each name in pagenames array
         for (int i=0; i<pagenamesarray.length; i++){
+            //populate data for testhistoryline object
             int totalOfFailures = getPageHistory(pagenamesarray[i]).getFailures();
             int totalOfPasses = getPageHistory(pagenamesarray[i]).getPasses();
             LocalDateTime whatDate = getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             PageHistory history = getPageHistory(pagenamesarray[i]);
-
+            String formattedDate = whatDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+            //make new historyline object and add to list
             testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),
                     totalOfFailures,
                     totalOfPasses,
                     whatDate,
-                    history
+                    history,
+                    formattedDate
                     ));
         }
-
-        TestHistory testhistory = new TestHistory();
-
-
+        // return historylinelist sorted using getSortedLines()
         return testhistory.getSortedLines(testHistoryLineList);
     }
 
