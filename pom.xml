@@ -7,7 +7,7 @@
     <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
     <name>Praegus Toolchain plugin</name>
     <description>Auto-register autocomplete responder and add debug script table</description>
-    <version>1.20-SNAPSHOT</version>
+    <version>1.21-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,7 +28,12 @@
         <dependency>
             <groupId>nl.praegus</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.15</version>
+            <version>1.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.6.3</version>
         </dependency>
 
     </dependencies>
@@ -53,6 +58,12 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>
