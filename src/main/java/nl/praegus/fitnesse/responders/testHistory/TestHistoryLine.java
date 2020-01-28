@@ -5,7 +5,6 @@ package nl.praegus.fitnesse.responders.testHistory;
 import fitnesse.reporting.history.PageHistory;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class TestHistoryLine {
 
@@ -13,16 +12,16 @@ public class TestHistoryLine {
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
     private LocalDateTime lastRun;
-    private PageHistory.BarGraph passFailArray;
+    private PageHistory pageHistory;
     //private List<Boolean> latestResults;
 
     //Get+Set
-    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime lastRun, PageHistory.BarGraph passFailArray) {
+    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime lastRun, PageHistory pageHistory) {
         this.page = page;
         this.numberOfTimesFailed = numberOfTimesFailed;
         this.numberOfTimesPassed = numberOfTimesPassed;
         this.lastRun = lastRun;
-        this.passFailArray = passFailArray;
+        this.pageHistory = pageHistory;
     }
 
     public String getPage() {
@@ -44,8 +43,8 @@ public class TestHistoryLine {
         return lastRun;
     }
 
-    public PageHistory.BarGraph getPassFailArray(){
-        return passFailArray;
+    public PageHistory getPageHistory() {
+        return pageHistory;
     }
 }
 /*

@@ -61,13 +61,14 @@ public class TestHistory {
             int totalOfFailures = getPageHistory(pagenamesarray[i]).getFailures();
             int totalOfPasses = getPageHistory(pagenamesarray[i]).getPasses();
             LocalDateTime whatDate = getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            PageHistory.BarGraph lastResults = getPageHistory(pagenamesarray[i]).getBarGraph();
+            PageHistory history = getPageHistory(pagenamesarray[i]);
 
             testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),
                     totalOfFailures,
                     totalOfPasses,
                     whatDate,
-                    lastResults));
+                    history
+                    ));
         }
 
         TestHistory testhistory = new TestHistory();
