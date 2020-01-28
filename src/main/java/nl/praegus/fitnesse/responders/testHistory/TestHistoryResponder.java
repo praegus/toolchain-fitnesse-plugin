@@ -27,7 +27,7 @@ public class TestHistoryResponder implements SecureResponder {
         this.context = context;
         File resultsDirectory = context.getTestHistoryDirectory();
         String pageName = request.getResource();
-        TestHistory testHistory = new TestHistory(resultsDirectory, pageName);
+        TestHistory testHistory = new TestHistory(resultsDirectory);
 
         if (formatIsXML(request)) {
             return makeTestHistoryXmlResponse(testHistory);
@@ -37,15 +37,20 @@ public class TestHistoryResponder implements SecureResponder {
     }
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
-       List sorted = testHistory.getHistoryLineList();
+       List<TestHistoryLine> historyLines = testHistory.getHistoryLines();
         HtmlPage page = context.pageFactory.newPage();
 
         page.setTitle("Test History");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
         page.put("viewLocation", request.getResource());
-        page.put("testHistory", sorted);
-        page.setMainTemplate("testHistory");
+        if(formatIsSorted(request)) {
+            page.put("testHistory", historyLines);
+            page.setMainTemplate("testHistorySorted");
+        }else{
+            page.put("testHistory", testHistory);
+            page.setMainTemplate("testHistory");
+        }
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(page.html(request));
@@ -64,6 +69,10 @@ public class TestHistoryResponder implements SecureResponder {
     private boolean formatIsXML(Request request) {
         String format = request.getInput("format");
         return "xml".equalsIgnoreCase(format);
+    }
+    private boolean formatIsSorted(Request request) {
+        String format = request.getInput("format");
+        return "sorted".equalsIgnoreCase(format);
     }
 
     @Override

@@ -14,33 +14,45 @@ import static java.util.Comparator.*;
 import static java.util.stream.Collectors.toList;
 
 public class TestHistory {
-    private List<TestHistoryLine> testHistoryLineList = new ArrayList<>();
-
-    final Map<String, File> pageDirectoryMap = new HashMap<>();
+    private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
+    private Map<String, File> pageHistoryIndex;
 
     public TestHistory(File historyDirectory) {
-        readHistoryDirectory(historyDirectory);
+        this.pageHistoryIndex = getHistoryIndex(historyDirectory);
+
+        // loop for each name in pagenames array
+        for (String pageName : pageHistoryIndex.keySet()) {
+            //populate data for testhistoryline object
+            PageHistory pageHistory = getPageHistory(pageName);
+            int totalOfFailures = pageHistory.getFailures();
+            int totalOfPasses = pageHistory.getPasses();
+            LocalDateTime whatDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+            String formattedDate = whatDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+            //make new historyline object and add to list
+            testHistoryLines.add(new TestHistoryLine(String.valueOf(pageName),
+                    totalOfFailures,
+                    totalOfPasses,
+                    whatDate,
+                    pageHistory,
+                    formattedDate
+            ));
+        }
     }
 
-    public TestHistory(File historyDirectory, String pageName) {
-        readPageHistoryDirectory(historyDirectory, pageName);
+    public List<TestHistoryLine> getHistoryLines() {
+        // sort list using stream and return it
+        return testHistoryLines.stream()
+                .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
+                .collect(toList());
     }
 
-    public TestHistory() {
-
-    }
-
-
-    public Set<String> getPageNames() {
-        return new TreeSet<>(pageDirectoryMap.keySet());
-    }
-
-    public PageHistory getPageHistory(String pageName) {
-        File pageHistoryDirectory = pageDirectoryMap.get(pageName);
-        if (pageHistoryDirectory == null)
+    private PageHistory getPageHistory(String pageName) {
+        File historyPage = pageHistoryIndex.get(pageName);
+        if (historyPage == null)
             return null;
         else {
-            PageHistory pageHistory = new PageHistory(pageHistoryDirectory);
+            PageHistory pageHistory = new PageHistory(historyPage);
             if (pageHistory.size() == 0)
                 return null;
             else
@@ -48,55 +60,19 @@ public class TestHistory {
         }
     }
 
-    public static List<TestHistoryLine> getSortedLines(List<TestHistoryLine> LineList) {
-        // sort list using stream and return it
-        return LineList.stream()
-                .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
-                .collect(toList());
-    }
 
-    public List<TestHistoryLine> getHistoryLineList(){
-        //inits
-        String[] pagenamesarray = getPageNames().toArray(new String[0]);
-        List<TestHistoryLine> testHistoryLineList = new ArrayList();
-        TestHistory testhistory = new TestHistory();
-        // loop for each name in pagenames array
-        for (int i=0; i<pagenamesarray.length; i++){
-            //populate data for testhistoryline object
-            int totalOfFailures = getPageHistory(pagenamesarray[i]).getFailures();
-            int totalOfPasses = getPageHistory(pagenamesarray[i]).getPasses();
-            LocalDateTime whatDate = getPageHistory(pagenamesarray[i]).getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            PageHistory history = getPageHistory(pagenamesarray[i]);
-            String formattedDate = whatDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-            //make new historyline object and add to list
-            testHistoryLineList.add(new TestHistoryLine(String.valueOf(pagenamesarray[i]),
-                    totalOfFailures,
-                    totalOfPasses,
-                    whatDate,
-                    history,
-                    formattedDate
-                    ));
-        }
-        // return historylinelist sorted using getSortedLines()
-        return testhistory.getSortedLines(testHistoryLineList);
-    }
-
-    private void readHistoryDirectory(File historyDirectory) {
+    private Map<String, File> getHistoryIndex(File historyDirectory) {
+        Map<String, File> map = new HashMap<>();
         File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if (isValidFile(file))
-                pageDirectoryMap.put(file.getName(), file);
+        for (File file : pageDirectories) {
+            if (isValidFile(file)) {
+                map.put(file.getName(), file);
+            }
+        }
+        return map;
     }
 
     private boolean isValidFile(File file) {
-        return file.isDirectory() && file.list().length > 0 && PathParser.isWikiPath(file.getName());
+        return file.isDirectory() && Objects.requireNonNull(file.list()).length > 0 && PathParser.isWikiPath(file.getName());
     }
-
-    private void readPageHistoryDirectory(File historyDirectory, String pageName) {
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if ((isValidFile(file)) && file.getName().startsWith(pageName))
-                pageDirectoryMap.put(file.getName(), file);
-    }
-
 }
