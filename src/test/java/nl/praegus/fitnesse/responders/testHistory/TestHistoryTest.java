@@ -41,15 +41,20 @@ public class TestHistoryTest {
 
     @Test
     public void When_dateTimeFormatter_is_working_correctly (){
+        // Setup
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         List<TestHistoryLine> testHistoryList = testHistory.getHistoryLines();
 
+        // Gets the unformatted dates
         List<LocalDateTime> unformattedDates = testHistoryList.stream().map(TestHistoryLine::getLastRun).collect(Collectors.toList());
         LocalDateTime unformattedDate = unformattedDates.get(0);
-
-        List<String> formattedDatesMock = testHistoryList.stream().map(TestHistoryLine::getFormattedDate).collect(Collectors.toList());
+        // Turns the unformatted dates to formattedDatesTest
         String formattedDateTest = unformattedDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
 
+        // Gets the formattedDates form the mocker
+        List<String> formattedDatesMock = testHistoryList.stream().map(TestHistoryLine::getFormattedDate).collect(Collectors.toList());
+
+        // Test if the formattedDatesTest are equal to the formattedDatesMock
         assertThat(formattedDateTest).isEqualTo(formattedDatesMock.get(0));
         System.out.println();
     }
