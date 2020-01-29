@@ -1,5 +1,4 @@
 package nl.praegus.fitnesse.responders.testHistory;
-import fitnesse.reporting.history.PageHistory;
 import org.junit.Test;
 
 import java.io.File;
@@ -42,7 +41,6 @@ public class TestHistoryTest {
         assertThat(testHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
 
-    // Setup method
     private File getMockDir(String DirName){
         if (DirName == "") {
             File mockDir = new File("");

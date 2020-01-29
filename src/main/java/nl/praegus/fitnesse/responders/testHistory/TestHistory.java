@@ -16,16 +16,16 @@ public class TestHistory {
 
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
-        // loop for each name in pagenames array
+
         for (String pageName : pageHistoryIndex.keySet()) {
+
             PageHistory pageHistory = getPageHistory(pageName);
-            //make new historyline object and add to list
             testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
     }
 
     public List<TestHistoryLine> getHistoryLines() {
-        // sort list using stream and return it
+
         return testHistoryLines.stream()
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
