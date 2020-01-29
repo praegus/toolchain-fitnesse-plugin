@@ -1,13 +1,10 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
 import org.junit.Test;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.*;
-import java.io.File;
-import java.util.*;
 
+import java.io.File;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,13 +23,14 @@ public class TestHistoryTest {
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
         TestHistory testHistory = new TestHistory(getMockDir(""));
+        //make sure gethistorylines return empty
         assert (testHistory.getHistoryLines()).isEmpty();
     }
 
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-
+// compare sorted lists to make sure lists are sorted correctly
         assertThat(testHistory.getHistoryLines()).extracting("page").containsExactly(
                 "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
                 "TestSuiteDemo.FrontEndTests.T003CreateCourse",
@@ -45,18 +43,13 @@ public class TestHistoryTest {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         List<TestHistoryLine> testHistoryList = testHistory.getHistoryLines();
 
-        // Gets the unformatted dates
-        List<LocalDateTime> unformattedDates = testHistoryList.stream().map(TestHistoryLine::getLastRun).collect(Collectors.toList());
-        LocalDateTime unformattedDate = unformattedDates.get(0);
-        // Turns the unformatted dates to formattedDatesTest
-        String formattedDateTest = unformattedDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+      // compare formatted dates to check the formatter is working
+    assertThat(testHistoryList.stream().findFirst().map(TestHistoryLine::getLastRun).get()
+            .format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm")))
 
-        // Gets the formattedDates form the mocker
-        List<String> formattedDatesMock = testHistoryList.stream().map(TestHistoryLine::getFormattedDate).collect(Collectors.toList());
+             .isEqualTo(testHistoryList.stream().limit(1).map(TestHistoryLine::getFormattedDate).collect(Collectors.toList())
+                     .toString().replace("[","").replace("]",""));
 
-        // Test if the formattedDatesTest are equal to the formattedDatesMock
-        assertThat(formattedDateTest).isEqualTo(formattedDatesMock.get(0));
-        System.out.println();
     }
 
 }
