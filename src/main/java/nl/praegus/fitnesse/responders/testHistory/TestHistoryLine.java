@@ -1,7 +1,5 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
-//import com.sun.tools.javac.util.List;
-
 import fitnesse.reporting.history.PageHistory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +11,7 @@ public class TestHistoryLine {
     private int numberOfTimesFailed;
     private LocalDateTime MostRecentRunDate;
     private PageHistory pageHistory;
-    //private List<Boolean> latestResults;
+
 
     //Get+Set
     public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime MostRecentRunDate, PageHistory pageHistory) {
@@ -51,9 +49,3 @@ public class TestHistoryLine {
         return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
     }
 }
-/*
-class Result {
-    private Boolean result;
-    private LocalDateTime resultMoment;
-}
-*/
