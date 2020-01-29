@@ -18,8 +18,6 @@ public class TestHistory {
 
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
-
-
         // loop for each name in pagenames array
         for (String pageName : pageHistoryIndex.keySet()) {
             //populate data for testhistoryline object
@@ -27,10 +25,9 @@ public class TestHistory {
             int totalOfFailures = pageHistory.getFailures();
             int totalOfPasses = pageHistory.getPasses();
             LocalDateTime mostRecentRunDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-
-
             //make new historyline object and add to list
-            testHistoryLines.add(new TestHistoryLine(pageName,
+            testHistoryLines.add(new TestHistoryLine(
+                    pageName,
                     totalOfFailures,
                     totalOfPasses,
                     mostRecentRunDate,

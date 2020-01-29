@@ -26,7 +26,6 @@ public class TestHistoryLine {
 
         return page;
     }
-    //Get+Set int getNumberOfTimesFailed
     public int getNumberOfTimesFailed() {
 
         return numberOfTimesFailed;
@@ -45,7 +44,7 @@ public class TestHistoryLine {
         return pageHistory;
     }
 
-    public String getFormattedDate() {
+    public String getMostRecentRunDateFormatted() {
         return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
     }
 }
