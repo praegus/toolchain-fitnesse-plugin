@@ -1,5 +1,6 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
+import fitnesse.reporting.history.PageHistory;
 import org.junit.Test;
 
 import java.io.File;
@@ -35,15 +36,21 @@ public class TestHistoryTest {
     }
 
     @Test
-    public void When_dateTimeFormatter_is_working_correctly (){
+    public void When_dateTimeFormatter_is_working_correctly() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-        System.out.println(testHistory.getHistoryLines().get(0).getFormattedDate());
 
         assertThat(testHistory.getHistoryLines().get(0).getFormattedDate()).isEqualTo("22 Jan 2020, 11:43");
-//        String Date = testHistory.getHistoryLines().stream().findFirst().map(TestHistoryLine::getLastRun).get().format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-//        // compare formatted dates to check the formatter is working
-//        assertThat(Date).isEqualTo(Expecteddate);
+    }
 
+    @Test
+    public void Test_results_passfails_in_right_order() {
+        PageHistory pageHistory = new PageHistory((getMockDir("TestResultDirectory/FitNesse.UserGuide.TwoMinuteExample")));
+        PageHistory.PassFailReport[] passfails = pageHistory.getBarGraph().passFailArray();
+
+        assertThat(passfails).extracting("date").containsExactly(
+                "20200121091855",
+                "20200121091824"
+        );
     }
 
 }
