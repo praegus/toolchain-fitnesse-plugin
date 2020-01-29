@@ -10,13 +10,14 @@ public class TestHistoryLine {
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
     private Date MostRecentRunDate;
-//    private PageHistory pageHistory;
+    private PageHistory.PassFailReport[] pageHistory;
 
     public TestHistoryLine(PageHistory pageHistory){
         this.pageName = pageHistory.getFullPageName();
         this.numberOfTimesFailed = pageHistory.getFailures();
         this.numberOfTimesPassed = pageHistory.getPasses();
         this.MostRecentRunDate = pageHistory.getMaxDate();
+        this.pageHistory = pageHistory.getBarGraph().passFailArray();
     }
 
 //
@@ -46,12 +47,12 @@ public class TestHistoryLine {
 
         return MostRecentRunDate;
     }
-/*
-    public PageHistory getPageHistory() {
-        return pageHistory;
-    }
 
-    public String getMostRecentRunDateFormatted() {
-        return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-    }*/
+//    public PageHistory.PassFailReport[] getPageHistory() {
+//        return pageHistory;
+//    }
+////
+//    public String getMostRecentRunDateFormatted() {
+//        return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+//    }
 }
