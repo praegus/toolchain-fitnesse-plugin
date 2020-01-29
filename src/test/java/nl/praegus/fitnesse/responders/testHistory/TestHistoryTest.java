@@ -3,6 +3,9 @@ package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class TestHistoryTest {
@@ -27,7 +30,7 @@ public class TestHistoryTest {
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-// compare sorted lists to make sure lists are sorted correctly
+        // compare sorted lists to make sure lists are sorted correctly
         assertThat(testHistory.getHistoryLines()).extracting("page").containsExactly(
                 "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
                 "TestSuiteDemo.FrontEndTests.T003CreateCourse",
@@ -40,7 +43,7 @@ public class TestHistoryTest {
 
         assertThat(testHistory.getHistoryLines().get(0).getFormattedDate()).isEqualTo("22 Jan 2020, 11:43");
 //        String Date = testHistory.getHistoryLines().stream().findFirst().map(TestHistoryLine::getLastRun).get().format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-//      // compare formatted dates to check the formatter is working
+//        // compare formatted dates to check the formatter is working
 //        assertThat(Date).isEqualTo(Expecteddate);
 
     }
