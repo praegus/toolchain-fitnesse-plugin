@@ -24,7 +24,7 @@ public class TestHistory {
 //            int totalOfPasses = pageHistory.getPasses();
 //            LocalDateTime mostRecentRunDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 //            //make new historyline object and add to list
-            testHistoryLines.add(new TestHistoryLine(pageHistory            ));
+            testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
     }
 

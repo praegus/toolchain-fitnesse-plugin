@@ -2,22 +2,21 @@ package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.reporting.history.PageHistory;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class TestHistoryLine {
 
     private String pageName;
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
-    private LocalDateTime MostRecentRunDate;
+    private Date MostRecentRunDate;
 //    private PageHistory pageHistory;
 
     public TestHistoryLine(PageHistory pageHistory){
+        this.pageName = pageHistory.getFullPageName();
         this.numberOfTimesFailed = pageHistory.getFailures();
         this.numberOfTimesPassed = pageHistory.getPasses();
-        LocalDateTime mostRecentRunDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        this.MostRecentRunDate = pageHistory.getMaxDate();
     }
 
 //
@@ -43,16 +42,16 @@ public class TestHistoryLine {
         return numberOfTimesPassed;
     }
 
-    public LocalDateTime getMostRecentRunDate() {
+    public Date getMostRecentRunDate() {
 
         return MostRecentRunDate;
     }
-
+/*
     public PageHistory getPageHistory() {
         return pageHistory;
     }
 
     public String getMostRecentRunDateFormatted() {
         return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-    }
+    }*/
 }

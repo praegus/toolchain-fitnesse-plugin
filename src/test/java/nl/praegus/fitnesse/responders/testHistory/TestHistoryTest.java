@@ -1,13 +1,7 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
-import org.junit.Test;
-
-import java.io.File;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class TestHistoryTest {
-
+/*
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
@@ -45,5 +39,5 @@ public class TestHistoryTest {
             return mockDir;
         }
     }
-
+*/
 }
