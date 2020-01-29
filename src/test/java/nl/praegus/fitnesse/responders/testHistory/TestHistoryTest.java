@@ -3,10 +3,8 @@ package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 public class TestHistoryTest {
 
 
@@ -16,16 +14,25 @@ public class TestHistoryTest {
         TestHistory testHistory = new TestHistory(mockDir);
         assert (testHistory.getHistoryLines()).isEmpty();
     }
+
     @Test
-    public void When_directory_is_not_null_return_history_linessorted(){
-        // get mock test result directory
+    public void When_directory_is_not_null_return_historylines_sorted() {
+        File mockDir = new File(getClass().getClassLoader().getResource("TestResultDirectory").getFile());
+
+        TestHistory testHistory = new TestHistory(mockDir);
+
+        assertThat(testHistory.getHistoryLines()).extracting("page").containsExactly(
+                "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
+                "TestSuiteDemo.FrontEndTests.T003CreateCourse",
+                "FitNesse.UserGuide.TwoMinuteExample");
+    }
+
+    @Test
+    public void When_directory_is_not_null_return_historylines_unsorted() {
         ClassLoader classLoader = getClass().getClassLoader();
         File mockDir = new File(classLoader.getResource("TestResultDirectory").getFile());
-        //get testhistory lines from mock directory
         TestHistory testHistory = new TestHistory(mockDir);
-        List<TestHistoryLine> historyLineList = testHistory.getHistoryLines();
-        // assert that
-        assertThat(historyLineList.stream().map(TestHistoryLine::getPage).collect(Collectors.toList()))
-                .isEqualTo(Arrays.asList("TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas","TestSuiteDemo.FrontEndTests.T003CreateCourse","FitNesse.UserGuide.TwoMinuteExample"));
+
+        System.out.println();
     }
 }

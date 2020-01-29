@@ -20,6 +20,7 @@ public class TestHistory {
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
 
+
         // loop for each name in pagenames array
         for (String pageName : pageHistoryIndex.keySet()) {
             //populate data for testhistoryline object
