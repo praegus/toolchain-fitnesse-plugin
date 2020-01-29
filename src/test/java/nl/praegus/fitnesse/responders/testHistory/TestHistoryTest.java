@@ -3,9 +3,6 @@ package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
 import java.io.File;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class TestHistoryTest {
@@ -39,16 +36,12 @@ public class TestHistoryTest {
 
     @Test
     public void When_dateTimeFormatter_is_working_correctly (){
-        // Setup
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-        List<TestHistoryLine> testHistoryList = testHistory.getHistoryLines();
 
-      // compare formatted dates to check the formatter is working
-    assertThat(testHistoryList.stream().findFirst().map(TestHistoryLine::getLastRun).get()
-            .format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm")))
-
-             .isEqualTo(testHistoryList.stream().limit(1).map(TestHistoryLine::getFormattedDate).collect(Collectors.toList())
-                     .toString().replace("[","").replace("]",""));
+        assertThat(testHistory.getHistoryLines().get(0).getFormattedDate()).isEqualTo("22 Jan 2020, 11:43");
+//        String Date = testHistory.getHistoryLines().stream().findFirst().map(TestHistoryLine::getLastRun).get().format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+//      // compare formatted dates to check the formatter is working
+//        assertThat(Date).isEqualTo(Expecteddate);
 
     }
 

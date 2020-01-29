@@ -11,18 +11,16 @@ public class TestHistoryLine {
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
     private LocalDateTime lastRun;
-    private String formattedDate;
     private PageHistory pageHistory;
     //private List<Boolean> latestResults;
 
     //Get+Set
-    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime lastRun, PageHistory pageHistory,String formattedDate) {
+    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime lastRun, PageHistory pageHistory) {
         this.page = page;
         this.numberOfTimesFailed = numberOfTimesFailed;
         this.numberOfTimesPassed = numberOfTimesPassed;
         this.lastRun = lastRun;
         this.pageHistory = pageHistory;
-        this.formattedDate = formattedDate;
     }
 
     public String getPage() {
@@ -49,7 +47,7 @@ public class TestHistoryLine {
     }
 
     public String getFormattedDate() {
-        return formattedDate;
+        return lastRun.format();
     }
 }
 /*
