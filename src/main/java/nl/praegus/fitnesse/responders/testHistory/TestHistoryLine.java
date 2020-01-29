@@ -10,14 +10,14 @@ public class TestHistoryLine {
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
     private Date MostRecentRunDate;
-    private PageHistory.PassFailReport[] pageHistory;
+    private PageHistory.BarGraph barGraph;
 
     public TestHistoryLine(PageHistory pageHistory){
         this.pageName = pageHistory.getFullPageName();
         this.numberOfTimesFailed = pageHistory.getFailures();
         this.numberOfTimesPassed = pageHistory.getPasses();
         this.MostRecentRunDate = pageHistory.getMaxDate();
-        this.pageHistory = pageHistory.getBarGraph().passFailArray();
+        this.barGraph = pageHistory.getBarGraph();
     }
 
 //
@@ -34,10 +34,12 @@ public class TestHistoryLine {
 
         return pageName;
     }
+
     public int getNumberOfTimesFailed() {
 
         return numberOfTimesFailed;
     }
+
     public int getNumberOfTimesPassed() {
 
         return numberOfTimesPassed;
@@ -46,6 +48,11 @@ public class TestHistoryLine {
     public Date getMostRecentRunDate() {
 
         return MostRecentRunDate;
+    }
+
+    public PageHistory.BarGraph getbarGraph(){
+
+        return barGraph;
     }
 
 //    public PageHistory.PassFailReport[] getPageHistory() {
