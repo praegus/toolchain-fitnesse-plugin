@@ -21,21 +21,16 @@ public class TestHistoryTest {
             File mockDir = new File(getClass().getClassLoader().getResource(DirName).getFile());
             return mockDir;
         }
-
     }
-
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
-
         TestHistory testHistory = new TestHistory(getMockDir(""));
         assert (testHistory.getHistoryLines()).isEmpty();
     }
 
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
-        File mockDir = new File(getClass().getClassLoader().getResource("TestResultDirectory").getFile());
-
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
 
         assertThat(testHistory.getHistoryLines()).extracting("page").containsExactly(
@@ -46,9 +41,7 @@ public class TestHistoryTest {
 
     @Test
     public void When_dateTimeFormatter_is_working_correctly (){
-        ClassLoader loader = Test.class.getClassLoader();
-        File mockDir = new File(loader.getResource("TestResultDirectory").getFile());
-        TestHistory testHistory = new TestHistory(mockDir);
+        TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         List<TestHistoryLine> testHistoryList = testHistory.getHistoryLines();
 
         List<LocalDateTime> unformattedDates = testHistoryList.stream().map(TestHistoryLine::getLastRun).collect(Collectors.toList());
