@@ -7,7 +7,6 @@ import util.FileUtil;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static java.util.Comparator.*;
@@ -27,16 +26,15 @@ public class TestHistory {
             PageHistory pageHistory = getPageHistory(pageName);
             int totalOfFailures = pageHistory.getFailures();
             int totalOfPasses = pageHistory.getPasses();
-            LocalDateTime selectMostRecentDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            LocalDateTime mostRecentRunDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
-            String formattedDate = selectMostRecentDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+
             //make new historyline object and add to list
-            testHistoryLines.add(new TestHistoryLine(String.valueOf(pageName),
+            testHistoryLines.add(new TestHistoryLine(pageName,
                     totalOfFailures,
                     totalOfPasses,
-                    selectMostRecentDate,
-                    pageHistory,
-                    formattedDate
+                    mostRecentRunDate,
+                    pageHistory
             ));
         }
     }
@@ -44,7 +42,7 @@ public class TestHistory {
     public List<TestHistoryLine> getHistoryLines() {
         // sort list using stream and return it
         return testHistoryLines.stream()
-                .sorted(comparing(TestHistoryLine::getLastRun, nullsLast(reverseOrder())))
+                .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
 

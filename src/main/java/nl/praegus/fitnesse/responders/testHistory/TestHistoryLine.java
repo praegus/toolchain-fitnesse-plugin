@@ -4,22 +4,23 @@ package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.reporting.history.PageHistory;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TestHistoryLine {
 
     private String page;
     private int numberOfTimesPassed;
     private int numberOfTimesFailed;
-    private LocalDateTime selectMostRecentDate;
+    private LocalDateTime MostRecentRunDate;
     private PageHistory pageHistory;
     //private List<Boolean> latestResults;
 
     //Get+Set
-    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime selectMostRecentDate, PageHistory pageHistory) {
+    public TestHistoryLine(String page, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime MostRecentRunDate, PageHistory pageHistory) {
         this.page = page;
         this.numberOfTimesFailed = numberOfTimesFailed;
         this.numberOfTimesPassed = numberOfTimesPassed;
-        this.selectMostRecentDate = selectMostRecentDate;
+        this.MostRecentRunDate = MostRecentRunDate;
         this.pageHistory = pageHistory;
     }
 
@@ -37,9 +38,9 @@ public class TestHistoryLine {
         return numberOfTimesPassed;
     }
 
-    public LocalDateTime getSelectMostRecentDate() {
+    public LocalDateTime getMostRecentRunDate() {
 
-        return selectMostRecentDate;
+        return MostRecentRunDate;
     }
 
     public PageHistory getPageHistory() {
@@ -47,7 +48,7 @@ public class TestHistoryLine {
     }
 
     public String getFormattedDate() {
-        return selectMostRecentDate.format();
+        return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
     }
 }
 /*
