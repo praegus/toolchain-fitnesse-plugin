@@ -20,16 +20,6 @@ public class TestHistoryLine {
         this.barGraph = pageHistory.getBarGraph();
     }
 
-//
-//    //Get+Set
-//    public TestHistoryLine(String pageName, int numberOfTimesFailed, int numberOfTimesPassed, LocalDateTime MostRecentRunDate, PageHistory pageHistory) {
-//        this.pageName = pageName;
-//        this.numberOfTimesFailed = numberOfTimesFailed;
-//        this.numberOfTimesPassed = numberOfTimesPassed;
-//        this.MostRecentRunDate = MostRecentRunDate;
-//        this.pageHistory = pageHistory;
-//    }
-
     public String getPageName() {
 
         return pageName;
@@ -55,11 +45,4 @@ public class TestHistoryLine {
         return barGraph;
     }
 
-//    public PageHistory.PassFailReport[] getPageHistory() {
-//        return pageHistory;
-//    }
-////
-//    public String getMostRecentRunDateFormatted() {
-//        return MostRecentRunDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
-//    }
 }
