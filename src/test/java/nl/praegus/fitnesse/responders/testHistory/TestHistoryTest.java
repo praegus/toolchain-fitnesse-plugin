@@ -40,7 +40,7 @@ public class TestHistoryTest {
     public void When_dateTimeFormatter_is_working_correctly() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         // Compare formatted dates to make sure dateTimeFormatter is working
-        assertThat(testHistory.getHistoryLines().get(0).getFormattedDate()).isEqualTo("22 Jan 2020, 11:43");
+        assertThat(testHistory.getHistoryLines().get(0).getFormattedDate()).isEqualTo("22 jan 2020, 11:43");
     }
 
     @Test
