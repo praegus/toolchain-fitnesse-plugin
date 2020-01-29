@@ -1,6 +1,5 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
-import fitnesse.reporting.history.PageHistory;
 import org.junit.Test;
 
 import java.io.File;
@@ -8,22 +7,13 @@ import java.io.File;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestHistoryTest {
-    // Setup method
-    private File getMockDir(String DirName){
-        if (DirName == ""){
-            File mockDir = new File("");
-            return mockDir;
-        }else {
-            File mockDir = new File(getClass().getClassLoader().getResource(DirName).getFile());
-            return mockDir;
-        }
-    }
+
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
-        TestHistory testHistory = new TestHistory(getMockDir(""));
-        // Make sure gethistorylines return empty
-        assert (testHistory.getHistoryLines()).isEmpty();
+        TestHistory testHistory = new TestHistory(new File(""));
+
+        assertThat (testHistory.getHistoryLines()).isEmpty();
     }
 
     @Test
@@ -34,6 +24,7 @@ public class TestHistoryTest {
                 "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
                 "TestSuiteDemo.FrontEndTests.T003CreateCourse",
                 "FitNesse.UserGuide.TwoMinuteExample");
+
     }
 
     @Test
@@ -41,18 +32,18 @@ public class TestHistoryTest {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         // Compare formatted dates to make sure dateTimeFormatter is working
         assertThat(testHistory.getHistoryLines().get(0).getMostRecentRunDateFormatted()).isEqualTo("22 Jan 2020, 11:43");
+        assertThat(testHistory.getHistoryLines().get(0).getNumberOfTimesFailed()).isEqualTo(3);
     }
 
-    @Test
-    public void Test_results_passfails_in_right_order() {
-        // Setup
-        PageHistory pageHistory = new PageHistory((getMockDir("TestResultDirectory/FitNesse.UserGuide.TwoMinuteExample")));
-        PageHistory.PassFailReport[] passfails = pageHistory.getBarGraph().passFailArray();
-        // Compare order of passfails to make sure they are sorted most recent fist
-        assertThat(passfails).extracting("date").containsExactly(
-                "20200121091855",
-                "20200121091824"
-        );
+    // Setup method
+    private File getMockDir(String DirName){
+        if (DirName == "") {
+            File mockDir = new File("");
+            return mockDir;
+        } else {
+            File mockDir = new File(getClass().getClassLoader().getResource(DirName).getFile());
+            return mockDir;
+        }
     }
 
 }
