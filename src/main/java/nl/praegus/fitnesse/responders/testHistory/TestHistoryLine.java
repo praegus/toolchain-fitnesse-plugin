@@ -3,7 +3,6 @@ package nl.praegus.fitnesse.responders.testHistory;
 //import com.sun.tools.javac.util.List;
 
 import fitnesse.reporting.history.PageHistory;
-
 import java.time.LocalDateTime;
 
 public class TestHistoryLine {

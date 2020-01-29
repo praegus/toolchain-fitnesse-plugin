@@ -27,14 +27,14 @@ public class TestHistory {
             PageHistory pageHistory = getPageHistory(pageName);
             int totalOfFailures = pageHistory.getFailures();
             int totalOfPasses = pageHistory.getPasses();
-            LocalDateTime whatDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            LocalDateTime selectMostRecentDate = pageHistory.getMaxDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
-            String formattedDate = whatDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
+            String formattedDate = selectMostRecentDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"));
             //make new historyline object and add to list
             testHistoryLines.add(new TestHistoryLine(String.valueOf(pageName),
                     totalOfFailures,
                     totalOfPasses,
-                    whatDate,
+                    selectMostRecentDate,
                     pageHistory,
                     formattedDate
             ));
