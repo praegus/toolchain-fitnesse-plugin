@@ -24,6 +24,15 @@ public class TestHistoryTest {
     }
 
     @Test
+    public void When_directory_is_not_null_return_historylines_not_sorted() {
+        TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
+        assertThat(testHistory.getPageNames()).containsSequence(
+                "TestSuiteDemo.FrontEndTests.T003CreateCourse",
+                "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
+                "FitNesse.UserGuide.TwoMinuteExample");
+    }
+
+    @Test
     public void When_dateTimeFormatter_is_working_correctly() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         assertThat(testHistory.getHistoryLines().get(0).getMostRecentRunDate().toString()).isEqualTo("Wed Jan 22 11:43:40 CET 2020");
@@ -39,15 +48,6 @@ public class TestHistoryTest {
     public void Checks_number_of_times_passed(){
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         assertThat(testHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
-    }
-
-    @Test
-    public void When_directory_is_not_null_return_historylines_not_sorted() {
-        TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-        assertThat(testHistory.getPageNames()).containsSequence(
-                "TestSuiteDemo.FrontEndTests.T003CreateCourse",
-                "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
-                "FitNesse.UserGuide.TwoMinuteExample");
     }
 
     // Setup method
