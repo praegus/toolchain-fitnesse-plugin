@@ -13,7 +13,6 @@ import static java.util.stream.Collectors.toList;
 public class TestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
     private Map<String, File> pageHistoryIndex;
-    final Map<String, File> pageDirectoryMap = new HashMap<>();
 
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
