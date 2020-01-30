@@ -1,6 +1,13 @@
 package nl.praegus.fitnesse.responders.testHistory;
+import fitnesse.reporting.history.PageHistory;
+import org.junit.Test;
+
+import java.io.File;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class TestHistoryTest {
-/*
+
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
         TestHistory testHistory = new TestHistory(new File(""));
@@ -20,6 +27,7 @@ public class TestHistoryTest {
     @Test
     public void When_dateTimeFormatter_is_working_correctly() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
+        // Compare formatted dates to make sure dateTimeFormatter is working
         assertThat(testHistory.getHistoryLines().get(0).getMostRecentRunDate().toString()).isEqualTo("Wed Jan 22 11:43:40 CET 2020");
     }
 
@@ -34,12 +42,8 @@ public class TestHistoryTest {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         assertThat(testHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
-    @Test
-    public void Checks_number_of_times_passed2(){
-        TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
 
-    }
-
+    // Setup method
     private File getMockDir(String DirName){
         if (DirName == "") {
             File mockDir = new File("");
@@ -49,5 +53,5 @@ public class TestHistoryTest {
             return mockDir;
         }
     }
-*/
+
 }
