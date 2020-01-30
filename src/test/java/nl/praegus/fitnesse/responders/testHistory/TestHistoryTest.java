@@ -40,6 +40,11 @@ public class TestHistoryTest {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
         assertThat(testHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
+    @Test
+    public void Checks_number_of_times_passed2(){
+        TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
+
+    }
 
     private File getMockDir(String DirName){
         if (DirName == "") {

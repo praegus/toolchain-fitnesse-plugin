@@ -29,11 +29,14 @@ public class TestHistoryResponder implements SecureResponder {
         String pageName = request.getResource();
         TestHistory testHistory = new TestHistory(resultsDirectory);
 
+
         if (formatIsXML(request)) {
             return makeTestHistoryXmlResponse(testHistory);
         } else {
             return makeTestHistoryResponse(testHistory, request, pageName);
         }
+
+
     }
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
@@ -48,7 +51,8 @@ public class TestHistoryResponder implements SecureResponder {
             page.put("testHistory", historyLines);
             page.setMainTemplate("testHistorySorted");
         }else{
-            page.put("testHistory", testHistory.getPageNames());
+            page.put("pageNames", testHistory.getPageNames());
+            page.put("testhistory",testHistory);
             page.setMainTemplate("testHistory");
         }
         SimpleResponse response = new SimpleResponse();
@@ -79,4 +83,6 @@ public class TestHistoryResponder implements SecureResponder {
     public SecureOperation getSecureOperation() {
         return new SecureReadOperation();
     }
+
+
 }

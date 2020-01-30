@@ -13,6 +13,7 @@ import static java.util.stream.Collectors.toList;
 public class TestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
     private Map<String, File> pageHistoryIndex;
+    final Map<String, File> pageDirectoryMap = new HashMap<>();
 
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
@@ -30,12 +31,12 @@ public class TestHistory {
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
-    public List<String> getPageNames(){
+    public Set<String> getPageNames(){
 
-        return (List<String>) pageHistoryIndex.keySet();
+        return pageHistoryIndex.keySet();
     }
 
-    private PageHistory getPageHistory(String pageName) {
+    public PageHistory getPageHistory(String pageName) {
         File historyPage = pageHistoryIndex.get(pageName);
         if (historyPage == null)
             return null;
@@ -59,6 +60,13 @@ public class TestHistory {
         }
         return map;
     }
+    private void readHistoryDirectory(File historyDirectory) {
+        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
+        for (File file : pageDirectories)
+            if (isValidFile(file))
+                pageDirectoryMap.put(file.getName(), file);
+    }
+
 
     private boolean isValidFile(File file) {
         return file.isDirectory() && Objects.requireNonNull(file.list()).length > 0 && PathParser.isWikiPath(file.getName());
