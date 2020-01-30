@@ -19,7 +19,6 @@ public class TestHistory {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
 
         for (String pageName : pageHistoryIndex.keySet()) {
-
             PageHistory pageHistory = getPageHistory(pageName);
             testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
@@ -32,7 +31,6 @@ public class TestHistory {
                 .collect(toList());
     }
     public Set<String> getPageNames(){
-
         return pageHistoryIndex.keySet();
     }
 
@@ -49,7 +47,6 @@ public class TestHistory {
         }
     }
 
-
     private Map<String, File> getHistoryIndex(File historyDirectory) {
         Map<String, File> map = new HashMap<>();
         File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
@@ -60,13 +57,6 @@ public class TestHistory {
         }
         return map;
     }
-    private void readHistoryDirectory(File historyDirectory) {
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if (isValidFile(file))
-                pageDirectoryMap.put(file.getName(), file);
-    }
-
 
     private boolean isValidFile(File file) {
         return file.isDirectory() && Objects.requireNonNull(file.list()).length > 0 && PathParser.isWikiPath(file.getName());
