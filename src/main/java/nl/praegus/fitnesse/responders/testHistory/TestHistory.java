@@ -1,22 +1,21 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.reporting.history.PageHistory;
-import fitnesse.wiki.PathParser;
-import util.FileUtil;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.toList;
 
 public class TestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
-    private Map<String, File> pageHistoryIndex;
-    final Map<String, File> pageDirectoryMap = new HashMap<>();
-
+    public Map<String, File> pageHistoryIndex;
     public TestHistory(File historyDirectory) {
-        this.pageHistoryIndex = getHistoryIndex(historyDirectory);
+
 
         for (String pageName : pageHistoryIndex.keySet()) {
 
@@ -47,28 +46,5 @@ public class TestHistory {
             else
                 return pageHistory;
         }
-    }
-
-
-    private Map<String, File> getHistoryIndex(File historyDirectory) {
-        Map<String, File> map = new HashMap<>();
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories) {
-            if (isValidFile(file)) {
-                map.put(file.getName(), file);
-            }
-        }
-        return map;
-    }
-    private void readHistoryDirectory(File historyDirectory) {
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if (isValidFile(file))
-                pageDirectoryMap.put(file.getName(), file);
-    }
-
-
-    private boolean isValidFile(File file) {
-        return file.isDirectory() && Objects.requireNonNull(file.list()).length > 0 && PathParser.isWikiPath(file.getName());
     }
 }
