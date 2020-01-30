@@ -3,7 +3,6 @@ import fitnesse.reporting.history.PageHistory;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +17,7 @@ public class TestHistoryTest {
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         TestHistory testHistory = new TestHistory(getMockDir("TestResultDirectory"));
-        assertThat(testHistory.getHistoryLines()).extracting("pageName").containsExactly(
+        assertThat(testHistory.getHistoryLines()).extracting("pageName").containsSequence(
                 "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas",
                 "TestSuiteDemo.FrontEndTests.T003CreateCourse",
                 "FitNesse.UserGuide.TwoMinuteExample");
