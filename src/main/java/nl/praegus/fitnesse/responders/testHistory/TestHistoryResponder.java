@@ -48,7 +48,7 @@ public class TestHistoryResponder implements SecureResponder {
             page.put("testHistory", historyLines);
             page.setMainTemplate("testHistorySorted");
         }else{
-            page.put("testHistory", testHistory);
+            page.put("testHistory", testHistory.getPageNames());
             page.setMainTemplate("testHistory");
         }
         SimpleResponse response = new SimpleResponse();

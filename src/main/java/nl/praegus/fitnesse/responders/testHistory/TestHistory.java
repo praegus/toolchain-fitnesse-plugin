@@ -30,6 +30,10 @@ public class TestHistory {
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
+    public List<String> getPageNames(){
+
+        return (List<String>) pageHistoryIndex.keySet();
+    }
 
     private PageHistory getPageHistory(String pageName) {
         File historyPage = pageHistoryIndex.get(pageName);
