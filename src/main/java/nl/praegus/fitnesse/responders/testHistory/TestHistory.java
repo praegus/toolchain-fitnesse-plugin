@@ -60,12 +60,7 @@ public class TestHistory {
         }
         return map;
     }
-    private void readHistoryDirectory(File historyDirectory) {
-        File[] pageDirectories = FileUtil.getDirectoryListing(historyDirectory);
-        for (File file : pageDirectories)
-            if (isValidFile(file))
-                pageDirectoryMap.put(file.getName(), file);
-    }
+
 
 
     private boolean isValidFile(File file) {
