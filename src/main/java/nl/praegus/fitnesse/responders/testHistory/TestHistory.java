@@ -17,15 +17,13 @@ public class TestHistory {
 
     public TestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
-
-        for (String pageName : pageHistoryIndex.keySet()) {
+        for (String pageName : pageHistoryIndex.keySet()) { ;
             PageHistory pageHistory = getPageHistory(pageName);
             testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
     }
 
     public List<TestHistoryLine> getHistoryLines() {
-
         return testHistoryLines.stream()
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
