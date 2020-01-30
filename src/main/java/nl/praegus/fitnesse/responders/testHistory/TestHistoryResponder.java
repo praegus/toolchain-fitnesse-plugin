@@ -29,14 +29,11 @@ public class TestHistoryResponder implements SecureResponder {
         String pageName = request.getResource();
         TestHistory testHistory = new TestHistory(resultsDirectory);
 
-
         if (formatIsXML(request)) {
             return makeTestHistoryXmlResponse(testHistory);
         } else {
             return makeTestHistoryResponse(testHistory, request, pageName);
         }
-
-
     }
 
     private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
@@ -83,6 +80,4 @@ public class TestHistoryResponder implements SecureResponder {
     public SecureOperation getSecureOperation() {
         return new SecureReadOperation();
     }
-
-
 }
