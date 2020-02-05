@@ -10,10 +10,12 @@ import nl.praegus.fitnesse.responders.AutoCompleteResponder;
 import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
+import nl.praegus.fitnesse.responders.testHistory.TestHistoryResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
+
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
