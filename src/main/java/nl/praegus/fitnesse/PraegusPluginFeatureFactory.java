@@ -6,9 +6,13 @@ import fitnesse.plugins.PluginFeatureFactoryBase;
 import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
-import nl.praegus.fitnesse.responders.*;
-import nl.praegus.fitnesse.responders.testHistory.TestHistoryResponder;
+import nl.praegus.fitnesse.responders.AutoCompleteResponder;
+import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
+import nl.praegus.fitnesse.responders.UpdateTagsResponder;
+import nl.praegus.fitnesse.responders.TableOfContentsResponder;
+import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
+import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
@@ -20,6 +24,11 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(slimTableFactory, "debug script", PausingTable.class);
         LOG.info("[Toolchain Plugin] Registering conditional script table.");
         add(slimTableFactory, "conditional script", ConditionalScriptTable.class);
+        LOG.info("[Toolchain Plugin] Registering conditional scenario table.");
+        add(slimTableFactory, "conditional scenario", ConditionalScenarioTable.class);
+        LOG.info("[Toolchain Plugin] Registering Looping scenario table.");
+        add(slimTableFactory, "looping scenario", LoopingScenarioTable.class);
+
     }
 
     private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
@@ -35,8 +44,9 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
+        LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
+        add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
-
         add(responderFactory, "testHistory", TestHistoryResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestHistoryResponder (?testHistory).");
     }

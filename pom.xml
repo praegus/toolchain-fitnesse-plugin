@@ -28,7 +28,12 @@
         <dependency>
             <groupId>nl.praegus</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.15</version>
+            <version>1.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -64,6 +69,12 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>
