@@ -1,5 +1,4 @@
 package nl.praegus.fitnesse.responders.testHistory;
-import jdk.nashorn.internal.ir.CallNode;
 import org.junit.Test;
 
 import java.io.File;
