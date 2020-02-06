@@ -30,7 +30,6 @@ public class TestHistoryResponder implements SecureResponder {
             return makeTestHistorySortedResponse(testHistory, request, pageName);
     }
 
-
     private Response makeTestHistorySortedResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
         List<TestHistoryLine> historyLines = testHistory.getHistoryLines();
         HtmlPage page = context.pageFactory.newPage();
@@ -46,12 +45,6 @@ public class TestHistoryResponder implements SecureResponder {
 
         response.setContent(page.html(request));
         return response;
-    }
-
-
-    private boolean formatIsSorted(Request request) {
-        String format = request.getInput("format");
-        return "sorted".equalsIgnoreCase(format);
     }
 
     @Override
