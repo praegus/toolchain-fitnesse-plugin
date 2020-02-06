@@ -10,11 +10,11 @@ import java.util.*;
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.toList;
 
-public class TestHistory {
+public class RecentTestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
     private Map<String, File> pageHistoryIndex;
 
-    public TestHistory(File historyDirectory) {
+    public RecentTestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
         for (String pageName : pageHistoryIndex.keySet()) { ;
             PageHistory pageHistory = getPageHistory(pageName);

@@ -10,7 +10,7 @@ import nl.praegus.fitnesse.responders.AutoCompleteResponder;
 import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
-import nl.praegus.fitnesse.responders.testHistory.TestHistoryResponder;
+import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
@@ -49,8 +49,8 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
         add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
-        add(responderFactory, "?testHistory&format=sorted", TestHistoryResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TestHistoryResponder (?testHistory&format=sorted).");
+        add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
+        LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {

@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
-public class TestHistoryResponder implements SecureResponder {
+public class RecentTestHistoryResponder implements SecureResponder {
 
     private FitNesseContext context;
 
@@ -26,12 +26,12 @@ public class TestHistoryResponder implements SecureResponder {
         this.context = context;
         File resultsDirectory = context.getTestHistoryDirectory();
         String pageName = request.getResource();
-        TestHistory testHistory = new TestHistory(resultsDirectory);
-            return makeTestHistorySortedResponse(testHistory, request, pageName);
+        RecentTestHistory recentTestHistory = new RecentTestHistory(resultsDirectory);
+            return makeRecentTestHistoryResponse(recentTestHistory, request, pageName);
     }
 
-    private Response makeTestHistorySortedResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
-        List<TestHistoryLine> historyLines = testHistory.getHistoryLines();
+    private Response makeRecentTestHistoryResponse(RecentTestHistory recentTestHistory, Request request, String pageName) throws UnsupportedEncodingException {
+        List<TestHistoryLine> historyLines = recentTestHistory.getHistoryLines();
         HtmlPage page = context.pageFactory.newPage();
 
         page.setTitle("Test History");
@@ -39,7 +39,7 @@ public class TestHistoryResponder implements SecureResponder {
         page.setNavTemplate("viewNav");
         page.put("viewLocation", request.getResource());
         page.put("testHistory", historyLines);
-        page.setMainTemplate("testHistorySorted");
+        page.setMainTemplate("recentTestHistory");
 
         SimpleResponse response = new SimpleResponse();
 
