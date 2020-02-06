@@ -1,6 +1,7 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.FitNesseContext;
+
 import fitnesse.authentication.SecureOperation;
 import fitnesse.authentication.SecureReadOperation;
 import fitnesse.authentication.SecureResponder;
@@ -8,10 +9,8 @@ import fitnesse.html.template.HtmlPage;
 import fitnesse.html.template.PageTitle;
 import fitnesse.http.Request;
 import fitnesse.http.Response;
-import fitnesse.http.Response.Format;
 import fitnesse.http.SimpleResponse;
 import fitnesse.wiki.PathParser;
-import org.apache.velocity.VelocityContext;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -28,49 +27,28 @@ public class TestHistoryResponder implements SecureResponder {
         File resultsDirectory = context.getTestHistoryDirectory();
         String pageName = request.getResource();
         TestHistory testHistory = new TestHistory(resultsDirectory);
-
-        if (formatIsXML(request)) {
-            return makeTestHistoryXmlResponse(testHistory);
-        } else {
-            return makeTestHistoryResponse(testHistory, request, pageName);
-        }
+            return makeTestHistorySortedResponse(testHistory, request, pageName);
     }
 
-    private Response makeTestHistoryResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
-       List<TestHistoryLine> historyLines = testHistory.getHistoryLines();
+
+    private Response makeTestHistorySortedResponse(TestHistory testHistory, Request request, String pageName) throws UnsupportedEncodingException {
+        List<TestHistoryLine> historyLines = testHistory.getHistoryLines();
         HtmlPage page = context.pageFactory.newPage();
 
         page.setTitle("Test History");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
         page.put("viewLocation", request.getResource());
-        if(formatIsSorted(request)) {
-            page.put("testHistory", historyLines);
-            page.setMainTemplate("testHistorySorted");
-        }else{
-            page.put("pageNames", testHistory.getPageNames());
-            page.put("testhistory",testHistory);
-            page.setMainTemplate("testHistory");
-        }
+        page.put("testHistory", historyLines);
+        page.setMainTemplate("testHistorySorted");
+
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(page.html(request));
         return response;
     }
 
-    private Response makeTestHistoryXmlResponse(TestHistory history) throws UnsupportedEncodingException {
-        SimpleResponse response = new SimpleResponse();
-        VelocityContext velocityContext = new VelocityContext();
-        velocityContext.put("testHistory", history);
-        response.setContentType(Format.XML);
-        response.setContent(context.pageFactory.render(velocityContext, "testHistoryXML.vm"));
-        return response;
-    }
 
-    private boolean formatIsXML(Request request) {
-        String format = request.getInput("format");
-        return "xml".equalsIgnoreCase(format);
-    }
     private boolean formatIsSorted(Request request) {
         String format = request.getInput("format");
         return "sorted".equalsIgnoreCase(format);

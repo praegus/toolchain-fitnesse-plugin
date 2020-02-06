@@ -49,8 +49,8 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
         add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
-        add(responderFactory, "testHistory", TestHistoryResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TestHistoryResponder (?testHistory).");
+        add(responderFactory, "?testHistory&format=sorted", TestHistoryResponder.class);
+        LOG.info("[Toolchain Plugin] Registering TestHistoryResponder (?testHistory&format=sorted).");
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
