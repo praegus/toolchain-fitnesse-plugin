@@ -34,7 +34,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
         factory.addTableType(key, tableType);
-
     }
 
     @Override
@@ -50,18 +49,15 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
-
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
         factory.addResponder(key, responder);
-
     }
 
     @Override
     public String getDefaultTheme() {
         LOG.info("[Toolchain Plugin] Changing theme to bootstrap-plus");
         return "bootstrap-plus";
-
     }
 }
