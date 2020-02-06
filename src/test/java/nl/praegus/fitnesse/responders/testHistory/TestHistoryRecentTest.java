@@ -5,7 +5,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestHistoryRecentTest {
@@ -22,7 +21,7 @@ public class TestHistoryRecentTest {
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas", "TestSuiteDemo.FrontEndTests.T003CreateCourse", "FitNesse.UserGuide.TwoMinuteExample");
+        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker2.thisIsMockData", "Example.Mocker3.dataForTesting", "ExampleTest.Mocker1.thisIsATest");
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
@@ -32,7 +31,7 @@ public class TestHistoryRecentTest {
     @Test
     public void When_directory_is_not_null_return_historylines_not_sorted() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("TestSuiteDemo.FrontEndTests.T003CreateCourse", "TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas", "FitNesse.UserGuide.TwoMinuteExample");
+        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker1.thisIsATest", "Example.Mocker3.dataForTesting", "ExampleTest.Mocker2.thisIsMockData");
 
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
