@@ -79,7 +79,6 @@ public class TestHistoryRecentTest {
         assertThat(receivedResult).isEqualTo(0);
     }
 
-
     // Setup method
     private File getMockDir(String DirName){
             File mockDir = new File(getClass().getClassLoader().getResource(DirName).getFile());

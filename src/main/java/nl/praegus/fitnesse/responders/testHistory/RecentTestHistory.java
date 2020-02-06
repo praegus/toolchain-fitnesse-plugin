@@ -2,11 +2,10 @@ package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.reporting.history.PageHistory;
 import fitnesse.wiki.PathParser;
-import util.FileUtil;
 
+import util.FileUtil;
 import java.io.File;
 import java.util.*;
-
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.toList;
 
@@ -27,6 +26,7 @@ public class RecentTestHistory {
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
+
     public Set<String> getPageNames(){
         return pageHistoryIndex.keySet();
     }

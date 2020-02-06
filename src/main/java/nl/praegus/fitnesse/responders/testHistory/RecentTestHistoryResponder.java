@@ -1,7 +1,6 @@
 package nl.praegus.fitnesse.responders.testHistory;
 
 import fitnesse.FitNesseContext;
-
 import fitnesse.authentication.SecureOperation;
 import fitnesse.authentication.SecureReadOperation;
 import fitnesse.authentication.SecureResponder;

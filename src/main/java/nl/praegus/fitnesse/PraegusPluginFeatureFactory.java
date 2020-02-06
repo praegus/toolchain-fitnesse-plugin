@@ -16,7 +16,6 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
 
-
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
     @Override
@@ -30,7 +29,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(slimTableFactory, "conditional scenario", ConditionalScenarioTable.class);
         LOG.info("[Toolchain Plugin] Registering Looping scenario table.");
         add(slimTableFactory, "looping scenario", LoopingScenarioTable.class);
-
     }
 
     private void add(SlimTableFactory factory, String key, Class<? extends SlimTable> tableType) {
