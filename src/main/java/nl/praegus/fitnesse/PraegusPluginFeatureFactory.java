@@ -7,9 +7,8 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
-import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
-import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
+import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
@@ -47,8 +46,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
         LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
-        add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering FitNesseVersionResponder (?fitNesseVersion).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
     }
