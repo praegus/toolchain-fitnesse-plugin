@@ -20,6 +20,10 @@ public class TestHistoryLine {
         this.barGraph = pageHistory.getBarGraph();
     }
 
+    public String getPageName() {
+        return pageName;
+    }
+
     public int getNumberOfTimesFailed() {
 
         return numberOfTimesFailed;

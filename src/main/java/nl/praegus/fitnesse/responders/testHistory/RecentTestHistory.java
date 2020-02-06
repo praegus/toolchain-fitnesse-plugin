@@ -16,7 +16,7 @@ public class RecentTestHistory {
 
     public RecentTestHistory(File historyDirectory) {
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
-        for (String pageName : pageHistoryIndex.keySet()) { ;
+        for (String pageName : pageHistoryIndex.keySet()) {
             PageHistory pageHistory = getPageHistory(pageName);
             testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
