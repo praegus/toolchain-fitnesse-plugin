@@ -1,6 +1,6 @@
-name: Run test
+name: Run testcases
 
-on: [push]
+on: [pull request]
 
 jobs:
   build:
@@ -9,5 +9,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Run all testcases
+    - name: Run all java testcases
       run: mvn test
