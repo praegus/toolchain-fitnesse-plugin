@@ -39,7 +39,7 @@ public class TestHistoryRecentTest {
         assertThat(receivedResult).containsSequence(expectedResult);
     }
 
-    @Ignore // todo zie bug 1 (https://trello.com/c/pWsmjSgv/174) testcomment
+    @Ignore // todo zie bug 1 (https://trello.com/c/pWsmjSgv/174)
     @Test
     public void When_dateTimeFormatter_is_working_correctly() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
