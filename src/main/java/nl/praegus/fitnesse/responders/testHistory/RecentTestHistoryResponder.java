@@ -33,7 +33,7 @@ public class RecentTestHistoryResponder implements SecureResponder {
         List<TestHistoryLine> historyLines = recentTestHistory.getHistoryLines();
         HtmlPage page = context.pageFactory.newPage();
 
-        page.setTitle("Test History");
+        page.setTitle("Recent Test Pages");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");
         page.put("viewLocation", request.getResource());
