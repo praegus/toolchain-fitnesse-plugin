@@ -39,16 +39,6 @@ public class TestHistoryRecentTest {
     }
 
     @Test
-    public void When_dateTimeFormatter_is_working_correctly() {
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        String expectedResult = "Wed Jan 22 11:43:40 CET 2020";
-
-        String receivedResult = recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate().toString();
-
-        assertThat(receivedResult).isEqualTo(expectedResult);
-    }
-
-    @Test
     public void When_dateTimeFormatter_is_not_working_correctly(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
         String expectedNotEqual = "Wed Jan 22 11:43:40 CET 2020";
