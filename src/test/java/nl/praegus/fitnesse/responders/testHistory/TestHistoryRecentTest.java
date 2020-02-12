@@ -1,13 +1,16 @@
 package nl.praegus.fitnesse.responders.testHistory;
+
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestHistoryRecentTest {
+public class
+TestHistoryRecentTest {
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
@@ -36,6 +39,20 @@ public class TestHistoryRecentTest {
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
         assertThat(receivedResult).containsSequence(expectedResult);
+    }
+
+    @Test
+    public void checks_date_is_correct() throws ParseException {
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
+
+        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        isoFormat.setTimeZone(TimeZone.getDefault());
+
+        Date expectedResult = isoFormat.parse("2020-01-22T11:43:40");
+
+        Date receivedResult = recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate();
+
+        assertThat(receivedResult).hasSameTimeAs(expectedResult);
     }
 
     @Test
