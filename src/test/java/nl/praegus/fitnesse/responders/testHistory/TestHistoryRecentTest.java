@@ -9,8 +9,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class
-TestHistoryRecentTest {
+public class TestHistoryRecentTest {
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
@@ -77,7 +76,6 @@ TestHistoryRecentTest {
     private File getMockDir(String DirName){
             File mockDir = new File(getClass().getClassLoader().getResource(DirName).getFile());
             return mockDir;
-
     }
 
 }
