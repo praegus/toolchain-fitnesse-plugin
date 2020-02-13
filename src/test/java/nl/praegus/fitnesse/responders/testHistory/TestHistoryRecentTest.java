@@ -3,9 +3,10 @@ package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
