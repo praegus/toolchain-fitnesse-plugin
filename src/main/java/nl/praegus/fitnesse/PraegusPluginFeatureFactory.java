@@ -11,7 +11,7 @@ import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
-import nl.praegus.fitnesse.responders.AllTagsResponder;
+import nl.praegus.fitnesse.responders.allTags.AllTagsResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;

@@ -1,4 +1,4 @@
-package nl.praegus.fitnesse.responders;
+package nl.praegus.fitnesse.responders.allTags;
 
 import fitnesse.FitNesseContext;
 import fitnesse.authentication.SecureOperation;
@@ -9,9 +9,7 @@ import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
 import fitnesse.wiki.*;
 import fitnesse.wikitext.parser.SourcePage;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import util.GracefulNamer;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -21,10 +19,13 @@ import java.util.Map;
 
 public class AllTagsResponder implements SecureResponder {
     private JSONObject toc = new JSONObject();
+    public WikiSourcePage test;
 
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
+        test = sourcePage;
+
         return makeTocResponse(sourcePage);
     }
 
@@ -40,7 +41,7 @@ public class AllTagsResponder implements SecureResponder {
         return page;
     }
 
-    private SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
+    public SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
         ArrayList<String> allTagsArray = new ArrayList<String>();
         toc.put("Tags", getPageInfo(sourcePage, allTagsArray));
 
@@ -48,8 +49,8 @@ public class AllTagsResponder implements SecureResponder {
         response.setMaxAge(0);
         response.setStatus(200);
         response.setContentType("application/json");
-        response.setContent(toc.toString(3));
-
+//        response.setContent(toc.toString(3));
+        response.setContent(test.getContent());
         return response;
     }
 
