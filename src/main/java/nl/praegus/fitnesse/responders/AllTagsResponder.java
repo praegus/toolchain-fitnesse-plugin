@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.Map;
 
 public class AllTagsResponder implements SecureResponder {
-    private JSONArray toc = new JSONArray();
+    private JSONObject toc = new JSONObject();
 
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
@@ -41,7 +41,8 @@ public class AllTagsResponder implements SecureResponder {
     }
 
     private SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        toc.put(getPageInfo(sourcePage));
+        ArrayList<String> allTagsArray = new ArrayList<String>();
+        toc.put("Tags", getPageInfo(sourcePage, allTagsArray));
 
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
@@ -58,45 +59,20 @@ public class AllTagsResponder implements SecureResponder {
         return result;
     }
 
-    private JSONObject getPageInfo(SourcePage page) {
-        JSONObject pageInfo = new JSONObject();
-        ArrayList<String> allTagsArray = new ArrayList<String>();
+    private ArrayList getPageInfo(SourcePage page, ArrayList allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
+
         for(String tag: tags) {
-            allTagsArray.add(tag);
+            if (tag.length() > 0) {
+                allTagsArray.add(tag);
+            }
         }
-        pageInfo.put("tags", allTagsArray);
+
         for (SourcePage p : getSortedChildren(page)) {
-            pageInfo.append("children", getPageInfo(p));
+            getPageInfo(p, allTagsArray);
         }
-        return pageInfo;
 
-//        pageInfo.put("path", page.getFullPath());
-//        for (SourcePage p : getSortedChildren(page)) {
-////            pageInfo.append("children", getPageInfo(p));
-//            getPageInfo(p);
-//        }
-
-//        pageInfo.put("tags", allTagsArray);
-//        return pageInfo;
-    }
-
-    private String getBooleanPropertiesClasses(SourcePage sourcePage) {
-        String result = "";
-        if (sourcePage.hasProperty(PageType.SUITE.toString())) {
-            result += "suite";
-        } else if (sourcePage.hasProperty(PageType.TEST.toString())) {
-            result += "test";
-        } else {
-            result += "static";
-        }
-        if (sourcePage.hasProperty(WikiImportProperty.PROPERTY_NAME)) {
-            result += " linked";
-        }
-        if (sourcePage.hasProperty(WikiPageProperty.PRUNE)) {
-            result += " pruned";
-        }
-        return result;
+        return allTagsArray;
     }
 
     @Override
