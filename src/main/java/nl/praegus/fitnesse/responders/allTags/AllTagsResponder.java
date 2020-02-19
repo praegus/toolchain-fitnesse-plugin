@@ -50,7 +50,7 @@ public class AllTagsResponder implements SecureResponder {
         response.setStatus(200);
         response.setContentType("application/json");
         response.setContent(toc.toString(3));
-//        response.setContent(test.hasProperty(WikiPageProperty.SUITES));
+//        response.setContent(test.getContent());
         return response;
     }
 

@@ -24,15 +24,14 @@ public class AllTagsTest {
                 "*!\n" +
                 "\n" +
                 "Dit is een link >TestSuiteDemo>";
-        WikiPageDummy testDummy = new WikiPageDummy("dummyPage", dummyContent, new WikiPageDummy());
-        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testDummy);
+        WikiPageDummy testWikiPageDummy = new WikiPageDummy("dummyPage", dummyContent, new WikiPageDummy());
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
         ArrayList<String> allTagsArray = new ArrayList<String>();
         AllTagsResponder tagResponder = new AllTagsResponder();
 
         ArrayList expectedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
 
-        /* Test WikiSourcePage dummy tags */
-        System.out.println(testWikiSourcePage.getProperty(WikiPageProperty.SUITES));
+        System.out.println(expectedValue);
 
     }
 }
