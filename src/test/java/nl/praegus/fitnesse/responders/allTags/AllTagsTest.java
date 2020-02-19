@@ -29,9 +29,9 @@ public class AllTagsTest {
         ArrayList<String> allTagsArray = new ArrayList<String>();
         AllTagsResponder tagResponder = new AllTagsResponder();
 
-        ArrayList expectedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
+        ArrayList receivedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
 
-        System.out.println(expectedValue);
+        System.out.println(receivedValue);
 
     }
 }
