@@ -49,8 +49,7 @@ public class AllTagsResponder implements SecureResponder {
         response.setMaxAge(0);
         response.setStatus(200);
         response.setContentType("application/json");
-//        response.setContent(toc.toString(3));
-        response.setContent(test.getContent());
+        response.setContent(toc.toString(3));
         return response;
     }
 
@@ -60,7 +59,7 @@ public class AllTagsResponder implements SecureResponder {
         return result;
     }
 
-    private ArrayList getPageInfo(SourcePage page, ArrayList allTagsArray) {
+    public ArrayList getPageInfo(SourcePage page, ArrayList allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {

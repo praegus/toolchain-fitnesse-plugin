@@ -1,51 +1,45 @@
 package nl.praegus.fitnesse.responders.allTags;
 
-import fitnesse.FitNesseContext;
-import fitnesse.http.Request;
+import fitnesse.wiki.WikiPage;
+import fitnesse.wiki.WikiPageDummy;
+import fitnesse.wiki.WikiPageProperty;
 import fitnesse.wiki.WikiSourcePage;
+import fitnesse.wikitext.parser.SourcePage;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class AllTagsTest {
 
     /* makeTocResponse */
     @Test
     public void checkResponseParameters() {
-
+        String dummyContent = "---\n" +
+                "Suite\n" +
+                "Suites: testSuiteDemoTag\n" +
+                "Test: no\n" +
+                "---\n" +
+                "!contents -R2 -g -f -h\n" +
+                "\n" +
+                "!*> Config & Classpath\n" +
+                "!define TEST_SYSTEM {slim}\n" +
+                "!path fixtures/\n" +
+                "!path fixtures/*.jar\n" +
+                "*!\n" +
+                "\n" +
+                "Dit is een link >TestSuiteDemo>";
+        WikiPageDummy testDummy = new WikiPageDummy("dummyPage", dummyContent, new WikiPageDummy());
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testDummy);
+        ArrayList<String> allTagsArray = new ArrayList<String>();
         AllTagsResponder tagResponder = new AllTagsResponder();
 
-//        List<TestHistoryLine> receivedResult = allTags.getHistoryLines();
-//        tagResponder.makeTocResponse(getMockSuite("AllTagsDirectory.TestSuiteDemo"));
-//        tagResponder.makeTocResponse();
-//        System.out.println("Test");
-    }
+        ArrayList expectedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
 
-    /* getPageInfo */
-    @Test
-    public void checkArrayList() {
+//        System.out.println(expectedValue);
 
-        AllTagsResponder tagResponder = new AllTagsResponder();
+//        Test WikiSourcePage dummy tags
+        System.out.println(testWikiSourcePage.getProperty(WikiPageProperty.SUITES));
 
-//        List<TestHistoryLine> receivedResult = allTags.getHistoryLines();
-//        tagResponder.makeTocResponse(getMockSuite("AllTagsDirectory.TestSuiteDemo"));
-        System.out.println("Test");
-    }
-
-    /* getSortedChildren */
-    @Test
-    public void checkIfChildrenAreSorted() {
-
-        AllTagsResponder tagResponder = new AllTagsResponder();
-
-//        List<TestHistoryLine> receivedResult = allTags.getHistoryLines();
-//        tagResponder.makeTocResponse(getMockSuite("AllTagsDirectory.TestSuiteDemo"));
-        System.out.println("Test");
-    }
-
-    // Setup method
-    private File getMockSuite(String DirName){
-        File getMockSuite = new File(getClass().getClassLoader().getResource(DirName).getFile());
-        return getMockSuite;
     }
 }
