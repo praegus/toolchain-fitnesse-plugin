@@ -50,6 +50,7 @@ public class AllTagsResponder implements SecureResponder {
         response.setStatus(200);
         response.setContentType("application/json");
         response.setContent(toc.toString(3));
+//        response.setContent(test.hasProperty(WikiPageProperty.SUITES));
         return response;
     }
 
@@ -63,7 +64,7 @@ public class AllTagsResponder implements SecureResponder {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {
-            if (tag.length() > 0) {
+            if (tag.length() > 0 && allTagsArray.contains(tag) == false) {
                 allTagsArray.add(tag);
             }
         }

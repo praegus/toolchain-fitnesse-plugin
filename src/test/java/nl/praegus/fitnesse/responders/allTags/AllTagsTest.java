@@ -12,15 +12,10 @@ import java.util.ArrayList;
 
 public class AllTagsTest {
 
-    /* makeTocResponse */
+    /* getPageInfo */
     @Test
     public void checkResponseParameters() {
-        String dummyContent = "---\n" +
-                "Suite\n" +
-                "Suites: testSuiteDemoTag\n" +
-                "Test: no\n" +
-                "---\n" +
-                "!contents -R2 -g -f -h\n" +
+        String dummyContent = "!contents -R2 -g -f -h\n" +
                 "\n" +
                 "!*> Config & Classpath\n" +
                 "!define TEST_SYSTEM {slim}\n" +
@@ -36,9 +31,7 @@ public class AllTagsTest {
 
         ArrayList expectedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
 
-//        System.out.println(expectedValue);
-
-//        Test WikiSourcePage dummy tags
+        /* Test WikiSourcePage dummy tags */
         System.out.println(testWikiSourcePage.getProperty(WikiPageProperty.SUITES));
 
     }
