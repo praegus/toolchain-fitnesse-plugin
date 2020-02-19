@@ -26,7 +26,7 @@ public class AllTagsResponder implements SecureResponder {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
         test = sourcePage;
 
-        return makeTocResponse(sourcePage);
+        return makeTagResponse(sourcePage);
     }
 
     private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
@@ -41,7 +41,7 @@ public class AllTagsResponder implements SecureResponder {
         return page;
     }
 
-    public SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
+    public SimpleResponse makeTagResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
         ArrayList<String> allTagsArray = new ArrayList<String>();
         tagObject.put("Tags", getPageTags(sourcePage, allTagsArray));
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AllTagsTest {
 
-    /* getPageInfo */
+    /* getPageTags */
     @Test
     public void checkTagListResponse() {
         String dummyContent = "!contents -R2 -g -f -h\n" +
@@ -24,7 +24,7 @@ public class AllTagsTest {
         ArrayList<String> allTagsArray = new ArrayList<String>();
         AllTagsResponder tagResponder = new AllTagsResponder();
 
-        ArrayList receivedValue = tagResponder.getPageInfo(testWikiSourcePage, allTagsArray);
+        ArrayList receivedValue = tagResponder.getPageTags(testWikiSourcePage, allTagsArray);
 
         System.out.println(receivedValue);
 
