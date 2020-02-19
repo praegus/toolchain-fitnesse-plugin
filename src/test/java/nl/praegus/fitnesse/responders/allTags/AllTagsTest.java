@@ -1,20 +1,15 @@
 package nl.praegus.fitnesse.responders.allTags;
 
-import fitnesse.wiki.WikiPage;
 import fitnesse.wiki.WikiPageDummy;
-import fitnesse.wiki.WikiPageProperty;
 import fitnesse.wiki.WikiSourcePage;
-import fitnesse.wikitext.parser.SourcePage;
 import org.junit.Test;
-
-import java.io.File;
 import java.util.ArrayList;
 
 public class AllTagsTest {
 
     /* getPageInfo */
     @Test
-    public void checkResponseParameters() {
+    public void checkTagListResponse() {
         String dummyContent = "!contents -R2 -g -f -h\n" +
                 "\n" +
                 "!*> Config & Classpath\n" +

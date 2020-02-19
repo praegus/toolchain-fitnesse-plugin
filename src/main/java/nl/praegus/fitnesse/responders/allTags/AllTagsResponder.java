@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.Map;
 
 public class AllTagsResponder implements SecureResponder {
-    private JSONObject toc = new JSONObject();
+    private JSONObject tagObject = new JSONObject();
     public WikiSourcePage test;
 
     @Override
@@ -43,13 +43,13 @@ public class AllTagsResponder implements SecureResponder {
 
     public SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
         ArrayList<String> allTagsArray = new ArrayList<String>();
-        toc.put("Tags", getPageInfo(sourcePage, allTagsArray));
+        tagObject.put("Tags", getPageTags(sourcePage, allTagsArray));
 
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
         response.setStatus(200);
         response.setContentType("application/json");
-        response.setContent(toc.toString(3));
+        response.setContent(tagObject.toString(3));
 //        response.setContent(test.getContent());
         return response;
     }
@@ -60,7 +60,7 @@ public class AllTagsResponder implements SecureResponder {
         return result;
     }
 
-    public ArrayList getPageInfo(SourcePage page, ArrayList allTagsArray) {
+    public ArrayList getPageTags(SourcePage page, ArrayList allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {
@@ -70,7 +70,7 @@ public class AllTagsResponder implements SecureResponder {
         }
 
         for (SourcePage p : getSortedChildren(page)) {
-            getPageInfo(p, allTagsArray);
+            getPageTags(p, allTagsArray);
         }
 
         return allTagsArray;
