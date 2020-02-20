@@ -8,15 +8,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-class AlexWikiPageDummy extends BaseWikiPage {
+class TestWikiPageDummy extends BaseWikiPage {
     private PageData pageData;
 
-    public AlexWikiPageDummy(String name, String content, WikiPage parent, WikiPageProperty property) {
+    public TestWikiPageDummy(String name, String content, WikiPage parent, WikiPageProperty property) {
         super(name, parent);
         this.pageData = new PageData(content, property);
     }
 
-    public AlexWikiPageDummy() {
+    public TestWikiPageDummy() {
         super("Default", (WikiPage)null);
         this.pageData = new PageData("", new WikiPageProperty());
     }
