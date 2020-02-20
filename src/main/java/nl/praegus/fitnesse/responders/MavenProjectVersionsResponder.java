@@ -37,6 +37,7 @@ public class MavenProjectVersionsResponder implements SecureResponder {
                 "jaxb-core",
                 "jaxb-impl",
                 "jaxb-api",
+                "jaxws-api",
                 "activation",
                 "junit"));
     }
