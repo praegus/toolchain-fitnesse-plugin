@@ -22,8 +22,9 @@ public class AllTagsResponderTest {
                 "*!\n" +
                 "\n" +
                 "Dit is een link >TestSuiteDemo>";
-        WikiPageProperty testTagProperty = new WikiPageProperty("SUITES");
-        AlexWikiPageDummy testWikiPageDummy = new AlexWikiPageDummy("dummyPage", dummyContent, new WikiPageDummy(), testTagProperty.set("testTag"));
+        WikiPageProperty testTagProperty = new WikiPageProperty();
+        testTagProperty.set("SUITES", "testTag");
+        AlexWikiPageDummy testWikiPageDummy = new AlexWikiPageDummy("dummyPage", dummyContent, new WikiPageDummy(), testTagProperty);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
         List<String> allTagsArray = new ArrayList<>();
         AllTagsResponder tagResponder = new AllTagsResponder();
