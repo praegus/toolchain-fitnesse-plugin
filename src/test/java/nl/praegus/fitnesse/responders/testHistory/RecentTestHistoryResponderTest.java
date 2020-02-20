@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestHistoryRecentTest {
+public class RecentTestHistoryResponderTest {
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
