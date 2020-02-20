@@ -2,6 +2,7 @@ package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,17 +40,16 @@ public class TestHistoryRecentTest {
     }
 
     @Test
-    public void checks_date_is_correct() throws ParseException {
+    public void checks_if_correct_date_is_shown() throws ParseException {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         isoFormat.setTimeZone(TimeZone.getDefault());
 
-        Date expectedResult = isoFormat.parse("2020-01-22T11:43:40");
+        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:43:40");
 
-        Date receivedResult = recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate();
-
-        assertThat(receivedResult).hasSameTimeAs(expectedResult);
+        LocalDateTime receivedResult = recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate();
+        assertThat(receivedResult).isEqualTo(expectedResult);
     }
 
     @Test
