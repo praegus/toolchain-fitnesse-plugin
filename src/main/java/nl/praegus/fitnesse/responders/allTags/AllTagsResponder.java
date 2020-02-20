@@ -12,10 +12,7 @@ import fitnesse.wikitext.parser.SourcePage;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 public class AllTagsResponder implements SecureResponder {
     private JSONObject tagObject = new JSONObject();
@@ -42,7 +39,7 @@ public class AllTagsResponder implements SecureResponder {
     }
 
     public SimpleResponse makeTagResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        ArrayList<String> allTagsArray = new ArrayList<String>();
+        List<String> allTagsArray = new ArrayList();
         tagObject.put("Tags", getPageTags(sourcePage, allTagsArray));
 
         SimpleResponse response = new SimpleResponse();
@@ -60,7 +57,7 @@ public class AllTagsResponder implements SecureResponder {
         return result;
     }
 
-    public ArrayList getPageTags(SourcePage page, ArrayList allTagsArray) {
+    public List<String> getPageTags(SourcePage page, List<String> allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {
