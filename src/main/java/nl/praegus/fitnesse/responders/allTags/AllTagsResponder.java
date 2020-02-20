@@ -39,7 +39,7 @@ public class AllTagsResponder implements SecureResponder {
     }
 
     public SimpleResponse makeTagResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        List<String> allTagsArray = new ArrayList();
+        List<String> allTagsArray = new ArrayList<>();
         tagObject.put("Tags", getPageTags(sourcePage, allTagsArray));
 
         SimpleResponse response = new SimpleResponse();
@@ -61,7 +61,7 @@ public class AllTagsResponder implements SecureResponder {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {
-            if (tag.length() > 0 && allTagsArray.contains(tag) == false) {
+            if (tag.length() > 0 && !allTagsArray.contains(tag)) {
                 allTagsArray.add(tag);
             }
         }
