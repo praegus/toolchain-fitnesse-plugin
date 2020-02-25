@@ -44,6 +44,22 @@ public class AllTagsResponderTest {
 
     /* getPageTags */
     @Test
+    public void check_If_Response_Is_Equal_To_Expected_List_With_EmptyChildren() {
+        AllTagsResponder tagResponder = new AllTagsResponder();
+        WikiPageProperty testTagPropertyMainSuite = new WikiPageProperty();
+        testTagPropertyMainSuite.set("Suites", "mainTag");
+        TestWikiPageDummy testWikiPageDummyChild = new TestWikiPageDummy("childPageTest", "", new WikiPageDummy(), new WikiPageProperty());
+        List<WikiPage> children = Collections.singletonList(testWikiPageDummyChild);
+        TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagPropertyMainSuite, children);
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
+
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+
+        assertThat(receivedValue).contains("mainTag");
+    }
+
+    /* getPageTags */
+    @Test
     public void check_If_Response_Is_Equal_To_Empty_If_TagList_Is_Empty() {
         AllTagsResponder tagResponder = new AllTagsResponder();
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), new WikiPageProperty());
