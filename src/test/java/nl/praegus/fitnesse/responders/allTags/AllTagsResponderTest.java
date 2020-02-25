@@ -4,6 +4,7 @@ import fitnesse.wiki.*;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -22,7 +23,7 @@ public class AllTagsResponderTest {
 
         List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
 
-        assertThat(receivedValue, is(Arrays.asList("testTag")));
+        assertThat(receivedValue, is(Collections.singletonList("testTag")));
     }
 
     /* getPageTags */
@@ -34,7 +35,7 @@ public class AllTagsResponderTest {
         WikiPageProperty testTagPropertyChildSuite = new WikiPageProperty();
         testTagPropertyChildSuite.set("Suites", "childTag");
         TestWikiPageDummy testWikiPageDummyChild = new TestWikiPageDummy("childPageTest", "", new WikiPageDummy(), testTagPropertyChildSuite);
-        List<WikiPage> children = Arrays.asList(testWikiPageDummyChild);
+        List<WikiPage> children = Collections.singletonList(testWikiPageDummyChild);
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagPropertyMainSuite, children);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
