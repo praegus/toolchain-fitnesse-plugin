@@ -40,7 +40,7 @@ public class RecentTestHistoryResponderTest {
     }
 
     @Test
-    public void checks_if_correct_date_is_shown() throws ParseException {
+    public void checks_if_correct_date_is_shown() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
