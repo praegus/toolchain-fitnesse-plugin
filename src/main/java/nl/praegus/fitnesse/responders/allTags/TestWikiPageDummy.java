@@ -9,16 +9,19 @@ import java.util.Collections;
 import java.util.List;
 
 class TestWikiPageDummy extends BaseWikiPage {
+    private final List<WikiPage> children;
     private PageData pageData;
 
     public TestWikiPageDummy(String name, String content, WikiPage parent, WikiPageProperty property) {
         super(name, parent);
         this.pageData = new PageData(content, property);
+        this.children = Collections.emptyList();
     }
 
-    public TestWikiPageDummy() {
-        super("Default", (WikiPage)null);
-        this.pageData = new PageData("", new WikiPageProperty());
+    public TestWikiPageDummy(String name, String content, WikiPage parent, WikiPageProperty property, List<WikiPage> children) {
+        super(name, parent);
+        this.pageData = new PageData(content, property);
+        this.children = children;
     }
 
     public PageData getData() {
@@ -35,7 +38,7 @@ class TestWikiPageDummy extends BaseWikiPage {
     }
 
     public List<WikiPage> getChildren() {
-        return new ArrayList<>();
+        return children;
     }
 
     public WikiPage getVersion(String versionName) {
@@ -53,9 +56,7 @@ class TestWikiPageDummy extends BaseWikiPage {
         return null;
     }
 
-    public WikiPage addChildPage(String name) {
-        return null;
-    }
+    public WikiPage addChildPage(String name) { return null; }
 
     public WikiPage getChildPage(String name) {
         return null;

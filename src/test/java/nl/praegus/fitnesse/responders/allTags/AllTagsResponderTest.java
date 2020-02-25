@@ -3,7 +3,7 @@ package nl.praegus.fitnesse.responders.allTags;
 import fitnesse.wiki.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,23 +14,33 @@ public class AllTagsResponderTest {
     /* getPageTags */
     @Test
     public void checkTagListResponse() {
-        List<String> allTagsArray = new ArrayList<>();
         AllTagsResponder tagResponder = new AllTagsResponder();
-        // Expected value
-        List<String> expectedValue = new ArrayList<>();
-        expectedValue.add("testTag");
-        expectedValue.add("testTag2");
-        String dummyContent = "";
-        // Set property Suite
         WikiPageProperty testTagProperty = new WikiPageProperty();
-        testTagProperty.set("Suites", "testTag, testTag2");
-        // Create new WikiSourcePage
-        TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", dummyContent, new WikiPageDummy(), testTagProperty);
+        testTagProperty.set("Suites", "testTag");
+        TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagProperty);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
-        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, allTagsArray);
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
 
-        assertThat(receivedValue, is(expectedValue));
+        assertThat(receivedValue, is(Arrays.asList("testTag")));
+    }
+
+    /* getPageTags */
+    @Test
+    public void checkTagListChildrenResponse() {
+        AllTagsResponder tagResponder = new AllTagsResponder();
+        WikiPageProperty testTagPropertyMainSuite = new WikiPageProperty();
+        testTagPropertyMainSuite.set("Suites", "mainTag");
+        WikiPageProperty testTagPropertyChildSuite = new WikiPageProperty();
+        testTagPropertyChildSuite.set("Suites", "childTag");
+        TestWikiPageDummy testWikiPageDummyChild = new TestWikiPageDummy("childPageTest", "", new WikiPageDummy(), testTagPropertyChildSuite);
+        List<WikiPage> children = Arrays.asList(testWikiPageDummyChild);
+        TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagPropertyMainSuite, children);
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
+
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+
+        assertThat(receivedValue, is(Arrays.asList("mainTag", "childTag")));
     }
 }
 

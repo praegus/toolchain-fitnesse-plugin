@@ -24,6 +24,32 @@ public class AllTagsResponder implements SecureResponder {
         return makeTagResponse(sourcePage);
     }
 
+    public SimpleResponse makeTagResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
+        tagObject.put("Tags", getPageTags(sourcePage));
+
+        SimpleResponse response = new SimpleResponse();
+        response.setMaxAge(0);
+        response.setStatus(200);
+        response.setContentType("application/json");
+        response.setContent(tagObject.toString(3));
+        return response;
+    }
+
+    public List<String> getPageTags(SourcePage page){
+        return getPageTagsHelper(page, new ArrayList<>());
+    }
+
+    @Override
+    public SecureOperation getSecureOperation() {
+        return new SecureReadOperation();
+    }
+
+    private List<SourcePage> getSortedChildren(SourcePage parent) {
+        List<SourcePage> result = new ArrayList<>(parent.getChildren());
+        Collections.sort(result);
+        return result;
+    }
+
     private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
         WikiPage page;
         if (RecentChanges.RECENT_CHANGES.equals(pageName)) {
@@ -36,25 +62,7 @@ public class AllTagsResponder implements SecureResponder {
         return page;
     }
 
-    public SimpleResponse makeTagResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        List<String> allTagsArray = new ArrayList<>();
-        tagObject.put("Tags", getPageTags(sourcePage, allTagsArray));
-
-        SimpleResponse response = new SimpleResponse();
-        response.setMaxAge(0);
-        response.setStatus(200);
-        response.setContentType("application/json");
-        response.setContent(tagObject.toString(3));
-        return response;
-    }
-
-    private Collection<SourcePage> getSortedChildren(SourcePage parent) {
-        ArrayList<SourcePage> result = new ArrayList<>(parent.getChildren());
-        Collections.sort(result);
-        return result;
-    }
-
-    public List<String> getPageTags(SourcePage page, List<String> allTagsArray) {
+    private List<String> getPageTagsHelper(SourcePage page, List<String> allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
         for(String tag: tags) {
@@ -64,14 +72,9 @@ public class AllTagsResponder implements SecureResponder {
         }
 
         for (SourcePage p : getSortedChildren(page)) {
-            getPageTags(p, allTagsArray);
+            getPageTagsHelper(p, allTagsArray);
         }
 
         return allTagsArray;
-    }
-
-    @Override
-    public SecureOperation getSecureOperation() {
-        return new SecureReadOperation();
     }
 }
