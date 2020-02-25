@@ -20,15 +20,7 @@ public class AllTagsResponderTest {
         List<String> expectedValue = new ArrayList<>();
         expectedValue.add("testTag");
         expectedValue.add("testTag2");
-        String dummyContent = "!contents -R2 -g -f -h\n" +
-                "\n" +
-                "!*> Config & Classpath\n" +
-                "!define TEST_SYSTEM {slim}\n" +
-                "!path fixtures/\n" +
-                "!path fixtures/*.jar\n" +
-                "*!\n" +
-                "\n" +
-                "Dit is een link >TestSuiteDemo>";
+        String dummyContent = "";
         // Set property Suite
         WikiPageProperty testTagProperty = new WikiPageProperty();
         testTagProperty.set("Suites", "testTag, testTag2");

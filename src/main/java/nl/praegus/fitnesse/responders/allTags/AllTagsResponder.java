@@ -16,12 +16,10 @@ import java.util.*;
 
 public class AllTagsResponder implements SecureResponder {
     private JSONObject tagObject = new JSONObject();
-    public WikiSourcePage test;
 
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
-        test = sourcePage;
 
         return makeTagResponse(sourcePage);
     }
@@ -47,7 +45,6 @@ public class AllTagsResponder implements SecureResponder {
         response.setStatus(200);
         response.setContentType("application/json");
         response.setContent(tagObject.toString(3));
-//        response.setContent(test.getContent());
         return response;
     }
 
