@@ -3,18 +3,16 @@ package nl.praegus.fitnesse.responders.allTags;
 import fitnesse.wiki.*;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AllTagsResponderTest {
 
     /* getPageTags */
     @Test
-    public void checkTagListResponse() {
+    public void check_If_Response_Is_Equal_To_Expected_List_With_One_Page() {
         AllTagsResponder tagResponder = new AllTagsResponder();
         WikiPageProperty testTagProperty = new WikiPageProperty();
         testTagProperty.set("Suites", "testTag");
@@ -23,12 +21,12 @@ public class AllTagsResponderTest {
 
         List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
 
-        assertThat(receivedValue, is(Collections.singletonList("testTag")));
+        assertThat(receivedValue).contains("testTag");
     }
 
     /* getPageTags */
     @Test
-    public void checkTagListChildrenResponse() {
+    public void check_If_Response_Is_Equal_To_Expected_List_With_Children() {
         AllTagsResponder tagResponder = new AllTagsResponder();
         WikiPageProperty testTagPropertyMainSuite = new WikiPageProperty();
         testTagPropertyMainSuite.set("Suites", "mainTag");
@@ -41,7 +39,19 @@ public class AllTagsResponderTest {
 
         List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
 
-        assertThat(receivedValue, is(Arrays.asList("mainTag", "childTag")));
+        assertThat(receivedValue).contains("mainTag", "childTag");
+    }
+
+    /* getPageTags */
+    @Test
+    public void check_If_Response_Is_Equal_To_Empty_If_TagList_Is_Empty() {
+        AllTagsResponder tagResponder = new AllTagsResponder();
+        TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), new WikiPageProperty());
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
+
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+
+        assertThat(receivedValue).isEmpty();
     }
 }
 
