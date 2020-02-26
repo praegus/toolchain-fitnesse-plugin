@@ -3,9 +3,10 @@ import org.junit.Test;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecentTestHistoryResponderTest {
@@ -40,34 +41,26 @@ public class RecentTestHistoryResponderTest {
     }
 
     @Test
-    public void checks_if_correct_date_is_shown() {
+    public void when_the_recent_test_history_is_retrieved_the_recent_run_date_is_parsed_correctly() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-
-        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        isoFormat.setTimeZone(TimeZone.getDefault());
 
         LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:43:40");
 
-        LocalDateTime receivedResult = recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate();
-        assertThat(receivedResult).isEqualTo(expectedResult);
+        assertThat(recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate()).isEqualTo(expectedResult);
     }
 
     @Test
     public void Checks_number_of_times_failed(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        int receivedResult = recentTestHistory.getHistoryLines().get(0).getNumberOfTimesFailed();
-
-        assertThat(receivedResult).isEqualTo(1);
+        assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesFailed()).isEqualTo(1);
     }
 
     @Test
     public void Checks_number_of_times_passed(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        int receivedResult = recentTestHistory.getHistoryLines().get(0).getNumberOfTimesPassed();
-
-        assertThat(receivedResult).isEqualTo(0);
+        assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
 
     // Setup method
