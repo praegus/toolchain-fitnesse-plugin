@@ -3,7 +3,6 @@ package nl.praegus.fitnesse.responders.allTags;
 import fitnesse.util.Clock;
 import fitnesse.wiki.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
