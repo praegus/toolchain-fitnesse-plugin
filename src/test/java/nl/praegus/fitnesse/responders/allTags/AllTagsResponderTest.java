@@ -1,8 +1,12 @@
 package nl.praegus.fitnesse.responders.allTags;
 
-import fitnesse.wiki.*;
+import fitnesse.wiki.WikiPage;
+import fitnesse.wiki.WikiPageDummy;
+import fitnesse.wiki.WikiPageProperty;
+import fitnesse.wiki.WikiSourcePage;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +23,7 @@ public class AllTagsResponderTest {
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagProperty);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
-        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, new ArrayList<>());
 
         assertThat(receivedValue).contains("testTag");
     }
@@ -37,7 +41,7 @@ public class AllTagsResponderTest {
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagPropertyMainSuite, children);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
-        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, new ArrayList<>());
 
         assertThat(receivedValue).contains("mainTag", "childTag");
     }
@@ -53,7 +57,7 @@ public class AllTagsResponderTest {
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), testTagPropertyMainSuite, children);
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
-        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, new ArrayList<>());
 
         assertThat(receivedValue).contains("mainTag");
     }
@@ -65,9 +69,9 @@ public class AllTagsResponderTest {
         TestWikiPageDummy testWikiPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), new WikiPageProperty());
         WikiSourcePage testWikiSourcePage = new WikiSourcePage(testWikiPageDummy);
 
-        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage);
+        List<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, new ArrayList<>());
 
-        assertThat(receivedValue).isEmpty();
+        assertThat(receivedValue).contains("");
     }
 }
 
