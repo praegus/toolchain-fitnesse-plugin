@@ -37,8 +37,10 @@ public class AllTagsResponder implements SecureResponder {
 
     public Set<String> getPageTags(SourcePage page, Set<String> allTags){
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split("\\s*,\\s*");
-        if (tags.length > 0) {
-            allTags.addAll(Arrays.asList(tags));
+        for(String tag: tags) {
+            if (tag.length() > 0) {
+                allTags.add(tag);
+            }
         }
 
         for (SourcePage p : getSortedChildren(page)) {
