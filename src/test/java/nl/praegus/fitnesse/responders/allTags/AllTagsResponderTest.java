@@ -57,7 +57,7 @@ public class AllTagsResponderTest {
 
         Set<String> receivedValue = tagResponder.getPageTags(testWikiSourcePage, new HashSet<>());
 
-        assertThat(receivedValue).isEqualTo(new HashSet<>(Collections.singletonList("mainTag")));
+        assertThat(receivedValue).isEqualTo(new HashSet<>(Arrays.asList("", "mainTag")));
     }
 
     /* getPageTags */
