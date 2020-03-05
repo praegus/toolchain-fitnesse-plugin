@@ -41,7 +41,7 @@ public class MavenProjectVersionsResponder implements SecureResponder {
                 "junit"));
     }
 
-    private JSONArray dependenciesInfo = new JSONArray();
+    public JSONArray dependenciesInfo = new JSONArray();
     private SimpleResponse response = new SimpleResponse();
     private int status = 200;
 
@@ -76,7 +76,7 @@ public class MavenProjectVersionsResponder implements SecureResponder {
         dependenciesInfo.put(pluginInfo);
     }
 
-    private void getDependencyInformation () {
+    public void getDependencyInformation () {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         try {
             Model model = reader.read(new FileReader(System.getProperty("user.dir") + "/../pom.xml"));
@@ -92,6 +92,7 @@ public class MavenProjectVersionsResponder implements SecureResponder {
                         dependencyInfo.put("artifactid", artifact);
                         dependencyInfo.put("currentVersion", translateVersion(version, model));
                         dependencyInfo.put("latest", getLatestVersion(group, artifact));
+
                         dependenciesInfo.put(dependencyInfo);
                     }
                 }
@@ -139,5 +140,9 @@ public class MavenProjectVersionsResponder implements SecureResponder {
 
     }
 
-
+    public JSONArray getDependenciesInfo() {
+        getDependencyInformation();
+        getPluginVersionInformation();
+        return dependenciesInfo;
+    }
 }

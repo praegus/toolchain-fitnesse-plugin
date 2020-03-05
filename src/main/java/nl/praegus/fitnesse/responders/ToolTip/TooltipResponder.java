@@ -13,21 +13,18 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class TooltipResponder implements Responder {
-    private FitNesseContext context;
-    ToolTipList toolTipList = new ToolTipList();
+    ToolTips toolTips = new ToolTips();
 
     public TooltipResponder() throws IOException {
     }
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws UnsupportedEncodingException {
-        this.context = context;
         return makeRecentTestHistoryResponse();
     }
 
     private Response makeRecentTestHistoryResponse() throws UnsupportedEncodingException {
-         String toolTip = toolTipList.getToolTip();
-
+        String toolTip = toolTips.getToolTip();
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(String.valueOf(toolTip));
