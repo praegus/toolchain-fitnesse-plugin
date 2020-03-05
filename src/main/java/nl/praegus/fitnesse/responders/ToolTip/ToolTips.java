@@ -22,7 +22,7 @@ public class ToolTips {
                 InputStream inputStream = url.openStream();
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(reader);
-                // for each line, wich is a tooltip add it to the tooltip list
+                // for each line, which is a tooltip add it to the tooltip list
                 while ((line = bufferedReader.readLine()) != null) {
                     toolTips.add(line);
                 }
@@ -55,7 +55,7 @@ public class ToolTips {
         InputStream inputStream = url.openStream();
         InputStreamReader reader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(reader);
-        // for each line, wich is a tooltip add it to the tooltip list
+        // for each line, which is a tooltip add it to the tooltip list
         while ((line = bufferedReader.readLine()) != null) {
             toolTips.add(line);
         }
