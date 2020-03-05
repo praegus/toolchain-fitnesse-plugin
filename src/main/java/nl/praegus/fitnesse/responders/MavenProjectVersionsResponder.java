@@ -41,7 +41,7 @@ public class MavenProjectVersionsResponder implements SecureResponder {
                 "junit"));
     }
 
-    public JSONArray dependenciesInfo = new JSONArray();
+    private JSONArray dependenciesInfo = new JSONArray();
     private SimpleResponse response = new SimpleResponse();
     private int status = 200;
 
