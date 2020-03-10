@@ -18,7 +18,7 @@ public class ToolTips {
 
         for (JarFile fixture : fixtures) {
             //for each fixture check if tooltips.txt is present and then parse it to jar entry
-            Optional<JarEntry> tooltips = fixture.stream().filter(name -> name.getName().contains("Tooltips.txt")).findFirst();
+            Optional<JarEntry> tooltips = fixture.stream().filter(name -> name.getName().toLowerCase().contains("tooltips.txt")).findFirst();
             //check if tooltips is present so url.openstream doesnt make a null error
             if (tooltips.isPresent()) {
                 try {
@@ -54,7 +54,7 @@ public class ToolTips {
 
     private void addBootstrapTooltips() {
         // get tooltips.txt from the bootstrap plugin
-        Optional<File> toolChain = Arrays.stream(Objects.requireNonNull(new File(System.getProperty("user.dir") + toolchainPath).listFiles())).filter(name -> name.toString().contains("toolchain-fitnesse-plugin")).findFirst();
+        Optional<File> toolChain = Arrays.stream(Objects.requireNonNull(new File(System.getProperty("user.dir") + toolchainPath).listFiles())).filter(name -> name.toString().toLowerCase().contains("toolchain-fitnesse-plugin")).findFirst();
         // check if toochain is a file we can read so inputStream doesnt give a null error
         if (toolChain.get().isFile()) {
             try {
