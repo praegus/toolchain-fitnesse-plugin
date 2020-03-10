@@ -1,6 +1,5 @@
 package nl.praegus.fitnesse.responders.ToolTip;
 
-
 import fitnesse.FitNesseContext;
 import fitnesse.Responder;
 import fitnesse.authentication.SecureOperation;
@@ -9,21 +8,20 @@ import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class TooltipResponder implements Responder {
     ToolTips toolTips = new ToolTips();
 
-    public TooltipResponder() throws IOException {
+    public TooltipResponder() {
     }
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws UnsupportedEncodingException {
-        return makeRecentTestHistoryResponse();
+        return makeToolTipResponse();
     }
 
-    private Response makeRecentTestHistoryResponse() throws UnsupportedEncodingException {
+    private Response makeToolTipResponse() throws UnsupportedEncodingException {
         String toolTip = toolTips.getToolTip();
         SimpleResponse response = new SimpleResponse();
 
