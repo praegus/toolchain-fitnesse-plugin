@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AllTagsResponder implements SecureResponder {
     private JSONObject tagObject = new JSONObject();
@@ -42,13 +43,9 @@ public class AllTagsResponder implements SecureResponder {
     private Set<String> getPageTagsHelper(SourcePage page, Set<String> allTagsArray) {
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
 
-        for(String tag: tags) {
-            if (tag.length() > 0) {
-                allTagsArray.add(tag);
-            }
-        }
+        allTagsArray.addAll(Arrays.stream(tags).filter(t -> t.length() > 0).collect(Collectors.toList()));
 
-        for (SourcePage p : getSortedChildren(page)) {
+        for (SourcePage p : getPageChildren(page)) {
             getPageTagsHelper(p, allTagsArray);
         }
 
@@ -60,10 +57,8 @@ public class AllTagsResponder implements SecureResponder {
         return new SecureReadOperation();
     }
 
-    private List<SourcePage> getSortedChildren(SourcePage parent) {
-        List<SourcePage> result = new ArrayList<>(parent.getChildren());
-        Collections.sort(result);
-        return result;
+    private List<SourcePage> getPageChildren(SourcePage parent) {
+        return new ArrayList<>(parent.getChildren());
     }
 
     private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
