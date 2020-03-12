@@ -15,6 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
+
 public class AllTagsResponder implements SecureResponder {
     private JSONObject tagObject = new JSONObject();
 
@@ -59,18 +61,6 @@ public class AllTagsResponder implements SecureResponder {
 
     private List<SourcePage> getPageChildren(SourcePage parent) {
         return new ArrayList<>(parent.getChildren());
-    }
-
-    private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
-        WikiPage page;
-        if (RecentChanges.RECENT_CHANGES.equals(pageName)) {
-            page = context.recentChanges.toWikiPage(context.getRootPage());
-        } else {
-            WikiPagePath path = PathParser.parse(pageName);
-            PageCrawler crawler = context.getRootPage(inputs).getPageCrawler();
-            page = crawler.getPage(path);
-        }
-        return page;
     }
 
 

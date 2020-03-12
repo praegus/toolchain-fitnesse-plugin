@@ -16,6 +16,8 @@ import util.GracefulNamer;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
+import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
+
 public class TableOfContentsResponder implements SecureResponder {
 
     private JSONArray tableOfContents = new JSONArray();
@@ -24,18 +26,6 @@ public class TableOfContentsResponder implements SecureResponder {
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
         return makeTableOfContentsResponse(sourcePage);
-    }
-
-    private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
-        WikiPage page;
-        if (RecentChanges.RECENT_CHANGES.equals(pageName)) {
-            page = context.recentChanges.toWikiPage(context.getRootPage());
-        } else {
-            WikiPagePath path = PathParser.parse(pageName);
-            PageCrawler crawler = context.getRootPage(inputs).getPageCrawler();
-            page = crawler.getPage(path);
-        }
-        return page;
     }
 
     private SimpleResponse makeTableOfContentsResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
