@@ -13,7 +13,7 @@ public class ToolTips {
     public String fixturePath = "/fixtures";
     public String toolchainPath = "/plugins";
 
-    private void addToolTips(){
+    private void addToolTips() {
         List<JarFile> fixtures = getFixtures();
 
         for (JarFile fixture : fixtures) {
@@ -22,7 +22,7 @@ public class ToolTips {
             //check if tooltips is present so url.openstream doesnt make a null error
             if (tooltips.isPresent()) {
                 try {
-                    URL url = new URL("jar:file:" + fixture.getName() + "!/Tooltips.txt");
+                    URL url = new URL("jar:file:" + fixture.getName() + "!/" + tooltips.get().getName());
                     InputStream inputStream = url.openStream();
 
                     InputStreamReader reader = new InputStreamReader(inputStream);
