@@ -15,7 +15,6 @@ public class TableSymbolDecorator implements ParsedSymbolDecorator {
 
     @Override
     public void handleParsedSymbol(Symbol table, VariableSource variableSource) {
-        table.setType(new ToolchainTable());
         setTableTypeClass(table);
     }
 
@@ -28,20 +27,13 @@ public class TableSymbolDecorator implements ParsedSymbolDecorator {
         String className = null;
         switch (firstCellContent) {
             case "script":
-            case "storyboard":
+            case "conditional script":
                 className = "scriptTable";
                 break;
             case "scenario":
-                className = "scenarioTable";
-                break;
-            case "conditional script":
-                className = "conditionalScriptTable";
-                break;
             case "conditional scenario":
-                className = "conditionalScenarioTable";
-                break;
             case "looping scenario":
-                className = "loopingScenarioTable";
+                className = "scenarioTable";
                 break;
             case "debug script":
                 className = "debugScriptTable";
@@ -49,9 +41,23 @@ public class TableSymbolDecorator implements ParsedSymbolDecorator {
             case "table template":
                 className = "tableTemplate";
                 break;
+            case "storyboard":
+                className = "storyboardTable";
+                break;
+            case "import":
+                className = "importTable";
+                break;
+            case "library":
+                className = "libraryTable";
+                break;
+            case "comment":
+                className = "commentTable";
+                break;
+            default:
+                className = "decisionTable";
         }
-        if (null != className) {
-            classPropertyAppender().addPropertyValue(table, className);
-        }
+
+        classPropertyAppender().addPropertyValue(table, "toolchainTable");
+        classPropertyAppender().addPropertyValue(table, className);
     }
 }
