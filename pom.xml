@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20200108</version>
+            <version>20200308</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

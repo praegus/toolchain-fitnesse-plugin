@@ -16,36 +16,26 @@ import util.GracefulNamer;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
+import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
+
 public class TableOfContentsResponder implements SecureResponder {
 
-    private JSONArray toc = new JSONArray();
+    private JSONArray tableOfContents = new JSONArray();
 
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
-        return makeTocResponse(sourcePage);
+        return makeTableOfContentsResponse(sourcePage);
     }
 
-    private WikiPage loadPage(FitNesseContext context, String pageName, Map<String, String> inputs) {
-        WikiPage page;
-        if (RecentChanges.RECENT_CHANGES.equals(pageName)) {
-            page = context.recentChanges.toWikiPage(context.getRootPage());
-        } else {
-            WikiPagePath path = PathParser.parse(pageName);
-            PageCrawler crawler = context.getRootPage(inputs).getPageCrawler();
-            page = crawler.getPage(path);
-        }
-        return page;
-    }
-
-    private SimpleResponse makeTocResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        toc.put(getPageInfo(sourcePage));
+    private SimpleResponse makeTableOfContentsResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
+        tableOfContents.put(getPageInfo(sourcePage));
 
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
         response.setStatus(200);
         response.setContentType("application/json");
-        response.setContent(toc.toString(3));
+        response.setContent(tableOfContents.toString(3));
 
         return response;
     }
