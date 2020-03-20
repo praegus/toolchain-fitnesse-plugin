@@ -12,6 +12,9 @@ This plug-in contains the following extensions to FitNesse (20190620 or later):
 ### Bootstrap-plus
 See https://github.com/praegus/fitnesse-bootstrap-plus-theme
 
+### Table Decorator
+Assigns custom classes to different table types
+
 ### AutoComplete responder
 See https://github.com/praegus/fitnesse-autocomplete-responder
 ### Update tags responder
@@ -24,7 +27,7 @@ Returns the full document tree as json from the level it's called from
 `| debug script |` instead of `| script |`
 This will pause execution before each script table row and prompt the user to continue of stop the test, informing the user what the next instruction will be.
 
-Note: make sure to not commit these tables when using tests in a CI run, or better yet, set a system property called `nodebug` and assign it the value `true` when running your tests. This will cause a pause call to stop the test (instead of causing an infinite wait).
+Note: make sure to not commit these tables when using tests in a CI run. The debug will timeout in 10mins by default. Timeout can be set using system property fitnesse.debugscript.timeout
 
 ## Extra table types
 
