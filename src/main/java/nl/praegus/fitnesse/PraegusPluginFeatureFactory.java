@@ -6,11 +6,14 @@ import fitnesse.plugins.PluginFeatureFactoryBase;
 import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
+import fitnesse.wikitext.parser.SymbolProvider;
+import nl.praegus.fitnesse.decorators.TableSymbolDecorator;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
 import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
+import nl.praegus.fitnesse.responders.allTags.AllTagsResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
@@ -37,6 +40,12 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     }
 
     @Override
+    public void registerSymbolTypes(SymbolProvider symbolProvider) {
+        LOG.info("[Toolchain Plugin] Registering table specific css decorator classes.");
+        TableSymbolDecorator.install();
+    }
+
+    @Override
     public void registerResponders(ResponderFactory responderFactory) throws PluginException {
         super.registerResponders(responderFactory);
         LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder (?autoComplete).");
@@ -49,6 +58,8 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
+        LOG.info("[Toolchain Plugin] Registering AllTagsResponder (?allTags).");
+        add(responderFactory, "allTags", AllTagsResponder.class);
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
