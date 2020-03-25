@@ -70,16 +70,10 @@ public class ConditionalScriptTable extends ScriptTable {
                 evaluator.setContext(expr, symbols);
                 conditionResult = Boolean.parseBoolean(evaluator.evaluate(replaceSymbols(expr)).toString());
 
-                System.out.println("CResult: " + conditionResult);
-                System.out.println("Symbols: " + getTestContext().getSymbols());
-
             } catch (IllegalArgumentException e) {
                 throw new SyntaxError(e.getMessage());
             }
         } else {
-
-            System.out.println("Asserting row " + row + " in: " + tableAsList());
-
             assertions.addAll(super.invokeAction(startingCol, endingCol, row, expectation));
         }
         return assertions;
