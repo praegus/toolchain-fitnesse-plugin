@@ -29,7 +29,7 @@ public class TableOfContentsResponder implements SecureResponder {
     }
 
     private SimpleResponse makeTableOfContentsResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
-        tableOfContents.put(getPageInfo(sourcePage));
+        tableOfContents.put(getPageInfo(null, sourcePage));
 
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
@@ -46,18 +46,27 @@ public class TableOfContentsResponder implements SecureResponder {
         return result;
     }
 
-    private JSONObject getPageInfo(SourcePage page) {
+    private JSONObject getPageInfo(SourcePage parent, SourcePage page) {
         JSONObject pageInfo = new JSONObject();
         pageInfo.put("name", GracefulNamer.regrace(page.getName()));
         pageInfo.put("type", getBooleanPropertiesClasses(page));
         pageInfo.put("help", page.getProperty(WikiPageProperty.HELP));
         String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
-        for(String tag: tags) {
-            pageInfo.append("tags", tag);
+
+        if (parent instanceof WikiSourcePage && ((WikiSourcePage) parent).hasSymbolicLinkChild(page.getName())) {
+            pageInfo.put("isSymlink", true);
+        } else {
+            pageInfo.put("isSymlink", false);
+        }
+
+        for (String tag : tags) {
+            if(tag.length() > 0) {
+                pageInfo.append("tags", tag);
+            }
         }
         pageInfo.put("path", page.getFullPath());
         for (SourcePage p : getSortedChildren(page)) {
-            pageInfo.append("children", getPageInfo(p));
+            pageInfo.append("children", getPageInfo(page, p));
         }
         return pageInfo;
     }
