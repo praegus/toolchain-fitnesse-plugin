@@ -60,7 +60,9 @@ public class TableOfContentsResponder implements SecureResponder {
         }
 
         for (String tag : tags) {
-            pageInfo.append("tags", tag);
+            if(tag.length() > 0) {
+                pageInfo.append("tags", tag);
+            }
         }
         pageInfo.put("path", page.getFullPath());
         for (SourcePage p : getSortedChildren(page)) {
