@@ -72,14 +72,14 @@ public class ToolTipsTest {
     }
 
 
-    public List<String> getFixtureTooltipList() {
+    private List<String> getFixtureTooltipList() {
         InputStreamReader inputStreamReader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("ToolTips/ToolTipData/FixtureToolTips.txt"));
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
         return bufferedReader.lines().collect((Collectors.toList()));
     }
 
-    public List<String> getBootStraptoolTipList() {
+    private List<String> getBootStraptoolTipList() {
         InputStreamReader inputStreamReader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("ToolTips/ToolTipData/BootStrapToolTips.txt"));
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 

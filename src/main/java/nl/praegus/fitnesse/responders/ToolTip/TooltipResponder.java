@@ -13,9 +13,6 @@ import java.io.UnsupportedEncodingException;
 public class TooltipResponder implements Responder {
     ToolTips toolTips = new ToolTips();
 
-    public TooltipResponder() {
-    }
-
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws UnsupportedEncodingException {
         return makeToolTipResponse();
