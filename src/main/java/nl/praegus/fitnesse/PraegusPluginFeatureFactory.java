@@ -18,6 +18,7 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
+import nl.praegus.fitnesse.symbols.TestHistorySymbol;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
@@ -40,9 +41,16 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     }
 
     @Override
-    public void registerSymbolTypes(SymbolProvider symbolProvider) {
+    public void registerSymbolTypes(SymbolProvider symbolProvider) throws PluginException {
         LOG.info("[Toolchain Plugin] Registering table specific css decorator classes.");
         TableSymbolDecorator.install();
+        super.registerSymbolTypes(symbolProvider);
+        add(symbolProvider, new TestHistorySymbol());
+    }
+
+    private void add(SymbolProvider provider, TestHistorySymbol symbolType) {
+        provider.add(symbolType);
+        LOG.info("Added symbol " + symbolType.getClass());
     }
 
     @Override
