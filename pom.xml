@@ -7,7 +7,7 @@
     <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
     <name>Praegus Toolchain plugin</name>
     <description>Auto-register autocomplete responder and add debug script table</description>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>2.0.4-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,13 +17,13 @@
         <dependency>
             <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20200308</version>
+            <version>20200404</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>nl.praegus</groupId>
             <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-            <version>2.0.8-SNAPSHOT</version>
+            <version>2.0.9-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>nl.praegus</groupId>
