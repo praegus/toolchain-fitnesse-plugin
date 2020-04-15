@@ -1,12 +1,15 @@
-wdadwa
-wda
-wda
-dawd
-wa
-wda
-awddwwf
-ad
-faw
-dwa
-22
-2
+Press '?' for keyboard shortcuts.
+Bullet lists are created by prefixing a space a * to a line.
+Headers are created by prefixing a line with !1 or !2 or !3 or !4 or !5 or !6.
+Numbered lists are created by prefixing a space and a number to a line.
+A picture can be added by using the !img marker followed by a URL.
+Did you know bootstrap-plus also has a dark theme for FitNesse?
+Did you know there is a contexthelper that contains all fixtures, methods, scenario's and slim symbols from your tests context?
+Did you know you add non-wiki files to the files section (Tools > Files)?
+Did you know you can add/edit templates when you go to /TemplateLibrary?
+Did you know you can press 'CTRL' + 'space' in the editor to use autocomplete?
+Did you know you can rename/move/delete existing pages?
+Did you know you can run tests based on their tag? You can do this with 'Run test with tags'.
+Did you know you can save your search as a link? This is found at the bottom of your search page.
+Did you know you can add a table from i.e. Excel by copying it and then pasting it into the editor? After this push Spreadsheet to FitNesse and you're done.
+Did you know you can style your syntax? For more information see in the full reference guide "MarkupLanguageReference".
