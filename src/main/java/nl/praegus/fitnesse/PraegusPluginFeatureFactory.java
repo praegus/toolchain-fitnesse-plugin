@@ -7,6 +7,7 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import fitnesse.wikitext.parser.SymbolProvider;
+import fitnesse.wikitext.parser.SymbolType;
 import nl.praegus.fitnesse.decorators.TableSymbolDecorator;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
 import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
@@ -18,7 +19,7 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
-import nl.praegus.fitnesse.symbols.TestHistorySymbol;
+import nl.praegus.fitnesse.symbols.MavenProjectVersions.MavenProjectVersionsSymbol;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
@@ -45,10 +46,10 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         LOG.info("[Toolchain Plugin] Registering table specific css decorator classes.");
         TableSymbolDecorator.install();
         super.registerSymbolTypes(symbolProvider);
-        add(symbolProvider, new TestHistorySymbol());
+        add(symbolProvider, new MavenProjectVersionsSymbol());
     }
 
-    private void add(SymbolProvider provider, TestHistorySymbol symbolType) {
+    private void add(SymbolProvider provider, SymbolType symbolType) {
         provider.add(symbolType);
         LOG.info("Added symbol " + symbolType.getClass());
     }
