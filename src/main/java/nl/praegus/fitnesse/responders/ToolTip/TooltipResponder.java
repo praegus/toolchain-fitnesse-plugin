@@ -19,11 +19,12 @@ public class TooltipResponder implements Responder {
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException {
-        return makeToolTipResponse();
+
+        return makeToolTipResponse(request.getInput("CookieIsValid"));
     }
 
-    private Response makeToolTipResponse() throws UnsupportedEncodingException {
-        String toolTip = toolTips.getToolTip();
+    private Response makeToolTipResponse(String cookieIsValid) throws IOException {
+        String toolTip = toolTips.getToolTip(cookieIsValid);
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);
