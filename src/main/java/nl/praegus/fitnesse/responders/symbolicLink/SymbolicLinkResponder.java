@@ -17,7 +17,7 @@ import java.util.Set;
 import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
 
 public class SymbolicLinkResponder implements SecureResponder {
-
+    public JSONArray symboliclinkArray = new JSONArray();
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiPage wikiPage = loadPage(fitNesseContext, request.getResource(), request.getMap());
@@ -39,26 +39,30 @@ public class SymbolicLinkResponder implements SecureResponder {
     }
 
     private JSONArray getSymlinkHelper(WikiPage wikiPage) {
-        JSONArray symboliclinkArray = new JSONArray();
+        // Get Symlinks for the wiki page
         PageData data = wikiPage.getData();
         WikiPageProperty symLinksProperty = data.getProperties().getProperty(SymbolicPage.PROPERTY_NAME);
-        if (symLinksProperty == null) {
-            return new JSONArray();
-        }
-        String pagePath = wikiPage.getName();
 
-        Set<String> symbolicLinkNames = symLinksProperty.keySet();
-        for (String name : symbolicLinkNames) {
-            JSONObject symboliclinkInformation = new JSONObject();
-
-            symboliclinkInformation.put("pagePath", pagePath);
-            symboliclinkInformation.put("linkName", name);
-            symboliclinkInformation.put("linkPath", symLinksProperty.get(name));
-
-            symboliclinkArray.put(symboliclinkInformation);
+        // Loop to the names
+        if (symLinksProperty != null) {
+            for (String name : symLinksProperty.keySet()) {
+                symboliclinkArray.put(getObject(name, wikiPage, symLinksProperty));
+            }
         }
 
-        return symboliclinkArray;
+        // Get Symlinks from the children
+        // TO DO: Get the source page en check if there are children
+
+
+        return symLinksProperty != null ? symboliclinkArray : new JSONArray();
+    }
+
+    private JSONObject getObject(String name, WikiPage wikiPage, WikiPageProperty symLinksProperty) {
+        JSONObject symboliclinkInformation = new JSONObject();
+        symboliclinkInformation.put("pagePath", wikiPage.getName());
+        symboliclinkInformation.put("linkName", name);
+        symboliclinkInformation.put("linkPath", symLinksProperty.get(name));
+        return symboliclinkInformation;
     }
 
     @Override
