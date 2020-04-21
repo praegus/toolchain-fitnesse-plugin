@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class FileCacheTest {
-  public  ArrayList<String> testData = new ArrayList<>();
 
     @Test
     public void Set_file_cache_with_data(){
         ArrayList<String> receivedResult  = new ArrayList<>();
+        ArrayList<String> testData = new ArrayList<>();
         testData.add("test1");
         testData.add("test2");
         testData.add("test3");
@@ -30,7 +30,7 @@ public class FileCacheTest {
     @Test
     public void Set_file_cache_without_data(){
         ArrayList<String> receivedResult  = new ArrayList<>();
-        testData = new ArrayList<>();
+        ArrayList<String> testData = new ArrayList<>();
 
         FileCache fileCache = new FileCache();
         fileCache.setFileCache(System.getProperty("user.dir")+"/src/test/resources/FileCache/FileCache.txt",testData);
@@ -42,6 +42,7 @@ public class FileCacheTest {
     @Test
     public void Get_file_cache_with_data(){
         ArrayList<String> receivedResult  = new ArrayList<>();
+        ArrayList<String> testData = new ArrayList<>();
         testData.add("test1");
         testData.add("test2");
         testData.add("test3");
@@ -56,7 +57,7 @@ public class FileCacheTest {
     @Test
     public void Get_file_cache_without_data(){
         ArrayList<String> receivedResult  = new ArrayList<>();
-        testData = new ArrayList<>();
+        ArrayList<String> testData = new ArrayList<>();
 
         FileCache fileCache = new FileCache();
         fileCache.setFileCache(System.getProperty("user.dir")+"/src/test/resources/FileCache/FileCache.txt",testData);

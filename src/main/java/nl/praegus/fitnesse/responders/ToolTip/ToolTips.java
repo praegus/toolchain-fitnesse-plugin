@@ -1,8 +1,10 @@
 package nl.praegus.fitnesse.responders.ToolTip;
+
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
+
 import nl.praegus.fitnesse.helpers.FileCache;
 
 public class ToolTips {
@@ -12,10 +14,10 @@ public class ToolTips {
     public FileCache fileCache = new FileCache();
 
 
-    public ToolTips(){
+    public ToolTips() {
         String[] classPaths = System.getProperty("java.class.path").split(";");
-        for (String classpath:classPaths) {
-            if (classpath.contains("toolchain-fitnesse-plugin")){
+        for (String classpath : classPaths) {
+            if (classpath.contains("toolchain-fitnesse-plugin")) {
                 toolchainPath = classpath;
             }
         }
@@ -42,7 +44,6 @@ public class ToolTips {
     }
 
 
-
     private void addBootstrapTooltips() {
 
         try {
@@ -54,19 +55,19 @@ public class ToolTips {
                 //for each line, which is a tooltip add it to the tooltip list
                 toolTips.addAll(bufferedReader.lines().collect(Collectors.toList()));
             }
-            } catch(IOException e){
-                System.out.println("couldn't parse bootstrap tooltips");
-            }
+        } catch (IOException e) {
+            System.out.println("couldn't parse bootstrap tooltips");
+        }
     }
 
-    public String getToolTip(String CacheIsCurrent){
-        if (CacheIsCurrent.equals("false")){
+    public String getToolTip(String CacheIsCurrent) {
+        if (CacheIsCurrent.equals("false")) {
             addBootstrapTooltips();
             addToolTips();
 
-            fileCache.setFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt",toolTips);
-        }else{
-            toolTips = fileCache.getFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt");
+            fileCache.setFileCache(System.getProperty("user.dir") + tooltipTargetDirectory + "/tooltipCache.txt", toolTips);
+        } else {
+            toolTips = fileCache.getFileCache(System.getProperty("user.dir") + tooltipTargetDirectory + "/tooltipCache.txt");
         }
         //after bootstrap tooltips have been loaded, check if tooltips actuallly contains tooltips. if not return null so bootstrap tooltips will be loaded in JS.
 
@@ -75,10 +76,10 @@ public class ToolTips {
             Random rand = new Random();
             int pickedTip = rand.nextInt(toolTips.size());
             return toolTips.get(pickedTip);
-        }else  {
+        } else {
             return "null";
         }
 
 
-}
+    }
 }

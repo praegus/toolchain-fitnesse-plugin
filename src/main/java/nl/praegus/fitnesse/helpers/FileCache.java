@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public class FileCache {
     // this function will create the file cache
     public void setFileCache(String path, List<String> data) {
-        File filecache = new File(path);
+        File fileCache = new File(path);
         try {
             //if previous cache exists, delete it
-            if (filecache.exists()) {
-                filecache.delete();
+            if (fileCache.exists()) {
+                fileCache.delete();
             }
             // use a printwriter to populate list
             FileWriter fileWriter = new FileWriter(path);
@@ -23,17 +23,18 @@ public class FileCache {
             }
             fileWriter.flush();
             fileWriter.close();
-        }catch (IOException e){
+        } catch (IOException e) {
 
         }
     }
+
     //this function reads the file cache
-    public List<String> getFileCache(String path){
+    public List<String> getFileCache(String path) {
         File fileCache = new File(path);
         try {
-            if (fileCache.exists()){
+            if (fileCache.exists()) {
                 List<String> cacheData = new ArrayList<>();
-                URL fileCacheURL = new URL("file:///" +fileCache.getPath());
+                URL fileCacheURL = new URL("file:///" + fileCache.getPath());
 
                 InputStream inputStream = fileCacheURL.openStream();
                 InputStreamReader reader = new InputStreamReader(inputStream);
@@ -45,7 +46,7 @@ public class FileCache {
 
 
             }
-        }catch (IOException e){
+        } catch (IOException e) {
 
         }
         return null;
