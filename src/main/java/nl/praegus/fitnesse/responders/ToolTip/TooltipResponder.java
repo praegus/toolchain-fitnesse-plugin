@@ -20,11 +20,11 @@ public class TooltipResponder implements Responder {
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException {
 
-        return makeToolTipResponse(request.getInput("CookieIsValid"));
+        return makeToolTipResponse(request.getInput("CacheIsCurrent"));
     }
 
-    private Response makeToolTipResponse(String cookieIsValid) throws IOException {
-        String toolTip = toolTips.getToolTip(cookieIsValid);
+    private Response makeToolTipResponse(String CacheIsCurrent) throws IOException {
+        String toolTip = toolTips.getToolTip(CacheIsCurrent);
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);

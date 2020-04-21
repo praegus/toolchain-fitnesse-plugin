@@ -5,59 +5,56 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToolTipsTest {
-/*
+
     @Test
     public void check_if_ToolTip_is_not_null_when_fixture_tooltips_and_bootstrap_tooltips_are_given() {
         ToolTips toolTips = new ToolTips();
         toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_default";
-        toolTips.bootstrapTargetDirectory = "/src/test/resources/Tooltip/TooltipData_default/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt";
+        toolTips.toolchainPath =System.getProperty("user.dir")+ toolTips.tooltipTargetDirectory + "/toolchain.jar";
 
-        String receivedResult = toolTips.getToolTip();
+        String receivedResult = toolTips.getToolTip("false");
 
-        assertThat(receivedResult).isNotEqualTo("");
+        assertThat(receivedResult).isNotEqualTo("null");
     }
     @Test
-    public void check_if_ToolTip_is_not_null_when_fixtureTooltips_are_null_and_bootstrapTooltips_are_given() {
-        ToolTips toolTips = new ToolTips();
-        toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_noFixtureTooltip";
-        toolTips.bootstrapTargetDirectory = "/src/test/resources/Tooltip/TooltipData_noFixtureTooltip/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt";
-
-        String receivedResult = toolTips.getToolTip();
-
-        assertThat(receivedResult).isNotEqualTo("");
-    }
-
-    @Test
-    public void check_if_returns_null_if_ToolTipList_is_empty(){
-        ToolTips toolTips = new ToolTips();
-        toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_empty_txt";
-        toolTips.bootstrapTargetDirectory = "/src/test/resources/Tooltip/TooltipData_empty_txt/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt";
-
-        String receivedResult = toolTips.getToolTip();
-
-        assertThat(receivedResult).isEqualTo("");
-    }
-
-    @Test
-    public void check_if_returns_null_if_there_is_no_txt_given(){
+    public void Check_if_ToolTip_Is_null_when_Nothing_is_given() {
         ToolTips toolTips = new ToolTips();
         toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_no_txt";
-        toolTips.bootstrapTargetDirectory = "/src/test/resources/Tooltip/TooltipData_no_txt/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt";
+        toolTips.toolchainPath =System.getProperty("user.dir")+ toolTips.tooltipTargetDirectory + "/toolchain.jar";
 
-        String receivedResult = toolTips.getToolTip();
+        String receivedResult = toolTips.getToolTip("false");
 
-        assertThat(receivedResult).isEqualTo("");
+        assertThat(receivedResult).isEqualTo("null");
     }
-
     @Test
-    public void check_return_null_if_bootstrapToolTips_are_missing(){
+    public void Check_if_ToolTip_Is_null_when_Empty_txt_is_given() {
+        ToolTips toolTips = new ToolTips();
+        toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_empty_txt";
+        toolTips.toolchainPath =System.getProperty("user.dir")+ toolTips.tooltipTargetDirectory + "/toolchain.jar";
+
+        String receivedResult = toolTips.getToolTip("false");
+
+        assertThat(receivedResult).isEqualTo("null");
+    }
+    @Test
+    public void Check_If_Tooltip_is_returned_if_only_Bootstrap_tooltips_are_Found (){
+        ToolTips toolTips = new ToolTips();
+        toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_noFixtureTooltip";
+        toolTips.toolchainPath = System.getProperty("user.dir")+ toolTips.tooltipTargetDirectory + "/toolchain.jar";
+
+        String receivedResult = toolTips.getToolTip("false");
+
+        assertThat(receivedResult).isNotEqualTo("null");
+    }
+    @Test
+    public void Check_If_Tooltip_is_returned_if_only_fixture_tooltips_are_Found (){
         ToolTips toolTips = new ToolTips();
         toolTips.tooltipTargetDirectory = "/src/test/resources/Tooltip/TooltipData_default";
-        toolTips.bootstrapTargetDirectory = "/src/test/resources/Tooltip/TooltipData_no_txt/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt";
+        toolTips.toolchainPath = System.getProperty("user.dir")+ toolTips.tooltipTargetDirectory + "/toolchain2.jar";
 
-        String receivedResult = toolTips.getToolTip();
+        String receivedResult = toolTips.getToolTip("false");
 
-        assertThat(receivedResult).isEqualTo("");
+        assertThat(receivedResult).isNotEqualTo("null");
     }
-*/
+
 }

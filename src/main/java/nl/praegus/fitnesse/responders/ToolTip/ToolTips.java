@@ -3,10 +3,23 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
+import nl.praegus.fitnesse.helpers.FileCache;
 
 public class ToolTips {
     private List<String> toolTips = new ArrayList<>();
     public String tooltipTargetDirectory = "/TooltipData";
+    public String toolchainPath = null;
+    public FileCache fileCache = new FileCache();
+
+
+    public ToolTips(){
+        String[] classPaths = System.getProperty("java.class.path").split(";");
+        for (String classpath:classPaths) {
+            if (classpath.contains("toolchain-fitnesse-plugin")){
+                toolchainPath = classpath;
+            }
+        }
+    }
 
     private void addToolTips() {
         File[] dirs = new File(System.getProperty("user.dir") + tooltipTargetDirectory).listFiles();
@@ -27,51 +40,14 @@ public class ToolTips {
             }
         }
     }
-    private void setFileCache(String path,List<String> data) throws IOException {
-        File filecache = new File(path);
-        if (filecache.exists()) {
-            filecache.delete();
-        }
-        FileWriter fileWriter = new FileWriter(path);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        for (String line:data) {
-            printWriter.println(line);
-        }
-        fileWriter.flush();
-        fileWriter.close();
-    }
-    private List<String> getFileCache(String path) throws IOException {
-        File fileCache = new File(path);
-        if (fileCache.exists()){
-            List<String> cacheData = new ArrayList<>();
-            URL fileCacheURL = new URL("file:///" +fileCache.getPath());
 
-            InputStream inputStream = fileCacheURL.openStream();
-            InputStreamReader reader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(reader);
 
-            cacheData.addAll(bufferedReader.lines().collect(Collectors.toList()));
-
-            return cacheData;
-
-        }else{
-            return null;
-        }
-    }
 
     private void addBootstrapTooltips() {
-        String[] classPaths = System.getProperty("java.class.path").split(";");
-        String toolchainPath = null;
-        for (String classpath:classPaths) {
-            if (classpath.contains("toolchain-fitnesse-plugin")){
-                toolchainPath = classpath;
-            }
-        }
 
         try {
             if (toolchainPath != null) {
                 URL BootstrapTooltipsURL = new URL("jar:file:" + toolchainPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt");
-
                 InputStream inputStream = BootstrapTooltipsURL.openStream();
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(reader);
@@ -83,13 +59,14 @@ public class ToolTips {
             }
     }
 
-    public String getToolTip(String cookieIsValid) throws IOException {
-        if (cookieIsValid.equals("false")){
+    public String getToolTip(String CacheIsCurrent){
+        if (CacheIsCurrent.equals("false")){
             addBootstrapTooltips();
             addToolTips();
-            setFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt",toolTips);
+
+            fileCache.setFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt",toolTips);
         }else{
-            toolTips = getFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt");
+            toolTips = fileCache.getFileCache(System.getProperty("user.dir")+tooltipTargetDirectory+"/tooltipCache.txt");
         }
         //after bootstrap tooltips have been loaded, check if tooltips actuallly contains tooltips. if not return null so bootstrap tooltips will be loaded in JS.
 
