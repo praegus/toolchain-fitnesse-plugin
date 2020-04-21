@@ -61,8 +61,8 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
         LOG.info("[Toolchain Plugin] Registering AllTagsResponder (?allTags).");
         add(responderFactory, "allTags", AllTagsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering SymbolicLinkResponder (?symlink).");
-        add(responderFactory, "symlink", SymbolicLinkResponder.class);
+        LOG.info("[Toolchain Plugin] Registering SymbolicLinkResponder (?symlinks).");
+        add(responderFactory, "symlinks", SymbolicLinkResponder.class);
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {

@@ -19,7 +19,7 @@ import static fitnesse.wiki.WikiPageProperty.SUITES;
 import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
 
 public class SymbolicLinkResponder implements SecureResponder {
-    public JSONArray symboliclinkArray = new JSONArray();
+    public JSONArray symbolicLinkArray = new JSONArray();
     private PageData pageData;
 
     @Override
@@ -41,6 +41,11 @@ public class SymbolicLinkResponder implements SecureResponder {
         return response;
     }
 
+    @Override
+    public SecureOperation getSecureOperation() {
+        return new SecureReadOperation();
+    }
+
     public JSONArray getSymlink(WikiPage page){
         return getSymlinkHelper(page);
     }
@@ -52,7 +57,7 @@ public class SymbolicLinkResponder implements SecureResponder {
         // Loop to the names
         if (symLinksProperty != null) {
             for (String name : symLinksProperty.keySet()) {
-                symboliclinkArray.put(getObject(name, wikiPage, symLinksProperty));
+                symbolicLinkArray.put(getObject(name, wikiPage, symLinksProperty));
             }
         }
 
@@ -60,7 +65,7 @@ public class SymbolicLinkResponder implements SecureResponder {
         // TO DO: Get the source page en check if there are children
 
 
-        return symLinksProperty != null ? symboliclinkArray : new JSONArray();
+        return symLinksProperty != null ? symbolicLinkArray : new JSONArray();
     }
 
     private JSONObject getObject(String name, WikiPage wikiPage, WikiPageProperty symLinksProperty) {
@@ -85,11 +90,6 @@ public class SymbolicLinkResponder implements SecureResponder {
         }
         html.setPageTitle(new PageTitle("Symbolic links", PathParser.parse(request.getResource()), tags));
         return html.html(request);
-    }
-
-    @Override
-    public SecureOperation getSecureOperation() {
-        return new SecureReadOperation();
     }
 
 }
