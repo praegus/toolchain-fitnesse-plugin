@@ -76,8 +76,30 @@ public class SymbolicLinkResponder implements SecureResponder {
         JSONObject symboliclinkInformation = new JSONObject();
         symboliclinkInformation.put("pagePath", wikiPage.getFullPath().toString());
         symboliclinkInformation.put("linkName", name);
-        symboliclinkInformation.put("linkPath", symLinksProperty.get(name));
+        symboliclinkInformation.put("linkPath", makePathForSymbolicLink(wikiPage, symLinksProperty.get(name)));
+        symboliclinkInformation.put("backUpLinkPath", symLinksProperty.get(name));
         return symboliclinkInformation;
+    }
+
+    private String makePathForSymbolicLink(WikiPage page, String linkPath) {
+        WikiPagePath wikiPagePath = PathParser.parse(linkPath);
+
+        if (wikiPagePath != null) {
+            WikiPage parent = wikiPagePath.isRelativePath() ? page.getParent() : page;
+            PageCrawler crawler = parent.getPageCrawler();
+            WikiPage target = crawler.getPage(wikiPagePath);
+            WikiPagePath fullPath;
+            if (target != null) {
+                fullPath = target.getFullPath();
+                fullPath.makeAbsolute();
+            } else {
+                fullPath = new WikiPagePath();
+            }
+            String pathString = fullPath.toString();
+
+            return pathString.length() > 0 && pathString.charAt(0) == '.' ? pathString.substring(1) : pathString;
+        }
+        return null;
     }
 
     private String createHTMLPage(FitNesseContext fitNesseContext, Request request, WikiPage wikiPage) {
