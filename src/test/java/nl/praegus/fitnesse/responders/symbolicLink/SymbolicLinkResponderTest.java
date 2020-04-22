@@ -18,12 +18,10 @@ public class SymbolicLinkResponderTest {
     @Test
     public void check_If_Response_Is_Equal_To_Expected_List_With_One_Page() {
         SymbolicLinkResponder tagResponder = new SymbolicLinkResponder();
-        WikiPageProperty testTagProperty = new WikiPageProperty();
-        testTagProperty.set("Suites", "testTag");
-        TestWikiPageDummy TestPageDummy = new TestWikiPageDummy("dummyPage", "", new WikiPageDummy(), new WikiPageProperty());
+        WikiPageDummy TestPageDummy = new WikiPageDummy("dummyPage", "", new WikiPageDummy());
 
-//        JSONArray receivedValue = tagResponder.getSymlink(TestPageDummy);
+        JSONArray receivedValue = tagResponder.getSymlink(TestPageDummy);
 
-//        assertThat(receivedValue).isEqualTo(new HashSet<>(Collections.singletonList("testTag")));
+//        assertThat(receivedValue).isEqualTo(new JSONArray());
     }
 }

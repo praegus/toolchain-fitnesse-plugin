@@ -21,7 +21,6 @@ import static fitnesse.wiki.WikiPageProperty.SUITES;
 import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
 
 public class SymbolicLinkResponder implements SecureResponder {
-    public JSONArray symbolicLinkArray = new JSONArray();
     private PageData pageData;
 
     @Override
@@ -47,10 +46,10 @@ public class SymbolicLinkResponder implements SecureResponder {
     }
 
     public JSONArray getSymlink(WikiPage page){
-        return getSymlinkHelper(page);
+        return getSymlinkHelper(page, new JSONArray());
     }
 
-    private JSONArray getSymlinkHelper(WikiPage wikiPage) {
+    private JSONArray getSymlinkHelper(WikiPage wikiPage, JSONArray symbolicLinkArray) {
         pageData = wikiPage.getData();
         // Get Symlinks of the wiki page
         WikiPageProperty symLinksProperty = pageData.getProperties().getProperty(SymbolicPage.PROPERTY_NAME);
@@ -65,7 +64,7 @@ public class SymbolicLinkResponder implements SecureResponder {
         // Get Symlinks from the children
         if (getPageChildren(wikiPage).size() > 0) {
             for (WikiPage p : getPageChildren(wikiPage)) {
-                getSymlinkHelper(p);
+                getSymlinkHelper(p, symbolicLinkArray);
             }
         }
 
