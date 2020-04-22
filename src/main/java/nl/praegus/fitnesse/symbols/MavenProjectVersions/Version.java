@@ -4,10 +4,15 @@ public class Version implements Comparable<Version>  {
     public final int[] numbers;
 
     public Version(String version) {
-        final String[] split = version.split("-")[0].split("\\.");
+        String[] split = version.split("[-.]");
         numbers = new int[split.length];
         for (int i = 0; i < split.length; i++) {
-            numbers[i] = Integer.parseInt(split[i]);
+            String newInt = split[i].replaceAll("[^\\d.]", "");
+            if (newInt.length() > 0) {
+                numbers[i] = Integer.parseInt(newInt);
+            } else {
+                numbers[i] = 0;
+            }
         }
     }
 
