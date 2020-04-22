@@ -96,7 +96,9 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    private String getStatus(String current, String latest) {
+    public String getStatus(String current, String latest) { return getStatusHelper(current, latest);}
+
+    private String getStatusHelper(String current, String latest) {
         Version currentVersion = new Version(current);
         Version latestVersion = new Version(latest);
 
@@ -170,7 +172,6 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         }
     }
 
-
     private String getLatestVersion(String groupId, String artifactId) {
         groupId = groupId.replace(".", "/");
         String url = String.format("https://repo.maven.apache.org/maven2/%s/%s/maven-metadata.xml", groupId, artifactId);
@@ -182,8 +183,5 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             System.err.println(e.getMessage());
             return "N/A";
         }
-
-
-
     }
 }
