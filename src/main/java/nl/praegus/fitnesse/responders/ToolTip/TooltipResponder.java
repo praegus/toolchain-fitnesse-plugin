@@ -23,8 +23,8 @@ public class TooltipResponder implements Responder {
         return makeToolTipResponse(request.getInput("CacheIsCurrent"));
     }
 
-    private Response makeToolTipResponse(String CacheIsCurrent) throws IOException {
-        String toolTip = toolTips.getToolTip(CacheIsCurrent);
+    private Response makeToolTipResponse(String cacheIsCurrent) throws IOException {
+        String toolTip = toolTips.getToolTip(cacheIsCurrent);
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);

@@ -29,9 +29,9 @@ public class ToolTips {
             // check if File in list is directory so we wont try to listfiles from a file
             if (dir.isDirectory()) {
                 try {
-                    URL TooltipsURL = new URL("file:///" + dir.getPath() + "/Tooltips.txt");
+                    URL toolTipsURL = new URL("file:///" + dir.getPath() + "/Tooltips.txt");
 
-                    InputStream inputStream = TooltipsURL.openStream();
+                    InputStream inputStream = toolTipsURL.openStream();
                     InputStreamReader reader = new InputStreamReader(inputStream);
                     BufferedReader bufferedReader = new BufferedReader(reader);
                     //for each line, which is a tooltip add it to the tooltip list
@@ -48,8 +48,8 @@ public class ToolTips {
 
         try {
             if (toolchainPath != null) {
-                URL BootstrapTooltipsURL = new URL("jar:file:" + toolchainPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt");
-                InputStream inputStream = BootstrapTooltipsURL.openStream();
+                URL bootstrapTooltipsURL = new URL("jar:file:" + toolchainPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt");
+                InputStream inputStream = bootstrapTooltipsURL.openStream();
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 //for each line, which is a tooltip add it to the tooltip list
@@ -60,12 +60,12 @@ public class ToolTips {
         }
     }
 
-    public String getToolTip(String CacheIsCurrent) {
-        File tooltipDataMap = new File(System.getProperty("user.dir")+tooltipTargetDirectory);
+    public String getToolTip(String cacheIsCurrent) {
+        File tooltipDataMap = new File(System.getProperty("user.dir") + tooltipTargetDirectory);
         if (!tooltipDataMap.exists()) {
             tooltipDataMap.mkdir();
         }
-        if (CacheIsCurrent.equals("false")) {
+        if (cacheIsCurrent.equals("false")) {
             addBootstrapTooltips();
             addToolTips();
 
