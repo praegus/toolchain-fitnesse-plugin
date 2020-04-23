@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ToolTips {
-    private static List<String> toolTipCache = new ArrayList<>();
+    private static List<String> toolTipsCache = new ArrayList<>();
     public String tooltipTargetDirectory = "/TooltipData";
     public String toolchainPath = null;
 
@@ -18,7 +18,7 @@ public class ToolTips {
             }
         }
 
-        if (toolTipCache.isEmpty()){
+        if (toolTipsCache.isEmpty()){
             addFixtureToolTips();
             addBootstrapTooltips();
         }
@@ -26,10 +26,10 @@ public class ToolTips {
 
     public String getRandomToolTip() {
 
-        if (toolTipCache.size() != 0) {
+        if (toolTipsCache.size() != 0) {
             Random rand = new Random();
-            int pickedTip = rand.nextInt(toolTipCache.size());
-            return toolTipCache.get(pickedTip);
+            int pickedTip = rand.nextInt(toolTipsCache.size());
+            return toolTipsCache.get(pickedTip);
         } else {
             return "null";
         }
@@ -41,7 +41,7 @@ public class ToolTips {
             // check if File in list is directory so we wont try to listfiles from a file
             if (dir.isDirectory()) {
                 try {
-                    toolTipCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
+                    toolTipsCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
                 } catch (IOException e) {
                     System.out.println("couldn't parse tooltips for fixture " + dir.getName());
                 }
@@ -52,7 +52,7 @@ public class ToolTips {
     private void addBootstrapTooltips() {
         try {
             if (toolchainPath != null) {
-                toolTipCache.addAll(readToolTips(new URL("jar:file:" + toolchainPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
+                toolTipsCache.addAll(readToolTips(new URL("jar:file:" + toolchainPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
             }
         } catch (IOException e) {
             System.out.println("couldn't parse bootstrap tooltips");
