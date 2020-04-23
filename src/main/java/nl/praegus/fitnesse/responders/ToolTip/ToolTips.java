@@ -24,7 +24,7 @@ public class ToolTips {
         }
     }
 
-    public String getToolTip() {
+    public String getRandomToolTip() {
 
         if (toolTipCache.size() != 0) {
             Random rand = new Random();

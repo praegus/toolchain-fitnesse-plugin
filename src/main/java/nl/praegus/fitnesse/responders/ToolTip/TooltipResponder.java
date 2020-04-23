@@ -9,10 +9,6 @@ import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
 
 import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class TooltipResponder implements Responder {
     ToolTips  toolTips = new ToolTips();
@@ -24,7 +20,7 @@ public class TooltipResponder implements Responder {
     }
 
     private Response makeToolTipResponse() throws IOException {
-        String toolTip = toolTips.getToolTip();
+        String toolTip = toolTips.getRandomToolTip();
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);
