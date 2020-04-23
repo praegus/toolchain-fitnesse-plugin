@@ -15,16 +15,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TooltipResponder implements Responder {
-    ToolTips toolTips = new ToolTips();
+    ToolTips  toolTips = new ToolTips();
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException {
 
-        return makeToolTipResponse(request.getInput("CacheIsCurrent"));
+        return makeToolTipResponse();
     }
 
-    private Response makeToolTipResponse(String cacheIsCurrent) throws IOException {
-        String toolTip = toolTips.getToolTip(cacheIsCurrent);
+    private Response makeToolTipResponse() throws IOException {
+        String toolTip = toolTips.getToolTip();
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);

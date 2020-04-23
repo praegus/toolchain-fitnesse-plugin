@@ -1,6 +1,7 @@
 package nl.praegus.fitnesse.helpers;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +9,12 @@ import java.util.stream.Collectors;
 
 public class FileCache {
     // this function will create the file cache
-    public void setFileCache(String path, List<String> data) {
+    private static List<String> cache = new ArrayList<>();
+
+    public static void setFileCache(String path, List<String> data) {
         File fileCache = new File(path);
         try {
-            //if previous cache exists, delete it
+            //if previous cache exists, delete it RENAME TO FILE
             if (fileCache.exists()) {
                 fileCache.delete();
             }
@@ -29,7 +32,7 @@ public class FileCache {
     }
 
     //this function reads the file cache
-    public List<String> getFileCache(String path) {
+    public static List<String> getFileCache(String path) {
         File fileCache = new File(path);
         try {
             if (fileCache.exists()) {
