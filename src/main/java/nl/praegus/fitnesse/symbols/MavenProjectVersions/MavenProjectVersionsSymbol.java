@@ -20,23 +20,16 @@ import java.util.regex.Pattern;
 
 public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Translation {
 
-    private final static Set<String> IGNORE_DEPENDENCIES;
+    private final static Set<String> IGNORE_DEPENDENCIES = new HashSet<>(Arrays.asList(
+            "jaxb-core",
+            "jaxb-impl",
+            "jaxb-api",
+            "activation",
+            "junit"));
     private final static String latestversionXpath = "/metadata/versioning/latest";
 
-    static {
-        IGNORE_DEPENDENCIES = new HashSet<>(Arrays.asList(
-                "jaxb-core",
-                "jaxb-impl",
-                "jaxb-api",
-                "activation",
-                "junit"));
-    }
-
-    private JSONArray dependenciesInfo = new JSONArray();
-    private int status = 200;
-
     public MavenProjectVersionsSymbol() {
-        super("TestHistorySymbol");
+        super("VersionCheckerSymbol");
         wikiMatcher(new Matcher().string("!VersionChecker"));
         wikiRule(this);
         htmlTranslation(this);
@@ -49,72 +42,95 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
     @Override
     public String toTarget(Translator translator, Symbol symbol) {
-        dependenciesInfo = new JSONArray();
-        getDependencyInformation();
-        getPluginVersionInformation();
         HtmlWriter writer = new HtmlWriter();
-        writer.startTag("div");writer.putAttribute("id", "mavenVersions");
-        writer.startTag("h3");writer.putText("Maven Version Checker");writer.endTag();
-        writer.startTag("table");writer.putAttribute("id", "versioncheck");
-        writer.startTag("tr");
-            writer.startTag("th");
-            writer.putAttribute("colspan", "4");
-            writer.putText("Versioncheck");
+
+        // Generate the html
+        writer.startTag("div");
+            writer.putAttribute("id", "mavenVersions");
+
+            writer.startTag("h3");
+                writer.putText("Maven Version Checker");
             writer.endTag();
+
+            writer.putText(GenerateTable());
+
         writer.endTag();
+        return writer.toHtml();
+    }
 
-        ArrayList<String> tableHeaders = new ArrayList<>();
-        tableHeaders.add("Name");
-        tableHeaders.add("Current Version");
-        tableHeaders.add("Newest Version");
-        tableHeaders.add("Status");
+    private String GenerateTable() {
+        HtmlWriter writer = new HtmlWriter();
+        // Get all the version information
+        JSONArray versionInformation = getAllDependencyVersionInformation();
+        versionInformation.put(getPluginVersionInformation());
 
-        writer.startTag("tr");
-            for (String tableHeader : tableHeaders) {
-                writer.startTag("td");
-                writer.putText(tableHeader);
-                writer.endTag();
-            }
-        writer.endTag();
+        // Start of the tabele
+        writer.startTag("table");
+            writer.putAttribute("id", "versioncheck");
 
-        for (int i = 0; i < dependenciesInfo.length(); ++i) {
-            JSONObject object = dependenciesInfo.getJSONObject(i);
-            String current = object.has("version") ? object.getString("version") : object.getString("currentVersion");
-            String latest = object.getString("latest");
-            String status = getStatus(current, latest);
-
+            // Table title
             writer.startTag("tr");
-                writer.startTag("td");writer.putText(object.getString("artifactid"));writer.endTag();
-                writer.startTag("td");writer.putText(current);writer.endTag();
-                writer.startTag("td");writer.putText(object.getString("latest"));writer.endTag();
-                writer.startTag("td");writer.putAttribute("class", status);writer.putText(status);writer.endTag();
+                writer.startTag("th");
+                    writer.putAttribute("colspan", "4");
+                    writer.putText("Versioncheck");
+                writer.endTag();
             writer.endTag();
-        }
+
+            // Table headers
+            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status");
+            writer.startTag("tr");
+                for (String tableHeader : tableHeaders) {
+                    writer.putText(GenerateTableRowTd(tableHeader, null));
+                }
+            writer.endTag();
+
+            // Table row
+            for (int i = 0; i < versionInformation.length(); ++i) {
+                JSONObject object = versionInformation.getJSONObject(i);
+                writer.putText(GenerateTableRows(object));
+            }
 
         writer.endTag();
+
+        return writer.toHtml();
+    }
+
+    private String GenerateTableRows(JSONObject object) {
+        HtmlWriter writer = new HtmlWriter();
+        String current = object.has("version") ? object.getString("version") : object.getString("currentVersion");
+        String status = getStatus(current, object.getString("latest"));
+
+        writer.startTag("tr");
+            writer.putText(GenerateTableRowTd(object.getString("artifactid"), null));
+            writer.putText(GenerateTableRowTd(current, null));
+            writer.putText(GenerateTableRowTd(object.getString("latest"), null));
+            writer.putText(GenerateTableRowTd(status, status));
         writer.endTag();
+
+        return writer.toHtml();
+    }
+
+    private String GenerateTableRowTd(String text, String className) {
+        HtmlWriter writer = new HtmlWriter();
+        writer.startTag("td");
+            if (className != null) {
+                writer.putAttribute("class", className);
+            }
+            writer.putText(text);
+        writer.endTag();
+
         return writer.toHtml();
     }
 
     public String getStatus(String current, String latest) { return getStatusHelper(current, latest);}
 
     private String getStatusHelper(String current, String latest) {
-        Version currentVersion = new Version(current);
-        Version latestVersion = new Version(latest);
-
-        if (currentVersion.compareTo(latestVersion) < 0) {
-            return "Outdated";
-        }
-        else if (currentVersion.compareTo(latestVersion) > 0) {
-            return "Ahead";
-        }
-        else if (currentVersion.compareTo(latestVersion) == 0) {
-            return "Up-to-date";
-        }
-        return null;
+        VersionNumber currentVersion = new VersionNumber(current);
+        VersionNumber latestVersion = new VersionNumber(latest);
+        return currentVersion.compareTo(latestVersion).toString().replace("_", "-");
     }
 
-    private void getPluginVersionInformation () {
+    private JSONObject getPluginVersionInformation () {
         String pluginGroup = "nl.praegus";
         String pluginArtifact = "toolchain-fitnesse-plugin";
         JSONObject pluginInfo = new JSONObject();
@@ -123,39 +139,36 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         pluginInfo.put("artifactid", pluginArtifact);
         pluginInfo.put("version", getClass().getPackage().getImplementationVersion());
         pluginInfo.put("latest", getLatestVersion(pluginGroup, pluginArtifact));
-        dependenciesInfo.put(pluginInfo);
+        return pluginInfo;
     }
 
-    private void getDependencyInformation () {
+    private JSONArray getAllDependencyVersionInformation() {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         try {
             Model model = reader.read(new FileReader(System.getProperty("user.dir") + "/../pom.xml"));
             List<Dependency> dependencies = model.getDependencies();
+            JSONArray dependancyArray = new JSONArray();
             for (Dependency dep : dependencies) {
-                if (status == 200) {
-                    String group = dep.getGroupId();
-                    String artifact = dep.getArtifactId();
-                    String version = dep.getVersion();
-                    if(!IGNORE_DEPENDENCIES.contains(artifact)) {
-                        JSONObject dependencyInfo = new JSONObject();
-                        dependencyInfo.put("groupid", group);
-                        dependencyInfo.put("artifactid", artifact);
-                        dependencyInfo.put("currentVersion", translateVersion(version, model));
-                        dependencyInfo.put("latest", getLatestVersion(group, artifact));
-                        dependenciesInfo.put(dependencyInfo);
-                    }
+                String group = dep.getGroupId();
+                String artifact = dep.getArtifactId();
+                String version = dep.getVersion();
+                if(!IGNORE_DEPENDENCIES.contains(artifact)) {
+                    JSONObject dependencyInfo = new JSONObject();
+                    dependencyInfo.put("groupid", group);
+                    dependencyInfo.put("artifactid", artifact);
+                    dependencyInfo.put("currentVersion", translateVersion(version, model));
+                    dependencyInfo.put("latest", getLatestVersion(group, artifact));
+                    dependancyArray.put(dependencyInfo);
                 }
             }
-
+            return dependancyArray;
         } catch (IOException | XmlPullParserException e) {
-            status = 500;
             JSONObject error = new JSONObject();
             error.put("error", "No valid pom.xml was found in your project's root folder (are you using maven?)");
             error.put("message", e.getMessage());
             error.put("stacktrace", e.getStackTrace());
-            dependenciesInfo.put(error);
+            return new JSONArray(error);
         }
-
     }
 
     private String translateVersion(String version, Model model) {

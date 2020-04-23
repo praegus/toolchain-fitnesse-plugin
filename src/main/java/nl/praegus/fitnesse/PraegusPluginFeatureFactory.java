@@ -10,7 +10,6 @@ import fitnesse.wikitext.parser.SymbolProvider;
 import fitnesse.wikitext.parser.SymbolType;
 import nl.praegus.fitnesse.decorators.TableSymbolDecorator;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
-import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
@@ -63,8 +62,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
-        add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
         LOG.info("[Toolchain Plugin] Registering AllTagsResponder (?allTags).");
