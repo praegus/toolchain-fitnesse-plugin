@@ -61,6 +61,10 @@ public class ToolTips {
     }
 
     public String getToolTip(String CacheIsCurrent) {
+        File tooltipDataMap = new File(System.getProperty("user.dir")+tooltipTargetDirectory);
+        if (!tooltipDataMap.exists()) {
+            tooltipDataMap.mkdir();
+        }
         if (CacheIsCurrent.equals("false")) {
             addBootstrapTooltips();
             addToolTips();
