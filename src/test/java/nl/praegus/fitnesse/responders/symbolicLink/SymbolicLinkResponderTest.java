@@ -1,26 +1,18 @@
 package nl.praegus.fitnesse.responders.symbolicLink;
 
-import fitnesse.wiki.WikiPage;
 import fitnesse.wiki.WikiPageDummy;
-import fitnesse.wiki.WikiPageProperty;
-import fitnesse.wiki.WikiSourcePage;
-import nl.praegus.fitnesse.responders.allTags.AllTagsResponder;
 import org.json.JSONArray;
 import org.junit.Test;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SymbolicLinkResponderTest {
     @Test
     public void check_If_Response_Is_Equal_To_Expected_List_With_One_Page() {
-        SymbolicLinkResponder symlinkResponder = new SymbolicLinkResponder();
-        WikiPageDummy TestPageDummy = new WikiPageDummy("dummyPage", "", new WikiPageDummy());
+        // SymbolicLinkResponder symlinkResponder = new SymbolicLinkResponder();
+        // WikiPageDummy TestPageDummy = new WikiPageDummy("dummyPage", "", new WikiPageDummy());
 
-        JSONArray receivedValue = symlinkResponder.getSymlink(TestPageDummy);
+        // JSONArray receivedValue = symlinkResponder.getSymlinks(TestPageDummy);
 
         // assertThat(receivedValue).isEqualTo(new JSONArray());
     }

@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static fitnesse.wiki.WikiPageProperty.SUITES;
 import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
@@ -45,11 +44,11 @@ public class SymbolicLinkResponder implements SecureResponder {
         return new SecureReadOperation();
     }
 
-    public JSONArray getSymlink(WikiPage page){
-        return getSymlinkHelper(page, new JSONArray());
+    public ArrayList<SymbolicLinkInfo> getSymlinks(WikiPage page){
+        return getSymlinksHelper(page, new ArrayList<>());
     }
 
-    private JSONArray getSymlinkHelper(WikiPage wikiPage, JSONArray symbolicLinkArray) {
+    private ArrayList<SymbolicLinkInfo> getSymlinksHelper(WikiPage wikiPage, ArrayList<SymbolicLinkInfo> symbolicLinkArray) {
         pageData = wikiPage.getData();
         // Get Symlinks of the wiki page
         WikiPageProperty symLinksProperty = pageData.getProperties().getProperty(SymbolicPage.PROPERTY_NAME);
@@ -57,46 +56,18 @@ public class SymbolicLinkResponder implements SecureResponder {
         // Loop through the names
         if (symLinksProperty != null) {
             for (String name : symLinksProperty.keySet()) {
-                symbolicLinkArray.put(getObject(name, wikiPage, symLinksProperty));
+                symbolicLinkArray.add(new SymbolicLinkInfo(name, wikiPage, symLinksProperty));
             }
         }
 
         // Get Symlinks from the children
         if (wikiPage.getChildren().size() > 0) {
             for (WikiPage p : wikiPage.getChildren()) {
-                getSymlinkHelper(p, symbolicLinkArray);
+                getSymlinksHelper(p, symbolicLinkArray);
             }
         }
 
-        return symLinksProperty != null ? symbolicLinkArray : new JSONArray();
-    }
-
-    private JSONObject getObject(String name, WikiPage wikiPage, WikiPageProperty symLinksProperty) {
-        JSONObject symboliclinkInformation = new JSONObject();
-        symboliclinkInformation.put("pagePath", wikiPage.getFullPath().toString());
-        symboliclinkInformation.put("linkName", name);
-        symboliclinkInformation.put("linkPath", makePathForSymbolicLink(wikiPage, PathParser.parse(symLinksProperty.get(name))));
-        symboliclinkInformation.put("backUpLinkPath", symLinksProperty.get(name));
-        return symboliclinkInformation;
-    }
-
-    private String makePathForSymbolicLink(WikiPage page, WikiPagePath wikiPagePath) {
-        if (wikiPagePath != null) {
-            WikiPage wikiPage = wikiPagePath.isRelativePath() ? page.getParent() : page;
-            PageCrawler crawler = wikiPage.getPageCrawler();
-            WikiPage wikiPageFromCrawler = crawler.getPage(wikiPagePath);
-            WikiPagePath fullPath;
-            if (wikiPageFromCrawler != null) {
-                fullPath = wikiPageFromCrawler.getFullPath();
-                fullPath.makeAbsolute();
-            } else {
-                fullPath = new WikiPagePath();
-            }
-            String pathString = fullPath.toString();
-
-            return pathString.length() > 0 && pathString.charAt(0) == '.' ? pathString.substring(1) : pathString;
-        }
-        return null;
+        return symLinksProperty != null ? symbolicLinkArray : new ArrayList<>();
     }
 
     private String getHtmlPageAsString(FitNesseContext fitNesseContext, Request request, WikiPage wikiPage) {
@@ -104,7 +75,8 @@ public class SymbolicLinkResponder implements SecureResponder {
         htmlPage.setNavTemplate("viewNav");
         htmlPage.setMainTemplate("symlinks");
         htmlPage.put("viewLocation", request.getResource());
-        htmlPage.put("symlinks", getSymlink(wikiPage));
+        ArrayList<SymbolicLinkInfo> allSymlinks = getSymlinks(wikiPage);
+        htmlPage.put("symlinks", SymbolicLinkInfo.getJsonArray(allSymlinks));
         htmlPage.setTitle("Symbolic links: " + request.getResource());
 
         String tags = "";
