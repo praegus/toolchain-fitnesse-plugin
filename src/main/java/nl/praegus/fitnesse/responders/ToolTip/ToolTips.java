@@ -1,6 +1,7 @@
 package nl.praegus.fitnesse.responders.ToolTip;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class ToolTips {
     }
 
     public static String getRandomToolTip() {
-        if (toolTipsCache.isEmpty()){
+        if (toolTipsCache.isEmpty()) {
             addFixtureToolTips();
             addBootstrapTooltips();
         }
@@ -37,7 +38,7 @@ public class ToolTips {
             int pickedTip = rand.nextInt(toolTipsCache.size());
             return toolTipsCache.get(pickedTip);
         } else {
-            return "null";
+            return null;
         }
     }
 
@@ -48,8 +49,8 @@ public class ToolTips {
             if (dir.isDirectory()) {
                 try {
                     toolTipsCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
-                } catch (IOException e) {
-                    System.out.println("couldn't parse tooltips for fixture " + dir.getName());
+                } catch (MalformedURLException e) {
+                    System.out.println("couldn't find tooltips for fixture " + dir.getName());
                 }
             }
         }
@@ -57,7 +58,7 @@ public class ToolTips {
 
     private static void addBootstrapTooltips() {
         // get the bootstrap path
-        if(bootStrapPath == null) {
+        if (bootStrapPath == null) {
             String[] classPaths = System.getProperty("java.class.path").split(";");
             for (String classpath : classPaths) {
                 if (classpath.contains("toolchain-fitnesse-plugin")) {
@@ -66,16 +67,21 @@ public class ToolTips {
             }
         }
         try {
-                toolTipsCache.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
-        } catch (IOException e) {
-            System.out.println("couldn't parse bootstrap tooltips");
+            toolTipsCache.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
+        } catch (MalformedURLException e) {
+            System.out.println("couldn't find bootstrap tooltips");
         }
     }
 
-    private static List<String> readToolTips(URL url) throws IOException {
-        InputStream inputStream = url.openStream();
-        InputStreamReader reader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        return bufferedReader.lines().collect(Collectors.toList());
+    private static List<String> readToolTips(URL url) {
+        try {
+            InputStream inputStream = url.openStream();
+            InputStreamReader reader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            return bufferedReader.lines().collect(Collectors.toList());
+        } catch (IOException e) {
+            System.out.println("couldnt read tooltips on url: " + url.getPath());
+        }
+        return new ArrayList<>();
     }
 }
