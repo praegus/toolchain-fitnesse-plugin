@@ -29,8 +29,8 @@ public class ToolTips {
 
     public static String getRandomToolTip() {
         if (toolTipsCache.isEmpty()) {
-            addFixtureToolTips();
-            addBootstrapTooltips();
+            addFixtureToolTipsToList();
+            addBootstrapTooltipsToList();
         }
 
         if (toolTipsCache.size() != 0) {
@@ -42,7 +42,7 @@ public class ToolTips {
         }
     }
 
-    private static void addFixtureToolTips() {
+    private static void addFixtureToolTipsToList() {
         File[] dirs = new File(toolTipPath).listFiles();
         for (File dir : dirs) {
             // check if File in list is directory so we wont try to listfiles from a file
@@ -56,7 +56,7 @@ public class ToolTips {
         }
     }
 
-    private static void addBootstrapTooltips() {
+    private static void addBootstrapTooltipsToList() {
         // get the bootstrap path
         if (bootStrapPath == null) {
             String[] classPaths = System.getProperty("java.class.path").split(";");
