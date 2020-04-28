@@ -15,13 +15,13 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SymbolicLinkResponderTest {
-    @Test
-    public void check_If_Response_Is_Equal_To_Expected_List_With_One_Page() {
-        SymbolicLinkResponder tagResponder = new SymbolicLinkResponder();
-        WikiPageDummy TestPageDummy = new WikiPageDummy("dummyPage", "", new WikiPageDummy());
-
-        JSONArray receivedValue = tagResponder.getSymlink(TestPageDummy);
-
+//    @Test
+//    public void check_If_Response_Is_Equal_To_Expected_List_With_One_Page() {
+//        SymbolicLinkResponder tagResponder = new SymbolicLinkResponder();
+//        WikiPageDummy TestPageDummy = new WikiPageDummy("dummyPage", "", new WikiPageDummy());
+//
+//        JSONArray receivedValue = tagResponder.getSymlink(TestPageDummy);
+//
 //        assertThat(receivedValue).isEqualTo(new JSONArray());
-    }
+//    }
 }
