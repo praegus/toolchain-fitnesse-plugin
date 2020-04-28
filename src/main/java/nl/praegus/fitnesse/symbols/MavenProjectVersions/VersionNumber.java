@@ -1,7 +1,7 @@
 package nl.praegus.fitnesse.symbols.MavenProjectVersions;
 
 public class VersionNumber{
-    public final int[] versionNumberArray;
+    private final int[] versionNumberArray;
 
     public VersionNumber(String version) {
         String[] split = version.split("[-.]");
@@ -16,7 +16,7 @@ public class VersionNumber{
         }
     }
 
-    public VersionStatus compareTo(VersionNumber latestVersion) {
+    public String compareTo(VersionNumber latestVersion) {
         // Calculate max length of version number
         int maxLength = Math.max(versionNumberArray.length, latestVersion.versionNumberArray.length);
         for (int i = 0; i < maxLength; i++) {
@@ -24,9 +24,9 @@ public class VersionNumber{
             int right = i < latestVersion.versionNumberArray.length ? latestVersion.versionNumberArray[i] : 0;
             // Compare current version & latest version
             if (left != right) {
-                return left < right ? VersionStatus.Outdated : VersionStatus.Ahead;
+                return left < right ? VersionStatus.OUTDATED.toString() : VersionStatus.AHEAD.toString();
             }
         }
-        return VersionStatus.Up_to_date;
+        return VersionStatus.UP_TO_DATE.toString();
     }
 }

@@ -52,19 +52,19 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
                 writer.putText("Maven Version Checker");
             writer.endTag();
 
-            writer.putText(GenerateTable());
+            writer.putText(getVersionTableHtmlAsString());
 
         writer.endTag();
         return writer.toHtml();
     }
 
-    private String GenerateTable() {
+    private String getVersionTableHtmlAsString() {
         HtmlWriter writer = new HtmlWriter();
         // Get all the version information
         JSONArray versionInformation = getAllDependencyVersionInformation();
         versionInformation.put(getPluginVersionInformation());
 
-        // Start of the tabele
+        // Start of the table
         writer.startTag("table");
             writer.putAttribute("id", "versioncheck");
 
@@ -80,14 +80,14 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status");
             writer.startTag("tr");
                 for (String tableHeader : tableHeaders) {
-                    writer.putText(GenerateTableRowTd(tableHeader, null));
+                    writer.putText(generateTableRowTdHtmlAsString(tableHeader, null));
                 }
             writer.endTag();
 
             // Table row
             for (int i = 0; i < versionInformation.length(); ++i) {
-                JSONObject object = versionInformation.getJSONObject(i);
-                writer.putText(GenerateTableRows(object));
+                JSONObject tableRowData = versionInformation.getJSONObject(i);
+                writer.putText(generateTableRowHtmlAsString(tableRowData));
             }
 
         writer.endTag();
@@ -95,22 +95,22 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    private String GenerateTableRows(JSONObject object) {
+    private String generateTableRowHtmlAsString(JSONObject tableRowData) {
         HtmlWriter writer = new HtmlWriter();
-        String current = object.has("version") ? object.getString("version") : object.getString("currentVersion");
-        String status = getStatus(current, object.getString("latest"));
+        String current = tableRowData.has("version") ? tableRowData.getString("version") : tableRowData.getString("currentVersion");
+        String status = getStatus(current, tableRowData.getString("latest"));
 
         writer.startTag("tr");
-            writer.putText(GenerateTableRowTd(object.getString("artifactid"), null));
-            writer.putText(GenerateTableRowTd(current, null));
-            writer.putText(GenerateTableRowTd(object.getString("latest"), null));
-            writer.putText(GenerateTableRowTd(status, status));
+            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getString("artifactid"), null));
+            writer.putText(generateTableRowTdHtmlAsString(current, null));
+            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getString("latest"), null));
+            writer.putText(generateTableRowTdHtmlAsString(status, status));
         writer.endTag();
 
         return writer.toHtml();
     }
 
-    private String GenerateTableRowTd(String text, String className) {
+    private String generateTableRowTdHtmlAsString(String text, String className) {
         HtmlWriter writer = new HtmlWriter();
         writer.startTag("td");
             if (className != null) {
@@ -122,12 +122,10 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    public String getStatus(String current, String latest) { return getStatusHelper(current, latest);}
-
-    private String getStatusHelper(String current, String latest) {
+    public String getStatus(String current, String latest) {
         VersionNumber currentVersion = new VersionNumber(current);
         VersionNumber latestVersion = new VersionNumber(latest);
-        return currentVersion.compareTo(latestVersion).toString().replace("_", "-");
+        return currentVersion.compareTo(latestVersion);
     }
 
     private JSONObject getPluginVersionInformation () {
