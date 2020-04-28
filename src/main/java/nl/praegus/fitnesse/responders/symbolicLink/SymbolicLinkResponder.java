@@ -35,7 +35,7 @@ public class SymbolicLinkResponder implements SecureResponder {
         response.setMaxAge(0);
         response.setStatus(200);
         response.setContentType("text/html");
-        response.setContent(createHTMLPage(fitNesseContext, request, wikiPage));
+        response.setContent(getHtmlPageAsString(fitNesseContext, request, wikiPage));
 
         return response;
     }
@@ -62,8 +62,8 @@ public class SymbolicLinkResponder implements SecureResponder {
         }
 
         // Get Symlinks from the children
-        if (getPageChildren(wikiPage).size() > 0) {
-            for (WikiPage p : getPageChildren(wikiPage)) {
+        if (wikiPage.getChildren().size() > 0) {
+            for (WikiPage p : wikiPage.getChildren()) {
                 getSymlinkHelper(p, symbolicLinkArray);
             }
         }
@@ -75,21 +75,19 @@ public class SymbolicLinkResponder implements SecureResponder {
         JSONObject symboliclinkInformation = new JSONObject();
         symboliclinkInformation.put("pagePath", wikiPage.getFullPath().toString());
         symboliclinkInformation.put("linkName", name);
-        symboliclinkInformation.put("linkPath", makePathForSymbolicLink(wikiPage, symLinksProperty.get(name)));
+        symboliclinkInformation.put("linkPath", makePathForSymbolicLink(wikiPage, PathParser.parse(symLinksProperty.get(name))));
         symboliclinkInformation.put("backUpLinkPath", symLinksProperty.get(name));
         return symboliclinkInformation;
     }
 
-    private String makePathForSymbolicLink(WikiPage page, String linkPath) {
-        WikiPagePath wikiPagePath = PathParser.parse(linkPath);
-
+    private String makePathForSymbolicLink(WikiPage page, WikiPagePath wikiPagePath) {
         if (wikiPagePath != null) {
-            WikiPage parent = wikiPagePath.isRelativePath() ? page.getParent() : page;
-            PageCrawler crawler = parent.getPageCrawler();
-            WikiPage target = crawler.getPage(wikiPagePath);
+            WikiPage wikiPage = wikiPagePath.isRelativePath() ? page.getParent() : page;
+            PageCrawler crawler = wikiPage.getPageCrawler();
+            WikiPage wikiPageFromCrawler = crawler.getPage(wikiPagePath);
             WikiPagePath fullPath;
-            if (target != null) {
-                fullPath = target.getFullPath();
+            if (wikiPageFromCrawler != null) {
+                fullPath = wikiPageFromCrawler.getFullPath();
                 fullPath.makeAbsolute();
             } else {
                 fullPath = new WikiPagePath();
@@ -101,24 +99,20 @@ public class SymbolicLinkResponder implements SecureResponder {
         return null;
     }
 
-    private String createHTMLPage(FitNesseContext fitNesseContext, Request request, WikiPage wikiPage) {
-        HtmlPage html = fitNesseContext.pageFactory.newPage();
-        html.setNavTemplate("viewNav");
-        html.setMainTemplate("symlinks");
-        html.put("viewLocation", request.getResource());
-        html.put("symlinks", getSymlink(wikiPage));
-        html.setTitle("Symbolic links: " + request.getResource());
+    private String getHtmlPageAsString(FitNesseContext fitNesseContext, Request request, WikiPage wikiPage) {
+        HtmlPage htmlPage = fitNesseContext.pageFactory.newPage();
+        htmlPage.setNavTemplate("viewNav");
+        htmlPage.setMainTemplate("symlinks");
+        htmlPage.put("viewLocation", request.getResource());
+        htmlPage.put("symlinks", getSymlink(wikiPage));
+        htmlPage.setTitle("Symbolic links: " + request.getResource());
 
         String tags = "";
         if(pageData != null)  {
             tags = pageData.getAttribute(SUITES);
         }
-        html.setPageTitle(new PageTitle("Symbolic links", PathParser.parse(request.getResource()), tags));
-        return html.html(request);
-    }
-
-    private List<WikiPage> getPageChildren(WikiPage parent) {
-        return new ArrayList<>(parent.getChildren());
+        htmlPage.setPageTitle(new PageTitle("Symbolic links", PathParser.parse(request.getResource()), tags));
+        return htmlPage.html(request);
     }
 
 }
