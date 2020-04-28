@@ -44,13 +44,15 @@ public class ToolTips {
 
     private static void addFixtureToolTipsToList() {
         File[] dirs = new File(toolTipPath).listFiles();
-        for (File dir : dirs) {
-            // check if File in list is directory so we wont try to listfiles from a file
-            if (dir.isDirectory()) {
-                try {
-                    toolTipsCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
-                } catch (MalformedURLException e) {
-                    System.out.println("couldn't find tooltips for fixture " + dir.getName());
+        if (dirs != null) {
+            for (File dir : dirs) {
+                // check if File in list is directory so we wont try to listfiles from a file
+                if (dir.isDirectory()) {
+                    try {
+                        toolTipsCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
+                    } catch (MalformedURLException e) {
+                        System.out.println("couldn't find tooltips for fixture " + dir.getName());
+                    }
                 }
             }
         }
