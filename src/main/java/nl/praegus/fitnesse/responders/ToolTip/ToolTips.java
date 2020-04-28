@@ -7,32 +7,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ToolTips {
-    private static List<String> toolTipsCache = new ArrayList<>();
-    private static String toolTipPath = System.getProperty("user.dir") + "/TooltipData";
-    private static String bootStrapPath = null;
+    private List<String> toolTipsCache = new ArrayList<>();
+    private final String toolTipPath;
+    private final String bootStrapPath;
 
-    public static void setToolTipPath(String toolTipPath) {
-        ToolTips.toolTipPath = toolTipPath;
+    ToolTips(String toolTipPath, String bootStrapPath){
+        this.toolTipPath = toolTipPath;
+        this.bootStrapPath = bootStrapPath;
+
+        addFixtureToolTipsToList();
+        addBootstrapTooltipsToList();
     }
 
-    public static String getToolTipPath() {
-        return toolTipPath;
-    }
-
-    public static void setBootStrapPath(String bootStrapPath) {
-        ToolTips.bootStrapPath = bootStrapPath;
-    }
-
-    public static void setToolTipsCache(List<String> toolTipsCache) {
-        ToolTips.toolTipsCache = toolTipsCache;
-    }
-
-    public static String getRandomToolTip() {
-        if (toolTipsCache.isEmpty()) {
-            addFixtureToolTipsToList();
-            addBootstrapTooltipsToList();
-        }
-
+    public  String getRandomToolTip() {
         if (toolTipsCache.size() != 0) {
             Random rand = new Random();
             int pickedTip = rand.nextInt(toolTipsCache.size());
@@ -42,7 +29,18 @@ public class ToolTips {
         }
     }
 
-    private static void addFixtureToolTipsToList() {
+    static public String getBootstrapPath(){
+
+            String[] classPaths = System.getProperty("java.class.path").split(";");
+            for (String classpath : classPaths) {
+                if (classpath.contains("toolchain-fitnesse-plugin")) {
+                    return classpath;
+                }
+            }
+        return null;
+    }
+
+    private void addFixtureToolTipsToList() {
         File[] dirs = new File(toolTipPath).listFiles();
         if (dirs != null) {
             for (File dir : dirs) {
@@ -58,16 +56,8 @@ public class ToolTips {
         }
     }
 
-    private static void addBootstrapTooltipsToList() {
+    private void addBootstrapTooltipsToList() {
         // get the bootstrap path
-        if (bootStrapPath == null) {
-            String[] classPaths = System.getProperty("java.class.path").split(";");
-            for (String classpath : classPaths) {
-                if (classpath.contains("toolchain-fitnesse-plugin")) {
-                    bootStrapPath = classpath;
-                }
-            }
-        }
         try {
             toolTipsCache.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
         } catch (MalformedURLException e) {
@@ -75,7 +65,7 @@ public class ToolTips {
         }
     }
 
-    private static List<String> readToolTips(URL url) {
+    private List<String> readToolTips(URL url) {
         try {
             InputStream inputStream = url.openStream();
             InputStreamReader reader = new InputStreamReader(inputStream);
