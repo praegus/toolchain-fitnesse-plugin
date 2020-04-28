@@ -11,8 +11,6 @@ import fitnesse.http.SimpleResponse;
 import java.io.*;
 
 public class TooltipResponder implements Responder {
-    ToolTips  toolTips = new ToolTips();
-
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException {
 
@@ -20,7 +18,8 @@ public class TooltipResponder implements Responder {
     }
 
     private Response makeToolTipResponse() throws IOException {
-        String toolTip = toolTips.getRandomToolTip();
+
+        String toolTip = ToolTips.getRandomToolTip();
         SimpleResponse response = new SimpleResponse();
 
         response.setContent(toolTip);
