@@ -23,7 +23,6 @@ public class ToolTips {
         this.bootStrapPath = getBootstrapPath();
         this.toolTipsCache.addAll(getFixtureToolTips());
         this.toolTipsCache.addAll(getBootstrapTooltips());
-
     }
 
     public String getRandomToolTip() {
