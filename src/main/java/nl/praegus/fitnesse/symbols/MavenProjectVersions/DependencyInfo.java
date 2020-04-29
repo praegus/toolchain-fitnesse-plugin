@@ -11,14 +11,12 @@ import java.util.regex.Pattern;
 
 public class DependencyInfo {
     private final static String latestversionXpath = "/metadata/versioning/latest";
-    private String groupid;
     private String artifactid;
     private String version;
     private String latest;
 
     // Plugin
     public DependencyInfo(String pluginGroup, String pluginArtifact) {
-        this.groupid = pluginGroup;
         this.artifactid = pluginArtifact;
         this.version = getClass().getPackage().getImplementationVersion();
         this.latest = getLatestVersion(pluginGroup, pluginArtifact);
@@ -26,7 +24,6 @@ public class DependencyInfo {
 
     // Other Dependencies
     public DependencyInfo(String group, String artifact, String version, Model model) {
-        this.groupid = group;
         this.artifactid = artifact;
         this.version = translateVersion(version, model);
         this.latest = getLatestVersion(group, artifact);

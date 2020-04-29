@@ -30,11 +30,13 @@ public class ProjectDependencyInfo {
             Model model = reader.read(new FileReader(System.getProperty("user.dir") + "/../pom.xml"));
             List<Dependency> dependencies = model.getDependencies();
             for (Dependency dep : dependencies) {
-
-                dependenciesInfo.add(getDependencyVersionInformation(dep, model));
+                String artifact = dep.getArtifactId();
+                if (!IGNORE_DEPENDENCIES.contains(artifact)) {
+                    dependenciesInfo.add(getDependencyVersionInformation(dep, model, artifact));
+                }
             }
         } catch (IOException | XmlPullParserException ignored) {
-            throw new FileNotFoundException("Pom not found!");
+            throw new FileNotFoundException("POM not found!");
         }
     }
 
@@ -42,14 +44,11 @@ public class ProjectDependencyInfo {
         return dependenciesInfo;
     }
 
-    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model) {
+    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
         String group = dependency.getGroupId();
-        String artifact = dependency.getArtifactId();
+
         String version = dependency.getVersion();
-        if (!IGNORE_DEPENDENCIES.contains(artifact)) {
-            return new DependencyInfo(group, artifact, version, model);
-        }
-        return null;
+        return new DependencyInfo(group, artifact, version, model);
     }
 
 }
