@@ -16,6 +16,10 @@ public class ProjectSymbolicLinkInfo {
         symbolicLinkInfos.addAll(getSymlinksHelper(wikiPage, new ArrayList<>()));
     }
 
+    public List<SymbolicLinkInfo> getSymbolicLinkInfos() {
+        return symbolicLinkInfos;
+    }
+
     public JSONArray getSymbolicLinkInfosJsonArray(){
         JSONArray symlinksJsonArray = new JSONArray();
 
@@ -51,7 +55,7 @@ public class ProjectSymbolicLinkInfo {
             }
         }
 
-        return symLinksProperty != null ? symbolicLinkArray : new ArrayList<>();
+        return symbolicLinkArray != null ? symbolicLinkArray : new ArrayList<>();
     }
 
 }

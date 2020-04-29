@@ -10,7 +10,6 @@ import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
 import fitnesse.wiki.*;
-import org.json.JSONArray;
 
 import java.io.UnsupportedEncodingException;
 
