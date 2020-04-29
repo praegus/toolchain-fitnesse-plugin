@@ -27,10 +27,10 @@ public class SymbolicLinkResponder implements SecureResponder {
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiPage wikiPage = loadPage(fitNesseContext, request.getResource(), request.getMap());
 
-        return makeTagResponse(wikiPage, fitNesseContext, request);
+        return makeSymlinksResponse(wikiPage, fitNesseContext, request);
     }
 
-    public SimpleResponse makeTagResponse(WikiPage wikiPage, FitNesseContext fitNesseContext, Request request) throws UnsupportedEncodingException {
+    private SimpleResponse makeSymlinksResponse(WikiPage wikiPage, FitNesseContext fitNesseContext, Request request) throws UnsupportedEncodingException {
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
         response.setStatus(200);

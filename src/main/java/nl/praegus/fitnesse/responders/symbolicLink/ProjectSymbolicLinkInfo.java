@@ -50,12 +50,12 @@ public class ProjectSymbolicLinkInfo {
 
         // Get Symlinks from the children
         if (wikiPage.getChildren() != null) {
-            for (WikiPage p : wikiPage.getChildren()) {
-                getSymlinksHelper(p, symbolicLinkArray);
+            for (WikiPage page : wikiPage.getChildren()) {
+                getSymlinksHelper(page, symbolicLinkArray);
             }
         }
 
-        return symbolicLinkArray != null ? symbolicLinkArray : new ArrayList<>();
+        return symbolicLinkArray;
     }
 
 }
