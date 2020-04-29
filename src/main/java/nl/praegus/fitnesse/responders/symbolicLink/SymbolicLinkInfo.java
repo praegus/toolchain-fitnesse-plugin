@@ -5,13 +5,8 @@ import fitnesse.wiki.PathParser;
 import fitnesse.wiki.WikiPage;
 import fitnesse.wiki.WikiPagePath;
 import fitnesse.wiki.WikiPageProperty;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class SymbolicLinkInfo {
-
     private String pagePath;
     private String linkName;
     private String linkPath;
@@ -24,20 +19,20 @@ public class SymbolicLinkInfo {
         this.backupLinkPath = symLinksProperty.get(linkName);
     }
 
-    public static JSONArray getJsonArray(ArrayList<SymbolicLinkInfo> symlinksArrayList){
-        JSONArray symlinksJsonArray = new JSONArray();
+    public String getPagePath() {
+        return pagePath;
+    }
 
-        for (SymbolicLinkInfo symlink : symlinksArrayList) {
-            JSONObject symlinkJsonObject = new JSONObject();
-            symlinkJsonObject.put("pagePath", symlink.pagePath);
-            symlinkJsonObject.put("linkName", symlink.linkName);
-            symlinkJsonObject.put("linkPath", symlink.linkPath);
-            symlinkJsonObject.put("backUpLinkPath", symlink.backupLinkPath);
+    public String getLinkName() {
+        return linkName;
+    }
 
-            symlinksJsonArray.put(symlinkJsonObject);
-        }
+    public String getLinkPath() {
+        return linkPath;
+    }
 
-        return symlinksJsonArray;
+    public String getBackupLinkPath() {
+        return backupLinkPath;
     }
 
     private String makePathForSymbolicLink(WikiPage page, WikiPagePath wikiPagePath) {
