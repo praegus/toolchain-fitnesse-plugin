@@ -2,10 +2,6 @@ package nl.praegus.fitnesse.responders.ToolTip;
 
 import org.junit.Test;
 
-import javax.tools.Tool;
-
-import java.util.ArrayList;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToolTipsTest {
