@@ -1,4 +1,5 @@
 package nl.praegus.fitnesse.symbols.MavenProjectVersions;
+
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -16,13 +17,30 @@ public class MavenProjectVersionsSymbolTest {
 
         assertThat(receivedValue).isEqualTo("Outdated");
     }
-
+//    @Test
+//    public void test() throws FileNotFoundException {
+////        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+////        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
+////        String receivedValue = MavenVersionSymbol.getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo());
+//
+////        assertThat(receivedValue).isEqualTo("Outdated");
+//    }
+//
     @Test
-    public void test() throws FileNotFoundException {
-//        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
-//        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
-//        String receivedValue = MavenVersionSymbol.getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo());
+    public void testing_toTarget() {
+        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+        TestWikiPageDummyMavenVersions TestWikiPageDummyMavenVersions = new TestWikiPageDummyMavenVersions("dummyPage", "", new WikiPageDummy(),new WikiPageProperty());
+        WikiSourcePage testWikiSourcePage = new WikiSourcePage(TestWikiPageDummyMavenVersions);
+        Symbol symbol = new Symbol(new SymbolType("dwa"), "adaw", 1, 1);
+        Translator translator = new Translator(testWikiSourcePage, symbol);
+        System.out.println(MavenVersionSymbol.toTarget(translator, symbol);
 
-//        assertThat(receivedValue).isEqualTo("Outdated");
     }
+//    @Test
+//    public void tik_maar_effe() throws FileNotFoundException {
+//        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
+//
+//        assertThat(projectDependencyInfo).isEqualTo("Outdated");
+//    }
 }
+
