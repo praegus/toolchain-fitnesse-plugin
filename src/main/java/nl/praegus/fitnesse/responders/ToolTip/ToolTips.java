@@ -7,19 +7,26 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ToolTips {
-    private List<String> toolTipsCache = new ArrayList<>();
+    private final ArrayList<String> toolTipsCache = new ArrayList<>();
     private final String toolTipPath;
     private final String bootStrapPath;
 
-    ToolTips(String toolTipPath, String bootStrapPath){
+    public ToolTips(String toolTipPath, String bootStrapPath) {
         this.toolTipPath = toolTipPath;
         this.bootStrapPath = bootStrapPath;
-
-        addFixtureToolTipsToList();
-        addBootstrapTooltipsToList();
+        this.toolTipsCache.addAll(getFixtureToolTips());
+        this.toolTipsCache.addAll(getBootstrapTooltips());
     }
 
-    public  String getRandomToolTip() {
+    public ToolTips() {
+        this.toolTipPath = System.getProperty("user.dir") + "/TooltipData";
+        this.bootStrapPath = getBootstrapPath();
+        this.toolTipsCache.addAll(getFixtureToolTips());
+        this.toolTipsCache.addAll(getBootstrapTooltips());
+
+    }
+
+    public String getRandomToolTip() {
         if (toolTipsCache.size() != 0) {
             Random rand = new Random();
             int pickedTip = rand.nextInt(toolTipsCache.size());
@@ -29,40 +36,44 @@ public class ToolTips {
         }
     }
 
-    static public String getBootstrapPath(){
+    public static String getBootstrapPath() {
 
-            String[] classPaths = System.getProperty("java.class.path").split(";");
-            for (String classpath : classPaths) {
-                if (classpath.contains("toolchain-fitnesse-plugin")) {
-                    return classpath;
-                }
+        String[] classPaths = System.getProperty("java.class.path").split(";");
+        for (String classpath : classPaths) {
+            if (classpath.contains("toolchain-fitnesse-plugin")) {
+                return classpath;
             }
+        }
         return null;
     }
 
-    private void addFixtureToolTipsToList() {
+    private ArrayList<String> getFixtureToolTips() {
+        ArrayList<String> toolTips = new ArrayList<>();
         File[] dirs = new File(toolTipPath).listFiles();
         if (dirs != null) {
             for (File dir : dirs) {
                 // check if File in list is directory so we wont try to listfiles from a file
                 if (dir.isDirectory()) {
                     try {
-                        toolTipsCache.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
+                        toolTips.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
                     } catch (MalformedURLException e) {
                         System.out.println("couldn't find tooltips for fixture " + dir.getName());
                     }
                 }
             }
         }
+        return toolTips;
     }
 
-    private void addBootstrapTooltipsToList() {
+    private ArrayList<String> getBootstrapTooltips() {
         // get the bootstrap path
+        ArrayList<String> tooltips = new ArrayList<>();
         try {
-            toolTipsCache.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
+            tooltips.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
         } catch (MalformedURLException e) {
             System.out.println("couldn't find bootstrap tooltips");
         }
+        return tooltips;
     }
 
     private List<String> readToolTips(URL url) {

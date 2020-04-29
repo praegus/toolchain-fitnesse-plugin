@@ -7,10 +7,12 @@ import fitnesse.authentication.SecureReadOperation;
 import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
+
 import java.io.*;
 
 public class TooltipResponder implements Responder {
-    static ToolTips toolTips = new ToolTips(System.getProperty("user.dir") + "/TooltipData",ToolTips.getBootstrapPath());
+    private static final ToolTips toolTips = new ToolTips();
+
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException {
 
