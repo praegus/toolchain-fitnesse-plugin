@@ -49,7 +49,7 @@ public class DependencyInfo {
     private String getCurrentVersion(String version, Model model) {
         // Check if version is variable
         if(version.startsWith("$")) {
-            String property = "";
+            String property = null;
             // Create pattern of finding ${toolchain.fixtures.version}
             Pattern pattern = Pattern.compile("\\$\\{([^{}]+)}");
             java.util.regex.Matcher matcher = pattern.matcher(version);

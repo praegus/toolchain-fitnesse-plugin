@@ -25,7 +25,6 @@ public class DependencyInfoTest {
         DependencyInfo receivedValue = new DependencyInfo(group, artifact, version, model);
 
         assertThat(receivedValue.getArtifactid()).isEqualTo("jaxb-api");
-        assertThat(receivedValue.getLatest()).isEqualTo("2.4.0-b180830.0359");
         assertThat(receivedValue.getVersion()).isEqualTo("2.3.1");
     }
 
@@ -41,7 +40,6 @@ public class DependencyInfoTest {
         DependencyInfo receivedValue = new DependencyInfo(group, artifact, version, model);
 
         assertThat(receivedValue.getArtifactid()).isEqualTo("jaxb-core");
-        assertThat(receivedValue.getLatest()).isEqualTo("3.0.0-M2");
         assertThat(receivedValue.getVersion()).isEqualTo("2.3.0.1");
     }
 
@@ -51,6 +49,5 @@ public class DependencyInfoTest {
 
         assertThat(receivedValue.getArtifactid()).isEqualTo("toolchain-fitnesse-plugin");
         assertThat(receivedValue.getLatest()).isEqualTo("2.0.3");
-//        assertThat(receivedValue.getVersion()).isEqualTo("2.3.1");
     }
 }
