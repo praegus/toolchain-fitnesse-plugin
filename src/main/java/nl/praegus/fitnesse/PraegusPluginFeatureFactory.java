@@ -13,6 +13,7 @@ import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.symbolicLink.SymbolicLinkResponder;
+import nl.praegus.fitnesse.responders.ToolTip.TooltipResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
 import nl.praegus.fitnesse.responders.allTags.AllTagsResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
@@ -63,6 +64,8 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "allTags", AllTagsResponder.class);
         LOG.info("[Toolchain Plugin] Registering SymbolicLinkResponder (?symlinks).");
         add(responderFactory, "symlinks", SymbolicLinkResponder.class);
+        LOG.info("[Toolchain Plugin] Registering TooltipResponder (?Tooltips).");
+        add(responderFactory, "Tooltips", TooltipResponder.class);
     }
 
     private void add(ResponderFactory factory, String key, Class<? extends Responder> responder) {
