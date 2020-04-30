@@ -17,7 +17,7 @@ public class ToolTipsTest {
     }
 
     @Test
-    public void Check_if_ToolTip_Is_null_when_Nothing_is_given() {
+    public void Check_if_txt_are_found_but_empty_null_is_given() {
         Tooltips toolTips = new Tooltips(System.getProperty("user.dir") + "/src/test/resources/Tooltip/TooltipData_empty_txt", System.getProperty("user.dir") + "/src/test/resources/Tooltip/TooltipData_empty_txt/toolchain.jar");
 
         String receivedResult = toolTips.getRandomTooltip();

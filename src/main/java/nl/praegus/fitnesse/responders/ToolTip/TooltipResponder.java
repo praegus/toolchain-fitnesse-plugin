@@ -14,10 +14,7 @@ public class TooltipResponder implements Responder {
     private static final Tooltips toolTips = new Tooltips();
 
     @Override
-    public Response makeResponse(FitNesseContext context, Request request) throws IOException {
-
-        return makeToolTipResponse();
-    }
+    public Response makeResponse(FitNesseContext context, Request request) throws IOException { return makeToolTipResponse(); }
 
     private Response makeToolTipResponse() throws UnsupportedEncodingException {
 

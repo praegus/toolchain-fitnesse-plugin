@@ -41,21 +41,21 @@ public class Tooltips {
     }
 
     private List<String> getFixtureTooltips(String path) {
-        List<String> toolTips = new ArrayList<>();
+        List<String> tooltips = new ArrayList<>();
         File[] dirs = new File(path).listFiles();
         if (dirs != null) {
             for (File dir : dirs) {
                 // check if File in list is directory so we wont try to listfiles from a file
                 if (dir.isDirectory()) {
                     try {
-                        toolTips.addAll(readTooltips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
+                        tooltips.addAll(readTooltips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
                     } catch (MalformedURLException e) {
                         System.out.println("couldn't find tooltips for fixture " + dir.getName());
                     }
                 }
             }
         }
-        return toolTips;
+        return tooltips;
     }
 
     private List<String> getBootstrapTooltips(String path) {
