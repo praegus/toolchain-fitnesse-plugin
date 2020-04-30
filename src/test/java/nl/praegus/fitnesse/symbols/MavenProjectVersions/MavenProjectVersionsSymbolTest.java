@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MavenProjectVersionsSymbolTest {
     @Test
-    public void compare_If_Current_SemanticVersion_Is_Outdated() {
+    public void compare_If_Current_Version_Is_Outdated() {
         MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
         String currentVersion = "1.1.0";
         String latestVersion = "1.2.0";
@@ -17,15 +17,29 @@ public class MavenProjectVersionsSymbolTest {
 
         assertThat(receivedValue).isEqualTo("Outdated");
     }
-//    @Test
-//    public void test() throws FileNotFoundException {
-////        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
-////        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
-////        String receivedValue = MavenVersionSymbol.getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo());
-//
-////        assertThat(receivedValue).isEqualTo("Outdated");
-//    }
-//
+
+    @Test
+    public void compare_If_Current_Version_Is_Ahead() {
+        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+        String currentVersion = "1.6.0";
+        String latestVersion = "1.2.0";
+
+        String receivedValue = MavenVersionSymbol.getStatus(currentVersion, latestVersion);
+
+        assertThat(receivedValue).isEqualTo("Ahead");
+    }
+
+    @Test
+    public void compare_If_Current_Version_Is_UpToDate() {
+        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+        String currentVersion = "2.2.0";
+        String latestVersion = "2.2.0";
+
+        String receivedValue = MavenVersionSymbol.getStatus(currentVersion, latestVersion);
+
+        assertThat(receivedValue).isEqualTo("Up-to-date");
+    }
+
 //    @Test
 //    public void testing_toTarget() {
 //        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
@@ -35,12 +49,6 @@ public class MavenProjectVersionsSymbolTest {
 //        Translator translator = new Translator(testWikiSourcePage, symbol);
 //        System.out.println(MavenVersionSymbol.toTarget(translator, symbol);
 //
-//    }
-//    @Test
-//    public void tik_maar_effe() throws FileNotFoundException {
-//        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
-//
-//        assertThat(projectDependencyInfo).isEqualTo("Outdated");
 //    }
 }
 
