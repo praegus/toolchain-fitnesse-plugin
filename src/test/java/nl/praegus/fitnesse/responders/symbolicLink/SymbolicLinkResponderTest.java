@@ -13,40 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SymbolicLinkResponderTest {
 
-    public TestWikiPageDummySymlinks getWikiPageWithoutSymlinks() {
-        // Make a child
-        TestWikiPageDummySymlinks testWikiPageDummyChild = new TestWikiPageDummySymlinks("childPageTest", "", new WikiPageDummy(), new WikiPageProperty());
-        List<WikiPage> children = Collections.singletonList(testWikiPageDummyChild);
-        // Make the parent
-        TestWikiPageDummySymlinks testWikiPageDummy = new TestWikiPageDummySymlinks("dummyPage", "", new WikiPageDummy(), new WikiPageProperty(), children);
-        return testWikiPageDummy;
-    }
-
-    public TestWikiPageDummySymlinks getWikiPageWithSymlinks() {
-        // Make WikiPage (parent and two children)
-        TestWikiPageDummySymlinks WikiPageDummyFrontEnd = new TestWikiPageDummySymlinks("FrontEnd", "", new WikiPageDummy(), new WikiPageProperty());
-        TestWikiPageDummySymlinks WikiPageDummyBackEnd = new TestWikiPageDummySymlinks("BackEnd", "", new WikiPageDummy(), new WikiPageProperty());
-        List<WikiPage> children = new ArrayList<>();
-        children.add(WikiPageDummyFrontEnd);
-        children.add(WikiPageDummyBackEnd);
-        TestWikiPageDummySymlinks testWikiPageDummy = new TestWikiPageDummySymlinks("SuiteTest", "", new WikiPageDummy(), new WikiPageProperty(), children);
-
-        // Add Symbolic link to SuiteTest (parent)
-        PageData dataSuiteTest = testWikiPageDummy.getData();
-        WikiPageProperty propsSuiteTest = dataSuiteTest.getProperties();
-        WikiPageProperty symPropSuiteTest = propsSuiteTest.set(SymbolicPage.PROPERTY_NAME);
-        symPropSuiteTest.set("BackEndSymlink", "DummyPage.BackEnd");
-
-        // Add Symbolic link to FrontEnd (child)
-        PageData dataFrontEnd = WikiPageDummyFrontEnd.getData();
-        WikiPageProperty propsFrontEnd = dataFrontEnd.getProperties();
-        WikiPageProperty symPropFrontEnd = propsFrontEnd.set(SymbolicPage.PROPERTY_NAME);
-        symPropFrontEnd.set("BackEndSymlink", "DummyPage.BackEnd");
-
-        return testWikiPageDummy;
-    }
-
-
     @Test
     public void check_if_response_is_a_empty_arrayList() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithoutSymlinks();
@@ -54,7 +20,7 @@ public class SymbolicLinkResponderTest {
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
         List<SymbolicLinkInfo> receivedValue = projectSymbolicLinkInfo.getSymbolicLinkInfos();
 
-         assertThat(receivedValue).isEqualTo(new ArrayList<>());
+         assertThat(receivedValue).isEmpty();
     }
 
     @Test
@@ -64,7 +30,7 @@ public class SymbolicLinkResponderTest {
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
         List<SymbolicLinkInfo> receivedValue = projectSymbolicLinkInfo.getSymbolicLinkInfos();
 
-        assertThat(receivedValue.size()).isEqualTo(2);
+        assertThat(receivedValue).hasSize(2);
     }
 
     @Test
@@ -111,4 +77,38 @@ public class SymbolicLinkResponderTest {
         assertThat(receivedObject.get("linkName")).isEqualTo("BackEndSymlink");
         assertThat(receivedObject.get("backUpLinkPath")).isEqualTo("DummyPage.BackEnd");
     }
+
+    private TestWikiPageDummySymlinks getWikiPageWithoutSymlinks() {
+        // Make a child
+        TestWikiPageDummySymlinks testWikiPageDummyChild = new TestWikiPageDummySymlinks("childPageTest", "", new WikiPageDummy(), new WikiPageProperty());
+        List<WikiPage> children = Collections.singletonList(testWikiPageDummyChild);
+        // Make the parent
+        TestWikiPageDummySymlinks testWikiPageDummy = new TestWikiPageDummySymlinks("dummyPage", "", new WikiPageDummy(), new WikiPageProperty(), children);
+        return testWikiPageDummy;
+    }
+
+    private TestWikiPageDummySymlinks getWikiPageWithSymlinks() {
+        // Make WikiPage (parent and two children)
+        TestWikiPageDummySymlinks WikiPageDummyFrontEnd = new TestWikiPageDummySymlinks("FrontEnd", "", new WikiPageDummy(), new WikiPageProperty());
+        TestWikiPageDummySymlinks WikiPageDummyBackEnd = new TestWikiPageDummySymlinks("BackEnd", "", new WikiPageDummy(), new WikiPageProperty());
+        List<WikiPage> children = new ArrayList<>();
+        children.add(WikiPageDummyFrontEnd);
+        children.add(WikiPageDummyBackEnd);
+        TestWikiPageDummySymlinks testWikiPageDummy = new TestWikiPageDummySymlinks("SuiteTest", "", new WikiPageDummy(), new WikiPageProperty(), children);
+
+        // Add Symbolic link to SuiteTest (parent)
+        PageData dataSuiteTest = testWikiPageDummy.getData();
+        WikiPageProperty propsSuiteTest = dataSuiteTest.getProperties();
+        WikiPageProperty symPropSuiteTest = propsSuiteTest.set(SymbolicPage.PROPERTY_NAME);
+        symPropSuiteTest.set("BackEndSymlink", "DummyPage.BackEnd");
+
+        // Add Symbolic link to FrontEnd (child)
+        PageData dataFrontEnd = WikiPageDummyFrontEnd.getData();
+        WikiPageProperty propsFrontEnd = dataFrontEnd.getProperties();
+        WikiPageProperty symPropFrontEnd = propsFrontEnd.set(SymbolicPage.PROPERTY_NAME);
+        symPropFrontEnd.set("BackEndSymlink", "DummyPage.BackEnd");
+
+        return testWikiPageDummy;
+    }
+
 }
