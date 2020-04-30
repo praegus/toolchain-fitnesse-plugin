@@ -83,8 +83,7 @@ public class SymbolicLinkResponderTest {
         TestWikiPageDummySymlinks testWikiPageDummyChild = new TestWikiPageDummySymlinks("childPageTest", "", new WikiPageDummy(), new WikiPageProperty());
         List<WikiPage> children = Collections.singletonList(testWikiPageDummyChild);
         // Make the parent
-        TestWikiPageDummySymlinks testWikiPageDummy = new TestWikiPageDummySymlinks("dummyPage", "", new WikiPageDummy(), new WikiPageProperty(), children);
-        return testWikiPageDummy;
+        return new TestWikiPageDummySymlinks("dummyPage", "", new WikiPageDummy(), new WikiPageProperty(), children);
     }
 
     private TestWikiPageDummySymlinks getWikiPageWithSymlinks() {
