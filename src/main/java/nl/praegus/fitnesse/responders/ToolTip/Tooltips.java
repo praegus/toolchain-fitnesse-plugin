@@ -6,36 +6,30 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ToolTips {
-    private final ArrayList<String> toolTipsCache = new ArrayList<>();
-    private final String toolTipPath;
-    private final String bootStrapPath;
+public class Tooltips {
+    private final List<String> tooltipsCache = new ArrayList<>();
 
-    public ToolTips(String toolTipPath, String bootStrapPath) {
-        this.toolTipPath = toolTipPath;
-        this.bootStrapPath = bootStrapPath;
-        this.toolTipsCache.addAll(getFixtureToolTips());
-        this.toolTipsCache.addAll(getBootstrapTooltips());
+    public Tooltips(String tooltipPath, String bootstrapPath) {
+        this.tooltipsCache.addAll(getFixtureTooltips(tooltipPath));
+        this.tooltipsCache.addAll(getBootstrapTooltips(bootstrapPath));
     }
 
-    public ToolTips() {
-        this.toolTipPath = System.getProperty("user.dir") + "/TooltipData";
-        this.bootStrapPath = getBootstrapPath();
-        this.toolTipsCache.addAll(getFixtureToolTips());
-        this.toolTipsCache.addAll(getBootstrapTooltips());
+    public Tooltips() {
+        this.tooltipsCache.addAll(getFixtureTooltips(System.getProperty("user.dir") + "/TooltipData"));
+        this.tooltipsCache.addAll(getBootstrapTooltips(getBootstrapPath()));
     }
 
-    public String getRandomToolTip() {
-        if (toolTipsCache.size() != 0) {
+    public String getRandomTooltip() {
+        if (tooltipsCache.size() != 0) {
             Random rand = new Random();
-            int pickedTip = rand.nextInt(toolTipsCache.size());
-            return toolTipsCache.get(pickedTip);
+            int pickedTip = rand.nextInt(tooltipsCache.size());
+            return tooltipsCache.get(pickedTip);
         } else {
             return null;
         }
     }
 
-    public static String getBootstrapPath() {
+    private static String getBootstrapPath() {
 
         String[] classPaths = System.getProperty("java.class.path").split(";");
         for (String classpath : classPaths) {
@@ -46,15 +40,15 @@ public class ToolTips {
         return null;
     }
 
-    private ArrayList<String> getFixtureToolTips() {
-        ArrayList<String> toolTips = new ArrayList<>();
-        File[] dirs = new File(toolTipPath).listFiles();
+    private List<String> getFixtureTooltips(String path) {
+        List<String> toolTips = new ArrayList<>();
+        File[] dirs = new File(path).listFiles();
         if (dirs != null) {
             for (File dir : dirs) {
                 // check if File in list is directory so we wont try to listfiles from a file
                 if (dir.isDirectory()) {
                     try {
-                        toolTips.addAll(readToolTips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
+                        toolTips.addAll(readTooltips(new URL("file:///" + dir.getPath() + "/Tooltips.txt")));
                     } catch (MalformedURLException e) {
                         System.out.println("couldn't find tooltips for fixture " + dir.getName());
                     }
@@ -64,18 +58,18 @@ public class ToolTips {
         return toolTips;
     }
 
-    private ArrayList<String> getBootstrapTooltips() {
+    private List<String> getBootstrapTooltips(String path) {
         // get the bootstrap path
-        ArrayList<String> tooltips = new ArrayList<>();
+        List<String> tooltips = new ArrayList<>();
         try {
-            tooltips.addAll(readToolTips(new URL("jar:file:" + bootStrapPath + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
+            tooltips.addAll(readTooltips(new URL("jar:file:" + path + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
         } catch (MalformedURLException e) {
             System.out.println("couldn't find bootstrap tooltips");
         }
         return tooltips;
     }
 
-    private List<String> readToolTips(URL url) {
+    private List<String> readTooltips(URL url) {
         try {
             InputStream inputStream = url.openStream();
             InputStreamReader reader = new InputStreamReader(inputStream);
