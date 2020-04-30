@@ -11,7 +11,7 @@ import fitnesse.http.SimpleResponse;
 import java.io.*;
 
 public class TooltipResponder implements Responder {
-    private static final Tooltips toolTips = new Tooltips();
+    private static final Tooltips tooltips = new Tooltips();
 
     @Override
     public Response makeResponse(FitNesseContext context, Request request) throws IOException { return makeToolTipResponse(); }
@@ -19,9 +19,9 @@ public class TooltipResponder implements Responder {
     private Response makeToolTipResponse() throws UnsupportedEncodingException {
 
         SimpleResponse response = new SimpleResponse();
-        String toolTip = toolTips.getRandomTooltip();
+        String tooltip = tooltips.getRandomTooltip();
 
-        response.setContent(toolTip);
+        response.setContent(tooltip);
         return response;
     }
 
