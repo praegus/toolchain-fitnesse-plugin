@@ -26,16 +26,16 @@ public class MavenProjectVersionsSymbolTest {
 ////        assertThat(receivedValue).isEqualTo("Outdated");
 //    }
 //
-    @Test
-    public void testing_toTarget() {
-        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
-        TestWikiPageDummyMavenVersions TestWikiPageDummyMavenVersions = new TestWikiPageDummyMavenVersions("dummyPage", "", new WikiPageDummy(),new WikiPageProperty());
-        WikiSourcePage testWikiSourcePage = new WikiSourcePage(TestWikiPageDummyMavenVersions);
-        Symbol symbol = new Symbol(new SymbolType("dwa"), "adaw", 1, 1);
-        Translator translator = new Translator(testWikiSourcePage, symbol);
-        System.out.println(MavenVersionSymbol.toTarget(translator, symbol);
-
-    }
+//    @Test
+//    public void testing_toTarget() {
+//        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+//        TestWikiPageDummyMavenVersions TestWikiPageDummyMavenVersions = new TestWikiPageDummyMavenVersions("dummyPage", "", new WikiPageDummy(),new WikiPageProperty());
+//        WikiSourcePage testWikiSourcePage = new WikiSourcePage(TestWikiPageDummyMavenVersions);
+//        Symbol symbol = new Symbol(new SymbolType("dwa"), "adaw", 1, 1);
+//        Translator translator = new Translator(testWikiSourcePage, symbol);
+//        System.out.println(MavenVersionSymbol.toTarget(translator, symbol);
+//
+//    }
 //    @Test
 //    public void tik_maar_effe() throws FileNotFoundException {
 //        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();

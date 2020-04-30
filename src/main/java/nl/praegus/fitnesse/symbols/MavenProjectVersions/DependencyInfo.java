@@ -25,7 +25,7 @@ public class DependencyInfo {
     // Other Dependencies
     public DependencyInfo(String group, String artifact, String version, Model model) {
         this.artifactid = artifact;
-        this.version = translateVersion(version, model);
+        this.version = getCurrentVersion(version, model);
         this.latest = getLatestVersion(group, artifact);
     }
 
@@ -46,14 +46,18 @@ public class DependencyInfo {
         }
     }
 
-    private String translateVersion(String version, Model model) {
+    private String getCurrentVersion(String version, Model model) {
+        // Check if version is variable
         if(version.startsWith("$")) {
             String property = "";
+            // Create pattern of finding ${toolchain.fixtures.version}
             Pattern pattern = Pattern.compile("\\$\\{([^{}]+)}");
             java.util.regex.Matcher matcher = pattern.matcher(version);
             if (matcher.find()) {
+                // Set property as found version number
                 property = matcher.group(1);
             }
+            // Return property of version number
             return model.getProperties().getProperty(property);
         } else {
             return version;
