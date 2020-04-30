@@ -59,7 +59,6 @@ public class Tooltips {
     }
 
     private List<String> getBootstrapTooltips(String path) {
-        // get the bootstrap path
         List<String> tooltips = new ArrayList<>();
         try {
             tooltips.addAll(readTooltips(new URL("jar:file:" + path + "!/fitnesse/resources/bootstrap-plus/txt/toolTipData.txt")));
