@@ -48,7 +48,7 @@ public class SymbolicLinkResponderTest {
 
 
     @Test
-    public void check_If_Response_Is_A_Empty_ArrayList() {
+    public void check_if_response_is_a_empty_arrayList() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithoutSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
@@ -58,7 +58,7 @@ public class SymbolicLinkResponderTest {
     }
 
     @Test
-    public void check_If_Response_Is_Not_A_Empty_ArrayList() {
+    public void check_if_response_is_not_a_empty_arrayList() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
@@ -68,7 +68,7 @@ public class SymbolicLinkResponderTest {
     }
 
     @Test
-    public void check_If_Response_ArrayList_Has_The_Correct_Info() {
+    public void check_if_response_arrayList_has_the_correct_info() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
@@ -81,7 +81,7 @@ public class SymbolicLinkResponderTest {
     }
 
     @Test
-    public void check_If_Response_Is_A_Empty_JSONArray() {
+    public void check_if_response_is_a_empty_JSONArray() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithoutSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
@@ -91,7 +91,7 @@ public class SymbolicLinkResponderTest {
     }
 
     @Test
-    public void check_If_Response_Is_Not_A_Empty_JSONArray() {
+    public void check_if_response_is_not_a_empty_JSONArray() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
@@ -101,7 +101,7 @@ public class SymbolicLinkResponderTest {
     }
 
     @Test
-    public void check_If_Response_JSONArray_Has_The_Correct_Info() {
+    public void check_if_response_JSONArray_has_the_correct_info() {
         TestWikiPageDummySymlinks testWikiPageDummy = getWikiPageWithSymlinks();
 
         ProjectSymbolicLinkInfo projectSymbolicLinkInfo = new ProjectSymbolicLinkInfo(testWikiPageDummy);
