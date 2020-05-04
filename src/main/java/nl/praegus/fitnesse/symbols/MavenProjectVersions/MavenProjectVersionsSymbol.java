@@ -54,12 +54,14 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             // Table title
             writer.startTag("tr");
                 writer.startTag("th");
+//                    writer.putAttribute("colspan", "5");
                     writer.putAttribute("colspan", "4");
                     writer.putText("Versioncheck");
                 writer.endTag();
             writer.endTag();
 
             // Table headers
+//            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status", "Release notes");
             List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status");
             writer.startTag("tr");
                 for (String tableHeader : tableHeaders) {
@@ -87,9 +89,23 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             writer.putText(generateTableRowTdHtmlAsString(current, null));
             writer.putText(generateTableRowTdHtmlAsString(tableRowData.getLatest(), null));
             writer.putText(generateTableRowTdHtmlAsString(status, status));
+
+//            writer.startTag("td");
+//                for (String urlText : tableRowData.getUrls()) {
+//                    String[] urlArray = urlText.split(",");
+//
+//                    writer.startTag("a");
+//                        writer.putAttribute("href", urlArray[1]);
+//                        writer.putAttribute("target", "_blank");
+//                        writer.putText(urlArray[0]);
+//                    writer.endTag();
+//                }
+//            writer.endTag();
+
+
         writer.endTag();
 
-        return writer.toHtml();
+        return writer.toHtml().replace("\\t", "");
     }
 
     private String generateTableRowTdHtmlAsString(String text, String className) {

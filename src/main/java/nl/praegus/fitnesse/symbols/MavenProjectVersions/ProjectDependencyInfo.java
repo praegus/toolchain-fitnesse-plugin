@@ -40,6 +40,26 @@ public class ProjectDependencyInfo {
         }
     }
 
+    public ProjectDependencyInfo(String pomUrl) throws FileNotFoundException {
+        // Add plugin information
+        dependenciesInfo.add(new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin"));
+
+        // Add Dependency information
+        try {
+            MavenXpp3Reader reader = new MavenXpp3Reader();
+            Model model = reader.read(new FileReader(System.getProperty("user.dir") + pomUrl));
+            List<Dependency> dependencies = model.getDependencies();
+            for (Dependency dep : dependencies) {
+                String artifact = dep.getArtifactId();
+                if (!IGNORE_DEPENDENCIES.contains(artifact)) {
+                    dependenciesInfo.add(getDependencyVersionInformation(dep, model, artifact));
+                }
+            }
+        } catch (IOException | XmlPullParserException ignored) {
+            throw new FileNotFoundException("POM not found!");
+        }
+    }
+
     public List<DependencyInfo> getDependencyInfo() {
         return dependenciesInfo;
     }

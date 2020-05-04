@@ -7,6 +7,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class DependencyInfo {
@@ -14,12 +16,19 @@ public class DependencyInfo {
     private String artifactid;
     private String version;
     private String latest;
+    private List<String> urls;
+
+    public String getArtifactid() { return this.artifactid; }
+    public String getVersion() { return this.version; }
+    public String getLatest() { return this.latest; }
+    public List<String> getUrls() { return urls; }
 
     // Plugin
     public DependencyInfo(String pluginGroup, String pluginArtifact) {
         this.artifactid = pluginArtifact;
         this.version = getClass().getPackage().getImplementationVersion();
         this.latest = getLatestVersion(pluginGroup, pluginArtifact);
+        this.urls = getURL(pluginArtifact);
     }
 
     // Other Dependencies
@@ -27,11 +36,8 @@ public class DependencyInfo {
         this.artifactid = artifact;
         this.version = getCurrentVersion(version, model);
         this.latest = getLatestVersion(group, artifact);
+        this.urls = getURL(artifact);
     }
-
-    public String getArtifactid() { return this.artifactid; }
-    public String getVersion() { return this.version; }
-    public String getLatest() { return this.latest; }
 
     private String getLatestVersion(String groupId, String artifactId) {
         groupId = groupId.replace(".", "/");
@@ -61,6 +67,24 @@ public class DependencyInfo {
             return model.getProperties().getProperty(property);
         } else {
             return version;
+        }
+    }
+
+    private List<String> getURL(String pluginArtifact) {
+        List<String> ReleaseNotesUrls = new ArrayList<>();
+        switch (pluginArtifact) {
+            case "fitnesse":
+                ReleaseNotesUrls.add("Fitnesse," + ReleaseNotesUrl.fitnesseUrl);
+                return ReleaseNotesUrls;
+            case "hsac-fitnesse-fixtures":
+                ReleaseNotesUrls.add("Hsac," + ReleaseNotesUrl.hsacUrl);
+                return ReleaseNotesUrls;
+            case "toolchain-fitnesse-plugin":
+                ReleaseNotesUrls.add("Plugin," + ReleaseNotesUrl.pluginUrl);
+                ReleaseNotesUrls.add("Bootstrap+," + ReleaseNotesUrl.bootstrapUrl);
+                return ReleaseNotesUrls;
+            default:
+                return ReleaseNotesUrls;
         }
     }
 }
