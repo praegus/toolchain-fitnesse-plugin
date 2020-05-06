@@ -13,30 +13,30 @@ import java.util.regex.Pattern;
 
 public class DependencyInfo {
     private final static String latestversionXpath = "/metadata/versioning/latest";
-    private String artifactid;
-    private String version;
-    private String latest;
-    private List<String> urls;
+    private String artifactId;
+    private String versionInPom;
+    private String versionOnMvnCentral;
+    private List<String> releaseNotesUrl;
 
-    public String getArtifactid() { return this.artifactid; }
-    public String getVersion() { return this.version; }
-    public String getLatest() { return this.latest; }
-    public List<String> getUrls() { return urls; }
+    public String getArtifactId() { return this.artifactId; }
+    public String getVersionInPom() { return this.versionInPom; }
+    public String getVersionOnMvnCentral() { return this.versionOnMvnCentral; }
+    public List<String> getReleaseNotesUrl() { return releaseNotesUrl; }
 
     // Plugin
     public DependencyInfo(String pluginGroup, String pluginArtifact) {
-        this.artifactid = pluginArtifact;
-        this.version = getClass().getPackage().getImplementationVersion();
-        this.latest = getLatestVersion(pluginGroup, pluginArtifact);
-        this.urls = getURL(pluginArtifact);
+        this.artifactId = pluginArtifact;
+        this.versionInPom = getClass().getPackage().getImplementationVersion();
+        this.versionOnMvnCentral = getLatestVersion(pluginGroup, pluginArtifact);
+        this.releaseNotesUrl = getReleaseNotesUrl(pluginArtifact);
     }
 
     // Other Dependencies
-    public DependencyInfo(String group, String artifact, String version, Model model) {
-        this.artifactid = artifact;
-        this.version = getCurrentVersion(version, model);
-        this.latest = getLatestVersion(group, artifact);
-        this.urls = getURL(artifact);
+    public DependencyInfo(String group, String artifact, String versionInPom, Model model) {
+        this.artifactId = artifact;
+        this.versionInPom = convertMavenVariableToVersion(versionInPom, model);
+        this.versionOnMvnCentral = getLatestVersion(group, artifact);
+        this.releaseNotesUrl = getReleaseNotesUrl(artifact);
     }
 
     private String getLatestVersion(String groupId, String artifactId) {
@@ -52,13 +52,13 @@ public class DependencyInfo {
         }
     }
 
-    private String getCurrentVersion(String version, Model model) {
+    private String convertMavenVariableToVersion(String versionOrMavenVariable, Model model) {
         // Check if version is variable
-        if(version.startsWith("$")) {
+        if(versionOrMavenVariable.startsWith("$")) {
             String property = null;
             // Create pattern of finding ${toolchain.fixtures.version}
             Pattern pattern = Pattern.compile("\\$\\{([^{}]+)}");
-            java.util.regex.Matcher matcher = pattern.matcher(version);
+            java.util.regex.Matcher matcher = pattern.matcher(versionOrMavenVariable);
             if (matcher.find()) {
                 // Set property as found version number
                 property = matcher.group(1);
@@ -66,11 +66,11 @@ public class DependencyInfo {
             // Return property of version number
             return model.getProperties().getProperty(property);
         } else {
-            return version;
+            return versionOrMavenVariable;
         }
     }
 
-    private List<String> getURL(String pluginArtifact) {
+    private List<String> getReleaseNotesUrl(String pluginArtifact) {
         List<String> ReleaseNotesUrls = new ArrayList<>();
         switch (pluginArtifact) {
             case "fitnesse":

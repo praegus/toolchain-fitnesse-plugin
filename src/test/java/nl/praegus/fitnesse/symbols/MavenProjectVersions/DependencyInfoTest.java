@@ -24,8 +24,8 @@ public class DependencyInfoTest {
 
         DependencyInfo receivedValue = new DependencyInfo(group, artifact, version, model);
 
-        assertThat(receivedValue.getArtifactid()).isEqualTo("jaxb-api");
-        assertThat(receivedValue.getVersion()).isEqualTo("2.3.1");
+        assertThat(receivedValue.getArtifactId()).isEqualTo("jaxb-api");
+        assertThat(receivedValue.getVersionInPom()).isEqualTo("2.3.1");
     }
 
     @Test
@@ -39,15 +39,15 @@ public class DependencyInfoTest {
 
         DependencyInfo receivedValue = new DependencyInfo(group, artifact, version, model);
 
-        assertThat(receivedValue.getArtifactid()).isEqualTo("jaxb-core");
-        assertThat(receivedValue.getVersion()).isEqualTo("2.3.0.1");
+        assertThat(receivedValue.getArtifactId()).isEqualTo("jaxb-core");
+        assertThat(receivedValue.getVersionInPom()).isEqualTo("2.3.0.1");
     }
 
     @Test
     public void check_If_DependencyInfo_Values_Of_Plugin_Are_Correct() {
         DependencyInfo receivedValue = new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin");
 
-        assertThat(receivedValue.getArtifactid()).isEqualTo("toolchain-fitnesse-plugin");
-        assertThat(receivedValue.getLatest()).isEqualTo("2.0.3");
+        assertThat(receivedValue.getArtifactId()).isEqualTo("toolchain-fitnesse-plugin");
+        assertThat(receivedValue.getVersionOnMvnCentral()).isEqualTo("2.0.3");
     }
 }

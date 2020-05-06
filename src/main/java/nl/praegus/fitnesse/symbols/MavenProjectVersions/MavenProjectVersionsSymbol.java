@@ -1,7 +1,6 @@
 package nl.praegus.fitnesse.symbols.MavenProjectVersions;
 
 import fitnesse.wikitext.parser.*;
-import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -54,15 +53,13 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             // Table title
             writer.startTag("tr");
                 writer.startTag("th");
-//                    writer.putAttribute("colspan", "5");
-                    writer.putAttribute("colspan", "4");
+                    writer.putAttribute("colspan", "5");
                     writer.putText("Versioncheck");
                 writer.endTag();
             writer.endTag();
 
             // Table headers
-//            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status", "Release notes");
-            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status");
+            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status", "Release notes");
             writer.startTag("tr");
                 for (String tableHeader : tableHeaders) {
                     writer.putText(generateTableRowTdHtmlAsString(tableHeader, null));
@@ -81,16 +78,18 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
     private String generateTableRowHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
-        String current = tableRowData.getVersion();
-        String status = getStatus(current, tableRowData.getLatest());
+        String current = tableRowData.getVersionInPom();
+        String status = getStatus(current, tableRowData.getVersionOnMvnCentral());
 
         writer.startTag("tr");
-            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getArtifactid(), null));
+            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getArtifactId(), null));
             writer.putText(generateTableRowTdHtmlAsString(current, null));
-            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getLatest(), null));
+            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getVersionOnMvnCentral(), null));
             writer.putText(generateTableRowTdHtmlAsString(status, status));
 
-//            writer.startTag("td");
+            writer.startTag("td");
+                writer.putText(generateReleaseNotesHtmlAsString(tableRowData));
+            writer.endTag();
 //                for (String urlText : tableRowData.getUrls()) {
 //                    String[] urlArray = urlText.split(",");
 //
@@ -100,12 +99,11 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 //                        writer.putText(urlArray[0]);
 //                    writer.endTag();
 //                }
-//            writer.endTag();
 
 
         writer.endTag();
 
-        return writer.toHtml().replace("\\t", "");
+        return writer.toHtml();
     }
 
     private String generateTableRowTdHtmlAsString(String text, String className) {
@@ -116,6 +114,22 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             }
             writer.putText(text);
         writer.endTag();
+
+        return writer.toHtml();
+    }
+
+    private String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
+        HtmlWriter writer = new HtmlWriter();
+
+        for (String urlText : tableRowData.getReleaseNotesUrl()) {
+            String[] urlArray = urlText.split(",");
+
+            writer.startTag("a");
+                writer.putAttribute("href", urlArray[1]);
+                writer.putAttribute("target", "_blank");
+                writer.putText(urlArray[0]);
+            writer.endTag();
+        }
 
         return writer.toHtml();
     }
