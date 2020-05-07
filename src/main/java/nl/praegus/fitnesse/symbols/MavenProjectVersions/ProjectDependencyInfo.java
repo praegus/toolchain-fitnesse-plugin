@@ -30,7 +30,7 @@ public class ProjectDependencyInfo {
 
     private void fillListWithDependencyInfo(String pomUrl) throws FileNotFoundException {
         // Add plugin information
-        dependenciesInfo.add(getPluginDependencyVersionInformation());
+        dependenciesInfo.add(new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin"));
 
         // Add Dependency information
         try {
@@ -40,7 +40,7 @@ public class ProjectDependencyInfo {
             for (Dependency dep : dependencies) {
                 String artifact = dep.getArtifactId();
                 if (!IGNORE_DEPENDENCIES.contains(artifact)) {
-                    dependenciesInfo.add(getDependencyVersionInformation(dep, model, artifact));
+                    dependenciesInfo.add(new DependencyInfo(dep.getGroupId(), artifact, dep.getVersion(), model));
                 }
             }
         } catch (IOException | XmlPullParserException ignored) {
@@ -52,17 +52,15 @@ public class ProjectDependencyInfo {
         return dependenciesInfo;
     }
 
-    private DependencyInfo getPluginDependencyVersionInformation() {
-        DependencyInfo pluginInfo = new DependencyInfo("toolchain-fitnesse-plugin");
-        pluginInfo.setVersionOnMvnCentral("nl.praegus", "toolchain-fitnesse-plugin");
-        return pluginInfo;
-
-    }
-
-    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
-        DependencyInfo depInfo = new DependencyInfo(artifact, dependency.getVersion(), model);
-        depInfo.setVersionOnMvnCentral(dependency.getGroupId(), artifact);
-        return depInfo;
-    }
+//    private DependencyInfo getPluginDependencyVersionInformation() {
+//        DependencyInfo pluginInfo = new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin");
+//        return pluginInfo;
+//
+//    }
+//
+//    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
+//        DependencyInfo depInfo = new DependencyInfo(dependency.getGroupId(), artifact, dependency.getVersion(), model);
+//        return depInfo;
+//    }
 
 }

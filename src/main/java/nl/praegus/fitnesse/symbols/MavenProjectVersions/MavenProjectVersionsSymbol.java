@@ -32,7 +32,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
         try {
             ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
-            writer.putText(getVersionTableHelper(projectDependencyInfo.getDependencyInfo()));
+            writer.putText(getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo()));
         } catch (FileNotFoundException e) {
             writer.startTag("h4");
             writer.putText("POM not found!");
@@ -43,11 +43,11 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    public String getVersionTableHelper(List<DependencyInfo> dependencyList) {
-        return getVersionTableHtmlAsString(dependencyList);
-    }
+//    public String getVersionTableHelper(List<DependencyInfo> dependencyList) {
+//        return getVersionTableHtmlAsString(dependencyList);
+//    }
 
-    private String getVersionTableHtmlAsString(List<DependencyInfo> dependencyList) {
+    public static String getVersionTableHtmlAsString(List<DependencyInfo> dependencyList) {
         HtmlWriter writer = new HtmlWriter();
 
         // Start of the table
@@ -80,7 +80,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    private String generateTableRowHtmlAsString(DependencyInfo tableRowData) {
+    private static String generateTableRowHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
         String current = tableRowData.getVersionInPom();
         String status = getStatus(current, tableRowData.getVersionOnMvnCentral());
@@ -96,7 +96,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    private String generateTableRowTdHtmlAsString(String text, String className) {
+    private static String generateTableRowTdHtmlAsString(String text, String className) {
         HtmlWriter writer = new HtmlWriter();
         writer.startTag("td");
             if (className != null) {
@@ -108,7 +108,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-    private String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
+    private static String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
         List<String> urls = tableRowData.getReleaseNotesUrl();
 
@@ -127,7 +127,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml().replaceAll(System.lineSeparator(), "");
     }
 
-    public String getStatus(String current, String latest) {
+    private static String getStatus(String current, String latest) {
         VersionNumber currentVersion = new VersionNumber(current);
         VersionNumber latestVersion = new VersionNumber(latest);
         return currentVersion.compareTo(latestVersion);
