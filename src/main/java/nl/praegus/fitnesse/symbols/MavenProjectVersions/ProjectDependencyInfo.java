@@ -30,7 +30,7 @@ public class ProjectDependencyInfo {
 
     private void fillListWithDependencyInfo(String pomUrl) throws FileNotFoundException {
         // Add plugin information
-        dependenciesInfo.add(new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin"));
+        dependenciesInfo.add(getPluginDependencyVersionInformation());
 
         // Add Dependency information
         try {
@@ -52,11 +52,17 @@ public class ProjectDependencyInfo {
         return dependenciesInfo;
     }
 
-    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
-        String group = dependency.getGroupId();
+    private DependencyInfo getPluginDependencyVersionInformation() {
+        DependencyInfo pluginInfo = new DependencyInfo("toolchain-fitnesse-plugin");
+        pluginInfo.setVersionOnMvnCentral("nl.praegus", "toolchain-fitnesse-plugin");
+        return pluginInfo;
 
-        String version = dependency.getVersion();
-        return new DependencyInfo(group, artifact, version, model);
+    }
+
+    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
+        DependencyInfo depInfo = new DependencyInfo(artifact, dependency.getVersion(), model);
+        depInfo.setVersionOnMvnCentral(dependency.getGroupId(), artifact);
+        return depInfo;
     }
 
 }

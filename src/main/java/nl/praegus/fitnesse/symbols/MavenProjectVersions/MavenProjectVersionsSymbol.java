@@ -94,16 +94,6 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         writer.endTag();
 
         return writer.toHtml();
-
-        //                for (String urlText : tableRowData.getUrls()) {
-//                    String[] urlArray = urlText.split(",");
-//
-//                    writer.startTag("a");
-//                        writer.putAttribute("href", urlArray[1]);
-//                        writer.putAttribute("target", "_blank");
-//                        writer.putText(urlArray[0]);
-//                    writer.endTag();
-//                }
     }
 
     private String generateTableRowTdHtmlAsString(String text, String className) {
@@ -134,7 +124,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             }
         writer.endTag();
 
-        return writer.toHtml().replaceAll(System.lineSeparator(), " ");
+        return writer.toHtml().replaceAll(System.lineSeparator(), "");
     }
 
     public String getStatus(String current, String latest) {

@@ -32,24 +32,20 @@ public class MavenProjectVersionsSymbolTest {
         assertThat(receivedValue).contains("POM not found!");
     }
 
-//    @Test
-//    public void check_If_Html_Contains_FitNesse_Information() throws FileNotFoundException {
-//        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
-//        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo("/src/test/resources/MavenVersions/pom.xml");
-//        String receivedValue = MavenVersionSymbol.getVersionTableHelper(projectDependencyInfo.getDependencyInfo());
-//
-////        String expectedValue = "<tr><td>fitnesse</td>\n" +
-////                "<td>20200404</td>\n" +
-////                "<td>20200501</td>\n" +
-////                "<td class=\"Outdated\">Outdated</td>\n";
-//
-//        String expectedValue = "<table id=\"versioncheck\">";
-//
-////        String expectedValue = "<tr><td>fitnesse</td>\n" +
-////                "<td>20200404</td>\n" +
-////                "<td>20200501</td>\n";
-//
-//        assertThat(receivedValue).contains(expectedValue);
-//    }
+    @Test
+    public void check_If_Html_Contains_FitNesse_Information() throws FileNotFoundException {
+        MavenProjectVersionsSymbol MavenVersionSymbol = new MavenProjectVersionsSymbol();
+        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo("/src/test/resources/MavenVersions/pom.xml");
+        String receivedValue = MavenVersionSymbol.getVersionTableHelper(projectDependencyInfo.getDependencyInfo());
 
+        String expectedValue = "<tr><td>fitnesse</td>" + System.lineSeparator() +
+                "<td>20200404</td>" + System.lineSeparator() +
+                "<td>20200501</td>" + System.lineSeparator() +
+                "<td class=\"Outdated\">Outdated</td>";
+
+        String expectedValue2 = "<a href=\"http://fitnesse.org/FitNesse.ReleaseNotes\" target=\"_blank\">Fitnesse</a>";
+
+        assertThat(receivedValue).contains(expectedValue);
+        assertThat(receivedValue).contains(expectedValue2);
+    }
 }

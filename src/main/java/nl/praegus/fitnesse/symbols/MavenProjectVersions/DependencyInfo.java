@@ -17,6 +17,7 @@ public class DependencyInfo {
     private String versionInPom;
     private String versionOnMvnCentral;
     private List<String> releaseNotesUrl;
+    private String latestVersionUrl = "https://repo.maven.apache.org/maven2/%s/%s/maven-metadata.xml";
 
     public String getArtifactId() { return this.artifactId; }
     public String getVersionInPom() { return this.versionInPom; }
@@ -24,24 +25,30 @@ public class DependencyInfo {
     public List<String> getReleaseNotesUrl() { return releaseNotesUrl; }
 
     // Plugin
-    public DependencyInfo(String pluginGroup, String pluginArtifact) {
+    public DependencyInfo(String pluginArtifact) {
         this.artifactId = pluginArtifact;
         this.versionInPom = getClass().getPackage().getImplementationVersion();
-        this.versionOnMvnCentral = getLatestVersion(pluginGroup, pluginArtifact);
         this.releaseNotesUrl = getReleaseNotesUrl(pluginArtifact);
     }
 
     // Other Dependencies
-    public DependencyInfo(String group, String artifact, String versionInPom, Model model) {
+    public DependencyInfo(String artifact, String versionInPom, Model model) {
         this.artifactId = artifact;
         this.versionInPom = convertMavenVariableToVersion(versionInPom, model);
-        this.versionOnMvnCentral = getLatestVersion(group, artifact);
         this.releaseNotesUrl = getReleaseNotesUrl(artifact);
+    }
+
+    public void setLatestVersionUrl(String latestVersionUrl) {
+        this.latestVersionUrl = latestVersionUrl;
+    }
+
+    public void setVersionOnMvnCentral(String group, String artifact) {
+        this.versionOnMvnCentral = getLatestVersion(group, artifact);
     }
 
     private String getLatestVersion(String groupId, String artifactId) {
         groupId = groupId.replace(".", "/");
-        String url = String.format("https://repo.maven.apache.org/maven2/%s/%s/maven-metadata.xml", groupId, artifactId);
+        String url = String.format(latestVersionUrl, groupId, artifactId);
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new URL(url).openStream());
             XPathExpression expr = XPathFactory.newInstance().newXPath().compile(latestversionXpath);
