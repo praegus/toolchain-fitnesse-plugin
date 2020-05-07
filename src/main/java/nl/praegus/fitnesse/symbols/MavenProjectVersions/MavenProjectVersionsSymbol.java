@@ -32,7 +32,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
         try {
             ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo();
-            writer.putText(getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo()));
+            writer.putText(getVersionTableHelper(projectDependencyInfo.getDependencyInfo()));
         } catch (FileNotFoundException e) {
             writer.startTag("h4");
             writer.putText("POM not found!");
@@ -41,6 +41,10 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         writer.endTag();
 
         return writer.toHtml();
+    }
+
+    public String getVersionTableHelper(List<DependencyInfo> dependencyList) {
+        return getVersionTableHtmlAsString(dependencyList);
     }
 
     private String getVersionTableHtmlAsString(List<DependencyInfo> dependencyList) {
@@ -86,11 +90,12 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
             writer.putText(generateTableRowTdHtmlAsString(current, null));
             writer.putText(generateTableRowTdHtmlAsString(tableRowData.getVersionOnMvnCentral(), null));
             writer.putText(generateTableRowTdHtmlAsString(status, status));
+            writer.putText(generateReleaseNotesHtmlAsString(tableRowData));
+        writer.endTag();
 
-            writer.startTag("td");
-                writer.putText(generateReleaseNotesHtmlAsString(tableRowData));
-            writer.endTag();
-//                for (String urlText : tableRowData.getUrls()) {
+        return writer.toHtml();
+
+        //                for (String urlText : tableRowData.getUrls()) {
 //                    String[] urlArray = urlText.split(",");
 //
 //                    writer.startTag("a");
@@ -99,11 +104,6 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 //                        writer.putText(urlArray[0]);
 //                    writer.endTag();
 //                }
-
-
-        writer.endTag();
-
-        return writer.toHtml();
     }
 
     private String generateTableRowTdHtmlAsString(String text, String className) {
@@ -120,18 +120,21 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
     private String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
+        List<String> urls = tableRowData.getReleaseNotesUrl();
 
-        for (String urlText : tableRowData.getReleaseNotesUrl()) {
-            String[] urlArray = urlText.split(",");
+        writer.startTag("td");
+            for (int i = 0; i < urls.size(); i++) {
+                String[] urlArray = urls.get(i).split(",");
+                if (i > 0) writer.putText(" & ");
+                writer.startTag("a");
+                    writer.putAttribute("href", urlArray[1]);
+                    writer.putAttribute("target", "_blank");
+                    writer.putText(urlArray[0]);
+                writer.endTag();
+            }
+        writer.endTag();
 
-            writer.startTag("a");
-                writer.putAttribute("href", urlArray[1]);
-                writer.putAttribute("target", "_blank");
-                writer.putText(urlArray[0]);
-            writer.endTag();
-        }
-
-        return writer.toHtml();
+        return writer.toHtml().replaceAll(System.lineSeparator(), " ");
     }
 
     public String getStatus(String current, String latest) {

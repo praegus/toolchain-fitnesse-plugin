@@ -74,14 +74,14 @@ public class DependencyInfo {
         List<String> ReleaseNotesUrls = new ArrayList<>();
         switch (pluginArtifact) {
             case "fitnesse":
-                ReleaseNotesUrls.add("Fitnesse," + ReleaseNotesUrl.fitnesseUrl);
+                ReleaseNotesUrls.add(ReleaseNotesUrl.fitnesseUrl);
                 return ReleaseNotesUrls;
             case "hsac-fitnesse-fixtures":
-                ReleaseNotesUrls.add("Hsac," + ReleaseNotesUrl.hsacUrl);
+                ReleaseNotesUrls.add(ReleaseNotesUrl.hsacUrl);
                 return ReleaseNotesUrls;
             case "toolchain-fitnesse-plugin":
-                ReleaseNotesUrls.add("Plugin," + ReleaseNotesUrl.pluginUrl);
-                ReleaseNotesUrls.add("Bootstrap+," + ReleaseNotesUrl.bootstrapUrl);
+                ReleaseNotesUrls.add(ReleaseNotesUrl.pluginUrl);
+                ReleaseNotesUrls.add(ReleaseNotesUrl.bootstrapUrl);
                 return ReleaseNotesUrls;
             default:
                 return ReleaseNotesUrls;
