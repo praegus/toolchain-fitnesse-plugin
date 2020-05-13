@@ -1,0 +1,144 @@
+!2 Regressie testen
+
+
+!4 Bij elk nieuw onderwerp ga dan terug naar de homepagina (FrontPage)
+
+
+|'''''Stap'''''|'''''Verwachten uitkomst'''''|
+
+
+|'''''Sidebar'''''                                                                                                                                         |
+|Klik op de 'Bootstrap+ Preference' instellingen knop  |Het venster van de 'Bootstrap+ Preference' instellingen wordt geopend                              |
+|Zet de 'Sidebar' aan                                  |De sidebar wordt vanaf de root getoont (dit is alleen bij FrontPage)                               |
+|Ga naar een suite                                     |De sidebar wordt getoont (als het te lang duurt wordt er eerst een lader getoond)                  |
+|Klik via de sidebar op een suite                      |Je wordt gestuurd naar de gekozen suite                                                            |
+|Klik via de sidebar op een static page                |Je wordt gestuurd naar de gekozen static page                                                      |
+|Klik via de sidebar op een testgeval                  |Je wordt gestuurd naar het testgeval en er komt een highlight in de sidebar op de plek waar je bent|
+|Klik op edit                                          |Een editpagina wordt geopend, hier wordt de sidebar ook weergeven                                  |
+|'''Sidebar bij een test'''                                                                                                                                |
+|Sluit edit en test het testgeval                      |De sidebar wordt ingeklapt                                                                         |
+|Tijdens de test                                       |De project knop is niet open klikbaar en heeft een grijze kleur                                    |
+|Na de test                                            |De project knop is klikbaar en heeft weer de normale kleur                                         |
+|'''Sidebar knoppen'''                                                                                                                                     |
+|Klik op "Expand all"                                  |Alle items van de sidebar worden uitgeklapt                                                        |
+|Klik op "Collapse Except Current"                     |Alle items van de sidebar worden ingeklapt behalve de route waar je in zit                         |
+|Klik op de project knop drukt                         |De sidebar wordt ingeklapt en alleen de project knop is nog zichtbaar                              |
+|Klik nogmaals op de project knop                      |De sidebar wordt uitgeklapt en de gehele sidebar is weer zichtbaar                                 |
+|'''Sidebar vergroten'''                                                                                                                                   |
+|Hover op de rechter rand van de sidebar               |De muis veranderd naar een voormaat weizig icoon                                                   |
+|Hou de sidebar rand vast en beweeg de muis naar rechts|De sidebar veranderd van breedte                                                                   |
+|'''Symbolic en wiki icoontjes'''                                                                                                                          |
+|Als er een Symbolic link is                           |Achter de tekst van de symbolic link staat een link icoon                                          |
+|Als er een Wiki Import is                             |Achter de tekst van de symbolic link staat een '@'                                                 |
+
+
+|'''''Tooltips'''''                                                                                                                                          |
+|Herlaadt de FrontPage drie keer                                                       |Elke keer dat de pagina herladen wordt verschijnen er andere tooltips|
+|Ga naar een Suite met een testgeval                                                   |N.V.T                                                                |
+|Klik op een testgeval                                                                 |N.V.T.                                                               |
+|Klik op edit                                                                          |De editpagina wordt geopend                                          |
+|Herlaadt de Edit pagina drie keer                                                     |Elke keer dat de pagina herladen wordt verschijnen er andere tooltips|
+|Herlaadt de FrontPage totdat er een tooltip verschijnt met een link, klik op deze link|Er wordt een pagina geopend die verdere informatie geeft             |
+
+
+|'''''Recent test history'''''                                                                                                                                                     |
+|Open de Frontpage                                            |De recent test history tabel is zichtbaar                                                                           |
+|Klik op de onderste page link in de recent test history tabel|Je wordt naar de pagina van het testgeval gestuurd                                                                  |
+|Klik op "Test"                                               |Het testgeval wordt gerunt                                                                                          |
+|Ga terug naar de FrontPage                                   |De gerunde test is nu bovenaan de test history tabel en de meest recente "Last 5 Results" is van de net gerunde test|
+|Klik op een “Last 5 Results" link                            |Je wordt verwezen naar de resultaten van die specifieke test                                                        |
+|Klik op de "More..." link                                    |Je wordt verwezen naar een pagina die alle gerunde testgevallen laat zien. De pagina url is .../?recentTestHistory  |
+
+
+|'''''Versiechecker'''''                                                                                                                           |
+|'''Versiechecker toevoegen'''                                                                                                                     |
+|Ga naar een gewenste pagina                           |N.V.T.                                                                                     |
+|Vul '!Version Checker' (zonder de spatie) in de pagina|N.V.T.                                                                                     |
+|Klik op 'Save'                                        |De Maven Version Checker is zichtbaar met alle versie nummers en status van de dependencies|
+
+
+|'''''Tags'''''                                                                                                                                                                                   |
+|'''Tag toevoegen'''                                                                                                                                                                              |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een suite, testgeval of static page                      |Er verschijnt een plus symbool                                                                                     |
+|Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
+|Schrijf een tag naam in het input veld                                       |N.V.T                                                                                                              |
+|Druk op enter                                                                |Het input veld verdwijnt en er is een nieuwe tag geplaat met de naam die is ingevoert                              |
+|'''Al bestaande tag toevoegen'''                                                                                                                                                                 |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een suite, testgeval of static page                      |Er verschijnt een plus symbool                                                                                     |
+|Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
+|Schrijf een tag naam in het input veld die al op die page bestaat            |N.V.T                                                                                                              |
+|Druk op enter                                                                |Het input veld wordt rood en er verschijnt een rode tekst die aangeeft dat de tag al bestaat op die page           |
+|'''Tag toevoegen met vreemde tekens'''                                                                                                                                                           |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een suite, testgeval of static page                      |Er verschijnt een plus symbool                                                                                     |
+|Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
+|Schrijf een tag naam in het input veld met een vreemd teken zoals / , - , enz|N.V.T                                                                                                              |
+|Druk op enter                                                                |Het input veld wordt rood en er verschijnt een rode tekst die aangeeft dat die tekens niet gebruikt mogen worden   |
+|'''Lege tag toevoegen'''                                                                                                                                                                         |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een suite, testgeval of static page                      |Er verschijnt een plus symbool                                                                                     |
+|Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
+|Laat het tekstveld leeg staan                                                |N.V.T                                                                                                              |
+|Druk op enter                                                                |Het input veld wordt rood en er verschijnt een rode tekst die aangeeft dat de gebruiker een tag naam in moet vullen|
+|'''Tag verwijderen'''                                                                                                                                                                            |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een tag                                                  |Er verschijnt een verwijder symbool                                                                                |
+|Druk op het verwijder symbool                                                |De tag waar je op stond verdwijnt                                                                                  |
+|'''Tag autocomplete'''                                                                                                                                                                           |
+|Ga naar een Suite                                                            |N.V.T                                                                                                              |
+|Beweeg je muis over een suite, testgeval of static page                      |Er verschijnt een plus symbool                                                                                     |
+|Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
+|Vul de eerste letter in van een bestaande tagnaam binnen de Suite overview   |Er verschijnt een dropdown met de bestaande tagnamen. Deze dropdown is gelimiteerd aan 5 tagnamen                  |
+|Druk op de boven/onder pijltes of klik op de tagnaam                         |Input veld wordt gevuld met de gekozen tagnaam                                                                     |
+
+
+|'''''Sneltoetsen'''''                                                                                                     |
+|Klik op de '?' knop|Je krijgt een venster te zien met Sneltoetsen voor: General, Edit Mode, Go To, Tools en Bootstrap-plus|
+
+
+|'''''Comment keyboard shortcut'''''                                                                                            |
+|Ga naar de editor                                                |De editpagina wordt geopend                                  |
+|'''Één lijn tabel'''                                                                                                           |
+|Selecteer één lijn van de tabel en druk op 'Ctrl + /'            |De tekst krijgt een hashtag na de tabel opening              |
+|Selecteer dezelfde lijn en druk op 'Ctrl + /'                    |De hashtag wordt verwijderd                                  |
+|'''Meerdere lijnen tabel'''                                                                                                    |
+|Selecteer meerdere lijnen van de tabel en druk 'Ctrl + /'        |Elke lijn van de tekst krijgt een hashtag na de tabel opening|
+|Selecteer dezelfde lijnen van de tabel en druk op 'Ctrl + /'     |De hashtags wordt verwijderd                                 |
+|'''Één lijn tekst'''                                                                                                           |
+|Selecteer één lijn van tekst die niet van de tabel is            |De tekst krijgt een hashtag als eerste karakter              |
+|Selecteer één lijn van tekst die niet van de tabel is            |De hashtags wordt verwijderd                                 |
+|'''Meerdere lijnen tekst'''                                                                                                    |
+|Selecteer meerdere lijn van tekst die niet van de tabel is       |Elke lijn van de tekst krijgt een hashtag als eerste karakter|
+|Selecteer meerdere lijn van tekst die niet van de tabel is       |Alle de hashtags wordt verwijderd                            |
+|'''Tabel en normale tekst samen'''                                                                                             |
+|Selecteer meerdere lijnen van beide de tabel en niet de tabel    |Elke lijn van de tekst krijgt een hashtag op de goede positie|
+|Selecteer meerdere lijnen van beide de tabel en niet de tabel    |Elke hashtag wordt verwijderd                                |
+|'''Tekst die al een hashtag heeft'''                                                                                           |
+|Selecteer één lijn van de tabel en druk op 'Ctrl + /'            |De tekst krijgt een hashtag op de goede positie              |
+|Selecteer beide lijnen met en zonder hashtag en druk op 'Ctrl +/'|Alle lijnen krijgen een extra hashtag                        |
+|Selecteer dezelfde lijnen en druk op 'Ctrl +/'                   |Bij alle lijnen wordt één hashtag weggehaald                 |
+
+
+|'''''Symbolic links page'''''                                                                                                                 |
+|Ga naar een hoofd Suite page met symbolic links|N.V.T                                                                                         |
+|Druk in de header op Tools                     |N.V.T                                                                                         |
+|Druk op Symlinks                               |Er verschijnt een Symbolic linkpagina                                                         |
+|'''Met Symbolic links'''                                                                                                                      |
+|Ga naar de pagina                              |Er staat een tabel met alle symbolic links van die pagina en alle pagina's die er onder vallen|
+|Druk op een link                               |De pagina van de link wordt geopend                                                           |
+|'''Zonder Symbolic links'''                                                                                                                   |
+|Ga naar de pagina                              |Er komt een tekst te staan dat er geen symbolic links zijn                                    |
+
+|'''''Custom Stylesheet en Javascript file'''''                                                                              |
+|Klik op de 'Bootstrap+ Preference' instellingen knop |Het venster van de 'Bootstrap+ Preference' instellingen wordt geopend |
+|Zet de 'Sidebar' aan                                 |De sidebar wordt vanaf de root getoont (dit is alleen bij FrontPage)  |
+|'''''Stylesheet'''''                                                                                                        |
+|Verander de kleur van a.suite in de stylesheet       |N.V.T                                                                 |
+|Klik op MyFirstSuite                                 |de MyFirstSuite pagina verschijnt en De suites in de sidebar zijn rood|
+|'''''Javascript'''''                                                                                                        |
+|Maak een consol log aan bij het openen van de Sidebar|N.V.T                                                                 |
+|Klik op MyFirstSuite                                 |de MyFirstSuite pagina verschijnt                                     |
+|Open de browser console                              |de gemaakte console log verschijnt                                    |
+
