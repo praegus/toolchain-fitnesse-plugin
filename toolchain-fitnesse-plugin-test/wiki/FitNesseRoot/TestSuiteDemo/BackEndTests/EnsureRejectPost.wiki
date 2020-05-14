@@ -1,0 +1,30 @@
+---
+Prune
+Test
+---
+!|table template|post request somewhere                                        |
+|template       |CoursePlannerNewRequest.xml.ftl                               |
+|set value      |@{StartDate}        |for          |StartDate                  |
+|set value      |@{EndDate}          |for          |EndDate                    |
+|set value      |@{Archived}         |for          |Archived                   |
+|set value      |@{AllDay}           |for          |AllDay                     |
+|set value      |@{Category}         |for          |Category                   |
+|set value      |@{RoomName}         |for          |RoomName                   |
+|set value      |@{RoomNumber}       |for          |RoomNumber                 |
+|set value      |@{RoomCapacity}     |for          |RoomCapacity               |
+|set value      |@{CourseName}       |for          |CourseName                 |
+|set value      |@{CourseDescription}|for          |CourseDescription          |
+|set value      |@{Category}         |for          |Category                   |
+|@{expect}      |post template to    |http://localhost:8080/ws/CourseWebservice|
+|show           |request                                                       |
+|show           |response                                                      |
+|$status=       |response status                                               |
+
+|script|xml http test|
+
+|post request somewhere                                                                                                                                                                                         |
+|!-StartDate-!                        |!-EndDate-!                          |Archived|!-AllDay-!|Category|!-RoomName-!   |!-RoomNumber-!|!-RoomCapacity-!|!-CourseName-!|!-CourseDescription-!   |expect|status?|
+|!today (yyyy-MM-dd'T'12:00:00.000) +1|!today (yyyy-MM-dd'T'18:00:00.000) +1|false   |false     |Academy |Trainingsruimte|1             |20              |Kantklossen   |Kantklossen voor dummies|ensure|200    |
+|!today (yyyy-MM-dd'T'12:00:00.000) +3|!today (yyyy-MM-dd'T'18:00:00.000) +3|false   |false     |Fout    |Trainingsruimte|2             |10              |              |                        |ensure|500    |
+
+

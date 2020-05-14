@@ -1,0 +1,11 @@
+---
+Suite
+Test: no
+---
+!contents -R2 -g -f -h
+
+!*> Config & Classpath
+!define TEST_SYSTEM {slim}
+!path fixtures/
+!path fixtures/*.jar
+*!

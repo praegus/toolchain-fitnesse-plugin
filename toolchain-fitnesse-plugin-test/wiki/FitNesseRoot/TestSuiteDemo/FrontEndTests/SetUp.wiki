@@ -1,0 +1,6 @@
+!include -c PageObjects
+
+|script         |mendix browser test  |
+|wait for jquery|true                 |
+|open           |http://localhost:9090|
+|set browser size to maximum          |

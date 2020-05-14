@@ -130,15 +130,3 @@
 |Druk op een link                               |De pagina van de link wordt geopend                                                           |
 |'''Zonder Symbolic links'''                                                                                                                   |
 |Ga naar de pagina                              |Er komt een tekst te staan dat er geen symbolic links zijn                                    |
-
-|'''''Custom Stylesheet en Javascript file'''''                                                                              |
-|Klik op de 'Bootstrap+ Preference' instellingen knop |Het venster van de 'Bootstrap+ Preference' instellingen wordt geopend |
-|Zet de 'Sidebar' aan                                 |De sidebar wordt vanaf de root getoont (dit is alleen bij FrontPage)  |
-|'''''Stylesheet'''''                                                                                                        |
-|Verander de kleur van a.suite in de stylesheet       |N.V.T                                                                 |
-|Klik op MyFirstSuite                                 |de MyFirstSuite pagina verschijnt en De suites in de sidebar zijn rood|
-|'''''Javascript'''''                                                                                                        |
-|Maak een consol log aan bij het openen van de Sidebar|N.V.T                                                                 |
-|Klik op MyFirstSuite                                 |de MyFirstSuite pagina verschijnt                                     |
-|Open de browser console                              |de gemaakte console log verschijnt                                    |
-

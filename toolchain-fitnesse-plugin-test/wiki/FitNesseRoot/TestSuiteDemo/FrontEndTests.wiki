@@ -1,0 +1,8 @@
+---
+Suite
+SymbolicLinks
+  TestPageSymlink: TestPage
+---
+!contents -R2 -g -f -h
+
+Samples for testing a web application can be found at .HsacExamples.SlimTests.BrowserTests.

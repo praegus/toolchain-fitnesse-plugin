@@ -1,0 +1,6 @@
+---
+Static
+---
+|script                                          |
+|click           |css=.glyphicon-off             |
+|wait for visible|css=.mx-demouserswitcher-toggle|

@@ -1,0 +1,2 @@
+#[[!style_btn btn-primary(Test History)][${RUNNING_PAGE_PATH}?testHistory]] [[!style_btn btn-primary(Page History)][${RUNNING_PAGE_PATH}?pageHistory]]      [[!style_btn btn-secondary(Properties)][${RUNNING_PAGE_PATH}?properties]]
+#----

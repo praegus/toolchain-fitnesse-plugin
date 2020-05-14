@@ -1,0 +1,7 @@
+---
+Suites: GherkinWrapped
+---
+|script                                                 |
+|Gegeven dat er is ingelogd als|demo_user               |
+|En er wordt gekozen voor      |My account              |
+|Dan is de knop                |Change password|aanwezig|

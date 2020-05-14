@@ -1,0 +1,11 @@
+---
+Suites: factorySetting
+Test
+---
+|script                                                  |
+|log in predefined|demo_administrator                    |
+|click            |Developer settings                    |
+|click            |Factory Reset                         |
+|click            |Yes                                   |
+|ensure           |is visible|Factory reset is completed.|
+

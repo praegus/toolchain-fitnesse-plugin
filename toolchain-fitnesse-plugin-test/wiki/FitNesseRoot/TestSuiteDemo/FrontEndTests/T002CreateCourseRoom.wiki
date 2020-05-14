@@ -1,0 +1,10 @@
+---
+Suites: scenarios, second
+Test
+---
+!3 Als administrator wil ik een cursusruimte kunnen aanmaken
+
+|script                                                                                       |
+|log in predefined|demo_administrator                                                         |
+|new room         |Training room A|with number|5           |and capacity|15                   |
+|check            |value of       |Capacity   |in row where|Name        |is|Training room A|15|

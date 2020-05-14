@@ -1,0 +1,19 @@
+---
+Static
+Test: no
+---
+!contents -R2 -g -p -f -h
+
+|Maak test data                                                                                                                                    |
+|naam  |email                                                       |postcode         |huisnummer        |kenteken                |rekeningnummer  |
+|user1 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user2 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user3 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user4 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user5 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user6 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user7 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user8 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user9 |!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+|user10|!randomString (5,10) (abcdefghijklmnopqrstuvwxyz)@praegus.nl|!randomPostalCode|!randomInt (1,100)|!randomDutchLicensePlate|!randomIBAN (NL)|
+
