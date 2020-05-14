@@ -110,7 +110,7 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
     private static String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
-        List<String> urls = tableRowData.getReleaseNotesUrl();
+        List<String> urls = tableRowData.getReleaseNoteUrls();
 
         writer.startTag("td");
             for (int i = 0; i < urls.size(); i++) {
