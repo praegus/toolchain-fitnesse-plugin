@@ -52,15 +52,4 @@ public class ProjectDependencyInfo {
         return dependenciesInfo;
     }
 
-//    private DependencyInfo getPluginDependencyVersionInformation() {
-//        DependencyInfo pluginInfo = new DependencyInfo("nl.praegus", "toolchain-fitnesse-plugin");
-//        return pluginInfo;
-//
-//    }
-//
-//    private DependencyInfo getDependencyVersionInformation(Dependency dependency, Model model, String artifact) {
-//        DependencyInfo depInfo = new DependencyInfo(dependency.getGroupId(), artifact, dependency.getVersion(), model);
-//        return depInfo;
-//    }
-
 }

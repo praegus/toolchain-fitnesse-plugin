@@ -43,10 +43,6 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         return writer.toHtml();
     }
 
-//    public String getVersionTableHelper(List<DependencyInfo> dependencyList) {
-//        return getVersionTableHtmlAsString(dependencyList);
-//    }
-
     public static String getVersionTableHtmlAsString(List<DependencyInfo> dependencyList) {
         HtmlWriter writer = new HtmlWriter();
 
