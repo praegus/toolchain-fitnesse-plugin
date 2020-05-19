@@ -18,7 +18,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 public class DependencyInfoTest {
     @Test
-    public void test() throws Exception {
+    public void check_Plugin_Dependency_Values() throws Exception {
         DocumentBuilderFactory factory = mock(DocumentBuilderFactory.class);
         DocumentBuilder documentBuilder = mock(DocumentBuilder.class);
         when(factory.newDocumentBuilder()).thenReturn(documentBuilder);
@@ -29,32 +29,61 @@ public class DependencyInfoTest {
                 "1.0.0",
                 getModel(),
                 factory);
+
         assertThat(dependencyInfo.getArtifactId()).isEqualTo("toolchain-fitnesse-plugin");
         assertThat(dependencyInfo.getVersionInPom()).isEqualTo("1.0.0");
         assertThat(dependencyInfo.getVersionOnMvnCentral()).isEqualTo("2.0.3");
+    }
+
+    @Test
+    public void check_Plugin_Dependency_ReleaseNotes() throws Exception {
+        DocumentBuilderFactory factory = mock(DocumentBuilderFactory.class);
+        DocumentBuilder documentBuilder = mock(DocumentBuilder.class);
+        when(factory.newDocumentBuilder()).thenReturn(documentBuilder);
+        when(documentBuilder.parse(any(InputStream.class))).thenReturn(getDocument(versionInfo));
+        DependencyInfo dependencyInfo = new DependencyInfo(
+                "nl.praegus",
+                "toolchain-fitnesse-plugin",
+                "1.0.0",
+                getModel(),
+                factory);
+
         assertThat(dependencyInfo.getReleaseNoteUrls()).containsOnly(ReleaseNotesUrl.pluginUrl, ReleaseNotesUrl.bootstrapUrl);
     }
+
+    @Test
+    public void check_HSAC_Dependency_Values_With_Variable_Version() throws Exception {
+        DocumentBuilderFactory factory = mock(DocumentBuilderFactory.class);
+        DocumentBuilder documentBuilder = mock(DocumentBuilder.class);
+        when(factory.newDocumentBuilder()).thenReturn(documentBuilder);
+        when(documentBuilder.parse(any(InputStream.class))).thenReturn(getDocument(versionInfo));
+        DependencyInfo dependencyInfo = new DependencyInfo(
+                "nl.hsac",
+                "hsac-fitnesse-fixtures",
+                "${hsac.fixtures.version}",
+                getModel(),
+                factory);
+
+        assertThat(dependencyInfo.getArtifactId()).isEqualTo("hsac-fitnesse-fixtures");
+        assertThat(dependencyInfo.getVersionInPom()).isEqualTo("4.14.0");
+        assertThat(dependencyInfo.getVersionOnMvnCentral()).isEqualTo("2.0.3");
+    }
+
     //language=xml
     private final String versionInfo =
             "<metadata>\n" +
-                    "<groupId>nl.praegus</groupId>\n" +
-                    "<artifactId>toolchain-fitnesse-plugin</artifactId>\n" +
-                    "<versioning>\n" +
-                    "<latest>2.0.3</latest>\n" +
-                    "<release>2.0.3</release>\n" +
-                    "<versions>\n" +
-                    "<version>2.0.2</version>\n" +
-                    "<version>2.0.3</version>\n" +
-                    "</versions>\n" +
-                    "<lastUpdated>20200410125951</lastUpdated>\n" +
-                    "</versioning>\n" +
-                    "</metadata>";
+                "<versioning>\n" +
+                "<latest>2.0.3</latest>\n" +
+                "</versioning>\n" +
+            "</metadata>";
+
     private Document getDocument(String document) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
         return builder.parse(new ByteArrayInputStream(document.getBytes()));
     }
+
     private Model getModel() throws IOException, XmlPullParserException {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         return reader.read(new FileReader(System.getProperty("user.dir") + "/src/test/resources/MavenVersions/pom.xml"));
