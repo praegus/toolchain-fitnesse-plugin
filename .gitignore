@@ -15,7 +15,7 @@ toolchain-fitnesse-plugin/wiki/FitNesseRoot/FitNesse
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/RecentChanges*
 updateDoNotCopyOverList
 updateList
-properties
+**/*properties
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/Hsac*
 toolchain-fitnesse-plugin/wiki/fixtures/
 toolchain-fitnesse-plugin/wiki/webdrivers/
@@ -23,14 +23,6 @@ toolchain-fitnesse-plugin/wiki/webdrivers/
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/fileFixture
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/test
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/base64
-toolchain-fitnesse-plugin/wiki/bye.txt
-toolchain-fitnesse-plugin/wiki/greeting.txt
-toolchain-fitnesse-plugin/wiki/copy/greetingCopy.txt
-toolchain-fitnesse-plugin/wiki/greeting.html
-bye.txt
-greeting.txt
-copy/greetingCopy.txt
-greeting.html
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/httpPostExamples
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/galenExamples
 **/*.zip
