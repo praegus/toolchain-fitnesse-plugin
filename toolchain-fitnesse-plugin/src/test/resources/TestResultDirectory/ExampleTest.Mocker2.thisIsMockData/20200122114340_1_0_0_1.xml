@@ -1,0 +1,318 @@
+<testResults>
+    <FitNesseVersion>v20200108</FitNesseVersion>
+    <rootPath>TestSuiteDemo.BackEndTests.T002RetrieveDataFromXas</rootPath>
+    <result>
+        <counts>
+            <right>0</right>
+            <wrong>0</wrong>
+            <ignores>0</ignores>
+            <exceptions>0</exceptions>
+        </counts>
+        <date>2020-01-22T11:43:44+01:00</date>
+        <runTimeInMillis>909</runTimeInMillis>
+        <content/>
+        <relativePageName>SuiteSetUp</relativePageName>
+        <instructions>
+            <instructionResult>
+                <instruction>
+                    {id='import_2_0', instruction='import', path='nl.hsac.fitnesse.fixture'}
+                </instruction>
+                <slimResult>pass(nl.hsac.fitnesse.fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_2_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.hsac.fitnesse.fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_2_1', instruction='import', path='nl.hsac.fitnesse.fixture.slim'}
+                </instruction>
+                <slimResult>pass(nl.hsac.fitnesse.fixture.slim)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_2_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.hsac.fitnesse.fixture.slim</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_2_2', instruction='import', path='nl.praegus.fitnesse.slim.fixtures'}
+                </instruction>
+                <slimResult>pass(nl.praegus.fitnesse.slim.fixtures)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_2_2</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.praegus.fitnesse.slim.fixtures</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_2_3', instruction='import', path='nl.praegus.fitnesse.slim.fixtures.mendix'}
+                </instruction>
+                <slimResult>pass(nl.praegus.fitnesse.slim.fixtures.mendix)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_2_3</instructionId>
+                    <col>0</col>
+                    <row>4</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.praegus.fitnesse.slim.fixtures.mendix</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_3_0', instruction='make', instanceName='library1', className='StringFixture', args=[]}
+                </instruction>
+                <slimResult>pass(string fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_3_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>string fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_3_1', instruction='make', instanceName='library2', className='StopTestFixture', args=[]}
+                </instruction>
+                <slimResult>pass(stop test fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_3_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>stop test fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_3_2', instruction='make', instanceName='library3', className='DateFormatFixture', args=[]}
+                </instruction>
+                <slimResult>pass(date format fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_3_2</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>date format fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+        </instructions>
+    </result>
+    <result>
+        <counts>
+            <right>0</right>
+            <wrong>0</wrong>
+            <ignores>0</ignores>
+            <exceptions>3</exceptions>
+        </counts>
+        <date>2020-01-22T11:43:45+01:00</date>
+        <runTimeInMillis>8323</runTimeInMillis>
+        <content>
+            <a href="?recentTestHistory"><span class="btn btn-primary">Test History</span></a> <a href="?pageHistory"><span class="btn btn-primary">Page History</span></a> <a href="?properties"><span class="btn btn-secondary">Properties</span></a><br/><hr/> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.ScenarioLibrary">.TestSuiteDemo.ScenarioLibrary</a> <a href="TestSuiteDemo.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">add course</td> </tr> <tr> <td>template</td> <td colspan="3">CoursePlannerNewRequest.xml.ftl</td> </tr> <tr> <td>set value</td> <td>@{StartDate}</td> <td>for</td> <td>StartDate</td> </tr> <tr> <td>set value</td> <td>@{EndDate}</td> <td>for</td> <td>EndDate</td> </tr> <tr> <td>set value</td> <td>@{Archived}</td> <td>for</td> <td>Archived</td> </tr> <tr> <td>set value</td> <td>@{AllDay}</td> <td>for</td> <td>AllDay</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>set value</td> <td>@{RoomName}</td> <td>for</td> <td>RoomName</td> </tr> <tr> <td>set value</td> <td>@{RoomNumber}</td> <td>for</td> <td>RoomNumber</td> </tr> <tr> <td>set value</td> <td>@{RoomCapacity}</td> <td>for</td> <td>RoomCapacity</td> </tr> <tr> <td>set value</td> <td>@{CourseName}</td> <td>for</td> <td>CourseName</td> </tr> <tr> <td>set value</td> <td>@{CourseDescription}</td> <td>for</td> <td>CourseDescription</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>show</td> <td>post template to</td> <td colspan="2">http://localhost:8080/ws/CourseWebservice</td> </tr> <tr> <td>show</td> <td colspan="3">request</td> </tr> <tr> <td>show</td> <td colspan="3">response</td> </tr> <tr> <td>$status=</td> <td colspan="3">response status</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td colspan="2">nieuw scenario</td> </tr> <tr class="slimRowColor2"> <td>doe</td> <td colspan="2">dingen</td> </tr> <tr class="slimRowColor8"> <td>$varnieuw=</td> <td>een nieuwe</td> <td>var</td> </tr> </table> </div> </div> <br/>This set up page is executed once, before any tests in this suite.<br/><br/>An <a href="FitNesse.UserGuide.WritingAcceptanceTests.SliM.ImportTable">import table</a> defines which Java packages may contain fixture classes.<br/><br/><table> <tr class="slimRowTitle"> <td>Import</td> </tr> <tr class="slimRowColor0"> <td><span class="pass">nl.hsac.fitnesse.fixture</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">nl.hsac.fitnesse.fixture.slim</span></td> </tr> <tr class="slimRowColor0"> <td><span class="pass">nl.praegus.fitnesse.slim.fixtures</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">nl.praegus.fitnesse.slim.fixtures.mendix</span></td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>Library</td> </tr> <tr class="slimRowColor0"> <td><span class="pass">string fixture</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">stop test fixture</span></td> </tr> <tr class="slimRowColor0"> <td><span class="pass">date format fixture</span></td> </tr> </table> <a href="?recentTestHistory"><span class="btn btn-primary">Test History</span></a> <a href="?pageHistory"><span class="btn btn-primary">Page History</span></a> <a href="?properties"><span class="btn btn-secondary">Properties</span></a><br/><hr/> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.ScenarioLibrary">.TestSuiteDemo.ScenarioLibrary</a> <a href="TestSuiteDemo.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">add course</td> </tr> <tr> <td>template</td> <td colspan="3">CoursePlannerNewRequest.xml.ftl</td> </tr> <tr> <td>set value</td> <td>@{StartDate}</td> <td>for</td> <td>StartDate</td> </tr> <tr> <td>set value</td> <td>@{EndDate}</td> <td>for</td> <td>EndDate</td> </tr> <tr> <td>set value</td> <td>@{Archived}</td> <td>for</td> <td>Archived</td> </tr> <tr> <td>set value</td> <td>@{AllDay}</td> <td>for</td> <td>AllDay</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>set value</td> <td>@{RoomName}</td> <td>for</td> <td>RoomName</td> </tr> <tr> <td>set value</td> <td>@{RoomNumber}</td> <td>for</td> <td>RoomNumber</td> </tr> <tr> <td>set value</td> <td>@{RoomCapacity}</td> <td>for</td> <td>RoomCapacity</td> </tr> <tr> <td>set value</td> <td>@{CourseName}</td> <td>for</td> <td>CourseName</td> </tr> <tr> <td>set value</td> <td>@{CourseDescription}</td> <td>for</td> <td>CourseDescription</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>show</td> <td>post template to</td> <td colspan="2">http://localhost:8080/ws/CourseWebservice</td> </tr> <tr> <td>show</td> <td colspan="3">request</td> </tr> <tr> <td>show</td> <td colspan="3">response</td> </tr> <tr> <td>$status=</td> <td colspan="3">response status</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td colspan="2">nieuw scenario</td> </tr> <tr class="slimRowColor2"> <td>doe</td> <td colspan="2">dingen</td> </tr> <tr class="slimRowColor8"> <td>$varnieuw=</td> <td>een nieuwe</td> <td>var</td> </tr> </table> </div> </div> <br/><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Scenario</p> <div><table> <tr class="slimRowTitle"> <td>scenario</td> <td>xas retrieve xpath</td> <td>xpath</td> <td>order by</td> <td>order</td> </tr> <tr class="slimRowColor2"> <td>set action</td> <td colspan="4">retrieve_by_xpath</td> </tr> <tr class="slimRowColor3"> <td>set xpath</td> <td colspan="4">@{xpath}</td> </tr> <tr class="slimRowColor9"> <td>set schema</td> <td colspan="4">{"offset":0,"sort":[[@{order}]],"amount":0},"count":true}}</td> </tr> <tr class="slimRowColor5"> <td colspan="5">execute action</td> </tr> <tr class="slimRowColor9"> <td>show</td> <td colspan="4">request</td> </tr> <tr class="slimRowColor9"> <td>show</td> <td colspan="4">response</td> </tr> </table> </div> </div> <br/><table> <tr class="slimRowTitle"> <td>script</td> <td colspan="3"><span class="pass">mendix http test</span></td> </tr> <tr class="slimRowColor0"> <td></td> <td colspan="3"><b>Huidige Tijdstempel bepalen</b></td> </tr> <tr class="slimRowColor7"> <td>$currentTime&lt;-[22-01-2020 11:43:45]</td> <td>value of</td> <td colspan="2">22-01-2020 11:43:45</td> </tr> <tr class="slimRowColor6"> <td>$currentTimestamp= <span class="error">Could not parse 22-01-2020 11:43:45 using format: M/d/yy</span></td> <td>timestamp for date</td> <td colspan="2">$currentTime->[22-01-2020 11:43:45]</td> </tr> <tr class="slimRowColor0"> <td></td> <td colspan="3"><b>Mendix aanroepen</b></td> </tr> <tr class="slimRowColor0"> <td>set mendix url</td> <td colspan="3"><a href="http://localhost:8080">http://localhost:8080</a></td> </tr> <tr class="slimRowColor4"> <td>log in with user <span class="error">No response body available</span></td> <td>demo_administrator</td> <td>and password</td> <td>xdfGBuEV58</td> </tr> <tr class="scenario closed"> <td class="error">xas retrieve xpath</td> <td class="error">//Administration.Account[IsLocalUser]</td> <td class="error">order by</td> <td class="error">"FullName","asc"</td> </tr><tr class="scenario-detail closed-detail"><td colspan="4"><table> <tr class="slimRowTitle"> <td>scenario</td> <td>xas retrieve xpath</td> <td>xpath</td> <td>order by</td> <td>order</td> </tr> <tr class="slimRowColor2"> <td>set action</td> <td colspan="4">retrieve_by_xpath</td> </tr> <tr class="slimRowColor3"> <td>set xpath</td> <td colspan="4">//Administration.Account[IsLocalUser]</td> </tr> <tr class="slimRowColor9"> <td>set schema</td> <td colspan="4">{"offset":0,"sort":[["FullName","asc"]],"amount":0},"count":true}}</td> </tr> <tr class="slimRowColor5"> <td colspan="5"><table><tr class="exception closed"><td> <span class="fail">execute action</span></td></tr><tr class="exception-detail closed-detail"><td>__EXCEPTION__:ABORT_SLIM_TEST:nl.hsac.fitnesse.fixture.slim.StopTestException: Unable to get response from POST to: http://localhost:8080/xas/ at nl.hsac.fitnesse.fixture.slim.HttpTest.handleCallException(HttpTest.java:558) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.sendTemplateTo(HttpTest.java:359) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:200) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:189) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.performConfiguredMendixRequest(MendixHttpTest.java:205) [toolchain-fixtures-1.16.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.executeAction(MendixHttpTest.java:162) [toolchain-fixtures-1.16.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at nl.hsac.fitnesse.fixture.slim.SlimFixture.invoke(SlimFixture.java:61) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.SlimFixture.aroundSlimInvoke(SlimFixture.java:41) [hsac-fitnesse-fixtures-4.7.0.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.callMethod(SimpleInteraction.java:305) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.invokeMethod(SimpleInteraction.java:290) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.findAndInvoke(SimpleInteraction.java:217) [fitnesse-standalone.jar:20200108] at fitnesse.slim.MethodExecutor.findAndInvoke(MethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.FixtureMethodExecutor.execute(FixtureMethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.getMethodExecutionResult(StatementExecutor.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.Instruction.execute(Instruction.java:29) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatement(ListExecutor.java:49) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatements(ListExecutor.java:43) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor.execute(ListExecutor.java:85) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:82) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:75) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:62) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.serve(SlimServer.java:47) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.handle(SlimService.java:169) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.acceptOne(SlimService.java:177) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.accept(SlimService.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.startWithFactory(SlimService.java:92) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.main(SlimService.java:57) [fitnesse-standalone.jar:20200108] Caused by: java.lang.RuntimeException: Unable to get response from: http://localhost:8080/xas/ at nl.hsac.fitnesse.fixture.util.HttpClient.getResponse(HttpClient.java:299) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.util.HttpClient.post(HttpClient.java:65) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:288) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:277) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.sendTemplateTo(HttpTest.java:344) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:200) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:189) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.performConfiguredMendixRequest(MendixHttpTest.java:205) [toolchain-fixtures-1.16.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.executeAction(MendixHttpTest.java:162) [toolchain-fixtures-1.16.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at nl.hsac.fitnesse.fixture.slim.SlimFixture.invoke(SlimFixture.java:61) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.SlimFixture.aroundSlimInvoke(SlimFixture.java:41) [hsac-fitnesse-fixtures-4.7.0.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.callMethod(SimpleInteraction.java:305) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.invokeMethod(SimpleInteraction.java:290) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.findAndInvoke(SimpleInteraction.java:217) [fitnesse-standalone.jar:20200108] at fitnesse.slim.MethodExecutor.findAndInvoke(MethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.FixtureMethodExecutor.execute(FixtureMethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.getMethodExecutionResult(StatementExecutor.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.Instruction.execute(Instruction.java:29) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatement(ListExecutor.java:49) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatements(ListExecutor.java:43) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor.execute(ListExecutor.java:85) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:82) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:75) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:62) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.serve(SlimServer.java:47) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.handle(SlimService.java:169) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.acceptOne(SlimService.java:177) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.accept(SlimService.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.startWithFactory(SlimService.java:92) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.main(SlimService.java:57) [fitnesse-standalone.jar:20200108] Caused by: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8080 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) [httpclient-4.5.10.jar:4.5.10] at nl.hsac.fitnesse.fixture.util.HttpClient.executeMethod(HttpClient.java:331) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.util.HttpClient.getResponse(HttpClient.java:294) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.util.HttpClient.post(HttpClient.java:65) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:288) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:277) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.sendTemplateTo(HttpTest.java:344) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:200) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:189) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.performConfiguredMendixRequest(MendixHttpTest.java:205) [toolchain-fixtures-1.16.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.executeAction(MendixHttpTest.java:162) [toolchain-fixtures-1.16.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at nl.hsac.fitnesse.fixture.slim.SlimFixture.invoke(SlimFixture.java:61) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.SlimFixture.aroundSlimInvoke(SlimFixture.java:41) [hsac-fitnesse-fixtures-4.7.0.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.callMethod(SimpleInteraction.java:305) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.invokeMethod(SimpleInteraction.java:290) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.findAndInvoke(SimpleInteraction.java:217) [fitnesse-standalone.jar:20200108] at fitnesse.slim.MethodExecutor.findAndInvoke(MethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.FixtureMethodExecutor.execute(FixtureMethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.getMethodExecutionResult(StatementExecutor.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.Instruction.execute(Instruction.java:29) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatement(ListExecutor.java:49) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatements(ListExecutor.java:43) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor.execute(ListExecutor.java:85) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:82) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:75) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:62) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.serve(SlimServer.java:47) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.handle(SlimService.java:169) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.acceptOne(SlimService.java:177) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.accept(SlimService.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.startWithFactory(SlimService.java:92) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.main(SlimService.java:57) [fitnesse-standalone.jar:20200108] Caused by: java.net.ConnectException: Connection refused: connect at java.base/java.net.PlainSocketImpl.connect0(Native Method) [rt.jar] at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101) [rt.jar] at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) [rt.jar] at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) [rt.jar] at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) [rt.jar] at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) [rt.jar] at java.base/java.net.Socket.connect(Socket.java:591) [rt.jar] at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) [httpclient-4.5.10.jar:4.5.10] at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) [httpclient-4.5.10.jar:4.5.10] at nl.hsac.fitnesse.fixture.util.HttpClient.executeMethod(HttpClient.java:331) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.util.HttpClient.getResponse(HttpClient.java:294) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.util.HttpClient.post(HttpClient.java:65) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:288) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.Environment.doHttpPost(Environment.java:277) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.sendTemplateTo(HttpTest.java:344) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:200) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.HttpTest.postTemplateTo(HttpTest.java:189) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.performConfiguredMendixRequest(MendixHttpTest.java:205) [toolchain-fixtures-1.16.jar] at nl.praegus.fitnesse.slim.fixtures.mendix.MendixHttpTest.executeAction(MendixHttpTest.java:162) [toolchain-fixtures-1.16.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at nl.hsac.fitnesse.fixture.slim.SlimFixture.invoke(SlimFixture.java:61) [hsac-fitnesse-fixtures-4.7.0.jar] at nl.hsac.fitnesse.fixture.slim.SlimFixture.aroundSlimInvoke(SlimFixture.java:41) [hsac-fitnesse-fixtures-4.7.0.jar] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [n/a] at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [n/a] at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [n/a] at java.base/java.lang.reflect.Method.invoke(Method.java:566) [rt.jar] at fitnesse.slim.fixtureInteraction.SimpleInteraction.methodInvoke(SimpleInteraction.java:322) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.callMethod(SimpleInteraction.java:305) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.invokeMethod(SimpleInteraction.java:290) [fitnesse-standalone.jar:20200108] at fitnesse.slim.fixtureInteraction.SimpleInteraction.findAndInvoke(SimpleInteraction.java:217) [fitnesse-standalone.jar:20200108] at fitnesse.slim.MethodExecutor.findAndInvoke(MethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.FixtureMethodExecutor.execute(FixtureMethodExecutor.java:18) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.getMethodExecutionResult(StatementExecutor.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [fitnesse-standalone.jar:20200108] at fitnesse.slim.instructions.Instruction.execute(Instruction.java:29) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatement(ListExecutor.java:49) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor$Executive.executeStatements(ListExecutor.java:43) [fitnesse-standalone.jar:20200108] at fitnesse.slim.ListExecutor.execute(ListExecutor.java:85) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:82) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:75) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:62) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimServer.serve(SlimServer.java:47) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.handle(SlimService.java:169) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.acceptOne(SlimService.java:177) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.accept(SlimService.java:139) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.startWithFactory(SlimService.java:92) [fitnesse-standalone.jar:20200108] at fitnesse.slim.SlimService.main(SlimService.java:57) [fitnesse-standalone.jar:20200108]</td</tr></table></td> </tr> <tr class="slimRowColor9"> <td>show <span class="ignore">Test not run</span></td> <td colspan="4">request</td> </tr> <tr class="slimRowColor9"> <td>show <span class="ignore">Test not run</span></td> <td colspan="4">response</td> </tr> </table></td></tr> <tr class="slimRowColor0"> <td></td> <td colspan="3"><b>Controleer dat deze login in geregistreerd voor de juiste gebruiker</b></td> </tr> <tr class="slimRowColor0"> <td>check</td> <td>json path values</td> <td>$.mxobjects[?(@.attributes.Name.value=="demo_administrator")].attributes.LastLogin.value</td> <td>&gt;$currentTimestamp <span class="ignore">Test not run</span></td> </tr> <tr class="slimRowColor8"> <td colspan="4">log out <span class="ignore">Test not run</span></td> </tr> </table> <br/>
+        </content>
+        <relativePageName>T002RetrieveDataFromXas</relativePageName>
+        <instructions>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_0', instruction='make', instanceName='scriptTableActor', className='MendixHttpTest', args=[]}
+                </instruction>
+                <slimResult>pass(mendix http test)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_3_0</instructionId>
+                    <col>1</col>
+                    <row>0</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>mendix http test</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_1', instruction='callAndAssign', symbolName='currentTime', instanceName='scriptTableActor', methodName='valueOf', args=[22-01-2020 11:43:45]}
+                </instruction>
+                <slimResult>$currentTime<-[22-01-2020 11:43:45]</slimResult>
+                <expectation>
+                    <instructionId>scriptTable_3_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>SymbolAssignmentExpectation</type>
+                    <evaluationMessage>$currentTime<-[22-01-2020 11:43:45]</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_2', instruction='callAndAssign', symbolName='currentTimestamp', instanceName='scriptTableActor', methodName='timestampForDate', args=[$currentTime]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>error</status>
+                    <instructionId>scriptTable_3_2</instructionId>
+                    <type>SymbolAssignmentExpectation</type>
+                    <evaluationMessage>
+                        Could not parse 22-01-2020 11:43:45 using format: M/d/yy
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_3', instruction='call', instanceName='scriptTableActor', methodName='setMendixUrl', args=[<a href="http://localhost:8080">http://localhost:8080</a>]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_3_3</instructionId>
+                    <col>0</col>
+                    <row>5</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_4', instruction='call', instanceName='scriptTableActor', methodName='logInWithUserAndPassword', args=[demo_administrator, xdfGBuEV58]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>error</status>
+                    <instructionId>scriptTable_3_4</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>No response body available</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_0', instruction='call', instanceName='scriptTableActor', methodName='setAction', args=[retrieve_by_xpath]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_3_5/scriptTable_2_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_1', instruction='call', instanceName='scriptTableActor', methodName='setXpath', args=[//Administration.Account[IsLocalUser]]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_3_5/scriptTable_2_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_2', instruction='call', instanceName='scriptTableActor', methodName='setSchema', args=[{"offset":0,"sort":[["FullName","asc"]],"amount":0},"count":true}}]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_3_5/scriptTable_2_2</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_3', instruction='call', instanceName='scriptTableActor', methodName='executeAction', args=[]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>fail</status>
+                    <instructionId>scriptTable_3_5/scriptTable_2_3</instructionId>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_4', instruction='call', instanceName='scriptTableActor', methodName='request', args=[]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_3_5/scriptTable_2_4</instructionId>
+                    <col>0</col>
+                    <row>5</row>
+                    <type>ShowActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_5/scriptTable_2_5', instruction='call', instanceName='scriptTableActor', methodName='response', args=[]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_3_5/scriptTable_2_5</instructionId>
+                    <col>0</col>
+                    <row>6</row>
+                    <type>ShowActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_6', instruction='call', instanceName='scriptTableActor', methodName='jsonPathValues', args=[$.mxobjects[?(@.attributes.Name.value=="demo_administrator")].attributes.LastLogin.value]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_3_6</instructionId>
+                    <col>3</col>
+                    <row>9</row>
+                    <type>ReturnedValueExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_3_7', instruction='call', instanceName='scriptTableActor', methodName='logOut', args=[]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_3_7</instructionId>
+                    <col>0</col>
+                    <row>10</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+        </instructions>
+    </result>
+    <executionLog>
+        <testSystem>slim:fitnesse.slim.SlimService</testSystem>
+        <command>
+            "C:\Program Files\Java\jdk-11.0.4\bin\java" -cp C:\cleanfit\toolchain-training\wiki\fitnesse-standalone.jar;fixtures/;C:\cleanfit\toolchain-training\wiki\fixtures\accessors-smart-1.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\activation-1.1.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\animal-sniffer-annotations-1.14.jar;C:\cleanfit\toolchain-training\wiki\fixtures\animal-sniffer-annotations-1.17.jar;C:\cleanfit\toolchain-training\wiki\fixtures\asm-5.0.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\bcpkix-jdk15on-1.58.jar;C:\cleanfit\toolchain-training\wiki\fixtures\bcprov-jdk15on-1.58.jar;C:\cleanfit\toolchain-training\wiki\fixtures\browsermob-core-2.1.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\byte-buddy-1.8.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\cglib-nodep-3.3.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\checker-compat-qual-2.0.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\checker-qual-2.5.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-cli-1.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-codec-1.11.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-collections4-4.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-compress-1.18.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-exec-1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-io-2.6.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-lang3-3.8.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-logging-1.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-math3-3.6.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-net-3.6.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-text-1.8.jar;C:\cleanfit\toolchain-training\wiki\fixtures\config-1.3.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\curvesapi-1.06.jar;C:\cleanfit\toolchain-training\wiki\fixtures\diff-1.1.11.jar;C:\cleanfit\toolchain-training\wiki\fixtures\dnsjava-2.1.8.jar;C:\cleanfit\toolchain-training\wiki\fixtures\error_prone_annotations-2.1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\error_prone_annotations-2.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\failureaccess-1.0.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\fontbox-2.0.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\freemarker-2.3.29.jar;C:\cleanfit\toolchain-training\wiki\fixtures\galen-core-2.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\galen-rainbow4j-2.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-api-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-api-services-gmail-v1-rev20190422-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-apache-2.0.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-jackson2-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-java6-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-jetty-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\googleauth-1.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\grpc-context-1.14.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\gson-2.8.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\guava-25.0-jre.jar;C:\cleanfit\toolchain-training\wiki\fixtures\guava-27.1-jre.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hamcrest-core-1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hsac-fitnesse-fixtures-4.7.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hsac-fitnesse-fixtures-4.9.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpclient-4.5.10.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpcore-4.4.12.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpmime-4.5.10.jar;C:\cleanfit\toolchain-training\wiki\fixtures\j2objc-annotations-1.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-annotations-2.9.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-core-2.9.7.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-databind-2.9.7.jar;C:\cleanfit\toolchain-training\wiki\fixtures\javax.activation-api-1.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-api-2.3.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-core-2.3.0.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-impl-2.3.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jcl-over-slf4j-1.7.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jetty-6.1.26.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jetty-util-6.1.26.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsch-0.1.55.jar;C:\cleanfit\toolchain-training\wiki\fixtures\json-path-2.4.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\json-smart-2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsr305-1.3.9.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsr305-3.0.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jzlib-1.1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\cleanfit\toolchain-training\wiki\fixtures\littleproxy-1.1.0-beta-bmp-17.jar;C:\cleanfit\toolchain-training\wiki\fixtures\logback-classic-1.2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\logback-core-1.2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\mail-1.5.0-b01.jar;C:\cleanfit\toolchain-training\wiki\fixtures\mitm-2.1.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\netty-all-4.0.51.Final.jar;C:\cleanfit\toolchain-training\wiki\fixtures\okhttp-3.11.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\okio-1.14.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\opencensus-api-0.18.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\opencensus-contrib-http-util-0.18.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\pdfbox-2.0.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\pdfcompare-1.1.40.jar;C:\cleanfit\toolchain-training\wiki\fixtures\phantomjsdriver-1.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-ooxml-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-ooxml-schemas-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\rhino-1.7.7.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-api-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-chrome-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-edge-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-firefox-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-ie-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-java-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-opera-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-remote-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-safari-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-support-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\servlet-api-2.5-20081211.jar;C:\cleanfit\toolchain-training\wiki\fixtures\slf4j-api-1.7.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\snakeyaml-1.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\toolchain-fixtures-1.16.jar;C:\cleanfit\toolchain-training\wiki\fixtures\xmlbeans-3.1.0.jar fitnesse.slim.SlimService 1
+        </command>
+        <exitCode>0</exitCode>
+        <stdOut/>
+        <stdErr>
+            SLF4J: Class path contains multiple SLF4J bindings. SLF4J: Found binding in [jar:file:/C:/cleanfit/toolchain-training/wiki/fitnesse-standalone.jar!/org/slf4j/impl/StaticLoggerBinder.class] SLF4J: Found binding in [jar:file:/C:/cleanfit/toolchain-training/wiki/fixtures/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class] SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation. SLF4J: Actual binding is of type [org.slf4j.impl.JDK14LoggerFactory]
+        </stdErr>
+    </executionLog>
+    <finalCounts>
+        <right>1</right>
+        <wrong>0</wrong>
+        <ignores>0</ignores>
+        <exceptions>1</exceptions>
+    </finalCounts>
+    <totalRunTimeInMillis>12779</totalRunTimeInMillis>
+</testResults>
