@@ -3,14 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>nl.praegus</groupId>
-    <artifactId>toolchain-fitnesse-plugin</artifactId>
-    <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
+    <artifactId>toolchain-fitnesse-plugin-package</artifactId>
     <modules>
-        <module>toolchain-fitnesse-plugin-package</module>
+        <module>toolchain-fitnesse-plugin</module>
         <module>toolchain-fitnesse-plugin-test</module>
     </modules>
-    <name>Praegus Toolchain plugin</name>
-    <description>Auto-register autocomplete responder and add debug script table</description>
+    <name>Praegus Toolchain plugin package</name>
     <version>2.0.4</version>
 
     <properties>
@@ -36,24 +34,4 @@
             <organizationUrl>https://praegus.nl/solutions/</organizationUrl>
         </developer>
     </developers>
-
-    <scm>
-        <connection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</connection>
-        <url>https://github.com/praegus/toolchain-fitnesse-plugin.git</url>
-        <developerConnection>scm:git:git@github.com:praegus/toolchain-fitnesse-plugin.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Maven Central Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>staging</id>
-            <name>Maven Central Staging Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-    </distributionManagement>
 </project>
