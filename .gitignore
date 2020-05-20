@@ -34,3 +34,4 @@ greeting.html
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/httpPostExamples
 toolchain-fitnesse-plugin/wiki/FitNesseRoot/files/galenExamples
 **/*.zip
+/toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/FitNesse/
