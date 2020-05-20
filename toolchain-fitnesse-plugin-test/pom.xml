@@ -6,7 +6,7 @@
         <artifactId>toolchain-fitnesse-plugin</artifactId>
 
         <groupId>nl.praegus</groupId>
-        <version>2.0.4-SNAPSHOT</version>
+        <version>2.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -17,7 +17,7 @@
         <fitnesse.version>20200404</fitnesse.version>
         <hsac.fixtures.version>4.14.0</hsac.fixtures.version>
         <toolchain.fixtures.version>1.21</toolchain.fixtures.version>
-        <toolchain-plugin.version>2.0.4-SNAPSHOT</toolchain-plugin.version>
+        <toolchain-plugin.version>2.0.4</toolchain-plugin.version>
         <!-- classpath that Fitnesse uses when not starting from IDE/maven -->
         <standalone.classpath>wiki/fixtures</standalone.classpath>
         <fitnesse.port>9090</fitnesse.port>
