@@ -24,7 +24,7 @@ build:
     name: "$PROJECT_NAME"
     expire_in: 1 hour
     paths:
-    - target/*
+    - toolchain-fitnesse-plugin/target/*
   except:
   - development
   - master
@@ -52,7 +52,7 @@ release:
     name: "$PROJECT_NAME"
     expire_in: 1 week
     paths:
-    - target/*
+    - toolchain-fitnesse-plugin/target/*
   only:
   - master
   tags:
