@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Tooltips {
@@ -32,8 +34,11 @@ public class Tooltips {
     private static String getBootstrapPath() {
 
         String[] classPaths = System.getProperty("java.class.path").split(";");
+        Pattern regex = Pattern.compile(".*toolchain-fitnesse-plugin-\\d.\\d.\\d-jar-with-dependencies.jar");
+
         for (String classpath : classPaths) {
-            if (classpath.contains("toolchain-fitnesse-plugin")) {
+            Matcher regexmatcher = regex.matcher(classpath);
+            if (regexmatcher.find()) {
                 return classpath;
             }
         }
