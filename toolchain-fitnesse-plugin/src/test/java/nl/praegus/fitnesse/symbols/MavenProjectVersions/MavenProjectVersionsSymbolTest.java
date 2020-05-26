@@ -15,13 +15,6 @@ public class MavenProjectVersionsSymbolTest {
     }
 
     @Test
-    public void check_If_Pom_Is_Not_Found() {
-        MavenProjectVersionsSymbol mavenVersionSymbol = new MavenProjectVersionsSymbol();
-        String receivedValue = mavenVersionSymbol.toTarget(null, null);
-        assertThat(receivedValue).contains("POM not found!");
-    }
-
-    @Test
     public void check_If_Html_Contains_FitNesse_Information() throws FileNotFoundException {
         ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo("/src/test/resources/MavenVersions/pom.xml");
         String receivedValue = MavenProjectVersionsSymbol.getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo());

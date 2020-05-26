@@ -5,6 +5,7 @@ target/
 **/*properties
 **/*.log
 **/*.zip
+/toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/RecentChanges.wiki
 /toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/Hsac*
 /toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/FitNesse/
 /toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/files/galenExamples/
