@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.praegus</groupId>
+    <artifactId>toolchain-training</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <description>A FitNesse test project, based on hsac-fitnesse-fixtures</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <fitnesse.version>20200404</fitnesse.version>
+        <hsac.fixtures.version>4.14.0</hsac.fixtures.version>
+        <surefire.version>2.22.1</surefire.version>
+        <toolchain.fixtures.version>1.21</toolchain.fixtures.version>
+        <toolchain-plugin.version>2.0.3</toolchain-plugin.version>
+        <allure.maven.version>2.10.0</allure.maven.version>
+        <allure.version>2.13.0</allure.version>
+        <allure.fitnesse.listener>1.0.5</allure.fitnesse.listener>
+        <junit>4.12</junit>
+
+        <!-- classpath that Fitnesse uses when not starting from IDE/maven -->
+        <standalone.classpath>wiki/fixtures</standalone.classpath>
+        <fitnesse.port>9090</fitnesse.port>
+        <extraFailsafeListeners>,nl.hsac.fitnesse.junit.JUnitXMLPerPageListener</extraFailsafeListeners>
+    </properties>
+
+    <!-- DEPENDENCIES VOOR FIXTURE CLASSES -->
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fitnesse</groupId>
+            <artifactId>fitnesse</artifactId>
+            <version>${fitnesse.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.hsac</groupId>
+            <artifactId>hsac-fitnesse-fixtures</artifactId>
+            <version>${hsac.fixtures.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.praegus</groupId>
+            <artifactId>toolchain-fixtures</artifactId>
+            <version>${toolchain.fixtures.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit}</version>
+        </dependency>
+    </dependencies>
+</project>
