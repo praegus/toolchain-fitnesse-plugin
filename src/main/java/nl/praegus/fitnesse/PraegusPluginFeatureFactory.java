@@ -7,9 +7,9 @@ import fitnesse.responders.ResponderFactory;
 import fitnesse.testsystems.slim.tables.SlimTable;
 import fitnesse.testsystems.slim.tables.SlimTableFactory;
 import fitnesse.wikitext.parser.SymbolProvider;
+import fitnesse.wikitext.parser.SymbolType;
 import nl.praegus.fitnesse.decorators.TableSymbolDecorator;
 import nl.praegus.fitnesse.responders.AutoCompleteResponder;
-import nl.praegus.fitnesse.responders.MavenProjectVersionsResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.symbolicLink.SymbolicLinkResponder;
@@ -20,6 +20,7 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
+import nl.praegus.fitnesse.symbols.MavenProjectVersions.MavenProjectVersionsSymbol;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
 
@@ -42,9 +43,16 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     }
 
     @Override
-    public void registerSymbolTypes(SymbolProvider symbolProvider) {
+    public void registerSymbolTypes(SymbolProvider symbolProvider) throws PluginException {
         LOG.info("[Toolchain Plugin] Registering table specific css decorator classes.");
         TableSymbolDecorator.install();
+        super.registerSymbolTypes(symbolProvider);
+        add(symbolProvider, new MavenProjectVersionsSymbol());
+    }
+
+    private void add(SymbolProvider provider, SymbolType symbolType) {
+        provider.add(symbolType);
+        LOG.info("Added symbol " + symbolType.getClass());
     }
 
     @Override
@@ -56,8 +64,6 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering MavenProjectVersionsResponder (?mavenVersions).");
-        add(responderFactory, "mavenVersions", MavenProjectVersionsResponder.class);
         LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
         LOG.info("[Toolchain Plugin] Registering AllTagsResponder (?allTags).");
