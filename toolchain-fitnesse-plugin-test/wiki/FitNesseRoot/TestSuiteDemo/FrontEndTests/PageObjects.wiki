@@ -1,3 +1,0 @@
-|script            |string fixture      |
-|$input_voornaam=  |value of|Voornaam * |
-|$input_achternaam=|value of|Acternaam *|

@@ -1,6 +1,5 @@
 !1 Welcome to [[FitNesse][FitNesse.FitNesse]]!
 
-!4 TestSuiteDemo (Praegus demo)
 !4 RegressionTesting
 
 
