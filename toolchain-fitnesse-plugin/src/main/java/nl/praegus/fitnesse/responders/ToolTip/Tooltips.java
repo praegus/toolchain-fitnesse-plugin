@@ -34,11 +34,13 @@ public class Tooltips {
     private static String getBootstrapPath() {
 
         String[] classPaths = System.getProperty("java.class.path").split(";");
-        Pattern regex = Pattern.compile(".*toolchain-fitnesse-plugin-\\d.\\d.\\d-jar-with-dependencies.jar");
+        Pattern regex = Pattern.compile(".*toolchain-fitnesse-plugin-\\d.\\d.\\d.*-jar-with-dependencies.jar");
 
         for (String classpath : classPaths) {
+            System.out.println(classpath);
             Matcher regexmatcher = regex.matcher(classpath);
             if (regexmatcher.find()) {
+                System.out.println("trigger");
                 return classpath;
             }
         }
