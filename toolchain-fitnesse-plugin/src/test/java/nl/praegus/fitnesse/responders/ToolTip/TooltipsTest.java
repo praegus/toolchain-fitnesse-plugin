@@ -1,4 +1,3 @@
-
 package nl.praegus.fitnesse.responders.ToolTip;
 
 import org.junit.Test;
