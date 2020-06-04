@@ -31,7 +31,7 @@ public class Tooltips {
 
     private static String getBootstrapPath() {
 
-        String[] classPaths = System.getProperty("java.class.path").split(";");
+        String[] classPaths = System.getProperty("java.class.path").split("[:;]");
         for (String classpath : classPaths) {
             if (classpath.contains("toolchain-fitnesse-plugin")) {
                 return classpath;
