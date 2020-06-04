@@ -32,7 +32,7 @@ public class Tooltips {
 
     private static String getBootstrapPath() {
 
-           URL[] urls = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
+        URL[] urls = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
         for (URL url : urls) {
             if (url.getPath().contains("toolchain-fitnesse-plugin")) {
                 return url.getPath();
