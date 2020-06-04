@@ -3,6 +3,7 @@ package nl.praegus.fitnesse.responders.ToolTip;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,10 +32,10 @@ public class Tooltips {
 
     private static String getBootstrapPath() {
 
-        String[] classPaths = System.getProperty("java.class.path").split("[:;]");
-        for (String classpath : classPaths) {
-            if (classpath.contains("toolchain-fitnesse-plugin")) {
-                return classpath;
+           URL[] urls = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
+        for (URL url : urls) {
+            if (url.getPath().contains("toolchain-fitnesse-plugin")) {
+                return url.getPath();
             }
         }
         return null;
