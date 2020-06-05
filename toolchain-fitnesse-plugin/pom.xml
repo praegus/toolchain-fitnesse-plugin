@@ -2,14 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>toolchain-fitnesse-plugin-package</artifactId>
-        <groupId>nl.praegus</groupId>
-        <version>2.0.5-SNAPSHOT</version>
-    </parent>
-
     <version>2.0.5-SNAPSHOT</version>
     <artifactId>toolchain-fitnesse-plugin</artifactId>
+
+    <properties>
+        <!-- needed to be able to update version.properties -->
+        <toolchain-plugin.version>${project.version}</toolchain-plugin.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -233,6 +232,21 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>properties-maven-plugin</artifactId>
+                        <version>1.0.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>write-project-properties</goal>
+                                </goals>
+                                <configuration>
+                                    <outputFile>${basedir}/../version.properties</outputFile>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
