@@ -13,8 +13,8 @@
     <artifactId>toolchain-fitnesse-plugin-test</artifactId>
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <fitnesse.version>20200404</fitnesse.version>
-        <hsac.fixtures.version>4.14.0</hsac.fixtures.version>
+        <fitnesse.version>20200501</fitnesse.version>
+        <hsac.fixtures.version>4.15.2</hsac.fixtures.version>
         <toolchain.fixtures.version>1.21</toolchain.fixtures.version>
         <toolchain-plugin.version>${project.version}</toolchain-plugin.version>
         <!-- classpath that Fitnesse uses when not starting from IDE/maven -->
