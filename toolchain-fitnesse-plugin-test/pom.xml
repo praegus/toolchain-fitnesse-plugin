@@ -5,7 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>nl.praegus</groupId>
     <artifactId>toolchain-fitnesse-plugin-test</artifactId>
+
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <fitnesse.version>20200501</fitnesse.version>
