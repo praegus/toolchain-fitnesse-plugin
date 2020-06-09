@@ -1,0 +1,103 @@
+!2 Basis Functionaliteit Regressie testen
+
+
+Bij elk nieuw onderwerp ga dan terug naar de homepagina
+
+
+|'''''Stap'''''|'''''Verwachten uitkomst'''''|
+
+
+|'''''Configuratie knoppen'''''                                                                                                                                     |
+|Klik op de 'Bootstrap+ Preference' instellingen knop           |Het venster van de 'Bootstrap+ Preference' instellingen wordt geopend                              |
+|'''Dark theme'''                                                                                                                                                   |
+|Zet de 'Come to the dark side' aan                             |De pagina verandert meteen van kleur. De achtergrondkleur wordt #3a3a3a                            |
+|'''Collapse Slim Symbols & Expressions'''                                                                                                                          |
+|Zet de 'Collapse Slim Symbols & Expressions' aan               |?                                                                                                  |
+|'''Experimental Save and validate test pages on enter'''                                                                                                           |
+|Zet de 'Experimental Save and validate test pages on enter' aan|N.V.T                                                                                              |
+|Ga naar een testgeval en druk op de "Edit" knop                |N.V.T                                                                                              |
+|Zet dit in de editor ''!2 Dit is een testgeval'                |De validate moet tijdens het schrijven geactiveerd worden en er komt en vinkje bij de test te staan|
+
+
+|'''''Basics'''''                                                                                                                                                                                                       |
+|'''Add page'''                                                                                                                                                                                                         |
+|Klik op de Add knop en dan op Static Page optie                                                            |Je wordt gestuurd naar een edit pagina voor een Static Page                                                |
+|Zet in het Page Name input veld 'testTestStaticPage' en druk op save                                       |Je wordt terug gestuurd naar je Suite en ziet de Static Page staan                                         |
+|Klik op de Add knop en dan op Suite Page optie                                                             |Je wordt gestuurd naar een edit pagina voor een Suite Page                                                 |
+|Zet in het Page Name input veld 'testTestSuitePage' en druk op save                                        |Je wordt terug gestuurd naar je Suite en ziet de Suite Page staan                                          |
+|Klik op de Add knop en dan op Test Page optie                                                              |Je wordt gestuurd naar een edit pagina voor een Test Page                                                  |
+|Zet in het Page Name input veld 'testTestTestPage' en druk op save                                         |Je wordt terug gestuurd naar je Suite en ziet de Test Page staan                                           |
+|'''Edit page'''                                                                                                                                                                                                        |
+|Klik op een testgeval                                                                                      |Je wordt gestuurd naar de testgeval pagina                                                                 |
+|Klik op de Edit knop                                                                                       |Je wordt gestuurd naar de edit pagina van het testgeval                                                    |
+|Zet in het testgeval "[line][hash][hash] This is a comment"[line]                                          |N.V.T.                                                                                                     |
+|Klik op de ''Format'' knop                                                                                 |De code wordt correct geformateerd                                                                         |
+|Klik op de ''Validate'' knop                                                                               |Je krijgt feedback over de correctheid van de code                                                         |
+|Klik op de ''Save'' knop                                                                                   |Je wordt naar de testgeval pagina gestuurd                                                                 |
+|Klik op de Edit knop                                                                                       |Je wordt gestuurd naar de pagina van het testgeval                                                         |
+|Druk op de ''Context help'' knop                                                                           |Opent Context help side bar                                                                                |
+|Open de Scenario's dropdown en druk op een van de plus symbool                                             |Het scenario wordt toegevoegd aan het testgeval                                                            |
+|Druk op de ''FitNesse to Spreadsheet'' knop                                                                |De lijnen worden van het script verwijderd                                                                 |
+|Druk op de ''Spreadsheet to FitNesse'' knop                                                                |Lijnen worden aan het script toegevoegd                                                                    |
+|Klik op de dropdown links naast de ''Insert Template'' en selecteer ._.TestPage                            |N.V.T.                                                                                                     |
+|Klik op de Insert Template knop                                                                            |<test page> wordt toegevoegd aan het script                                                                |
+|Zet in het ''Tags'' input veld 'testTestTag' en druk op Enter                                              |De testTestTag wordt toegevoegd aan het testgeval                                                          |
+|Klik op het x symbool die verschijnt als je over de tag beweegt                                            |De tag wordt verwijdert                                                                                    |
+|Klik op de ''Cancel'' knop                                                                                 |Je veranderingen worden gecanceled en je wordt terug gestuurd naar het testgeval                           |
+|Klik op een testgeval                                                                                      |Je wordt gestuurd naar de pagina van het testgeval                                                         |
+|Klik op de Tools knop en klik op Rename                                                                    |Je wordt naar een pagina gestuurd waar je de pagina naam kan hernoemen                                     |
+|Zet in het New Name input veld "andereNaam" en klik op de Rename Page knop                                 |Je wordt gestuurd naar de testgeval pagina met de veranderde naam                                          |
+|'''Move and Remove''' (gaat door)                                                                                                                                                                                      |
+|Klik op de Tools knop en klik op Move                                                                      |Je wordt naar een pagina gestuurd waar je de pagina locatie kan veranderen                                 |
+|Zet in het New Location input veld de naam van een andere suite                                            |Je wordt gestuurd naar de testgeval pagina met de veranderde locatie                                       |
+|Klik op de Tools knop en klik op Delete                                                                    |Je wordt naar een pagina gestuurd waar je wordt gevraagd of je zeker weet dat je de pagina wilt verwijderen|
+|Klik op de Yes knop                                                                                        |Je wordt naar de suite waar het testgeval in zat gestuurd                                                  |
+|'''Replace'''                                                                                                                                                                                                          |
+|Maak een testgeval met daarin de tekst "Test zin Test"                                                     |N.V.T.                                                                                                     |
+|Klik op de Tools knop en klik op Replace                                                                   |Je wordt naar een pagina gestuurd waar je een string kan vervangen                                         |
+|Zet in het Search string input veld "zin", in het Replacement input veld "TEST" en druk op de Replace! knop|Je komt op een pagina die alle veranderde pagina's laat zien                                               |
+|Open het testgeval en kijk of de tekst is veranderdt                                                       |Er staat "Test TEST Test" in het testgeval                                                                 |
+|'''Search'''                                                                                                                                                                                                           |
+|Klik op de Tools knop en klik op Search                                                                    |Je wordt naar een pagina gestuurd waar je kan zoeken                                                       |
+|Zet in het Text string input veld "zin" en klik op de all knop bij Scope                                   |Je krijgt alle zoekresultaten te zien                                                                      |
+
+|'''''Properties'''''                                                                                                            |
+|Klik op Tools     |Er verschijnt een dropdown                                                                                   |
+|Klik op properties|Je gaat naar een nieuwe pagina waar de page properties, wiki import en symbolic link aangegeven kunnen worden|
+|'''Page properties'''                                                                                                           |
+|?                 |?                                                                                                            |
+|'''Wiki Import'''                                                                                                               |
+|?                 |?                                                                                                            |
+|'''Symbolic Links'''                                                                                                            |
+|?                 |?                                                                                                            |
+
+
+|'''''Sneltoetsen'''''                                                                                                                                                   |
+|'''General'''                                                                                                                                                           |
+|Ga naar een suite met een testgeval en druk op de toets "E"                            |Je gaat naar de edit pagina van de suite                                        |
+|Ga naar een suite met een testgeval en druk op de toets "T"                            |Je huidige suite wordt getest                                                   |
+|Druk daarna op de toets "V"                                                            |Je uit het test scherm en terug naar je huidige suite pagina                    |
+|Ga naar een suite met een testgeval en druk op de toets "A"                            |Je opend een nieuwe edit pagina en maakt hierdoor een nieuwe pagina aan         |
+|'''Edit Mode'''                                                                                                                                                         |
+|Ga naar de edit page van een pagina en schrijf twee nieuwe ongeformateerde tabel regels|N.V.T                                                                           |
+|Druk op de toetsen “Alt" + “Shift" + “F"                                               |Alle regels worden geformateerd                                                 |
+|Druk op de toetsen “Ctrl" + "S"                                                        |De pagina word opgeslagen en de edit page wordt gesloten                        |
+|Ga naar de edit page van de pagina en schrijf twee nieuwe regels                       |N.V.T                                                                           |
+|Druk op de toets “Esc"                                                                 |De aanpassingen worden geannuleerd en de edit page wordt gesloten               |
+|'''Bootstrap-plus'''                                                                                                                                                    |
+|Ga naar de edit page van een pagina en schrijf "cli"                                   |N.V.T                                                                           |
+|Klik op "Ctrl" + "Space"                                                               |Er komt een autocomplete                                                        |
+|Schrijf de regel af en klik op "Ctrl" + "."                                            |Er wordt een validatie check gedaan                                             |
+|Klik daarna op "Ctrl" + ","                                                            |De context helper wordt geopend en de regel waar je opstond staat in de zoekbalk|
+|'''Go to'''                                                                                                                                                             |
+|Ga naar een Suite met een testgeval en druk op de toetsen "G" + "U"                    |Gaat naar de FitNesse User Guide                                                |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “Q"                    |Opent een nieuw tabblad voor de QuickReferenceGuide                             |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “F"                    |Opent een nieuw tabblad voor de FullReferenceGuide                              |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “C"                    |Gaat naar de RecentChanges pagina                                               |
+|'''Tools'''                                                                                                                                                             |
+|Ga naar een Suite met een testgeval en druk op de toets “P"                            |Gaat naar de properties van je huidige pagina                                   |
+|Ga naar een Suite met een testgeval en druk op de toets “W"                            |Gaat naar de whereUsed van de huidige pagina                                    |
+|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "V"                  |Gaat naar de Versions van de huidige pagina                                     |
+|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "H"                  |Gaat naar de pageHistory van de huidige pagina                                  |
+|Ga naar een Suite met een testgeval en druk op de toets "/"                            |De focus wordt gelegd op de search bar                                          |
+|Ga naar een Suite met een testgeval en druk op de toets "S"                            |Gaat naar de zoek pagina met een focus op de huidige pagina                     |
