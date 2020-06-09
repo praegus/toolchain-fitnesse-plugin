@@ -10,4 +10,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run all java testcases
+      with: ~/toolchain-fitnesse-plugin
       run: mvn test
