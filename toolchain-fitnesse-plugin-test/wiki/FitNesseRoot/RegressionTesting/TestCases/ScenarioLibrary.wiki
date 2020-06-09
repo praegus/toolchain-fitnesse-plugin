@@ -1,0 +1,34 @@
+!|scenario|Make new Suite Page without saving               |
+|# Go to correct page                                       |
+|open     |http://localhost:9090/FrontPage                  |
+|click    |xpath=(//a[@href= 'TestSuiteDemo'])              |
+|# Click on add Suite Page                                  |
+|click    |xpath=(//li[@id= 'add']//a)                      |
+|click    |xpath=(//ul[@class= 'dropdown-menu show']//li[2])|
+|ensure   |is visible |xpath=(//fieldset[@id= 'editor'])    |
+|# Add name                                                 |
+|ensure   |is visible |xpath=(//input[@id= 'pagename'])     |
+|enter    |Testing    |as |xpath=(//input[@id= 'pagename']) |
+
+!|scenario|Change new Suite Page without saving         |
+|# Go to correct page                                   |
+|open  |http://localhost:9090/FrontPage                 |
+|click |xpath=(//a[@href= 'TestSuiteDemo'])             |
+|click |xpath=(//a[@href= 'TestSuiteDemo.Testing'])     |
+|# Click on edit Suite Page                             |
+|click |xpath=(//a[@href= 'TestSuiteDemo.Testing?edit'])|
+|ensure|is visible  |xpath=(//fieldset[@id= 'editor'])  |
+|# Change tekst                                         |
+|press |END                                             |
+|press |BACK_SPACE                                      |
+|press |Testing                                         |
+
+!|scenario|Delete new Suite Page without confirming         |
+|# Go to correct page                                       |
+|open     |http://localhost:9090/FrontPage                  |
+|click    |xpath=(//a[@href= 'TestSuiteDemo'])              |
+|click    |xpath=(//a[@href= 'TestSuiteDemo.Testing'])      |
+|# Click on tools and delete                                |
+|click    |xpath=(//li[@id= 'tools']//a)                    |
+|click    |xpath=(//ul[@class= 'dropdown-menu show']//li[8])|
+|ensure   |is visible    |Are you sure you want to delete   |

@@ -1,0 +1,46 @@
+---
+Suite: no
+Test
+---
+|script|browser test                                              |
+|# Cancel the makeing of a new Suite Page                         |
+|Make new Suite Page without saving                               |
+|# Press Cancel                                                   |
+|click |xpath=(//a[@id= 'cancelEdit'])                            |
+|ensure|is not visible|xpath=(//a[@href= 'TestSuiteDemo.Testing'])|
+
+|script|browser test                                          |
+|# Make new Suite Page                                        |
+|Make new Suite Page without saving                           |
+|# Press Save                                                 |
+|click |xpath=(//input[@name= 'save'])                        |
+|ensure|is visible|xpath=(//a[@href= 'TestSuiteDemo.Testing'])|
+
+|script |browser test                     |
+|# Cancel the change of the new Suite Page|
+|Change new Suite Page without saving     |
+|# Press Cancel                           |
+|click  |xpath=(//a[@id= 'cancelEdit'])   |
+#|confirm alert                            |
+|ensure |is not visible|Test suite Testing|
+
+|script|browser test                  |
+|# Change new Suite Page              |
+|Change new Suite Page without saving |
+|# Press Save                         |
+|click |xpath=(//input[@name= 'save'])|
+|ensure|is visible |Test suite Testing|
+
+|script|browser test                                          |
+|# Cancel the deleting of the new Suite Page                  |
+|Delete new Suite Page without confirming                     |
+|# Press No                                                   |
+|click |xpath=(//form[@method= 'POST']//a)                    |
+|ensure|is visible|Test suite Testing|
+
+|script|browser test                                              |
+|# Delete new Suite Page                                          |
+|Delete new Suite Page without confirming                         |
+|# Press Yes                                                      |
+|click |xpath=(//input[@name= 'confirmed'])                       |
+|ensure|is not visible|xpath=(//a[@href= 'TestSuiteDemo.Testing'])|
