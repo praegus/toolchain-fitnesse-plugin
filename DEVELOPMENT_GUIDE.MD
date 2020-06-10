@@ -61,7 +61,8 @@ The Praegus repo has an integrated build that runs the tests.
 
 ### Unit testing
 #### Naming
-Straightforward naming that indicates what the test is or tests and what is expected of that test.
+The test name has to describe the goal of the test. 
+For example; "When _[explain what happens in the test]_ then _[explain the expected result]_". 
 
 #### Set Up
 Create a clear layout by first setting down all the necessary variables, then add a white line, then add the function/execution, another white line and finally the test itself.
