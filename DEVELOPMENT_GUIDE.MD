@@ -48,9 +48,10 @@ The tests are integrated with a automated build in Github. When creating a pull 
     
     
 - Notation
-    - Use Snake casing when naming tests.
-    - Use Pascal casing when naming functions.
-    - Use Camel casing when naming variables.
+    - Use Pascal casing when naming a Class, a Interfaces.
+    - Use Camel casing when naming a Variables, a Methods.
+    - Use Snake casing when naming a Constants.
+    
     
 #### Formating
 
@@ -58,18 +59,10 @@ The tests are integrated with a automated build in Github. When creating a pull 
     - Using the format button, everyone will get their code to look well arranged.
     
     
-- Enters
-    - Don't add unnecessary enters, but place them in places to provide more a beter overall picture. Just like with each new CSS element and between functions.
-    
-    
 - Spaces
     - Place spaces where necessary. For example do not write an if statement like this: “if(saveButton==true){}” but like this “if (saveButton == true) { }“. As another example, do not write a variable like this ”const saveButton=false;" but like this “const saveButton = false;”
     
-    
-- Quotes
-    - If you need to add quotes, use single quotes.
-    
-    
+
 ### Unit testing
 #### Naming
 Straightforward naming that indicates what the test is or tests and what is expected of that test.

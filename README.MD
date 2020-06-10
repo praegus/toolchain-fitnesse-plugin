@@ -1,4 +1,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/nl.praegus/toolchain-fitnesse-plugin.svg?maxAge=21600)](https://mvnrepository.com/artifact/nl.praegus/toolchain-fitnesse-plugin)
+
+You can go to the [DEVELOPMENT_GUIDE.MD](./DEVELOPMENT_GUIDE.MD), for information about how to get started with the Toolchain FitNesse Plugin.
+
 # Toolchain FitNesse Plugin
 
 This plug-in contains the following extensions to FitNesse (20190620 or later):
