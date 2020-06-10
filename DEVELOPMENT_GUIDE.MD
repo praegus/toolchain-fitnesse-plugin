@@ -15,7 +15,7 @@ The Plugin required to be included in a project with the original FitNesse.
 
 ### README
 
-There is a README in both projects that shows all current features. This README needs to be updated when a new feature is developed.   
+The README in shows all current features. This README needs to be updated when a new feature is developed.      
 
 ### Java
 
