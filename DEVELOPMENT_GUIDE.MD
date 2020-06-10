@@ -1,21 +1,16 @@
 # Getting Started with the Toolchain FitNesse Plugin
-This is meant for people who want to develop for the Toolchain FitNesse Plugin.
+This MD is meant for people who want to develop for the Toolchain FitNesse Plugin.
 
 ## Running the code 
 
-1. Put the correct Toolchain Plugin version in the pom.xml.
-2. Press on "Maven" on the right side.
-    2. Open the folder “Lifecycle”.
-    2. Select “clean” and “install”. 
-    2. Press on “Run Maven Build”.
-
-The Plugin required to be included in a project with the original FitNesse. 
+The Toolchain Plugin can't be run on it's own. 
+To run the Toolchain Plugin it's required to be included in a project with the original FitNesse. 
 
 ## Code Set Up 
 
 ### README
 
-The README in shows all current features. This README needs to be updated when a new feature is developed.      
+The README.MD shows all current features. This README needs to be updated when a new feature is developed.      
 
 ### Java
 
@@ -53,10 +48,11 @@ The Praegus repo has an integrated build that runs the tests.
 #### Formating
 
 - Enters
-    - Don't add unnecessary enters, but place them in places to provide more a beter overall picture. 
+    - Don't add unnecessary enters, but place them in places to provide a better overall picture.
+    
     
 - Spaces
-    - Place spaces where necessary. For example do not write an if statement like this: “if(saveButton==true)” but like this “if (saveButton == true)“.
+    - Place spaces where it's necessary. For example do not write an if statement like this: “if(saveButton==true)” but like this “if (saveButton == true)“.
      
 
 ### Unit testing
@@ -65,4 +61,6 @@ The test name has to describe the goal of the test.
 For example; "When _[explain what happens in the test]_ then _[explain the expected result]_". 
 
 #### Set Up
-Create a clear layout by first setting down all the necessary variables, then add a white line, then add the function/execution, another white line and finally the test itself.
+To create a clear layout you first need to set up al the necessary variables. 
+Place after that the functions/executions. 
+And finally the expected result of the test.
