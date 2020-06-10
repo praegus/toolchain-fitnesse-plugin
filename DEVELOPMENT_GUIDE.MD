@@ -37,31 +37,27 @@ The user can for example use "!VersionChecker" to add a version checker table on
 The written Java code needs to be tested. 
 The Java testing framework "JUNIT" is used for unit testing the code. 
 The created unit tests are located in the "test/java/nl/praegus/fitnesse" folder.
-The tests are integrated with a automated build in Github. When creating a pull request to the Praegus.
+The Praegus repo has an integrated build that runs the tests.
+
 
 ## Code Conventions
 ### General
-#### Naming and notation
-
-- Naming
-    - Do not change the existing name from the FitNesse master.
-    
+#### Notation
     
 - Notation
-    - Use Pascal casing when naming a Class, a Interfaces.
-    - Use Camel casing when naming a Variables, a Methods.
-    - Use Snake casing when naming a Constants.
+    - Use Pascal casing when naming a Class and a Interfaces.
+    - Use Camel casing when naming a Variables and a Methods.
+    - Use Snake casing when naming a Constants and a Test.
     
     
 #### Formating
 
-- Format button
-    - Using the format button, everyone will get their code to look well arranged.
-    
+- Enters
+    - Don't add unnecessary enters, but place them in places to provide more a beter overall picture. 
     
 - Spaces
-    - Place spaces where necessary. For example do not write an if statement like this: “if(saveButton==true){}” but like this “if (saveButton == true) { }“. As another example, do not write a variable like this ”const saveButton=false;" but like this “const saveButton = false;”
-    
+    - Place spaces where necessary. For example do not write an if statement like this: “if(saveButton==true)” but like this “if (saveButton == true)“.
+     
 
 ### Unit testing
 #### Naming
