@@ -1,4 +1,4 @@
-# Getting Started with Toolchain FitNesse Plugin
+# Getting Started with the Toolchain FitNesse Plugin
 This is meant for people who want to develop for the Toolchain FitNesse Plugin.
 
 ## Running the code 
