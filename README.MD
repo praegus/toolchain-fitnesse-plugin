@@ -81,3 +81,9 @@ The above example will execute the scenario loop over three times, once for each
 
 Contact https://www.praegus.nl for more info.
 
+### Toolchain FitNesse plugin Package project	
+This project contains two Sub projects which can be used to build the Toolchain FitNesse plugin and host an FitNesse instance	
+
+in this the Toolchain FitNesse plugin is the java project and the Toolchain FitNesse plugin test contains an FitNesse instance.	
+
+the Toolchain FitNesse plugin package is not used for anything except containing the two subprojects.
