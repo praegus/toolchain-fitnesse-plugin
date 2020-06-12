@@ -4,7 +4,7 @@ This MD is meant for people who want to develop for the Toolchain FitNesse Plugi
 ## Running the code 
 
 The Toolchain Plugin can't be run on it's own. 
-To run the Toolchain Plugin it's required to be included in a project with the original FitNesse. 
+To run the Toolchain Plugin it's required to be included in a project with the [original FitNesse](https://mvnrepository.com/artifact/org.fitnesse/fitnesse). 
 
 ## Code Set Up 
 
@@ -52,7 +52,7 @@ The Praegus repo has an integrated build that runs the tests.
     
     
 - Spaces
-    - Place spaces where it's necessary. For example do not write an if statement like this: “if(saveButton==true)” but like this “if (saveButton == true)“.
+    - Place spaces where it's necessary. For example do not write an if statement like this: “if(newValue!=null)” but like this “if (newValue != null)“.
      
 
 ### Unit testing
