@@ -4,7 +4,7 @@ This MD is meant for people who want to develop for the Toolchain FitNesse Plugi
 ## Running the code 
 
 The Toolchain Plugin can't be run on it's own. 
-To run the Toolchain Plugin it's required to be included in a project with the [original FitNesse](https://mvnrepository.com/artifact/org.fitnesse/fitnesse). 
+To run the Toolchain Plugin it's required to be included in a project with the [original FitNesse](https://github.com/unclebob/fitnesse). 
 
 ## Code Set Up 
 
