@@ -8,6 +8,8 @@ This plug-in contains the following extensions to FitNesse (20190620 or later):
  * Conditional script table
  * Conditional scenario table
  * Looping scenario table
+ * !VersionChecker symbol to check your dependencies against maven central (if your project uses Maven)
+ * !includeIfAvailable symbol, that only includes a page if it's there, without throwing exceptions, or providing a create-link if it's not (useful when you have symlinked scopes)
 
 ### Bootstrap-plus
 See https://github.com/praegus/fitnesse-bootstrap-plus-theme

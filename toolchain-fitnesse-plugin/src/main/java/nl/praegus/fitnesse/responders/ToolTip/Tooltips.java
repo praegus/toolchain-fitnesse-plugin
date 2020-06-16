@@ -3,6 +3,7 @@ package nl.praegus.fitnesse.responders.ToolTip;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,13 +34,13 @@ public class Tooltips {
 
     private static String getBootstrapPath() {
 
-        String[] classPaths = System.getProperty("java.class.path").split(";");
+        URL[] urls = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
         Pattern regex = Pattern.compile(".*toolchain-fitnesse-plugin-\\d.\\d.\\d.*-jar-with-dependencies.jar");
 
-        for (String classpath : classPaths) {
-            Matcher regexmatcher = regex.matcher(classpath);
+        for (URL url : urls) {
+            Matcher regexmatcher = regex.matcher(url.getPath());
             if (regexmatcher.find()) {
-                return classpath;
+                return url.getPath();
             }
         }
         return null;

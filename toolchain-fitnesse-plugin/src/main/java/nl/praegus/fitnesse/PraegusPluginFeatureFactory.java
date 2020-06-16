@@ -20,6 +20,7 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
+import nl.praegus.fitnesse.symbols.IncludeIfAvailable;
 import nl.praegus.fitnesse.symbols.MavenProjectVersions.MavenProjectVersionsSymbol;
 
 public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
@@ -48,6 +49,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         TableSymbolDecorator.install();
         super.registerSymbolTypes(symbolProvider);
         add(symbolProvider, new MavenProjectVersionsSymbol());
+        add(symbolProvider, new IncludeIfAvailable());
     }
 
     private void add(SymbolProvider provider, SymbolType symbolType) {
