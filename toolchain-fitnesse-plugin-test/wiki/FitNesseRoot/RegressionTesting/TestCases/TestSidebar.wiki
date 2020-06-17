@@ -1,1 +1,28 @@
-<test page>
+!4 Open Sidebar and check if it is visible
+|storyboard|browser test                                    |
+|Toggle the sidebar                                         |
+|ensure    |is visible on page|xpath=(//div[@id= 'sidebar'])|
+|# Check if visible on other pages                          |
+|click     |xpath=(//a[@href= 'TestSuiteDemo'])             |
+|ensure    |is visible on page|xpath=(//div[@id= 'sidebar'])|
+
+!4 Open Sidebar en check if it is visible
+#|storyboard|browser test                                                                            |
+#|open      |http://localhost:9090/FrontPage                                                         |
+#|# Klik op een link                                                                                 |
+#|click     |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests'])                  |
+#|# Hightlight in in beeld                                                                           |
+#|ensure    |is visible            |xpath=(//div[@id= 'highlight'])                                  |
+#|# Inklappen van een map laat de inhoud verdwijnen                                                  |
+#|ensure    |is visible on page    |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.PageObjects'])    |
+#|click     |xpath=(//div[@id= 'highlight']/i[1])                                                    |
+#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.PageObjects'])    |
+#|# Klap alle mappen uit                                                                             |
+#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
+#|click     |xpath=(//li[@id= 'expandAllSidebar'])                                                   |
+#|ensure    |is visible on page    |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
+#|# Klap alle mappen in                                                                              |
+#|click     |xpath=(//li[@id= 'collapseAllSidebar'])                                                 |
+#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
+#|ensure    |is visible            |xpath=(//div[@id= 'highlight'])                                  |
+#
