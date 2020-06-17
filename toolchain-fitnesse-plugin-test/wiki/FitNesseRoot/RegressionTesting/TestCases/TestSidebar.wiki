@@ -1,28 +1,50 @@
-!4 Open Sidebar and check if it is visible
-|storyboard|browser test                                    |
-|Toggle the sidebar                                         |
-|ensure    |is visible on page|xpath=(//div[@id= 'sidebar'])|
-|# Check if visible on other pages                          |
-|click     |xpath=(//a[@href= 'TestSuiteDemo'])             |
-|ensure    |is visible on page|xpath=(//div[@id= 'sidebar'])|
+!4 1. Open Sidebar
+|script|browser test                                                         |
+|Go to the Front Page                                                        |
+|Toggle the sidebar                                                          |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
+|ensure|is visible on page    |xpath=(//div[@id= 'closedSidebar'])           |
+|# Check if the correct folder is visible                                    |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//li[@id= 'root'])|
+|ensure|is visible            |xpath=(//div[@id= 'highlight'])               |
+|# Collapse and expand sidebar                                               |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar'])                 |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
+|# Change the width of the sidebar                                           |
+# ?
 
-!4 Open Sidebar en check if it is visible
-#|storyboard|browser test                                                                            |
-#|open      |http://localhost:9090/FrontPage                                                         |
-#|# Klik op een link                                                                                 |
-#|click     |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests'])                  |
-#|# Hightlight in in beeld                                                                           |
-#|ensure    |is visible            |xpath=(//div[@id= 'highlight'])                                  |
-#|# Inklappen van een map laat de inhoud verdwijnen                                                  |
-#|ensure    |is visible on page    |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.PageObjects'])    |
-#|click     |xpath=(//div[@id= 'highlight']/i[1])                                                    |
-#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.PageObjects'])    |
-#|# Klap alle mappen uit                                                                             |
-#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
-#|click     |xpath=(//li[@id= 'expandAllSidebar'])                                                   |
-#|ensure    |is visible on page    |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
-#|# Klap alle mappen in                                                                              |
-#|click     |xpath=(//li[@id= 'collapseAllSidebar'])                                                 |
-#|ensure    |is not visible on page|xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.EnsureRejectPost'])|
-#|ensure    |is visible            |xpath=(//div[@id= 'highlight'])                                  |
-#
+
+!4 2. Click on a link in Sidebar and Collapsing a folder makes the content disappear
+|script|browser test                                                                                       |
+|Go to the Test Suite Demo                                                                                 |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])|
+|click |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests'])                             |
+|# Collapse the current folder                                                                             |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])|
+|click |xpath=(//div[@id= 'highlight']/i[1])                                                               |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])|
+
+
+!4 3. Check if Expand en Collapse works
+|script|browser test                                                                                            |
+|Go to the Test Suite Demo                                                                                      |
+|# Expand all                                                                                                   |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])     |
+|click |xpath=(//i[@id= 'expandAllSidebar'])                                                                    |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])     |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest'])|
+|# Collapse except current                                                                                      |
+|click |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.BackEndTests'])                                   |
+|click |xpath=(//i[@id= 'collapseAllSidebar'])                                                                  |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.FrontEndTests.SetUp'])     |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest'])|
+
+
+!4 4. Show and hide tags in sidebar
+Hiervoor moet er een standaard tag zijn
+
+
+!4 5. Collapse while running a test
+Hiervoor moeten de test testen werken

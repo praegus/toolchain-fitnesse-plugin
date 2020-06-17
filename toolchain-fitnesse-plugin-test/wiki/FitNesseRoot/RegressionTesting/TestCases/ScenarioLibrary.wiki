@@ -43,7 +43,6 @@
 !3 For Test Sidebar
 
 !|scenario|Toggle the sidebar                     |
-|Go to the Front Page                             |
 |click    |xpath=(//button[@id= 'prefs-switch'])  |
 |click    |xpath=(//button[@id= 'sidebar-switch'])|
 |click    |xpath=(//button[@id= 'prefs-switch'])  |

@@ -1,18 +1,18 @@
-!4 Cancel the making of a new Suite Page
+!4 1. Cancel the making of a new Suite Page
 |script|browser test                                              |
 |Make new Suite Page without saving                               |
 |# Press Cancel                                                   |
 |click |xpath=(//a[@id= 'cancelEdit'])                            |
 |ensure|is not visible|xpath=(//a[@href= 'TestSuiteDemo.Testing'])|
 
-!4 Make new Suite Page  
+!4 2. Make new Suite Page  
 |script|browser test                                          |
 |Make new Suite Page without saving                           |
 |# Press Save                                                 |
 |click |xpath=(//input[@name= 'save'])                        |
 |ensure|is visible|xpath=(//a[@href= 'TestSuiteDemo.Testing'])|
 
-!4 Cancel the change of the new Suite Page
+!4 3. Cancel the change of the new Suite Page
 |script |browser test                     |
 |Change new Suite Page without saving     |
 |# Press Cancel                           |
@@ -20,21 +20,21 @@
 |confirm alert                            |
 |ensure |is not visible|Test suite Testing|
 
-!4 Change new Suite Page
+!4 4. Change new Suite Page
 |script|browser test                  |
 |Change new Suite Page without saving |
 |# Press Save                         |
 |click |xpath=(//input[@name= 'save'])|
 |ensure|is visible |Test suite Testing|
 
-!4 Cancel the deleting of the new Suite Page
+!4 5. Cancel the deleting of the new Suite Page
 |script |browser test                       |
 |Delete new Suite Page without confirming   |
 |# Press No                                 |
 |click  |xpath=(//form[@method= 'POST']//a) |
 |ensure |is visible    |Test suite Testing  |
 
-!4 Delete new Suite Page
+!4 6. Delete new Suite Page
 |script|browser test                                              |
 |Delete new Suite Page without confirming                         |
 |# Press Yes                                                      |
