@@ -1,0 +1,39 @@
+---
+Test
+---
+|script|xml http test|
+
+|add course                                                                                                                                                                                                       |
+|!-StartDate-!                        |!-EndDate-!                          |Archived|!-AllDay-!|Category|!-RoomName-!   |!-RoomNumber-!|!-RoomCapacity-!|!-CourseName-!        |!-CourseDescription-!    |status?|
+|!today (yyyy-MM-dd'T'12:00:00.000) +1|!today (yyyy-MM-dd'T'18:00:00.000) +1|false   |false     |Academy |Trainingsruimte|1             |20              |Kantklossen           |Kantklossen voor dummies |200    |
+|!today (yyyy-MM-dd'T'12:00:00.000) +1|!today (yyyy-MM-dd'T'18:00:00.000) +1|false   |false     |Academy |Trainingsruimte|2             |10              |Hardlopen voor testers|Diepgaande hardloopcursus|200    |
+|!today (yyyy-MM-dd'T'12:00:00.000) +2|!today (yyyy-MM-dd'T'18:00:00.000) +2|false   |false     |Academy |Trainingsruimte|1             |20              |Train de trainer      |Beter trainen!           |200    |
+|!today (yyyy-MM-dd'T'12:00:00.000) +3|!today (yyyy-MM-dd'T'18:00:00.000) +3|false   |false     |Fout    |Trainingsruimte|2             |10              |                      |                         |500    |
+
+!*> Post body from wiki
+!define body {!-<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:tns="http://www.example.com/">
+    <soap:Body>
+        <tns:CoursePlanner/>
+    </soap:Body>
+</soap:Envelope>-!}
+*!
+
+|script                                                                        |
+|post |${body}|to                    |http://localhost:8080/ws/CourseWebservice|
+|#show|response                                                                |
+|check|x path |(//Course/Name)[1]|Kantklossen                              |
+|check|x path |(//Course/Name)[2]|Hardlopen voor testers                   |
+|check|x path |(//Course/Name)[3]|Train de trainer                         |
+
+!|script          |json http test                                                      |
+|get from         |http://localhost:8080/rest/CourseRestservice/Course                 |
+|show             |response                                                            |
+|$firstCourseName=|json path      |$[0].Name                                           |
+|get from         |http://localhost:8080/rest/CourseRestservice/Course/$firstCourseName|
+|show             |response                                                            |
+|check            |json path      |$[0].Description      |Kantklossen voor dummies     |

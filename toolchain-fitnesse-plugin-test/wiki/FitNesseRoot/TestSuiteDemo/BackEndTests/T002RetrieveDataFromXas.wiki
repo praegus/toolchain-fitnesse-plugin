@@ -1,0 +1,25 @@
+---
+Test
+---
+!*> Scenario
+!|scenario |xas retrieve xpath     |xpath     |order by     |order    |
+|set action|retrieve_by_xpath                                         |
+|set xpath |@{xpath}                                                  |
+|set schema|{"offset":0,"sort":[[@{order}]],"amount":0},"count":true}}|
+|execute action                                                       |
+|show      |request                                                   |
+|show      |response                                                  |
+*!
+
+|script            |mendix http test                                                                                                                                     |
+|                  |'''Huidige Tijdstempel bepalen'''                                                                                                                    |
+|$currentTime=     |value of                                 |!today (dd-MM-yyyy HH:mm:ss)                                                                               |
+|$currentTimestamp=|timestamp for date                       |$currentTime                                                                                               |
+|                  |'''Mendix aanroepen'''                                                                                                                               |
+|set mendix url    |http://localhost:8080                                                                                                                                |
+|log in with user  |demo_administrator                       |and password                                                                            |xdfGBuEV58        |
+|xas retrieve xpath|!-//Administration.Account[IsLocalUser]-!|order by                                                                                |"FullName","asc"  |
+|                  |'''Controleer dat deze login in geregistreerd voor de juiste gebruiker'''                                                                            |
+|check             |json path values                         |$.mxobjects[?(@.attributes.Name.value=="demo_administrator")].attributes.LastLogin.value|>$currentTimestamp|
+|log out                                                                                                                                                                 |
+
