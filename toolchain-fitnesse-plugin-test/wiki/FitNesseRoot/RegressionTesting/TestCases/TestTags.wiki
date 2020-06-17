@@ -1,1 +1,51 @@
-<test page>
+!4 1. Check if plus icon & input field is visible
+|script          |browser test                                                     |
+|Go to the Test Suite Demo                                                         |
+|hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest']) |
+|wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |
+|click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |
+|wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
+
+!4 2. Add new tag
+|script          |browser test                                                                                               |
+|Go to the Test Suite Demo                                                                                                   |
+|hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest'])                                           |
+|wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                           |
+|click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                           |
+|wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])                                          |
+|enter           |frontendtag|as                           |xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
+|press Enter                                                                                                                 |
+|wait seconds    |1                                                                                                          |
+|check           |value of   |xpath=(//span[@class= 'tag'])|frontendtag                                                      |
+
+!4 3. Handling with duplicates
+|script          |browser test                                                                                                          |
+|Go to the Test Suite Demo                                                                                                              |
+|hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest'])                                                      |
+|wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                                      |
+|click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                                      |
+|wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])                                                     |
+|enter           |frontendtag|as                                      |xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
+|press Enter                                                                                                                            |
+|wait for visible|xpath=(//div[@class= 'tagErrorMessage'])                                                                              |
+|check           |value of   |xpath=(//div[@class= 'tagErrorMessage'])|Tag already exists on this element                               |
+
+!4 4. Handling with special characters
+|script          |browser test                                                                                                       |
+|Go to the Test Suite Demo                                                                                                           |
+|hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest'])                                                   |
+|wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                                   |
+|click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                                                                   |
+|wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])                                                  |
+|enter           |^*&     |as                                      |xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
+|press Enter                                                                                                                         |
+|wait for visible|xpath=(//div[@class= 'tagErrorMessage'])                                                                           |
+|check           |value of|xpath=(//div[@class= 'tagErrorMessage'])|=~/not allowed except for*/                                      |
+
+!4 5. Delete tag
+|script          |browser test                                       |
+|Go to the Test Suite Demo                                           |
+|hover over      |xpath=(//span[@class='tag'])                       |
+|wait for visible|xpath=(//i[@class= 'fas fa-times deleteTagButton'])|
+|click           |xpath=(//i[@class= 'fas fa-times deleteTagButton'])|
+|ensure          |is not visible on page         |frontendtag        |

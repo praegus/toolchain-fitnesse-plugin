@@ -1,28 +1,28 @@
-!|script|browser test|
+!|script          |browser test                     |
 |#Check how long it takes for context helper to load|
-|wait for visible|A Two-Minute Example|                                                                                  
-|click|A Two-Minute Example|
-|wait for visible|Edit|                                                                                  
-|click|Edit|
-|wait for visible|Context help| 
-|ensure|is visible on page|Context help|
+|wait for visible |A Two-Minute Example             |
+|click            |A Two-Minute Example             |
+|wait for visible |Edit                             |
+|click            |Edit                             |
+|wait for visible |Context help                     |
+|ensure           |is visible on page |Context help |
 
-!|script|browser test|
-|#ensure context helper contains data|
-|wait for visible|Edit|                                                                                  
-|click|Edit|
-|wait for visible|Context help| 
-|ensure|is visible on page|Context help|
-|click|Context help|
-|wait|2|seconds|
-|#ensure the three categorys are visisble|
-|ensure|is visible on page|Scenario's|
-|ensure|is visible on page|Fixtures|
-|ensure|is visible on page|Slim symbols|
+!|script                  |browser test                                               |
+|#ensure context helper contains data                                                 |
+|wait for visible         |Edit                                                       |
+|click                    |Edit                                                       |
+|wait for visible         |Context help                                               |
+|ensure                   |is visible on page         |Context help                   |
+|click                    |Context help                                               |
+|wait                     |2                          |seconds                        |
+|#ensure the three categorys are visible                                              |
+|ensure                   |is visible on page         |Scenario's                     |
+|ensure                   |is visible on page         |Fixtures                       |
+|ensure                   |is visible on page         |Slim symbols                   |
 |#we can be sure the browser test fixture has been loaded so check if it contains data|
-|click|Fixtures|
-|ensure|is visible on page|Browser test|
-|click|Browser test|
-|ensure|is visible on page|Constructors|
-|click|Constructors|
-|ensure|is visible on page|[secondsBeforeTimeout] |
+|click                    |Fixtures                                                   |
+|ensure                   |is visible on page         |Browser test                   |
+|click                    |Browser test                                               |
+|ensure                   |is visible on page         |Constructors                   |
+|click                    |Constructors                                               |
+|ensure                   |is visible on page         |[secondsBeforeTimeout]         |
