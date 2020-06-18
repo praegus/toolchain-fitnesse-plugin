@@ -1,1 +1,15 @@
-<test page>
+!4 5. Collapse while running a test
+!|script|browser test                                           |
+|ensure |is visible|xpath=(//div[@id= 'recentTestHistoryTable'])|
+
+#|storyboard|browser test                                                                     |
+#|Go to the Test Suite Demo                                                                   |
+#|Toggle the sidebar                                                                          |
+#|click     |xpath=(//i[@id= 'expandAllSidebar'])                                             |
+#|click     |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest'])|
+#|click     |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest?test'])                |
+#|click     |xpath=(//a[@class= 'stop'])                                                      |
+##|wait for visible|xpath=(//div[@class= 'collapseSidebarDivDisabled'])                              |
+##|ensure          |is not visible on page    |xpath=(//div[@id= 'sidebar'])                         |
+##|wait seconds    |5                                                                                |
+##|ensure          |is not visible on page    |xpath=(//div[@class= 'collapseSidebarDivDisabled'])   |

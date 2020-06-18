@@ -48,4 +48,5 @@
 |wait for visible|xpath=(//div[@id='notification'])                       |
 |Go to the Google Test Edit page                                          |
 |ensure          |is visible on page|xpath=(//div[@id='collapseCHelpDiv'])|
-
+|Go to the Front Page                                                     |
+|Toggle the sidebar                                                       |

@@ -9,15 +9,16 @@
 |press  |CONTROL+/                                                        |
 |ensure |is visible        |xpath=(//span[@class= 'cm-comment'])          |
 |press  |CONTROL+/                                                        |
-|ensure |is not visible    |xpath=(//span[@class= 'cm-comment'])          |
+|ensure |is not visible    |xpath=(//span[@class= 'cm-comment'])     |    |
 
 !4 2. Comment multiple line
-!|storyboard|browser test  |
-|press Enter               |
-|press      |on            |
-|press Enter               |
-|press      |multiple rows |
-|press      |SHIFT+ARROW_UP|
-|press      |SHIFT+ARROW_UP|
-|press      |CONTROL+/     |
+!|script|browser test  |
+|press Enter           |
+|press  |on            |
+|press Enter           |
+|press  |multiple rows |
+|press  |SHIFT+ARROW_UP|
+|press  |SHIFT+ARROW_UP|
+|press  |CONTROL+/     |
+|click  |Cancel        |
 #|ensure |is visible|count(//span[@class='cm-comment']=1)|
