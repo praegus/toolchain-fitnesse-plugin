@@ -5,3 +5,10 @@ Test: no
 !1 Test Suite Demo
 
 !contents -R2 -g -p -f -h
+
+!*> Global config
+!path fixtures/
+!path fixtures/*.jar
+
+!define TEST_SYSTEM {slim}
+*!
