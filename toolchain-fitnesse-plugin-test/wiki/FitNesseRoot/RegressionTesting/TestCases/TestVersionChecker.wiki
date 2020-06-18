@@ -3,8 +3,9 @@
 |Go to the Test Suite Demo                          |
 |ensure|is not visible on page|Maven Version Checker|
 |click |xpath=(//a[@href= 'TestSuiteDemo?edit'])    |
-|# Write the symbol                                 |
 |press |PAGE_DOWN                                   |
+|# Write a enter and the symbol                     |
+|press enter                                        |
 |press enter                                        |
 |press |!Version                                    |
 |press |Checker                                     |
@@ -13,30 +14,16 @@
 |ensure|is visible on page    |Maven Version Checker|
 
 !4 2. Remove the Version Checker
-|script    |browser test                                |
-|Go to the Test Suite Demo                              |
-|ensure    |is visible on page    |Maven Version Checker|
-|click     |xpath=(//a[@href= 'TestSuiteDemo?edit'])    |
-|# Delete the symbol                                    |
-|press     |PAGE_DOWN                                   |
-|#####press|Command+X      ?Waarom kan dit niet?        |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|press     |BACK_SPACE                                  |
-|# Save and check if visable                            |
-|click     |xpath=(//input[@type= 'submit'])            |
-|ensure    |is not visible on page|Maven Version Checker|
+|script|browser test                                |
+|Go to the Test Suite Demo                          |
+|ensure|is visible on page    |Maven Version Checker|
+|click |xpath=(//a[@href= 'TestSuiteDemo?edit'])    |
+|press |PAGE_DOWN                                   |
+|# Delete the symbol                                |
+|press |CONTROL+SHIFT+ARROW_UP                      |
+|press |BACK_SPACE                                  |
+|press |BACK_SPACE                                  |
+|# Save and check if visable                        |
+|click |xpath=(//input[@type= 'submit'])            |
+|ensure|is not visible on page|Maven Version Checker|
 

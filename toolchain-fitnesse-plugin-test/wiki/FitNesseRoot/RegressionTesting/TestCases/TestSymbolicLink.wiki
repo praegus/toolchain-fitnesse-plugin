@@ -1,1 +1,53 @@
-<test page>
+!4 1. Add a Symbolic link to the Back End Suite
+#|script|browser test                                                                     |
+#|Go to the Test Suite Demo                                                               |
+#|click |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests'])                                 |
+#|click |xpath=(//li[@id= 'tools']//a)                                                    |
+#|click |xpath=(//ul[@class= 'dropdown-menu show']//li[1])                                |
+#|enter |FrontEndTestSymlinks|as|xpath=(//from[@id='symbolics']//input[@name= 'linkName'])|
+#|enter |FrontEndTests       |as|xpath=(//from[@id='symbolics']//input[@name= 'linkPath'])|
+#|click |xpath=(//from[@id='symbolics']//input[@id= 'submit'])                            |
+#|# Check if visable                                                                      |
+#|click |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests'])                                 |
+#|ensure|is visible on page  |FrontEndTestSymlinks                                        |
+
+
+!4 2. Add a Symbolic link to the Back End Suite
+#|script|browser test                                     |
+#|Go to the Test Suite Demo                               |
+#|click |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests'])|
+#|click |xpath=(//li[@id= 'tools']//a)                    |
+#|click |xpath=(//ul[@class= 'dropdown-menu show']//li[1])|
+#|# Check if visable                                      |
+#|click |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests'])|
+
+
+
+
+
+!4 3. Check Symbolic link page on the top Suite and expect two links
+
+
+
+!4 4. Check Symbolic link page on another Suite and expect one link
+
+
+
+!4 5. Sidebar has a Symbolic link icon
+
+
+
+!4 6. Remove the two Symbolic links
+
+
+
+#|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar'])                 |
+#|ensure          |is visible on page                                         |xpath=(//div[@id= 'closedSidebar'])           |
+#|# Check if the correct folder is visible                                                                                   |
+#|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar']//li[@id= 'root'])|
+#|ensure          |is visible                                                 |xpath=(//div[@id= 'highlight'])               |
+#|# Collapse and expand sidebar                                                                                              |
+#|click           |xpath=(//div[@id= 'collapseSidebarDiv'])                                                                  |
+#|ensure          |is not visible on page                                     |xpath=(//div[@id= 'sidebar'])                 |
+#|click           |xpath=(//div[@id= 'collapseSidebarDiv'])                                                                  |
+#|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar'])                 |
