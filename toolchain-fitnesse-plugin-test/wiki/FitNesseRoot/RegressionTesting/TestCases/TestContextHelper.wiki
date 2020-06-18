@@ -1,28 +1,24 @@
-!|script          |browser test                     |
-|#Check how long it takes for context helper to load|
-|wait for visible |A Two-Minute Example             |
-|click            |A Two-Minute Example             |
-|wait for visible |Edit                             |
-|click            |Edit                             |
-|wait for visible |Context help                     |
-|ensure           |is visible on page |Context help |
+!define slimSymbol {chromeOpts}
 
-!|script                  |browser test                                               |
-|#ensure context helper contains data                                                 |
-|wait for visible         |Edit                                                       |
-|click                    |Edit                                                       |
-|wait for visible         |Context help                                               |
-|ensure                   |is visible on page         |Context help                   |
-|click                    |Context help                                               |
-|wait                     |2                          |seconds                        |
-|#ensure the three categorys are visible                                              |
-|ensure                   |is visible on page         |Scenario's                     |
-|ensure                   |is visible on page         |Fixtures                       |
-|ensure                   |is visible on page         |Slim symbols                   |
-|#we can be sure the browser test fixture has been loaded so check if it contains data|
-|click                    |Fixtures                                                   |
-|ensure                   |is visible on page         |Browser test                   |
-|click                    |Browser test                                               |
-|ensure                   |is visible on page         |Constructors                   |
-|click                    |Constructors                                               |
-|ensure                   |is visible on page         |[secondsBeforeTimeout]         |
+!4 1. Check if Context Help is visible
+!|script         |browser test                   |
+|Go to the Google Test                           |
+|wait for visible|Context help                   |
+|ensure          |is visible on page|Context help|
+
+!4 2. Check if context helper contains data
+!|script         |browser test                    |
+|Go to the Google Test                            |
+|wait for visible|Context help                    |
+|ensure          |is visible on page|Context help |
+|click           |Context help                    |
+|wait            |2                 |seconds      |
+|#Check if the three categories are visible       |
+|ensure          |is visible on page|Scenario's   |
+|ensure          |is visible on page|Fixtures     |
+|ensure          |is visible on page|Slim symbols |
+|#Check if slim symbol is present and visible     |
+|click           |Slim symbols                    |
+|ensure          |is visible on page|${slimSymbol}|
+|click           |chromeOpts                      |
+|ensure          |is visible on page|copy map     |

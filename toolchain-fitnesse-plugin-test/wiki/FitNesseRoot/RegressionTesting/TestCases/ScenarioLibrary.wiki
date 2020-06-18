@@ -47,3 +47,9 @@
 |click    |xpath=(//button[@id= 'sidebar-switch'])|
 |click    |xpath=(//button[@id= 'prefs-switch'])  |
 
+!3 For Context Help
+!|scenario       |Go to the Google Test|
+|Go to the Test Suite Demo             |
+|click           |T 001 Google Test    |
+|wait for visible|Edit                 |
+|click           |Edit                 |
