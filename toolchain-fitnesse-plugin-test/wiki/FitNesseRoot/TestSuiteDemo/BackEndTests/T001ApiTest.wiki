@@ -1,3 +1,6 @@
+---
+Suites: test
+---
 #!|script          |json http test                                                      |
 #|get from         |http://localhost:8080/rest/CourseRestservice/Course                 |
 #|show             |response                                                            |
