@@ -1,3 +1,6 @@
+---
+Suites: testtagonfront
+---
 !3 Test if google has an img
 
 |storyboard|browser test                                   |
