@@ -47,3 +47,11 @@
 |click    |xpath=(//button[@id= 'sidebar-switch'])|
 |click    |xpath=(//button[@id= 'prefs-switch'])  |
 
+
+!3 For Test Tag
+
+!|scenario       |Show tag input for T001GoogleTest                                |
+|hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest']) |
+|wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |
+|click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |
+|wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
