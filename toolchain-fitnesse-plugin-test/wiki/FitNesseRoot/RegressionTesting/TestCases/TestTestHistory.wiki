@@ -1,6 +1,12 @@
-!4 5. Collapse while running a test
-!|script|browser test                                           |
-|ensure |is visible|xpath=(//div[@id= 'recentTestHistoryTable'])|
+!4 1. Check if table is visible
+!|script|browser test                                                   |
+|Go to the Front Page                                                   |
+|ensure |is visible on page|xpath=(//div[@id= 'recentTestHistoryTable'])|
+
+
+
+
+
 
 #|storyboard|browser test                                                                     |
 #|Go to the Test Suite Demo                                                                   |
