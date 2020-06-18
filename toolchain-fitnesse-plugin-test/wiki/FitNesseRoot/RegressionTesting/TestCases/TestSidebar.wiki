@@ -1,17 +1,17 @@
 !4 1. Open Sidebar
-|script          |browser test                                                                                              |
-|Go to the Front Page                                                                                                       |
-|Toggle the sidebar                                                                                                         |
-|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar'])                 |
-|ensure          |is visible on page                                         |xpath=(//div[@id= 'closedSidebar'])           |
-|# Check if the correct folder is visible                                                                                   |
-|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar']//li[@id= 'root'])|
-|ensure          |is visible                                                 |xpath=(//div[@id= 'highlight'])               |
-|# Collapse and expand sidebar                                                                                              |
-|click           |xpath=(//div[@id= 'collapseSidebarDiv'])                                                                  |
-|ensure          |is not visible on page                                     |xpath=(//div[@id= 'sidebar'])                 |
-|click           |xpath=(//div[@id= 'collapseSidebarDiv'])                                                                  |
-|ensure          |is visible on page                                         |xpath=(//div[@id= 'sidebar'])                 |
+|script|browser test                                                         |
+|Go to the Front Page                                                        |
+|Toggle the sidebar                                                          |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
+|ensure|is visible on page    |xpath=(//div[@id= 'closedSidebar'])           |
+|# Check if the correct folder is visible                                    |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//li[@id= 'root'])|
+|ensure|is visible            |xpath=(//div[@id= 'highlight'])               |
+|# Collapse and expand sidebar                                               |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar'])                 |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
 
 
 !4 2. Click on a link in Sidebar and Collapsing a folder makes the content disappear
@@ -59,3 +59,10 @@
 #|ensure|is not visible on page      |xpath=(//div[@id= 'sidebar'])                           |
 #|click |xpath=(//a[@class= 'stop'])                                                          |
 #|ensure|is not visible on page      |xpath=(//div[@class= 'collapseSidebarDivDisabled'])     |
+
+!4 5. Close Sidebar
+|script|browser test                                              |
+|Go to the Front Page                                             |
+|Toggle the sidebar                                               |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar'])      |
+|ensure|is not visible on page|xpath=(//div[@id= 'closedSidebar'])|
