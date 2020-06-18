@@ -50,7 +50,7 @@
 
 !3 For Test Tag
 
-!|scenario       |Show tag input for T001GoogleTest                                |
+!|scenario       |Show tag input for T 001 Google Test                             |
 |hover over      |xpath=(//a[@href= 'TestSuiteDemo.FrontEndTests.T001GoogleTest']) |
 |wait for visible|xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |
 |click           |xpath=(//i[@class= 'fas fa-plus-circle addTag'])                 |

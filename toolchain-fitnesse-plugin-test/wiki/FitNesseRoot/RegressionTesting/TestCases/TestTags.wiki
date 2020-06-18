@@ -1,7 +1,7 @@
 !4 1. Add new tag
 |script      |browser test                                                                           |
 |Go to the Test Suite Demo                                                                           |
-|Show tag input for T001GoogleTest                                                                   |
+|Show tag input for T 001 Google Test                                                                   |
 |enter       |frontendtag       |as|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
 |press Enter                                                                                         |
 |wait seconds|1                                                                                      |
@@ -10,7 +10,7 @@
 !4 2. Handling with duplicates
 |script          |browser test                                                                                                          |
 |Go to the Test Suite Demo                                                                                                              |
-|Show tag input for T001GoogleTest                                                                                                      |
+|Show tag input for T 001 Google Test                                                                                                      |
 |enter           |frontendtag|as                                      |xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
 |press Enter                                                                                                                            |
 |wait for visible|xpath=(//div[@class= 'tagErrorMessage'])                                                                              |
@@ -19,7 +19,7 @@
 !4 3. Handling with special characters
 |script          |browser test                                                                                                       |
 |Go to the Test Suite Demo                                                                                                           |
-|Show tag input for T001GoogleTest                                                                                                   |
+|Show tag input for T 001 Google Test                                                                                                   |
 |enter           |^*&     |as                                      |xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
 |press Enter                                                                                                                         |
 |wait for visible|xpath=(//div[@class= 'tagErrorMessage'])                                                                           |
