@@ -25,7 +25,7 @@ public class RecentTestHistoryResponder implements SecureResponder {
         this.context = context;
         File resultsDirectory = context.getTestHistoryDirectory();
         String pageName = request.getResource();
-        RecentTestHistory recentTestHistory = new RecentTestHistory(resultsDirectory);
+        RecentTestHistory recentTestHistory = new RecentTestHistory(resultsDirectory,request.getInput("specPageFilter"));
             return makeRecentTestHistoryResponse(recentTestHistory, request, pageName);
     }
 

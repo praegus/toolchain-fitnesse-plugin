@@ -13,7 +13,7 @@ public class RecentTestHistoryResponderTest {
 
     @Test
     public void when_directory_is_null_the_history_lines_are_empty() {
-        RecentTestHistory recentTestHistory = new RecentTestHistory(new File(""));
+        RecentTestHistory recentTestHistory = new RecentTestHistory(new File(""),"false");
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
@@ -22,8 +22,8 @@ public class RecentTestHistoryResponderTest {
 
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker2.thisIsMockData", "Example.Mocker3.dataForTesting", "ExampleTest.Mocker1.thisIsATest");
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
+        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp", "ExampleTest.Mocker1.thisIsATest");
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
@@ -32,8 +32,8 @@ public class RecentTestHistoryResponderTest {
 
     @Test
     public void When_directory_is_not_null_return_historylines_not_sorted() {
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker1.thisIsATest", "Example.Mocker3.dataForTesting", "ExampleTest.Mocker2.thisIsMockData");
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
+        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","ExampleTest.Mocker1.thisIsATest","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.dataForTesting","Example.Mocker3.TearDown","ExampleTest.Mocker2.thisIsMockData");
 
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
@@ -42,25 +42,46 @@ public class RecentTestHistoryResponderTest {
 
     @Test
     public void when_the_recent_test_history_is_retrieved_the_recent_run_date_is_parsed_correctly() {
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
 
-        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:43:40");
+        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:08:56");
 
         assertThat(recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate()).isEqualTo(expectedResult);
     }
 
     @Test
     public void Checks_number_of_times_failed(){
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
 
         assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesFailed()).isEqualTo(1);
     }
 
     @Test
     public void Checks_number_of_times_passed(){
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
 
         assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
+    }
+    @Test
+    public void Checks_if_filter_is_off(){
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
+        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
+
+        Set<String> receivedResult = recentTestHistory.getPageNames();
+
+        assertThat(receivedResult).containsAnyElementsOf(expectedResult);
+    }
+    @Test
+    public void Checks_if_filter_is_on(){
+/*
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"true");
+        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
+
+        Set<String> receivedResult = recentTestHistory.getPageNames();
+
+        assertThat(receivedResult).doesNotContainAnyElementsOf(expectedResult);
+
+*/
     }
 
     // Setup method
