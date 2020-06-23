@@ -1,0 +1,76 @@
+---
+Test
+---
+!define linkName_SuiteForIntegrationTests {!-GoogleTestSymlink-!}
+!define linkPath_SuiteForIntegrationTests {!-SuiteForIntegrationTests.FrontEndTests.T001GoogleTest-!}
+
+!define linkName_BackEndSuite {!-FrontEndTestsSymlinks-!}
+!define linkPath_BackEndSuite {!-FrontEndTests-!}
+
+
+!4 1. Add a Symbolic link to the Suite For Integration Tests
+|script                     |browser test                                                                                                            |
+|Go to the Suite For Integration Tests                                                                                                               |
+|Go to Property page                                                                                                                                 |
+|New Symbolic Link with name|${linkName_SuiteForIntegrationTests}|and with path                 |${linkPath_SuiteForIntegrationTests}                |
+|# Check if visable                                                                                                                                  |
+|click                      |xpath=(//a[@href= 'SuiteForIntegrationTests'])                                                                          |
+|ensure                     |is visible on page                  |xpath=(//a[@href= 'SuiteForIntegrationTests.${linkName_SuiteForIntegrationTests}'])|
+
+
+!4 2. Add a Symbolic link to the Back End Suite
+|script                     |browser test                                                                                                 |
+|click                      |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                                                  |
+|Go to Property page                                                                                                                      |
+|New Symbolic Link with name|${linkName_BackEndSuite}|and with path                       |${linkPath_BackEndSuite}                       |
+|# Check if visable                                                                                                                       |
+|click                      |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                                                  |
+|ensure                     |is visible on page      |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests.${linkName_BackEndSuite}'])|
+
+
+!4 3. Check Symbolic link page on the top Suite and expect two links
+|script|browser test                                                                   |
+|Go to the Suite For Integration Tests                                                 |
+|click |xpath=(//li[@id= 'tools']//a)                                                  |
+|click |xpath=(//ul[@class= 'dropdown-menu show']//li[3])                              |
+|ensure|is visible on page|xpath=(//td[text()= '${linkName_SuiteForIntegrationTests}'])|
+|ensure|is visible on page|xpath=(//td[text()= '${linkName_BackEndSuite}'])            |
+
+
+!4 4. Check Symbolic link page on another Suite and expect one link
+|script|browser test                                                                       |
+|Go to the Suite For Integration Tests                                                     |
+|click |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                        |
+|click |xpath=(//li[@id= 'tools']//a)                                                      |
+|click |xpath=(//ul[@class= 'dropdown-menu show']//li[3])                                  |
+|ensure|is not visible on page|xpath=(//td[text()= '${linkName_SuiteForIntegrationTests}'])|
+|ensure|is visible on page    |xpath=(//td[text()= '${linkName_BackEndSuite}'])            |
+
+
+!4 5. Sidebar has a Symbolic link icon
+|script|browser test                                                                                                                                         |
+|Go to the Suite For Integration Tests                                                                                                                       |
+|Toggle the sidebar                                                                                                                                          |
+|ensure|is visible on page|xpath=(//div[@id= 'sidebar']//li[@id= 'SuiteForIntegrationTests${linkName_SuiteForIntegrationTests}']/div/i[@class= 'fa fa-link'])|
+|Toggle the sidebar                                                                                                                                          |
+
+
+!4 6. Remove the Symbolic link on the Suite For Integration Tests
+|script|browser test                                                                                              |
+|Go to the Suite For Integration Tests                                                                            |
+|Go to Property page                                                                                              |
+|click |xpath=(//a[@href= '?responder=symlink&removal=${linkName_SuiteForIntegrationTests}'])                     |
+|# Check if visable                                                                                               |
+|click |xpath=(//a[@href= 'SuiteForIntegrationTests'])                                                            |
+|ensure|is not visible on page|xpath=(//a[@href= 'SuiteForIntegrationTests.${linkName_SuiteForIntegrationTests}'])|
+
+
+!4 7. Remove the Symbolic link on the Back End Suite
+|script|browser test                                                                                               |
+|click |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                                                |
+|Go to Property page                                                                                               |
+|click |xpath=(//a[@href= '?responder=symlink&removal=${linkName_BackEndSuite}'])                                  |
+|# Check if visable                                                                                                |
+|click |xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                                                |
+|ensure|is not visible on page|xpath=(//a[@href= 'SuiteForIntegrationTests.BackEndTests.${linkName_BackEndSuite}'])|
+
