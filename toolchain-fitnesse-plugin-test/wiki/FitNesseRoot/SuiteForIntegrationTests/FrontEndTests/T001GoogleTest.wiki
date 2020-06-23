@@ -1,0 +1,5 @@
+!3 Test if google has an img
+
+|storyboard|browser test                                   |
+|open      |https://google.com                             |
+|ensure    |is visible on page|xpath=(//img[@id= 'hplogo'])|

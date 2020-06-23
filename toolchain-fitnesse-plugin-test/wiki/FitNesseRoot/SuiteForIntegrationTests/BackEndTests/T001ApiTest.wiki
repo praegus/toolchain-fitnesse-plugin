@@ -1,0 +1,10 @@
+---
+Suites: Error
+---
+#!|script          |json http test                                                      |
+#|get from         |http://localhost:8080/rest/CourseRestservice/Course                 |
+#|show             |response                                                            |
+#|$firstCourseName=|json path      |$[0].Name                                           |
+#|get from         |http://localhost:8080/rest/CourseRestservice/Course/$firstCourseName|
+#|show             |response                                                            |
+#|check            |json path      |$[0].Description      |Kantklossen voor dummies     |

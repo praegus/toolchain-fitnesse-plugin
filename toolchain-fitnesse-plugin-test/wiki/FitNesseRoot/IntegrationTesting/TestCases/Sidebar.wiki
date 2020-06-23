@@ -1,0 +1,71 @@
+---
+Test
+---
+!4 1. Open Sidebar
+|script|browser test                                                         |
+|Go to the Front Page                                                        |
+|Toggle the sidebar                                                          |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
+|ensure|is visible on page    |xpath=(//div[@id= 'closedSidebar'])           |
+|# Check if the correct folder is visible                                    |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//li[@id= 'root'])|
+|ensure|is visible            |xpath=(//div[@id= 'highlight'])               |
+|# Collapse and expand sidebar                                               |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar'])                 |
+|click |xpath=(//div[@id= 'collapseSidebarDiv'])                             |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar'])                 |
+
+
+!4 2. Click on a link in Sidebar and Collapsing a folder makes the content disappear
+|script|browser test                                                                                                  |
+|Go to the Suite For Integration Tests                                                                                |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])|
+|click |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests'])                             |
+|# Collapse the current folder                                                                                        |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])|
+|click |xpath=(//div[@id= 'highlight']/i[1])                                                                          |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])|
+
+
+!4 3. Check if Expand en Collapse works
+|script|browser test                                                                                                       |
+|Go to the Suite For Integration Tests                                                                                     |
+|# Expand all                                                                                                              |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])     |
+|click |xpath=(//i[@id= 'expandAllSidebar'])                                                                               |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])     |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.BackEndTests.T001ApiTest'])|
+|# Collapse except current                                                                                                 |
+|click |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.BackEndTests'])                                   |
+|click |xpath=(//i[@id= 'collapseAllSidebar'])                                                                             |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.SetUp'])     |
+|ensure|is visible on page    |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.BackEndTests.T001ApiTest'])|
+
+
+!4 4. Show and hide tags in sidebar
+|script|browser test                                                   |
+|Go to the Suite For Integration Tests                                 |
+|click |xpath=(//i[@id= 'expandAllSidebar'])                           |
+|ensure|is not visible on page|xpath=(//span[@class= 'tag sidebarTag'])|
+|click |xpath=(//i[@id= 'sidebarTags-switch'])                         |
+|ensure|is visible on page    |xpath=(//span[@class= 'tag sidebarTag'])|
+
+
+#!4 5. Collapse while running a test
+#|script|browser test                                                                         |
+#|Go to the Test Suite Demo                                                                   |
+#|click |xpath=(//i[@id= 'expandAllSidebar'])                                                 |
+#|click |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest'])|
+#|click |xpath=(//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest?test'])                |
+#|ensure|is visible on page          |xpath=(//div[@class= 'collapseSidebarDivDisabled'])     |
+#|ensure|is not visible on page      |xpath=(//div[@id= 'sidebar'])                           |
+#|click |xpath=(//a[@class= 'stop'])                                                          |
+#|ensure|is not visible on page      |xpath=(//div[@class= 'collapseSidebarDivDisabled'])     |
+
+!4 5. Close Sidebar
+|script|browser test                                              |
+|Go to the Front Page                                             |
+|Toggle the sidebar                                               |
+|ensure|is not visible on page|xpath=(//div[@id= 'sidebar'])      |
+|ensure|is not visible on page|xpath=(//div[@id= 'closedSidebar'])|
