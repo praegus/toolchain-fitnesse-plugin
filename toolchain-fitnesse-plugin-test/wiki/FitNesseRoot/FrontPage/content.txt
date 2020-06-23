@@ -1,8 +1,8 @@
 !1 Welcome to [[FitNesse][FitNesse.FitNesse]]!
 
-!2 RegressionTesting
+!2 IntegrationTesting
 
-!3 TestSuiteDemo
+!3 SuiteForIntegrationTests
 
 
 !VersionChecker
