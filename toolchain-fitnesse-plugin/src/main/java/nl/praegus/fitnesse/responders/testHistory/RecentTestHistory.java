@@ -21,10 +21,11 @@ public class RecentTestHistory {
             PageHistory pageHistory = getPageHistory(pageName);
             TestHistoryLine testHistoryLine = new TestHistoryLine(pageHistory);
             if (SpecialPageFilter.equals("true") && pageName.contains("SetUp") || pageName.contains("TearDown")) {
-                System.out.println(pageName);
-                return;
+
+            }else{
+                testHistoryLines.add(testHistoryLine);
             }
-            testHistoryLines.add(testHistoryLine);
+
         }
     }
 

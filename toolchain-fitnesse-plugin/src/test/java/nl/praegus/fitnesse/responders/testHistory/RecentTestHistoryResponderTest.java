@@ -1,6 +1,7 @@
 package nl.praegus.fitnesse.responders.testHistory;
 import org.junit.Test;
 
+import javax.swing.event.ListDataEvent;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -23,7 +24,7 @@ public class RecentTestHistoryResponderTest {
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
-        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp", "ExampleTest.Mocker1.thisIsATest");
+        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker2.thisIsMockData", "Example.Mocker3.SuiteSetUp", "Example.Mocker3.SetUp", "Example.Mocker3.dataForTesting", "ExampleTest.Mocker1.thisIsATest");
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
@@ -44,7 +45,7 @@ public class RecentTestHistoryResponderTest {
     public void when_the_recent_test_history_is_retrieved_the_recent_run_date_is_parsed_correctly() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
 
-        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:08:56");
+        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:43:40");
 
         assertThat(recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate()).isEqualTo(expectedResult);
     }
@@ -67,21 +68,21 @@ public class RecentTestHistoryResponderTest {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"false");
         List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
 
-        Set<String> receivedResult = recentTestHistory.getPageNames();
+        List receivedResult = recentTestHistory.getHistoryLines();
 
-        assertThat(receivedResult).containsAnyElementsOf(expectedResult);
+        assertThat(receivedResult).extracting("pageName").containsAnyElementsOf(expectedResult);
     }
     @Test
     public void Checks_if_filter_is_on(){
-/*
+
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"),"true");
         List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
 
-        Set<String> receivedResult = recentTestHistory.getPageNames();
+        List receivedResult = recentTestHistory.getHistoryLines();
 
-        assertThat(receivedResult).doesNotContainAnyElementsOf(expectedResult);
+        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(expectedResult);
 
-*/
+
     }
 
     // Setup method
