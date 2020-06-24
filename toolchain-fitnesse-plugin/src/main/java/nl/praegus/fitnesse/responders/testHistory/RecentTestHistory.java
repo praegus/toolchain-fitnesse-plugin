@@ -13,24 +13,27 @@ public class RecentTestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
     private Map<String, File> pageHistoryIndex;
 
-    public RecentTestHistory(File historyDirectory,String SpecialPageFilter) {
+    public RecentTestHistory(File historyDirectory){
 
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
-        for (String pageName : pageHistoryIndex.keySet()) {
 
+        for (String pageName : pageHistoryIndex.keySet()) {
             PageHistory pageHistory = getPageHistory(pageName);
             TestHistoryLine testHistoryLine = new TestHistoryLine(pageHistory);
-            if (SpecialPageFilter.equals("true") && pageName.contains("SetUp") || pageName.contains("TearDown")) {
-
-            }else{
-                testHistoryLines.add(testHistoryLine);
-            }
-
+            testHistoryLines.add(testHistoryLine);
         }
     }
 
     public List<TestHistoryLine> getHistoryLines() {
         return testHistoryLines.stream()
+                .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
+                .collect(toList());
+    }
+
+    public List<TestHistoryLine> getFilteredTestHistoryLines() {
+        return testHistoryLines.stream()
+                .filter(testHistoryLine -> !testHistoryLine.getPageName().contains("TearDown"))
+                .filter(testHistoryLine -> !testHistoryLine.getPageName().contains("SetUp"))
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
