@@ -14,7 +14,6 @@ public class RecentTestHistory {
     private Map<String, File> pageHistoryIndex;
 
     public RecentTestHistory(File historyDirectory){
-
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
 
         for (String pageName : pageHistoryIndex.keySet()) {
