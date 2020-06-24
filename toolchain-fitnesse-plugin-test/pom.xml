@@ -12,7 +12,7 @@
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <fitnesse.version>20200501</fitnesse.version>
-        <hsac.fixtures.version>4.15.2</hsac.fixtures.version>
+        <hsac.fixtures.version>4.15.3</hsac.fixtures.version>
         <toolchain.fixtures.version>1.21</toolchain.fixtures.version>
         <!-- toolchain-plugin.version>${project.version}</toolchain-plugin.version-->
         <!-- classpath that Fitnesse uses when not starting from IDE/maven -->

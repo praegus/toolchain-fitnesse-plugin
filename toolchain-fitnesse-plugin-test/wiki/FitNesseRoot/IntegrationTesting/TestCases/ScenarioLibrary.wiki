@@ -1,4 +1,4 @@
-!3 General
+!2 General
 
 !|scenario|Go to the Front Page           |
 |open     |http://localhost:9090/FrontPage|
@@ -8,21 +8,20 @@
 |open     |http://localhost:9090/SuiteForIntegrationTests|
 |ensure   |is visible    |Suite For Integration Tests    |
 
-!|scenario       |Go to the Google Test Edit page|
-|Go to the Suite For Integration Tests           |
-|click           |T 001 Google Test              |
-|wait for visible|Edit                           |
-|click           |Edit                           |
+!|scenario|Go to the Google Test                                                      |
+|open     |http://localhost:9090/SuiteForIntegrationTests.FrontEndTests.T001GoogleTest|
+|ensure   |is visible                    |Test if google has an img                   |
 
 !|scenario|Go to Property page                              |
 |click    |xpath=(//li[@id= 'tools']//a)                    |
 |click    |xpath=(//ul[@class= 'dropdown-menu show']//li[1])|
 
-!3 For Test Suite Page Proces
+
+!2 For Test Suite Page Proces
 
 !|scenario|Make new Suite Page without saving               |
 |Go to the Suite For Integration Tests                      |
-|# Click on add Suite Page                                  |
+|# Click add Suite Page                                     |
 |click    |xpath=(//li[@id= 'add']//a)                      |
 |click    |xpath=(//ul[@class= 'dropdown-menu show']//li[2])|
 |ensure   |is visible |xpath=(//fieldset[@id= 'editor'])    |
@@ -33,10 +32,10 @@
 !|scenario|Change new Suite Page without saving                       |
 |Go to the Suite For Integration Tests                                |
 |click    |xpath=(//a[@href= 'SuiteForIntegrationTests.Testing'])     |
-|# Click on edit Suite Page                                           |
+|# Click edit Suite Page                                              |
 |click    |xpath=(//a[@href= 'SuiteForIntegrationTests.Testing?edit'])|
 |ensure   |is visible        |xpath=(//fieldset[@id= 'editor'])       |
-|# Change tekst                                                       |
+|# Change text                                                        |
 |press    |END                                                        |
 |press    |BACK_SPACE                                                 |
 |press    |Testing                                                    |
@@ -44,13 +43,13 @@
 !|scenario|Delete new Suite Page without confirming              |
 |Go to the Suite For Integration Tests                           |
 |click    |xpath=(//a[@href= 'SuiteForIntegrationTests.Testing'])|
-|# Click on tools and delete                                     |
+|# Click delete                                                  |
 |click    |xpath=(//li[@id= 'tools']//a)                         |
 |click    |xpath=(//ul[@class= 'dropdown-menu show']//li[8])     |
 |ensure   |is visible      |Are you sure you want to delete      |
 
 
-!3 For Test Sidebar
+!2 For Test Sidebar
 
 !|scenario|Toggle the sidebar                     |
 |click    |xpath=(//button[@id= 'prefs-switch'])  |
@@ -58,7 +57,7 @@
 |click    |xpath=(//button[@id= 'prefs-switch'])  |
 
 
-!3 For Test Tag
+!2 For Test Tag
 
 !|scenario       |Show tag input for T 001 Google Test                                       |
 |hover over      |xpath=(//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest'])|
@@ -67,7 +66,7 @@
 |wait for visible|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])          |
 
 
-!3 For Test Symbolic Link
+!2 For Test Symbolic Link
 
 !|scenario|New Symbolic Link with name|linkName|and with path                  |linkPath                 |
 |enter    |@{linkName}                |as      |xpath=(//form[@id='symbolics']//input[@name= 'linkName'])|
