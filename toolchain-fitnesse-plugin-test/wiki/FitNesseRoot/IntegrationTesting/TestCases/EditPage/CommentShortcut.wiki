@@ -1,0 +1,43 @@
+---
+Test
+---
+!4 1. Comment one line
+!|script|browser test                                                    |
+|Go to the Google Test                                                   |
+|# Comment first line                                                    |
+|click  |xpath=(//a[text()= 'Edit'])                                     |
+|press  |SHIFT+ARROW_RIGHT                                               |
+|press  |CONTROL+/                                                       |
+|ensure |is visible            |xpath=(//span[@class= 'cm-comment'])     |
+|click  |xpath=(//input[@name= 'save'])                                  |
+|# Check if not visible                                                  |
+|ensure |is not visible on page|xpath=(//h3[@id= 'Testifgooglehasanimg'])|
+|# Uncomment first line                                                  |
+|click  |xpath=(//a[text()= 'Edit'])                                     |
+|press  |SHIFT+ARROW_RIGHT                                               |
+|press  |CONTROL+/                                                       |
+|ensure |is not visible        |xpath=(//span[@class= 'cm-comment'])     |
+|click  |xpath=(//input[@name= 'save'])                                  |
+|# Check if visible                                                      |
+|ensure |is visible on page    |xpath=(//h3[@id= 'Testifgooglehasanimg'])|
+
+
+!4 2. Comment multiple line
+!|script|browser test                                                                    |
+|Go to the Google Test                                                                   |
+|# Comment whole test                                                                    |
+|click  |xpath=(//a[text()= 'Edit'])                                                     |
+|press  |CONTROL+SHIFT+END                                                               |
+|press  |CONTROL+/                                                                       |
+|click  |xpath=(//input[@name= 'save'])                                                  |
+|# Check if not visible                                                                  |
+|ensure |is not visible on page|xpath=(//h3[@id= 'Testifgooglehasanimg'])                |
+|ensure |is not visible on page|xpath=(//table[@class= 'toolchainTable storyboardTable'])|
+|# Uncomment whole test                                                                  |
+|click  |xpath=(//a[text()= 'Edit'])                                                     |
+|press  |CONTROL+SHIFT+END                                                               |
+|press  |CONTROL+/                                                                       |
+|click  |xpath=(//input[@name= 'save'])                                                  |
+|# Check if visible                                                                      |
+|ensure |is visible on page    |xpath=(//h3[@id= 'Testifgooglehasanimg'])                |
+|ensure |is visible on page    |xpath=(//table[@class= 'toolchainTable storyboardTable'])|

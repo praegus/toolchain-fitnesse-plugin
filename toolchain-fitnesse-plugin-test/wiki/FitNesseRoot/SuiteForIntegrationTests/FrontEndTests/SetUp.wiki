@@ -1,0 +1,2 @@
+|script|browser test                     |
+|open  |http://localhost:${FITNESSE_PORT}|
