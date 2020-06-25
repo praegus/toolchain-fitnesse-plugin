@@ -27,7 +27,14 @@ public class RecentTestHistoryResponderTest {
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").containsSequence("ExampleTest.Mocker2.thisIsMockData","Example.Mocker3.SuiteSetUp", "Example.Mocker3.SuiteTearDown", "Example.Mocker3.SetUp", "Example.Mocker3.dataForTesting", "Example.Mocker3.TearDown", "ExampleTest.Mocker1.thisIsATest");
+        assertThat(receivedResult).extracting("pageName").containsSequence(
+                "ExampleTest.Mocker2.thisIsMockData",
+                "Example.Mocker3.SuiteSetUp",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.Mocker3.SetUp",
+                "Example.Mocker3.dataForTesting",
+                "Example.Mocker3.TearDown",
+                "ExampleTest.Mocker1.thisIsATest");
     }
 
     @Test
@@ -36,7 +43,14 @@ public class RecentTestHistoryResponderTest {
 
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
-        assertThat(receivedResult).containsSequence("Example.Mocker3.SuiteSetUp","ExampleTest.Mocker1.thisIsATest","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.dataForTesting","Example.Mocker3.TearDown","ExampleTest.Mocker2.thisIsMockData");
+        assertThat(receivedResult).containsSequence(
+                "Example.Mocker3.SuiteSetUp",
+                "ExampleTest.Mocker1.thisIsATest",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.Mocker3.SetUp",
+                "Example.Mocker3.dataForTesting",
+                "Example.Mocker3.TearDown",
+                "ExampleTest.Mocker2.thisIsMockData");
     }
 
     @Test
@@ -60,20 +74,31 @@ public class RecentTestHistoryResponderTest {
         assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
     @Test
-    public void Checks_if_filter_is_off(){
+    public void Checks_if_filter_is_off_and_returns_all_results_sorted(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        List receivedResult = recentTestHistory.getHistoryLines();
+        Set<String> receivedResult = recentTestHistory.getPageNames();
 
-        assertThat(receivedResult).extracting("pageName").containsAnyElementsOf(Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown"));
+        assertThat(receivedResult).containsSequence(
+                "Example.Mocker3.SuiteSetUp",
+                "ExampleTest.Mocker1.thisIsATest",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.Mocker3.SetUp",
+                "Example.Mocker3.dataForTesting",
+                "Example.Mocker3.TearDown",
+                "ExampleTest.Mocker2.thisIsMockData");
     }
     @Test
-    public void Checks_if_filter_is_on(){
+    public void Checks_if_filter_is_on_and_doesnt_return_setup_and_teardowns(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
         List receivedResult = recentTestHistory.getFilteredTestHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown"));
+        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(Arrays.asList(
+                "Example.Mocker3.SuiteSetUp",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.Mocker3.SetUp",
+                "Example.Mocker3.TearDown"));
     }
 
     // Setup method
