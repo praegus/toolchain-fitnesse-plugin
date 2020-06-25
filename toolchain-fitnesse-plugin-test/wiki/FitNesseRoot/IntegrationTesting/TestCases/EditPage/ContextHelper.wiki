@@ -15,10 +15,9 @@ Test
 
 
 !4 2. Check if the Scenarios, Fixtures and Slim symbols category are present
-!|script|browser test                                         |
-|click  |Context help                                         |
-|wait   |2                 |seconds                           |
-|ensure |is visible on page|xpath=(//ol[@id= 'side-bar-tree'])|
+!|script         |browser test                      |
+|click           |Context help                      |
+|wait for visible|xpath=(//ol[@id= 'side-bar-tree'])|
 
 
 !4 3. Check data of the Scenarios category

@@ -5,14 +5,4 @@
 
 
 #!4 2. Check if test history table shows the correct test 
-#|script          |browser test                                                                     |
-#|Go to the Suite For Integration Tests                                                             |
-#|Toggle the sidebar                                                                                |
-#|click           |xpath=(//i[@id= 'expandAllSidebar'])                                             |
-#|click           |xpath=(//div[@id= 'sidebar']//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest'])|
-#|click           |xpath=(//a[@href= 'TestSuiteDemo.BackEndTests.T001ApiTest?test'])                |
-#|click           |xpath=(//a[@class= 'stop'])                                                      |
-#|wait for visible|xpath=(//div[@class= 'collapseSidebarDivDisabled'])                              |
-#|ensure          |is not visible on page    |xpath=(//div[@id= 'sidebar'])                         |
-#|wait seconds    |5                                                                                |
-#|ensure          |is not visible on page    |xpath=(//div[@class= 'collapseSidebarDivDisabled'])   |
+#THIS TEST IS CURRENTLY NOT POSSIBLE UNTIL THERE IS A BETTER WAY TEST A "TEST PAGE" 

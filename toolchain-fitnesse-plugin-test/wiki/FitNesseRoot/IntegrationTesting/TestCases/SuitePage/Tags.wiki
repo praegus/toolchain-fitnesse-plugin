@@ -5,14 +5,13 @@ Test
 
 
 !4 1. Add new tag
-!|script     |browser test                                                                           |
+!|script         |browser test                                                                       |
 |Go to the Suite For Integration Tests                                                               |
 |Show tag input for T 001 Google Test                                                                |
-|enter       |${testTagName}    |as|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
+|enter           |${testTagName}|as|xpath=(//input[@class= 'tagInputOverview ui-autocomplete-input'])|
 |press Enter                                                                                         |
 |# Check if tag visible                                                                              |
-|wait seconds|1                                                                                      |
-|ensure      |is visible on page|${testTagName}                                                      |
+|wait for visible|${testTagName}                                                                     |
 
 
 !4 2. Handling with duplicates

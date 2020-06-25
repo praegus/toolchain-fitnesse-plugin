@@ -51,17 +51,19 @@ Test
 |click  |xpath=(//i[@id= 'sidebarTags-switch'])                         |
 |ensure |is visible on page    |xpath=(//span[@class= 'tag sidebarTag'])|
 
+#
 # THIS TEST IS CURRENTLY NOT POSSIBLE UNTIL THERE IS A BETTER WAY TEST A "TEST PAGE" 
 #!4 5. Collapse while running a test
-#!|script|browser test                                                                         |
-#|Go to the Test Suite Demo                                                                   |
-#|click |xpath=(//i[@id= 'expandAllSidebar'])                                                 |
-#|click |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest'])|
-#|click |xpath=(//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest?test'])                |
-#|ensure|is visible on page          |xpath=(//div[@class= 'collapseSidebarDivDisabled'])     |
-#|ensure|is not visible on page      |xpath=(//div[@id= 'sidebar'])                           |
-#|click |xpath=(//a[@class= 'stop'])                                                          |
-#|ensure|is not visible on page      |xpath=(//div[@class= 'collapseSidebarDivDisabled'])     |
+#!|script|browser test                                                                                    |
+#|Go to the Test Suite Demo                                                                               |
+#|click  |xpath=(//i[@id= 'expandAllSidebar'])                                                            |
+#|click  |xpath=(//div[@id= 'sidebar']//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest'])|
+#|click  |xpath=(//a[@href= 'SuiteForIntegrationTests.FrontEndTests.T001GoogleTest?test'])                |
+#|ensure |is visible on page               |xpath=(//div[@class= 'collapseSidebarDivDisabled'])           |
+#|ensure |is not visible on page           |xpath=(//div[@id= 'sidebar'])                                 |
+#|click  |xpath=(//a[@class= 'stop'])                                                                     |
+#|ensure |is not visible on page           |xpath=(//div[@class= 'collapseSidebarDivDisabled'])           |
+#
 
 !4 5. Close Sidebar
 !|script|browser test                                              |
