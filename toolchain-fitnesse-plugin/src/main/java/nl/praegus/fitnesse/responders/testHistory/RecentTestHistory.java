@@ -18,8 +18,7 @@ public class RecentTestHistory {
 
         for (String pageName : pageHistoryIndex.keySet()) {
             PageHistory pageHistory = getPageHistory(pageName);
-            TestHistoryLine testHistoryLine = new TestHistoryLine(pageHistory);
-            testHistoryLines.add(testHistoryLine);
+            testHistoryLines.add(new TestHistoryLine(pageHistory));
         }
     }
 

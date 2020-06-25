@@ -24,30 +24,26 @@ public class RecentTestHistoryResponderTest {
     @Test
     public void When_directory_is_not_null_return_historylines_sorted() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("ExampleTest.Mocker2.thisIsMockData","Example.Mocker3.SuiteSetUp", "Example.Mocker3.SuiteTearDown", "Example.Mocker3.SetUp", "Example.Mocker3.dataForTesting", "Example.Mocker3.TearDown", "ExampleTest.Mocker1.thisIsATest");
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").containsSequence(expectedResult);
+        assertThat(receivedResult).extracting("pageName").containsSequence("ExampleTest.Mocker2.thisIsMockData","Example.Mocker3.SuiteSetUp", "Example.Mocker3.SuiteTearDown", "Example.Mocker3.SetUp", "Example.Mocker3.dataForTesting", "Example.Mocker3.TearDown", "ExampleTest.Mocker1.thisIsATest");
     }
 
     @Test
     public void When_directory_is_not_null_return_historylines_not_sorted() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","ExampleTest.Mocker1.thisIsATest","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.dataForTesting","Example.Mocker3.TearDown","ExampleTest.Mocker2.thisIsMockData");
 
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
-        assertThat(receivedResult).containsSequence(expectedResult);
+        assertThat(receivedResult).containsSequence("Example.Mocker3.SuiteSetUp","ExampleTest.Mocker1.thisIsATest","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.dataForTesting","Example.Mocker3.TearDown","ExampleTest.Mocker2.thisIsMockData");
     }
 
     @Test
     public void when_the_recent_test_history_is_retrieved_the_recent_run_date_is_parsed_correctly() {
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        LocalDateTime expectedResult = LocalDateTime.parse("2020-01-22T11:43:40");
-
-        assertThat(recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate()).isEqualTo(expectedResult);
+        assertThat(recentTestHistory.getHistoryLines().get(0).getMostRecentRunDate()).isEqualTo(LocalDateTime.parse("2020-01-22T11:43:40"));
     }
 
     @Test
@@ -66,20 +62,18 @@ public class RecentTestHistoryResponderTest {
     @Test
     public void Checks_if_filter_is_off(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
 
         List receivedResult = recentTestHistory.getHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").containsAnyElementsOf(expectedResult);
+        assertThat(receivedResult).extracting("pageName").containsAnyElementsOf(Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown"));
     }
     @Test
     public void Checks_if_filter_is_on(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
-        List<String> expectedResult = Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown");
 
         List receivedResult = recentTestHistory.getFilteredTestHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(expectedResult);
+        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(Arrays.asList("Example.Mocker3.SuiteSetUp","Example.Mocker3.SuiteTearDown","Example.Mocker3.SetUp","Example.Mocker3.TearDown"));
     }
 
     // Setup method
