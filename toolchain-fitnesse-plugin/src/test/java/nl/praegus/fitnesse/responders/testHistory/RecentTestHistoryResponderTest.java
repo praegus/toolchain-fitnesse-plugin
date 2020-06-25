@@ -29,11 +29,13 @@ public class RecentTestHistoryResponderTest {
 
         assertThat(receivedResult).extracting("pageName").containsSequence(
                 "ExampleTest.Mocker2.thisIsMockData",
+                "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.SuiteSetUp",
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.dataForTesting",
                 "Example.Mocker3.TearDown",
+                "Example.TearDownMocker.Mocker3",
                 "ExampleTest.Mocker1.thisIsATest");
     }
 
@@ -44,12 +46,14 @@ public class RecentTestHistoryResponderTest {
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
         assertThat(receivedResult).containsSequence(
+                "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.SuiteSetUp",
                 "ExampleTest.Mocker1.thisIsATest",
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.dataForTesting",
                 "Example.Mocker3.TearDown",
+                "Example.TearDownMocker.Mocker3",
                 "ExampleTest.Mocker2.thisIsMockData");
     }
 
@@ -75,22 +79,42 @@ public class RecentTestHistoryResponderTest {
     }
 
     @Test
-    public void Checks_if_filter_is_on_and_doesnt_return_setup_and_teardowns_sorted(){
+    public void Checks_when_filter_is_on_and_doesnt_return_setup_and_teardowns_sorted(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        List receivedResult = recentTestHistory.getFilteredTestHistoryLines();
+        List<TestHistoryLine> receivedResult = recentTestHistory.getFilteredTestHistoryLines();
 
-        assertThat(receivedResult).extracting("pageName").doesNotContainAnyElementsOf(Arrays.asList(
+        assertThat(receivedResult).extracting("pageName").doesNotContain(
                 "Example.Mocker3.SuiteSetUp",
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
-                "Example.Mocker3.TearDown"));
-        assertThat(receivedResult).extracting("pageName").containsSequence(Arrays.asList(
+                "Example.Mocker3.TearDown");
+
+        assertThat(receivedResult).extracting("pageName").containsExactly(
                 "ExampleTest.Mocker2.thisIsMockData",
+                "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.dataForTesting",
+                "Example.TearDownMocker.Mocker3",
                 "ExampleTest.Mocker1.thisIsATest"
-        ));
+        );
     }
+    @Test
+    public void Check_when_filter_Is_on_only_pages_named_teardown_or_setup_are_filtered(){
+        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
+
+        List<TestHistoryLine> receivedResult = recentTestHistory.getFilteredTestHistoryLines();
+
+        assertThat(receivedResult).extracting("pageName").contains(
+                "Example.SetUpmocker.Mocker3",
+                "Example.TearDownMocker.Mocker3");
+        assertThat(receivedResult).extracting("pageName").doesNotContain(
+                "Example.Mocker3.SuiteSetUp",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.Mocker3.SetUp",
+                "Example.Mocker3.TearDown");
+    }
+
+
 
     // Setup method
     private File getMockDir(String DirName){

@@ -30,7 +30,8 @@ public class RecentTestHistory {
 
     public List<TestHistoryLine> getFilteredTestHistoryLines() {
         return testHistoryLines.stream()
-                .filter(testHistoryLine -> !testHistoryLine.getPageName().contains("TearDown") && !testHistoryLine.getPageName().contains("SetUp"))
+                .filter(testHistoryLine -> !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf('.')).contains("TearDown") &&
+                !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf('.')).contains("SetUp"))
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
