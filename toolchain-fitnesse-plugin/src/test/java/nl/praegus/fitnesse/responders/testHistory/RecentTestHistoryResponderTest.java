@@ -75,7 +75,7 @@ public class RecentTestHistoryResponderTest {
     }
 
     @Test
-    public void Checks_if_filter_is_on_and_doesnt_return_setup_and_teardowns(){
+    public void Checks_if_filter_is_on_and_doesnt_return_setup_and_teardowns_sorted(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
         List receivedResult = recentTestHistory.getFilteredTestHistoryLines();
@@ -85,6 +85,11 @@ public class RecentTestHistoryResponderTest {
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.TearDown"));
+        assertThat(receivedResult).extracting("pageName").containsSequence(Arrays.asList(
+                "ExampleTest.Mocker2.thisIsMockData",
+                "Example.Mocker3.dataForTesting",
+                "ExampleTest.Mocker1.thisIsATest"
+        ));
     }
 
     // Setup method
