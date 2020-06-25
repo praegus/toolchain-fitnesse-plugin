@@ -73,21 +73,7 @@ public class RecentTestHistoryResponderTest {
 
         assertThat(recentTestHistory.getHistoryLines().get(0).getNumberOfTimesPassed()).isEqualTo(0);
     }
-    @Test
-    public void Checks_if_filter_is_off_and_returns_all_results_sorted(){
-        RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
-        Set<String> receivedResult = recentTestHistory.getPageNames();
-
-        assertThat(receivedResult).containsSequence(
-                "Example.Mocker3.SuiteSetUp",
-                "ExampleTest.Mocker1.thisIsATest",
-                "Example.Mocker3.SuiteTearDown",
-                "Example.Mocker3.SetUp",
-                "Example.Mocker3.dataForTesting",
-                "Example.Mocker3.TearDown",
-                "ExampleTest.Mocker2.thisIsMockData");
-    }
     @Test
     public void Checks_if_filter_is_on_and_doesnt_return_setup_and_teardowns(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
