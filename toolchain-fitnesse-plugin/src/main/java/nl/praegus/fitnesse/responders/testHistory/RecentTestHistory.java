@@ -32,10 +32,9 @@ public class RecentTestHistory {
         List<TestHistoryLine> filteredTestHistoryLines = new ArrayList<>();
 
         for (TestHistoryLine testHistoryLine : testHistoryLines) {
-            boolean containsADot = testHistoryLine.getPageName().contains(".");
             String testName;
 
-            if (containsADot) {
+            if (testHistoryLine.getPageName().contains(".")) {
                 testName = testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".") + 1);
             } else {
                 testName = testHistoryLine.getPageName();
