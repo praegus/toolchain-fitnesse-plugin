@@ -1,0 +1,17 @@
+---
+Help: Defines where to look for fixture code.
+---
+This set up page is executed once, before any tests in this suite.
+
+An [[import table][.FitNesse.UserGuide.WritingAcceptanceTests.SliM.ImportTable]] defines which Java packages may contain fixture classes.
+
+|Import                                  |
+|nl.hsac.fitnesse.fixture                |
+|nl.hsac.fitnesse.fixture.slim           |
+|nl.praegus.fitnesse.slim.fixtures       |
+|nl.praegus.fitnesse.slim.fixtures.mendix|
+
+|Library            |
+|string fixture     |
+|stop test fixture  |
+|date format fixture|

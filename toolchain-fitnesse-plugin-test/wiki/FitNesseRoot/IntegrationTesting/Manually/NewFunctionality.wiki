@@ -8,6 +8,7 @@
 
 
 |'''''Sidebar'''''                                                                                                                                         |
+|'''Basis'''                                                                                                                                               |
 |Klik op de 'Bootstrap+ Preference' instellingen knop  |Het venster van de 'Bootstrap+ Preference' instellingen wordt geopend                              |
 |Zet de 'Sidebar' aan                                  |De sidebar wordt vanaf de root getoont (dit is alleen bij FrontPage)                               |
 |Ga naar een suite                                     |De sidebar wordt getoont (als het te lang duurt wordt er eerst een lader getoond)                  |
@@ -15,10 +16,6 @@
 |Klik via de sidebar op een static page                |Je wordt gestuurd naar de gekozen static page                                                      |
 |Klik via de sidebar op een testgeval                  |Je wordt gestuurd naar het testgeval en er komt een highlight in de sidebar op de plek waar je bent|
 |Klik op edit                                          |Een editpagina wordt geopend, hier wordt de sidebar ook weergeven                                  |
-|'''Sidebar bij een test'''                                                                                                                                |
-|Sluit edit en test het testgeval                      |De sidebar wordt ingeklapt                                                                         |
-|Tijdens de test                                       |De project knop is niet open klikbaar en heeft een grijze kleur                                    |
-|Na de test                                            |De project knop is klikbaar en heeft weer de normale kleur                                         |
 |'''Sidebar knoppen'''                                                                                                                                     |
 |Klik op "Expand all"                                  |Alle items van de sidebar worden uitgeklapt                                                        |
 |Klik op "Collapse Except Current"                     |Alle items van de sidebar worden ingeklapt behalve de route waar je in zit                         |
@@ -27,6 +24,10 @@
 |'''Sidebar vergroten'''                                                                                                                                   |
 |Hover op de rechter rand van de sidebar               |De muis veranderd naar een voormaat weizig icoon                                                   |
 |Hou de sidebar rand vast en beweeg de muis naar rechts|De sidebar veranderd van breedte                                                                   |
+|'''Sidebar bij een test'''                                                                                                                                |
+|Sluit edit en test het testgeval                      |De sidebar wordt ingeklapt                                                                         |
+|Tijdens de test                                       |De project knop is niet open klikbaar en heeft een grijze kleur                                    |
+|Na de test                                            |De project knop is klikbaar en heeft weer de normale kleur                                         |
 |'''Symbolic en wiki icoontjes'''                                                                                                                          |
 |Als er een Symbolic link is                           |Achter de tekst van de symbolic link staat een link icoon                                          |
 |Als er een Wiki Import is                             |Achter de tekst van de symbolic link staat een '@'                                                 |
@@ -92,10 +93,6 @@
 |Druk op het plus symbool                                                     |Er verschijnt een input veld waar meteen in getikt kan worden                                                      |
 |Vul de eerste letter in van een bestaande tagnaam binnen de Suite overview   |Er verschijnt een dropdown met de bestaande tagnamen. Deze dropdown is gelimiteerd aan 5 tagnamen                  |
 |Druk op de boven/onder pijltes of klik op de tagnaam                         |Input veld wordt gevuld met de gekozen tagnaam                                                                     |
-
-
-|'''''Sneltoetsen'''''                                                                                                     |
-|Klik op de '?' knop|Je krijgt een venster te zien met Sneltoetsen voor: General, Edit Mode, Go To, Tools en Bootstrap-plus|
 
 
 |'''''Comment keyboard shortcut'''''                                                                                            |

@@ -1,0 +1,39 @@
+---
+Test
+---
+!4 1. Add the Version Checker
+!|script|browser test                                               |
+|Go to the Suite For Integration Tests                              |
+|# Check if not visible on page                                     |
+|ensure |is not visible on page|xpath=(//table[@id= 'versioncheck'])|
+|click  |xpath=(//a[@href= 'SuiteForIntegrationTests?edit'])        |
+|# Write a enter and the symbol                                     |
+|press  |PAGE_DOWN                                                  |
+|press enter                                                        |
+|press enter                                                        |
+|press  |!-!VersionChecker-!                                        |
+|# Save and check if visible                                        |
+|click  |xpath=(//input[@type= 'submit'])                           |
+|ensure |is visible on page    |xpath=(//table[@id= 'versioncheck'])|
+
+
+!4 2. Check if all depencencies are up to date
+!|script|browser test                                                                       |
+|ensure |is visible on page    |xpath=(//table[@id= 'versioncheck'])                        |
+|ensure |is not visible on page|xpath=(//table[@id= 'versioncheck']//td[@class= 'Outdated'])|
+
+
+!4 3. Remove the Version Checker
+!|script|browser test                                               |
+|Go to the Suite For Integration Tests                              |
+|# Check if visible on page                                         |
+|ensure |is visible on page    |xpath=(//table[@id= 'versioncheck'])|
+|click  |xpath=(//a[@href= 'SuiteForIntegrationTests?edit'])        |
+|# Delete the symbol                                                |
+|press  |PAGE_DOWN                                                  |
+|press  |CONTROL+SHIFT+ARROW_UP                                     |
+|press  |BACK_SPACE                                                 |
+|press  |BACK_SPACE                                                 |
+|# Save and check if visible                                        |
+|click  |xpath=(//input[@type= 'submit'])                           |
+|ensure |is not visible on page|xpath=(//table[@id= 'versioncheck'])|
