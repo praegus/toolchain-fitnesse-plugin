@@ -33,10 +33,14 @@ public class RecentTestHistory {
 
         for (TestHistoryLine testHistoryLine : testHistoryLines) {
             boolean containsADot = testHistoryLine.getPageName().contains(".");
+            String testName;
 
-            if (!containsADot || (containsADot && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("SetUp")
-                    && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("TearDown"))) {
-
+            if (containsADot) {
+                testName = testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".") + 1);
+            } else {
+                testName = testHistoryLine.getPageName();
+            }
+            if (!testName.equals("SetUp") && !testName.equals("TearDown") && !testName.equals("SuiteTearDown") && !testName.equals("SuiteSetUp")) {
                 filteredTestHistoryLines.add(testHistoryLine);
             }
         }

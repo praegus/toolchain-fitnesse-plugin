@@ -28,15 +28,22 @@ public class RecentTestHistoryResponderTest {
         List<TestHistoryLine> receivedResult = recentTestHistory.getHistoryLines();
 
         assertThat(receivedResult).extracting("pageName").containsSequence(
+                "ExampleTest.Mocker2.TearDownNamed",
                 "ExampleTest.Mocker2.thisIsMockData",
+                "TearDown",
+                "Example.Mocker3.SuiteTearDown",
+                "Example.TearDownMocker.Mocker3",
                 "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.SuiteSetUp",
-                "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.dataForTesting",
+                "SuiteTearDown",
+                "SuiteSetUp",
                 "Example.Mocker3.TearDown",
-                "Example.TearDownMocker.Mocker3",
-                "ExampleTest.Mocker1.thisIsATest");
+                "SetUp",
+                "SetUpsExample",
+                "ExampleTest.Mocker1.thisIsATest",
+                "ExampleTest");
     }
 
     @Test
@@ -46,16 +53,22 @@ public class RecentTestHistoryResponderTest {
         Set<String> receivedResult = recentTestHistory.getPageNames();
 
         assertThat(receivedResult).containsSequence(
-                "Example.SetUpmocker.Mocker3",
-                "Example.Mocker3.SuiteSetUp",
+                "TearDown",
                 "ExampleTest.Mocker1.thisIsATest",
                 "Example.Mocker3.SuiteTearDown",
                 "ExampleTest",
+                "ExampleTest.Mocker2.TearDownNamed",
+                "Example.TearDownMocker.Mocker3",
+                "ExampleTest.Mocker2.thisIsMockData",
+                "Example.SetUpmocker.Mocker3",
+                "Example.Mocker3.SuiteSetUp",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.dataForTesting",
+                "SuiteTearDown",
+                "SuiteSetUp",
                 "Example.Mocker3.TearDown",
-                "Example.TearDownMocker.Mocker3",
-                "ExampleTest.Mocker2.thisIsMockData");
+                "SetUp",
+                "SetUpsExample");
     }
 
     @Test
@@ -89,34 +102,44 @@ public class RecentTestHistoryResponderTest {
                 "Example.Mocker3.SuiteSetUp",
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
-                "Example.Mocker3.TearDown");
+                "Example.Mocker3.TearDown",
+                "TearDown",
+                "SuiteTearDown",
+                "SetUp",
+                "SuiteSetUp");
 
         assertThat(receivedResult).extracting("pageName").containsExactly(
+                "ExampleTest.Mocker2.TearDownNamed",
                 "ExampleTest.Mocker2.thisIsMockData",
+                "Example.TearDownMocker.Mocker3",
                 "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.dataForTesting",
-                "Example.TearDownMocker.Mocker3",
+                "SetUpsExample",
                 "ExampleTest.Mocker1.thisIsATest",
                 "ExampleTest"
         );
     }
     @Test
-    public void Check_when_filter_Is_on_only_pages_named_teardown_or_setup_are_filtered(){
+    public void Check_when_filter_Is_on_only_exactly_teardown_or_setup_are_filtered(){
         RecentTestHistory recentTestHistory = new RecentTestHistory(getMockDir("TestResultDirectory"));
 
         List<TestHistoryLine> receivedResult = recentTestHistory.getFilteredTestHistoryLines();
 
         assertThat(receivedResult).extracting("pageName").contains(
                 "Example.SetUpmocker.Mocker3",
-                "Example.TearDownMocker.Mocker3");
+                "Example.TearDownMocker.Mocker3",
+                "ExampleTest.Mocker2.TearDownNamed",
+                "SetUpsExample");
         assertThat(receivedResult).extracting("pageName").doesNotContain(
                 "Example.Mocker3.SuiteSetUp",
                 "Example.Mocker3.SuiteTearDown",
                 "Example.Mocker3.SetUp",
-                "Example.Mocker3.TearDown");
+                "Example.Mocker3.TearDown",
+                "TearDown",
+                "SuiteTearDown",
+                "SetUp",
+                "SuiteSetUp");
     }
-
-
 
     // Setup method
     private File getMockDir(String DirName){
