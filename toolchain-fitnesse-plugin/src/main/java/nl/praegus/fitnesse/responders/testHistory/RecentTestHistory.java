@@ -32,16 +32,16 @@ public class RecentTestHistory {
         List<TestHistoryLine> filteredTestHistoryLines = new ArrayList<>();
 
         for (TestHistoryLine testHistoryLine : testHistoryLines) {
-            if (testHistoryLine.getPageName().contains(".")) {
-                if (!testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("SetUp") && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("TearDown")) {
-                    filteredTestHistoryLines.add(testHistoryLine);
-                }
-            } else {
+            boolean containsADot = testHistoryLine.getPageName().contains(".");
+
+            if (!containsADot || (containsADot && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("SetUp")
+                    && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("TearDown"))) {
+
                 filteredTestHistoryLines.add(testHistoryLine);
             }
         }
 
-       return filteredTestHistoryLines.stream()
+        return filteredTestHistoryLines.stream()
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
