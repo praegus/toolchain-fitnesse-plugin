@@ -29,9 +29,19 @@ public class RecentTestHistory {
     }
 
     public List<TestHistoryLine> getFilteredTestHistoryLines() {
-        return testHistoryLines.stream()
-                .filter(testHistoryLine -> !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf('.')).contains("TearDown") &&
-                !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf('.')).contains("SetUp"))
+        List<TestHistoryLine> filteredTestHistoryLines = new ArrayList<>();
+
+        for (TestHistoryLine testHistoryLine : testHistoryLines) {
+            if (testHistoryLine.getPageName().contains(".")) {
+                if (!testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("SetUp") && !testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".")).contains("TearDown")) {
+                    filteredTestHistoryLines.add(testHistoryLine);
+                }
+            } else {
+                filteredTestHistoryLines.add(testHistoryLine);
+            }
+        }
+
+       return filteredTestHistoryLines.stream()
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }

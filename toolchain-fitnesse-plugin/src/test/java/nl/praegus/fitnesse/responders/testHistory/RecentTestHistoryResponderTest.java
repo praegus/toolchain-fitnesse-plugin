@@ -50,6 +50,7 @@ public class RecentTestHistoryResponderTest {
                 "Example.Mocker3.SuiteSetUp",
                 "ExampleTest.Mocker1.thisIsATest",
                 "Example.Mocker3.SuiteTearDown",
+                "ExampleTest",
                 "Example.Mocker3.SetUp",
                 "Example.Mocker3.dataForTesting",
                 "Example.Mocker3.TearDown",
@@ -95,7 +96,8 @@ public class RecentTestHistoryResponderTest {
                 "Example.SetUpmocker.Mocker3",
                 "Example.Mocker3.dataForTesting",
                 "Example.TearDownMocker.Mocker3",
-                "ExampleTest.Mocker1.thisIsATest"
+                "ExampleTest.Mocker1.thisIsATest",
+                "ExampleTest"
         );
     }
     @Test
