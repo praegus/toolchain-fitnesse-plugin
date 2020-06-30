@@ -39,6 +39,7 @@ public class RecentTestHistory {
             } else {
                 testName = testHistoryLine.getPageName();
             }
+
             if (!testName.equals("SetUp") && !testName.equals("TearDown") && !testName.equals("SuiteTearDown") && !testName.equals("SuiteSetUp")) {
                 filteredTestHistoryLines.add(testHistoryLine);
             }
