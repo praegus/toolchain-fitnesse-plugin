@@ -1,0 +1,25 @@
+---
+Test
+---
+!4 1. Tooltip are only visible on the Front Page and in a edit page
+!|script|browser test                                           |
+|# Check if tooltip is visible on front page                    |
+|Go to the Front Page                                           |
+|ensure |is visible on page    |xpath=(//p[@id= 'tooltip-text'])|
+|# Check if tooltip is not visible on other pages               |
+|click  |xpath=(//a[@href= 'SuiteForIntegrationTests'])         |
+|ensure |is not visible on page|xpath=(//p[@id= 'tooltip-text'])|
+|# Check if tooltip is visible on edit page                     |
+|click  |xpath=(//a[@href= 'SuiteForIntegrationTests?edit'])    |
+|ensure |is visible on page    |xpath=(//p[@id= 'tooltip-text'])|
+
+
+!4 2. A new tooltip appears when reloading the page 
+!|script           |browser test                                        |
+|Go to the Front Page                                                   |
+|ensure            |is visible on page|xpath=(//div[@id= 'tooltip-div'])|
+|$tooltip=         |value of          |xpath=(//p[@id= 'tooltip-text']) |
+|refresh                                                                |
+|$refreshedTooltip=|value of          |xpath=(//p[@id= 'tooltip-text']) |
+|# Check if tooltip is different                                        |
+|value differs     |$tooltip          |from      |$refreshedTooltip     |

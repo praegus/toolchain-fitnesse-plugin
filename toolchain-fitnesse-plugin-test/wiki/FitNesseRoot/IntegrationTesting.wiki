@@ -1,7 +1,7 @@
 ---
 Suite
 ---
-!1 Test suite Regressie testen
+!1 Test suite Integration testen
 
 !contents -R2 -g -p -f -h
 
