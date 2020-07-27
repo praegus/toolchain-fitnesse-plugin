@@ -53,8 +53,6 @@ public class ConditionalScriptTable extends ScriptTable {
         List<SlimAssertion> assertions = new ArrayList<>();
         if ((null == getParent() || fromConditionalScenario)  && row == 1) {
 
-            System.out.println(this.tableAsList());
-
             if (this.table.getColumnCountInRow(row) > 1) {
                 throw new SyntaxError("Conditional script tables can contain only the condition in the first row.");
             }
