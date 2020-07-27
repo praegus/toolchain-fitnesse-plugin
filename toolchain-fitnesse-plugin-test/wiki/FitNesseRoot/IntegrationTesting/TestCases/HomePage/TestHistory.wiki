@@ -1,0 +1,8 @@
+!4 1. Check if test history table is visible
+!|script|browser test                                                   |
+|Go to the Front Page                                                   |
+|ensure |is visible on page|xpath=(//div[@id= 'recentTestHistoryTable'])|
+
+
+#!4 2. Check if test history table shows the correct test 
+#THIS TEST IS CURRENTLY NOT POSSIBLE UNTIL THERE IS A BETTER WAY TEST A "TEST PAGE" 

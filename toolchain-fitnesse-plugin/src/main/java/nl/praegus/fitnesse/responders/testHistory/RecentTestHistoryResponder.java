@@ -30,9 +30,11 @@ public class RecentTestHistoryResponder implements SecureResponder {
     }
 
     private Response makeRecentTestHistoryResponse(RecentTestHistory recentTestHistory, Request request, String pageName) throws UnsupportedEncodingException {
-        List<TestHistoryLine> historyLines = recentTestHistory.getHistoryLines();
-        HtmlPage page = context.pageFactory.newPage();
+        Boolean SpecialPageFilter = request.getInput("specPageFilter") != null && request.getInput("specPageFilter").equals("true");
 
+        List<TestHistoryLine> historyLines = SpecialPageFilter ? recentTestHistory.getFilteredTestHistoryLines() : recentTestHistory.getHistoryLines();
+
+        HtmlPage page = context.pageFactory.newPage();
         page.setTitle("Recent Test Pages");
         page.setPageTitle(new PageTitle(PathParser.parse(pageName)));
         page.setNavTemplate("viewNav");

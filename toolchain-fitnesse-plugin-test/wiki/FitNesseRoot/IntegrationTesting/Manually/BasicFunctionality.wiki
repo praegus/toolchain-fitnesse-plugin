@@ -72,32 +72,33 @@ Bij elk nieuw onderwerp ga dan terug naar de homepagina
 |?                 |?                                                                                                            |
 
 
-|'''''Sneltoetsen'''''                                                                                                                                                   |
-|'''General'''                                                                                                                                                           |
-|Ga naar een suite met een testgeval en druk op de toets "E"                            |Je gaat naar de edit pagina van de suite                                        |
-|Ga naar een suite met een testgeval en druk op de toets "T"                            |Je huidige suite wordt getest                                                   |
-|Druk daarna op de toets "V"                                                            |Je uit het test scherm en terug naar je huidige suite pagina                    |
-|Ga naar een suite met een testgeval en druk op de toets "A"                            |Je opend een nieuwe edit pagina en maakt hierdoor een nieuwe pagina aan         |
-|'''Edit Mode'''                                                                                                                                                         |
-|Ga naar de edit page van een pagina en schrijf twee nieuwe ongeformateerde tabel regels|N.V.T                                                                           |
-|Druk op de toetsen “Alt" + “Shift" + “F"                                               |Alle regels worden geformateerd                                                 |
-|Druk op de toetsen “Ctrl" + "S"                                                        |De pagina word opgeslagen en de edit page wordt gesloten                        |
-|Ga naar de edit page van de pagina en schrijf twee nieuwe regels                       |N.V.T                                                                           |
-|Druk op de toets “Esc"                                                                 |De aanpassingen worden geannuleerd en de edit page wordt gesloten               |
-|'''Bootstrap-plus'''                                                                                                                                                    |
-|Ga naar de edit page van een pagina en schrijf "cli"                                   |N.V.T                                                                           |
-|Klik op "Ctrl" + "Space"                                                               |Er komt een autocomplete                                                        |
-|Schrijf de regel af en klik op "Ctrl" + "."                                            |Er wordt een validatie check gedaan                                             |
-|Klik daarna op "Ctrl" + ","                                                            |De context helper wordt geopend en de regel waar je opstond staat in de zoekbalk|
-|'''Go to'''                                                                                                                                                             |
-|Ga naar een Suite met een testgeval en druk op de toetsen "G" + "U"                    |Gaat naar de FitNesse User Guide                                                |
-|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “Q"                    |Opent een nieuw tabblad voor de QuickReferenceGuide                             |
-|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “F"                    |Opent een nieuw tabblad voor de FullReferenceGuide                              |
-|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “C"                    |Gaat naar de RecentChanges pagina                                               |
-|'''Tools'''                                                                                                                                                             |
-|Ga naar een Suite met een testgeval en druk op de toets “P"                            |Gaat naar de properties van je huidige pagina                                   |
-|Ga naar een Suite met een testgeval en druk op de toets “W"                            |Gaat naar de whereUsed van de huidige pagina                                    |
-|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "V"                  |Gaat naar de Versions van de huidige pagina                                     |
-|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "H"                  |Gaat naar de pageHistory van de huidige pagina                                  |
-|Ga naar een Suite met een testgeval en druk op de toets "/"                            |De focus wordt gelegd op de search bar                                          |
-|Ga naar een Suite met een testgeval en druk op de toets "S"                            |Gaat naar de zoek pagina met een focus op de huidige pagina                     |
+|'''''Sneltoetsen'''''                                                                                                                                                                         |
+|Klik op de '?' knop                                                                    |Je krijgt een venster te zien met Sneltoetsen voor: General, Edit Mode, Go To, Tools en Bootstrap-plus|
+|'''General'''                                                                                                                                                                                 |
+|Ga naar een suite met een testgeval en druk op de toets "E"                            |Je gaat naar de edit pagina van de suite                                                              |
+|Ga naar een suite met een testgeval en druk op de toets "T"                            |Je huidige suite wordt getest                                                                         |
+|Druk daarna op de toets "V"                                                            |Je uit het test scherm en terug naar je huidige suite pagina                                          |
+|Ga naar een suite met een testgeval en druk op de toets "A"                            |Je opend een nieuwe edit pagina en maakt hierdoor een nieuwe pagina aan                               |
+|'''Edit Mode'''                                                                                                                                                                               |
+|Ga naar de edit page van een pagina en schrijf twee nieuwe ongeformateerde tabel regels|N.V.T                                                                                                 |
+|Druk op de toetsen “Alt" + “Shift" + “F"                                               |Alle regels worden geformateerd                                                                       |
+|Druk op de toetsen “Ctrl" + "S"                                                        |De pagina word opgeslagen en de edit page wordt gesloten                                              |
+|Ga naar de edit page van de pagina en schrijf twee nieuwe regels                       |N.V.T                                                                                                 |
+|Druk op de toets “Esc"                                                                 |De aanpassingen worden geannuleerd en de edit page wordt gesloten                                     |
+|'''Bootstrap-plus'''                                                                                                                                                                          |
+|Ga naar de edit page van een pagina en schrijf "cli"                                   |N.V.T                                                                                                 |
+|Klik op "Ctrl" + "Space"                                                               |Er komt een autocomplete                                                                              |
+|Schrijf de regel af en klik op "Ctrl" + "."                                            |Er wordt een validatie check gedaan                                                                   |
+|Klik daarna op "Ctrl" + ","                                                            |De context helper wordt geopend en de regel waar je opstond staat in de zoekbalk                      |
+|'''Go to'''                                                                                                                                                                                   |
+|Ga naar een Suite met een testgeval en druk op de toetsen "G" + "U"                    |Gaat naar de FitNesse User Guide                                                                      |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “Q"                    |Opent een nieuw tabblad voor de QuickReferenceGuide                                                   |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “F"                    |Opent een nieuw tabblad voor de FullReferenceGuide                                                    |
+|Ga naar een Suite met een testgeval en druk op de toetsen “G" + “C"                    |Gaat naar de RecentChanges pagina                                                                     |
+|'''Tools'''                                                                                                                                                                                   |
+|Ga naar een Suite met een testgeval en druk op de toets “P"                            |Gaat naar de properties van je huidige pagina                                                         |
+|Ga naar een Suite met een testgeval en druk op de toets “W"                            |Gaat naar de whereUsed van de huidige pagina                                                          |
+|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "V"                  |Gaat naar de Versions van de huidige pagina                                                           |
+|Ga naar een Suite met een testgeval en druk op de toetsen "Alt" + "H"                  |Gaat naar de pageHistory van de huidige pagina                                                        |
+|Ga naar een Suite met een testgeval en druk op de toets "/"                            |De focus wordt gelegd op de search bar                                                                |
+|Ga naar een Suite met een testgeval en druk op de toets "S"                            |Gaat naar de zoek pagina met een focus op de huidige pagina                                           |
