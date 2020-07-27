@@ -20,6 +20,7 @@ import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
 import nl.praegus.fitnesse.slim.tables.ConditionalScriptTable;
 import nl.praegus.fitnesse.slim.tables.LoopingScenarioTable;
 import nl.praegus.fitnesse.slim.tables.PausingTable;
+import nl.praegus.fitnesse.symbols.Fake;
 import nl.praegus.fitnesse.symbols.IncludeIfAvailable;
 import nl.praegus.fitnesse.symbols.MavenProjectVersions.MavenProjectVersionsSymbol;
 
@@ -50,6 +51,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
         super.registerSymbolTypes(symbolProvider);
         add(symbolProvider, new MavenProjectVersionsSymbol());
         add(symbolProvider, new IncludeIfAvailable());
+        add(symbolProvider, new Fake());
     }
 
     private void add(SymbolProvider provider, SymbolType symbolType) {
@@ -60,19 +62,13 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     @Override
     public void registerResponders(ResponderFactory responderFactory) throws PluginException {
         super.registerResponders(responderFactory);
-        LOG.info("[Toolchain Plugin] Registering AutoCompleteResponder (?autoComplete).");
+        LOG.info("[Toolchain Plugin] Registering Toolchain plugin responders.");
         add(responderFactory, "autoComplete", AutoCompleteResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TocResponder (?tableOfContents).");
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering UpdateTagsResponder (?updateTags).");
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TestRecentHistoryResponder (?recentTestHistory).");
         add(responderFactory, "recentTestHistory", RecentTestHistoryResponder.class);
-        LOG.info("[Toolchain Plugin] Registering AllTagsResponder (?allTags).");
         add(responderFactory, "allTags", AllTagsResponder.class);
-        LOG.info("[Toolchain Plugin] Registering SymbolicLinkResponder (?symlinks).");
         add(responderFactory, "symlinks", SymbolicLinkResponder.class);
-        LOG.info("[Toolchain Plugin] Registering TooltipResponder (?Tooltips).");
         add(responderFactory, "Tooltips", TooltipResponder.class);
     }
 
