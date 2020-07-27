@@ -13,8 +13,9 @@ public class RecentTestHistory {
     private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
     private Map<String, File> pageHistoryIndex;
 
-    public RecentTestHistory(File historyDirectory) {
+    public RecentTestHistory(File historyDirectory){
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
+
         for (String pageName : pageHistoryIndex.keySet()) {
             PageHistory pageHistory = getPageHistory(pageName);
             testHistoryLines.add(new TestHistoryLine(pageHistory));
@@ -23,6 +24,28 @@ public class RecentTestHistory {
 
     public List<TestHistoryLine> getHistoryLines() {
         return testHistoryLines.stream()
+                .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
+                .collect(toList());
+    }
+
+    public List<TestHistoryLine> getFilteredTestHistoryLines() {
+        List<TestHistoryLine> filteredTestHistoryLines = new ArrayList<>();
+
+        for (TestHistoryLine testHistoryLine : testHistoryLines) {
+            String testName;
+
+            if (testHistoryLine.getPageName().contains(".")) {
+                testName = testHistoryLine.getPageName().substring(testHistoryLine.getPageName().lastIndexOf(".") + 1);
+            } else {
+                testName = testHistoryLine.getPageName();
+            }
+
+            if (!testName.equals("SetUp") && !testName.equals("TearDown") && !testName.equals("SuiteTearDown") && !testName.equals("SuiteSetUp")) {
+                filteredTestHistoryLines.add(testHistoryLine);
+            }
+        }
+
+        return filteredTestHistoryLines.stream()
                 .sorted(comparing(TestHistoryLine::getMostRecentRunDate, nullsLast(reverseOrder())))
                 .collect(toList());
     }
