@@ -1,0 +1,39 @@
+site_name: Praegus FitNesse Toolchain
+collapse_single_pages: true
+# Repository
+repo_name: praegus
+  /
+  toolchain-fitnesse-plugin
+repo_url: https://github.com/praegus/toolchain-fitnesse-plugin
+edit_uri: "edit/master/slashdocs/docs/"
+theme:
+  name: 'material'
+  custom_dir: overrides
+  favicon: images/favicon.ico
+  logo: images/fitnesse-fellerder.svg
+  features:
+    - tabs
+  palette:
+    scheme: preference
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/praegus/toolchain-fitnesse-plugin
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/praegus
+plugins:
+  - search
+  - awesome-pages
+extra_css:
+  - stylesheets/extra.css

@@ -1,0 +1,55 @@
+:root {
+	$primary: rgb(161, 199, 67); /*lichtgroen*/
+	$secondary: rgb(15 168 235); /*lichtblauw*/
+	$accent: rgb(232, 38, 51); /*rood*/
+	--md-default-fg-color: hsla(0, 0%, 0%, 0.87);
+	--md-default-fg-color--light: hsla(0, 0%, 0%, 0.54);
+	--md-default-fg-color--lighter: hsla(0, 0%, 0%, 0.32);
+	--md-default-fg-color--lightest: hsla(0, 0%, 0%, 0.07);
+	--md-default-bg-color: hsla(0, 0%, 100%, 1);
+	--md-default-bg-color--light: hsla(0, 0%, 100%, 0.7);
+	--md-default-bg-color--lighter: hsla(0, 0%, 100%, 0.3);
+	--md-default-bg-color--lightest: hsla(0, 0%, 100%, 0.12);
+	--md-primary-fg-color: #039BE5;
+	--md-primary-fg-color--light: rgb(232, 38, 51);
+	--md-primary-fg-color--dark: rgb(232, 38, 51);
+	--md-primary-bg-color: hsla(0, 0%, 100%, 1);
+	--md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
+	--md-accent-fg-color: rgb(232, 38, 51);
+	--md-accent-fg-color--transparent: hsla(231, 99%, 66%, 0.1);
+	--md-accent-bg-color: #f6a307;
+	--md-accent-bg-color--light: hsla(0, 0%, 100%, 0.7)
+}
+
+:root > * {
+	--md-code-bg-color: hsla(0, 0%, 96%, 1);
+	--md-code-fg-color: hsla(200, 18%, 26%, 1);
+	--md-text-color: var(--md-default-fg-color);
+	--md-text-link-color: var(--md-primary-fg-color);
+	--md-admonition-bg-color: var(--md-default-bg-color);
+	--md-admonition-fg-color: var(--md-default-fg-color);
+	--md-footer-bg-color: hsla(0, 0%, 0%, 0.87);
+	--md-footer-bg-color--dark: hsla(0, 0%, 0%, 0.32);
+	--md-footer-fg-color: hsla(0, 0%, 100%, 1);
+	--md-footer-fg-color--light: hsla(0, 0%, 100%, 0.7);
+	--md-footer-fg-color--lighter: hsla(0, 0%, 100%, 0.3)
+}
+
+/* Hier kunnen we het tekstgedeelte groter of kleiner mee maken */
+.md-grid {
+	max-width: 66rem;
+	margin-right: auto;
+	margin-left: auto
+}
+
+/* iets kleinere footer */
+.md-footer-nav__link {
+	padding-top: 0.6rem;
+	padding-bottom: 0.3rem
+}
+
+/* Voor text-inline kleine images  */
+.md-typeset .md-inline-image {
+	height: 1.8em;
+	vertical-align: bottom
+}

@@ -1,0 +1,49 @@
+{
+  "constructors": [
+    {
+      "readableName": "calculator",
+      "usage": "| calculator | [precision] |",
+      "name": "Calculator",
+      "docString": "",
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "precision",
+          "type": "int"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "readableName": "calculator",
+      "usage": "| calculator |",
+      "name": "Calculator",
+      "docString": "",
+      "annotations": [],
+      "parameters": [],
+      "exceptions": []
+    }
+  ],
+  "qualifiedName": "nl.praegus.fitnesse.slim.fixtures.util.Calculator",
+  "publicMethods": [
+    {
+      "readableName": "calculate",
+      "usage": "| calculate | [input] | ",
+      "contexthelp": "calculate \u0026lt;input\u0026gt;",
+      "name": "calculate",
+      "docString": "",
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "input",
+          "type": "String"
+        }
+      ],
+      "exceptions": [],
+      "returnType": "String"
+    }
+  ],
+  "typeName": "Calculator",
+  "name": "Calculator",
+  "annotations": []
+}
