@@ -1,0 +1,728 @@
+<testResults>
+    <FitNesseVersion>v20200108</FitNesseVersion>
+    <rootPath>TestSuiteDemo.FrontEndTests.SetUp</rootPath>
+    <result>
+        <counts>
+            <right>1</right>
+            <wrong>0</wrong>
+            <ignores>0</ignores>
+            <exceptions>0</exceptions>
+        </counts>
+        <date>2020-01-22T11:09:00+01:00</date>
+        <runTimeInMillis>7322</runTimeInMillis>
+        <content/>
+        <relativePageName>SuiteSetUp</relativePageName>
+        <instructions>
+            <instructionResult>
+                <instruction>
+                    {id='import_9_0', instruction='import', path='nl.hsac.fitnesse.fixture'}
+                </instruction>
+                <slimResult>pass(nl.hsac.fitnesse.fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_9_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.hsac.fitnesse.fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_9_1', instruction='import', path='nl.hsac.fitnesse.fixture.slim'}
+                </instruction>
+                <slimResult>pass(nl.hsac.fitnesse.fixture.slim)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_9_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.hsac.fitnesse.fixture.slim</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_9_2', instruction='import', path='nl.praegus.fitnesse.slim.fixtures'}
+                </instruction>
+                <slimResult>pass(nl.praegus.fitnesse.slim.fixtures)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_9_2</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.praegus.fitnesse.slim.fixtures</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_9_3', instruction='import', path='nl.praegus.fitnesse.slim.fixtures.mendix'}
+                </instruction>
+                <slimResult>pass(nl.praegus.fitnesse.slim.fixtures.mendix)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_9_3</instructionId>
+                    <col>0</col>
+                    <row>4</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.praegus.fitnesse.slim.fixtures.mendix</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_10_0', instruction='make', instanceName='library1', className='StringFixture', args=[]}
+                </instruction>
+                <slimResult>pass(string fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_10_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>string fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_10_1', instruction='make', instanceName='library2', className='StopTestFixture', args=[]}
+                </instruction>
+                <slimResult>pass(stop test fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_10_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>stop test fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='library_10_2', instruction='make', instanceName='library3', className='DateFormatFixture', args=[]}
+                </instruction>
+                <slimResult>pass(date format fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>library_10_2</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>date format fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_11_0', instruction='import', path='nl.hsac.fitnesse.fixture.slim.web'}
+                </instruction>
+                <slimResult>pass(nl.hsac.fitnesse.fixture.slim.web)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_11_0</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.hsac.fitnesse.fixture.slim.web</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='import_11_1', instruction='import', path='nl.praegus.fitnesse.slim.fixtures.web.mendix'}
+                </instruction>
+                <slimResult>pass(nl.praegus.fitnesse.slim.fixtures.web.mendix)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>import_11_1</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ImportExpectation</type>
+                    <evaluationMessage>nl.praegus.fitnesse.slim.fixtures.web.mendix</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_0', instruction='make', instanceName='scriptTableActor', className='SeleniumDriverSetup', args=[]}
+                </instruction>
+                <slimResult>pass(selenium driver setup)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_12_0</instructionId>
+                    <col>1</col>
+                    <row>0</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>selenium driver setup</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_1', instruction='call', instanceName='scriptTableActor', methodName='startDriverFor', args=[chrome]}
+                </instruction>
+                <slimResult>pass()</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_12_1</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+        </instructions>
+    </result>
+    <result>
+        <counts>
+            <right>1</right>
+            <wrong>0</wrong>
+            <ignores>0</ignores>
+            <exceptions>5</exceptions>
+        </counts>
+        <date>2020-01-22T11:09:07+01:00</date>
+        <runTimeInMillis>38365</runTimeInMillis>
+        <content/>
+        <relativePageName>T003CreateCourse</relativePageName>
+        <tags>plainMethods</tags>
+        <instructions>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_0', instruction='make', instanceName='scriptTableActor', className='StringFixture', args=[]}
+                </instruction>
+                <slimResult>pass(string fixture)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_9_0</instructionId>
+                    <col>1</col>
+                    <row>0</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>string fixture</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_1', instruction='callAndAssign', symbolName='input_voornaam', instanceName='scriptTableActor', methodName='valueOf', args=[Voornaam *]}
+                </instruction>
+                <slimResult>$input_voornaam<-[Voornaam *]</slimResult>
+                <expectation>
+                    <instructionId>scriptTable_9_1</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>SymbolAssignmentExpectation</type>
+                    <evaluationMessage>$input_voornaam<-[Voornaam *]</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_2', instruction='callAndAssign', symbolName='input_achternaam', instanceName='scriptTableActor', methodName='valueOf', args=[Acternaam *]}
+                </instruction>
+                <slimResult>$input_achternaam<-[Acternaam *]</slimResult>
+                <expectation>
+                    <instructionId>scriptTable_9_2</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>SymbolAssignmentExpectation</type>
+                    <evaluationMessage>$input_achternaam<-[Acternaam *]</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_10_0', instruction='make', instanceName='scriptTableActor', className='MendixBrowserTest', args=[]}
+                </instruction>
+                <slimResult>pass(mendix browser test)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_10_0</instructionId>
+                    <col>1</col>
+                    <row>0</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>mendix browser test</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_10_1', instruction='call', instanceName='scriptTableActor', methodName='waitForJquery', args=[true]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_10_1</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_10_2', instruction='call', instanceName='scriptTableActor', methodName='open', args=[<a href="http://localhost:8080">http://localhost:8080</a>]}
+                </instruction>
+                <slimResult>pass()</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_10_2</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_10_3', instruction='call', instanceName='scriptTableActor', methodName='setBrowserSizeToMaximum', args=[]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_10_3</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_11_0', instruction='call', instanceName='scriptTableActor', methodName='click', args=[css=.mx-demouserswitcher-toggle]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>error</status>
+                    <instructionId>scriptTable_11_0</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>
+                        <div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout.png" height="200"/></a></div></div>
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_11_1', instruction='call', instanceName='scriptTableActor', methodName='click', args=[demo_administrator]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>error</status>
+                    <instructionId>scriptTable_11_1</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>
+                        <div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_1.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_1.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_1.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_1.png" height="200"/></a></div></div>
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_11_2', instruction='call', instanceName='scriptTableActor', methodName='waitForPage', args=[Praegus - Dashboard]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>fail</status>
+                    <instructionId>scriptTable_11_2</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>
+                        <div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_2.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_2.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_2.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_2.png" height="200"/></a></div></div>
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_0', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | click | Administration | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_0</instructionId>
+                    <col>1</col>
+                    <row>1</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_1', instruction='call', instanceName='scriptTableActor', methodName='click', args=[Administration]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_1</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_2', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | click | Course | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_2</instructionId>
+                    <col>1</col>
+                    <row>2</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_3', instruction='call', instanceName='scriptTableActor', methodName='click', args=[Course]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_3</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_4', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | click | New | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_4</instructionId>
+                    <col>1</col>
+                    <row>3</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_5', instruction='call', instanceName='scriptTableActor', methodName='click', args=[New]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_5</instructionId>
+                    <col>0</col>
+                    <row>3</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_6', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | set search context to | css=.modal-content | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_6</instructionId>
+                    <col>1</col>
+                    <row>4</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_7', instruction='call', instanceName='scriptTableActor', methodName='setSearchContextTo', args=[css=.modal-content]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_7</instructionId>
+                    <col>0</col>
+                    <row>4</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_8', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | enter | Java for Testers | as | Name | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_8</instructionId>
+                    <col>3</col>
+                    <row>5</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_9', instruction='call', instanceName='scriptTableActor', methodName='enterAs', args=[Java for Testers, Name]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_9</instructionId>
+                    <col>0</col>
+                    <row>5</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_10', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | enter | It's great! | as | Description | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_10</instructionId>
+                    <col>3</col>
+                    <row>6</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_11', instruction='call', instanceName='scriptTableActor', methodName='enterAs', args=[It's great!, Description]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_11</instructionId>
+                    <col>0</col>
+                    <row>6</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_12', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | select | Academy | for | Category | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_12</instructionId>
+                    <col>3</col>
+                    <row>7</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_13', instruction='call', instanceName='scriptTableActor', methodName='selectFor', args=[Academy, Category]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_13</instructionId>
+                    <col>0</col>
+                    <row>7</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_14', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | click | Save | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_14</instructionId>
+                    <col>1</col>
+                    <row>8</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_15', instruction='call', instanceName='scriptTableActor', methodName='click', args=[Save]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_15</instructionId>
+                    <col>0</col>
+                    <row>8</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_16', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | clear search context | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_16</instructionId>
+                    <col>0</col>
+                    <row>9</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_17', instruction='call', instanceName='scriptTableActor', methodName='clearSearchContext', args=[]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_17</instructionId>
+                    <col>0</col>
+                    <row>9</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_18', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | wait for visible | Java for Testers | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_18</instructionId>
+                    <col>1</col>
+                    <row>10</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_19', instruction='call', instanceName='scriptTableActor', methodName='waitForVisible', args=[Java for Testers]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_19</instructionId>
+                    <col>0</col>
+                    <row>10</row>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_20', instruction='call', instanceName='scriptTableActor', methodName='pause', args=[Next: | check | value of | Description | in row where | Name | is | Java for Testers | It's great! | ]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_20</instructionId>
+                    <col>7</col>
+                    <row>11</row>
+                    <type/>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_12_21', instruction='call', instanceName='scriptTableActor', methodName='valueOfInRowWhereIs', args=[Description, Name, Java for Testers]}
+                </instruction>
+                <slimResult>ignore(Test not run)</slimResult>
+                <expectation>
+                    <status>ignore</status>
+                    <instructionId>scriptTable_12_21</instructionId>
+                    <col>7</col>
+                    <row>11</row>
+                    <type>ReturnedValueExpectation</type>
+                    <evaluationMessage>Test not run</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_13_0', instruction='call', instanceName='scriptTableActor', methodName='click', args=[css=.glyphicon-off]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>error</status>
+                    <instructionId>scriptTable_13_0</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>
+                        <div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_3.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_3.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_3.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_3.png" height="200"/></a></div></div>
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_13_1', instruction='call', instanceName='scriptTableActor', methodName='waitForVisible', args=[css=.mx-demouserswitcher-toggle]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <status>fail</status>
+                    <instructionId>scriptTable_13_1</instructionId>
+                    <type>ScriptActionExpectation</type>
+                    <evaluationMessage>
+                        <div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_4.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_4.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_4.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_4.png" height="200"/></a></div></div>
+                    </evaluationMessage>
+                </expectation>
+            </instructionResult>
+        </instructions>
+    </result>
+    <result>
+        <counts>
+            <right>1</right>
+            <wrong>0</wrong>
+            <ignores>0</ignores>
+            <exceptions>0</exceptions>
+        </counts>
+        <date>2020-01-22T11:09:46+01:00</date>
+        <runTimeInMillis>691</runTimeInMillis>
+        <content>
+            <a href="?recentTestHistory"><span class="btn btn-primary">Test History</span></a> <a href="?pageHistory"><span class="btn btn-primary">Page History</span></a> <a href="?properties"><span class="btn btn-secondary">Properties</span></a><br/><hr/> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Scenario Libraries</p> <div><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.ScenarioLibrary">.TestSuiteDemo.ScenarioLibrary</a> <a href="TestSuiteDemo.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">add course</td> </tr> <tr> <td>template</td> <td colspan="3">CoursePlannerNewRequest.xml.ftl</td> </tr> <tr> <td>set value</td> <td>@{StartDate}</td> <td>for</td> <td>StartDate</td> </tr> <tr> <td>set value</td> <td>@{EndDate}</td> <td>for</td> <td>EndDate</td> </tr> <tr> <td>set value</td> <td>@{Archived}</td> <td>for</td> <td>Archived</td> </tr> <tr> <td>set value</td> <td>@{AllDay}</td> <td>for</td> <td>AllDay</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>set value</td> <td>@{RoomName}</td> <td>for</td> <td>RoomName</td> </tr> <tr> <td>set value</td> <td>@{RoomNumber}</td> <td>for</td> <td>RoomNumber</td> </tr> <tr> <td>set value</td> <td>@{RoomCapacity}</td> <td>for</td> <td>RoomCapacity</td> </tr> <tr> <td>set value</td> <td>@{CourseName}</td> <td>for</td> <td>CourseName</td> </tr> <tr> <td>set value</td> <td>@{CourseDescription}</td> <td>for</td> <td>CourseDescription</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>show</td> <td>post template to</td> <td colspan="2">http://localhost:8080/ws/CourseWebservice</td> </tr> <tr> <td>show</td> <td colspan="3">request</td> </tr> <tr> <td>show</td> <td colspan="3">response</td> </tr> <tr> <td>$status=</td> <td colspan="3">response status</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td colspan="2">nieuw scenario</td> </tr> <tr class="slimRowColor2"> <td>doe</td> <td colspan="2">dingen</td> </tr> <tr class="slimRowColor8"> <td>$varnieuw=</td> <td>een nieuwe</td> <td>var</td> </tr> </table> </div> </div> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary">.TestSuiteDemo.FrontEndTests.ScenarioLibrary</a> <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">register account</td> </tr> <tr> <td>click</td> <td colspan="3">Register account</td> </tr> <tr> <td>enter</td> <td>@{Name}</td> <td>as</td> <td>Name</td> </tr> <tr> <td>enter</td> <td>@{Surname}</td> <td>as</td> <td>Surname</td> </tr> <tr> <td>enter</td> <td>@{Birthday}</td> <td>as</td> <td>Birthday</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>User name</td> </tr> <tr> <td>enter</td> <td>@{Email}</td> <td>as</td> <td>Email</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>New password</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Confirm password</td> </tr> <tr> <td>click</td> <td colspan="3">Save</td> </tr> <tr> <td>wait for visible</td> <td colspan="3">Thank you for registering your account.</td> </tr> <tr> <td>click</td> <td colspan="3">OK</td> </tr> </table> <br/><table> <tr> <td>table template</td> <td colspan="3">log in</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>Username</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Password</td> </tr> <tr> <td>click</td> <td colspan="3">Login</td> </tr> <tr> <td>wait for page</td> <td colspan="3">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>log in predefined</td> <td>usertype</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">css=.mx-demouserswitcher-toggle</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{usertype}</td> </tr> <tr class="slimRowColor1"> <td>wait for page</td> <td colspan="2">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>new room</td> <td>Name</td> <td>with number</td> <td>Number</td> <td>and capacity</td> <td>Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Administration</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Rooms</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">New</td> </tr> <tr class="slimRowColor8"> <td>set search context to</td> <td colspan="6">css=.modal-content</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Name}</td> <td>as</td> <td colspan="4">Name</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Number}</td> <td>as</td> <td colspan="4">Number</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Capacity}</td> <td>as</td> <td colspan="4">Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Save</td> </tr> <tr class="slimRowColor6"> <td colspan="7">clear search context</td> </tr> <tr class="slimRowColor8"> <td>wait for visible</td> <td colspan="6">@{Name}</td> </tr> </table> <br/><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Gherkin impl</p> <div><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Gegeven dat er is ingelogd als</td> <td>gebruiker</td> </tr> <tr class="slimRowColor7"> <td>log in predefined</td> <td colspan="2">@{gebruiker}</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>En er wordt gekozen voor</td> <td>optie</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{optie}</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Dan is de knop</td> <td>knoptext</td> <td>aanwezig</td> </tr> <tr class="slimRowColor8"> <td>ensure</td> <td>is visible</td> <td colspan="2">@{knoptext}</td> </tr> </table> <br/></div> </div> </div> </div> </div> </div> <br/>This set up page is executed once, before any tests in this suite.<br/>In it we configure which Java packages contain the logic for our fixtures, which browser we want to use for Selenium tests and we start this browser.<br/>This means we do not have to do this in every test, which means easier maintenance and better performance.<br/><br/>Stopping the browser is done in <a href="TestSuiteDemo.FrontEndTests.SuiteTearDown">SuiteTearDown</a>, which is done after all tests in this suite are completed.<br/><br/><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.SuiteSetUp">.TestSuiteDemo.SuiteSetUp</a> <a href="TestSuiteDemo.SuiteSetUp?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div>This set up page is executed once, before any tests in this suite.<br/><br/>An <a href="FitNesse.UserGuide.WritingAcceptanceTests.SliM.ImportTable">import table</a> defines which Java packages may contain fixture classes.<br/><br/><table> <tr class="slimRowTitle"> <td>Import</td> </tr> <tr class="slimRowColor0"> <td><span class="pass">nl.hsac.fitnesse.fixture</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">nl.hsac.fitnesse.fixture.slim</span></td> </tr> <tr class="slimRowColor0"> <td><span class="pass">nl.praegus.fitnesse.slim.fixtures</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">nl.praegus.fitnesse.slim.fixtures.mendix</span></td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>Library</td> </tr> <tr class="slimRowColor0"> <td><span class="pass">string fixture</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">stop test fixture</span></td> </tr> <tr class="slimRowColor0"> <td><span class="pass">date format fixture</span></td> </tr> </table> </div> </div> <br/><table> <tr class="slimRowTitle"> <td>Import</td> </tr> <tr class="slimRowColor0"> <td><span class="pass">nl.hsac.fitnesse.fixture.slim.web</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">nl.praegus.fitnesse.slim.fixtures.web.mendix</span></td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>script</td> <td><span class="pass">selenium driver setup</span></td> </tr> <tr class="slimRowColor1"> <td><span class="pass">start driver for</span></td> <td>chrome</td> </tr> <tr class="slimRowColor6"> <td>#start driver for</td> <td>firefox</td> </tr> </table> <br/><br/><a href="?recentTestHistory"><span class="btn btn-primary">Test History</span></a> <a href="?pageHistory"><span class="btn btn-primary">Page History</span></a> <a href="?properties"><span class="btn btn-secondary">Properties</span></a><br/><hr/> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Scenario Libraries</p> <div><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.ScenarioLibrary">.TestSuiteDemo.ScenarioLibrary</a> <a href="TestSuiteDemo.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">add course</td> </tr> <tr> <td>template</td> <td colspan="3">CoursePlannerNewRequest.xml.ftl</td> </tr> <tr> <td>set value</td> <td>@{StartDate}</td> <td>for</td> <td>StartDate</td> </tr> <tr> <td>set value</td> <td>@{EndDate}</td> <td>for</td> <td>EndDate</td> </tr> <tr> <td>set value</td> <td>@{Archived}</td> <td>for</td> <td>Archived</td> </tr> <tr> <td>set value</td> <td>@{AllDay}</td> <td>for</td> <td>AllDay</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>set value</td> <td>@{RoomName}</td> <td>for</td> <td>RoomName</td> </tr> <tr> <td>set value</td> <td>@{RoomNumber}</td> <td>for</td> <td>RoomNumber</td> </tr> <tr> <td>set value</td> <td>@{RoomCapacity}</td> <td>for</td> <td>RoomCapacity</td> </tr> <tr> <td>set value</td> <td>@{CourseName}</td> <td>for</td> <td>CourseName</td> </tr> <tr> <td>set value</td> <td>@{CourseDescription}</td> <td>for</td> <td>CourseDescription</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>show</td> <td>post template to</td> <td colspan="2">http://localhost:8080/ws/CourseWebservice</td> </tr> <tr> <td>show</td> <td colspan="3">request</td> </tr> <tr> <td>show</td> <td colspan="3">response</td> </tr> <tr> <td>$status=</td> <td colspan="3">response status</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td colspan="2">nieuw scenario</td> </tr> <tr class="slimRowColor2"> <td>doe</td> <td colspan="2">dingen</td> </tr> <tr class="slimRowColor8"> <td>$varnieuw=</td> <td>een nieuwe</td> <td>var</td> </tr> </table> </div> </div> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary">.TestSuiteDemo.FrontEndTests.ScenarioLibrary</a> <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">register account</td> </tr> <tr> <td>click</td> <td colspan="3">Register account</td> </tr> <tr> <td>enter</td> <td>@{Name}</td> <td>as</td> <td>Name</td> </tr> <tr> <td>enter</td> <td>@{Surname}</td> <td>as</td> <td>Surname</td> </tr> <tr> <td>enter</td> <td>@{Birthday}</td> <td>as</td> <td>Birthday</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>User name</td> </tr> <tr> <td>enter</td> <td>@{Email}</td> <td>as</td> <td>Email</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>New password</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Confirm password</td> </tr> <tr> <td>click</td> <td colspan="3">Save</td> </tr> <tr> <td>wait for visible</td> <td colspan="3">Thank you for registering your account.</td> </tr> <tr> <td>click</td> <td colspan="3">OK</td> </tr> </table> <br/><table> <tr> <td>table template</td> <td colspan="3">log in</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>Username</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Password</td> </tr> <tr> <td>click</td> <td colspan="3">Login</td> </tr> <tr> <td>wait for page</td> <td colspan="3">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>log in predefined</td> <td>usertype</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">css=.mx-demouserswitcher-toggle</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{usertype}</td> </tr> <tr class="slimRowColor1"> <td>wait for page</td> <td colspan="2">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>new room</td> <td>Name</td> <td>with number</td> <td>Number</td> <td>and capacity</td> <td>Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Administration</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Rooms</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">New</td> </tr> <tr class="slimRowColor8"> <td>set search context to</td> <td colspan="6">css=.modal-content</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Name}</td> <td>as</td> <td colspan="4">Name</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Number}</td> <td>as</td> <td colspan="4">Number</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Capacity}</td> <td>as</td> <td colspan="4">Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Save</td> </tr> <tr class="slimRowColor6"> <td colspan="7">clear search context</td> </tr> <tr class="slimRowColor8"> <td>wait for visible</td> <td colspan="6">@{Name}</td> </tr> </table> <br/><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Gherkin impl</p> <div><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Gegeven dat er is ingelogd als</td> <td>gebruiker</td> </tr> <tr class="slimRowColor7"> <td>log in predefined</td> <td colspan="2">@{gebruiker}</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>En er wordt gekozen voor</td> <td>optie</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{optie}</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Dan is de knop</td> <td>knoptext</td> <td>aanwezig</td> </tr> <tr class="slimRowColor8"> <td>ensure</td> <td>is visible</td> <td colspan="2">@{knoptext}</td> </tr> </table> <br/></div> </div> </div> </div> </div> </div> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.SetUp">.TestSuiteDemo.FrontEndTests.SetUp</a> <a href="TestSuiteDemo.FrontEndTests.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.PageObjects">PageObjects</a> <a href="TestSuiteDemo.FrontEndTests.PageObjects?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr class="slimRowTitle"> <td>script</td> <td colspan="2"><span class="pass">string fixture</span></td> </tr> <tr class="slimRowColor9"> <td>$input_voornaam&lt;-[Voornaam *]</td> <td>value of</td> <td>Voornaam *</td> </tr> <tr class="slimRowColor6"> <td>$input_achternaam&lt;-[Acternaam *]</td> <td>value of</td> <td>Acternaam *</td> </tr> </table> </div> </div> <br/><table> <tr class="slimRowTitle"> <td>script</td> <td><span class="pass">mendix browser test</span></td> </tr> <tr class="slimRowColor0"> <td>wait for jquery</td> <td>true</td> </tr> <tr class="slimRowColor4"> <td><span class="pass">open</span></td> <td><a href="http://localhost:8080">http://localhost:8080</a></td> </tr> <tr class="slimRowColor8"> <td colspan="2">set browser size to maximum</td> </tr> </table> </div> </div> <br/><table> <tr class="slimRowTitle"> <td colspan="2">script</td> </tr> <tr class="slimRowColor8"> <td>click <span class="error"><div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout.png" height="200"/></a></div></div></span></td> <td>css=.mx-demouserswitcher-toggle</td> </tr> <tr class="slimRowColor8"> <td>click <span class="error"><div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_1.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_1.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_1.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_1.png" height="200"/></a></div></div></span></td> <td>demo_administrator</td> </tr> <tr class="slimRowColor1"> <td>wait for page <span class="fail"><div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_2.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_2.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_2.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_2.png" height="200"/></a></div></div></span></td> <td>Praegus - Dashboard</td> </tr> </table> <br/><table> <tr> <td colspan="8">debug script</td> </tr> <tr> <td>click <span class="ignore">Test not run</span></td> <td colspan="7">Administration</td> </tr> <tr> <td>click <span class="ignore">Test not run</span></td> <td colspan="7">Course</td> </tr> <tr> <td>click <span class="ignore">Test not run</span></td> <td colspan="7">New</td> </tr> <tr> <td>set search context to <span class="ignore">Test not run</span></td> <td colspan="7">css=.modal-content</td> </tr> <tr> <td>enter <span class="ignore">Test not run</span></td> <td>Java for Testers</td> <td>as</td> <td colspan="5">Name</td> </tr> <tr> <td>enter <span class="ignore">Test not run</span></td> <td>It's great!</td> <td>as</td> <td colspan="5">Description</td> </tr> <tr> <td>select <span class="ignore">Test not run</span></td> <td>Academy</td> <td>for</td> <td colspan="5">Category</td> </tr> <tr> <td>click <span class="ignore">Test not run</span></td> <td colspan="7">Save</td> </tr> <tr> <td colspan="8">clear search context <span class="ignore">Test not run</span></td> </tr> <tr> <td>wait for visible <span class="ignore">Test not run</span></td> <td colspan="7">Java for Testers</td> </tr> <tr> <td>check</td> <td>value of</td> <td>Description</td> <td>in row where</td> <td>Name</td> <td>is</td> <td>Java for Testers</td> <td>It's great! <span class="ignore">Test not run</span></td> </tr> </table> <div class="collapsible closed teardown"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.TearDown">.TestSuiteDemo.FrontEndTests.TearDown</a> <a href="TestSuiteDemo.FrontEndTests.TearDown?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr class="slimRowTitle"> <td colspan="2">script</td> </tr> <tr class="slimRowColor8"> <td>click <span class="error"><div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_3.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_3.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_3.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_3.png" height="200"/></a></div></div></span></td> <td>css=.glyphicon-off</td> </tr> <tr class="slimRowColor8"> <td>wait for visible <span class="fail"><div><div>Timed-out waiting (after 5s).</div><div><a href="files/pagesources/org.openqa.selenium.TimeoutException_4.html" target="_blank">Page content</a>:<a href="files/screenshots/timeouts/MendixBrowserTest/timeout_4.png" target="_blank"><img src="files/screenshots/timeouts/MendixBrowserTest/timeout_4.png" title="C:\cleanfit\toolchain-training\wiki\FitNesseRoot\files\screenshots\timeouts\MendixBrowserTest\timeout_4.png" height="200"/></a></div></div></span></td> <td>css=.mx-demouserswitcher-toggle</td> </tr> </table> </div> </div> <a href="?recentTestHistory"><span class="btn btn-primary">Test History</span></a> <a href="?pageHistory"><span class="btn btn-primary">Page History</span></a> <a href="?properties"><span class="btn btn-secondary">Properties</span></a><br/><hr/> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Scenario Libraries</p> <div><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.ScenarioLibrary">.TestSuiteDemo.ScenarioLibrary</a> <a href="TestSuiteDemo.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">add course</td> </tr> <tr> <td>template</td> <td colspan="3">CoursePlannerNewRequest.xml.ftl</td> </tr> <tr> <td>set value</td> <td>@{StartDate}</td> <td>for</td> <td>StartDate</td> </tr> <tr> <td>set value</td> <td>@{EndDate}</td> <td>for</td> <td>EndDate</td> </tr> <tr> <td>set value</td> <td>@{Archived}</td> <td>for</td> <td>Archived</td> </tr> <tr> <td>set value</td> <td>@{AllDay}</td> <td>for</td> <td>AllDay</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>set value</td> <td>@{RoomName}</td> <td>for</td> <td>RoomName</td> </tr> <tr> <td>set value</td> <td>@{RoomNumber}</td> <td>for</td> <td>RoomNumber</td> </tr> <tr> <td>set value</td> <td>@{RoomCapacity}</td> <td>for</td> <td>RoomCapacity</td> </tr> <tr> <td>set value</td> <td>@{CourseName}</td> <td>for</td> <td>CourseName</td> </tr> <tr> <td>set value</td> <td>@{CourseDescription}</td> <td>for</td> <td>CourseDescription</td> </tr> <tr> <td>set value</td> <td>@{Category}</td> <td>for</td> <td>Category</td> </tr> <tr> <td>show</td> <td>post template to</td> <td colspan="2">http://localhost:8080/ws/CourseWebservice</td> </tr> <tr> <td>show</td> <td colspan="3">request</td> </tr> <tr> <td>show</td> <td colspan="3">response</td> </tr> <tr> <td>$status=</td> <td colspan="3">response status</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td colspan="2">nieuw scenario</td> </tr> <tr class="slimRowColor2"> <td>doe</td> <td colspan="2">dingen</td> </tr> <tr class="slimRowColor8"> <td>$varnieuw=</td> <td>een nieuwe</td> <td>var</td> </tr> </table> </div> </div> <div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Included page: <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary">.TestSuiteDemo.FrontEndTests.ScenarioLibrary</a> <a href="TestSuiteDemo.FrontEndTests.ScenarioLibrary?edit&amp;redirectToReferer=true&amp;redirectAction=" class="edit">(edit)</a></p> <div><table> <tr> <td>table template</td> <td colspan="3">register account</td> </tr> <tr> <td>click</td> <td colspan="3">Register account</td> </tr> <tr> <td>enter</td> <td>@{Name}</td> <td>as</td> <td>Name</td> </tr> <tr> <td>enter</td> <td>@{Surname}</td> <td>as</td> <td>Surname</td> </tr> <tr> <td>enter</td> <td>@{Birthday}</td> <td>as</td> <td>Birthday</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>User name</td> </tr> <tr> <td>enter</td> <td>@{Email}</td> <td>as</td> <td>Email</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>New password</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Confirm password</td> </tr> <tr> <td>click</td> <td colspan="3">Save</td> </tr> <tr> <td>wait for visible</td> <td colspan="3">Thank you for registering your account.</td> </tr> <tr> <td>click</td> <td colspan="3">OK</td> </tr> </table> <br/><table> <tr> <td>table template</td> <td colspan="3">log in</td> </tr> <tr> <td>enter</td> <td>@{Username}</td> <td>as</td> <td>Username</td> </tr> <tr> <td>enter</td> <td>@{Password}</td> <td>as</td> <td>Password</td> </tr> <tr> <td>click</td> <td colspan="3">Login</td> </tr> <tr> <td>wait for page</td> <td colspan="3">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>log in predefined</td> <td>usertype</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">css=.mx-demouserswitcher-toggle</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{usertype}</td> </tr> <tr class="slimRowColor1"> <td>wait for page</td> <td colspan="2">Praegus - Dashboard</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>new room</td> <td>Name</td> <td>with number</td> <td>Number</td> <td>and capacity</td> <td>Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Administration</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Rooms</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">New</td> </tr> <tr class="slimRowColor8"> <td>set search context to</td> <td colspan="6">css=.modal-content</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Name}</td> <td>as</td> <td colspan="4">Name</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Number}</td> <td>as</td> <td colspan="4">Number</td> </tr> <tr class="slimRowColor2"> <td>enter</td> <td>@{Capacity}</td> <td>as</td> <td colspan="4">Capacity</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="6">Save</td> </tr> <tr class="slimRowColor6"> <td colspan="7">clear search context</td> </tr> <tr class="slimRowColor8"> <td>wait for visible</td> <td colspan="6">@{Name}</td> </tr> </table> <br/><div class="collapsible closed"><ul><li><a href='#' class='expandall'>Expand</a></li><li><a href='#' class='collapseall'>Collapse</a></li></ul> <p class="title">Gherkin impl</p> <div><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Gegeven dat er is ingelogd als</td> <td>gebruiker</td> </tr> <tr class="slimRowColor7"> <td>log in predefined</td> <td colspan="2">@{gebruiker}</td> </tr> </table> <br/><br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>En er wordt gekozen voor</td> <td>optie</td> </tr> <tr class="slimRowColor8"> <td>click</td> <td colspan="2">@{optie}</td> </tr> </table> <br/><table> <tr class="slimRowTitle"> <td>scenario</td> <td>Dan is de knop</td> <td>knoptext</td> <td>aanwezig</td> </tr> <tr class="slimRowColor8"> <td>ensure</td> <td>is visible</td> <td colspan="2">@{knoptext}</td> </tr> </table> <br/></div> </div> </div> </div> </div> </div> <br/>This set up page is executed once, after all tests in this suite.<br/><br/><table> <tr class="slimRowTitle"> <td>script</td> <td><span class="pass">selenium driver setup</span></td> </tr> <tr class="slimRowColor9"> <td>show</td> <td>run summary</td> <td>null</td></tr> <tr class="slimRowColor8"> <td colspan="2"><span class="pass">stop driver</span></td> </tr> </table>
+        </content>
+        <relativePageName>SuiteTearDown</relativePageName>
+        <instructions>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_0', instruction='make', instanceName='scriptTableActor', className='SeleniumDriverSetup', args=[]}
+                </instruction>
+                <slimResult>pass(selenium driver setup)</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_9_0</instructionId>
+                    <col>1</col>
+                    <row>0</row>
+                    <type>ConstructionExpectation</type>
+                    <evaluationMessage>selenium driver setup</evaluationMessage>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_1', instruction='call', instanceName='scriptTableActor', methodName='runSummary', args=[]}
+                </instruction>
+                <slimResult/>
+                <expectation>
+                    <instructionId>scriptTable_9_1</instructionId>
+                    <col>0</col>
+                    <row>1</row>
+                    <type>ShowActionExpectation</type>
+                </expectation>
+            </instructionResult>
+            <instructionResult>
+                <instruction>
+                    {id='scriptTable_9_2', instruction='call', instanceName='scriptTableActor', methodName='stopDriver', args=[]}
+                </instruction>
+                <slimResult>pass()</slimResult>
+                <expectation>
+                    <status>pass</status>
+                    <instructionId>scriptTable_9_2</instructionId>
+                    <col>0</col>
+                    <row>2</row>
+                    <type>ScriptActionExpectation</type>
+                </expectation>
+            </instructionResult>
+        </instructions>
+    </result>
+    <executionLog>
+        <testSystem>slim:fitnesse.slim.SlimService</testSystem>
+        <command>
+            "C:\Program Files\Java\jdk-11.0.4\bin\java" -cp C:\cleanfit\toolchain-training\wiki\fitnesse-standalone.jar;fixtures/;C:\cleanfit\toolchain-training\wiki\fixtures\accessors-smart-1.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\activation-1.1.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\animal-sniffer-annotations-1.14.jar;C:\cleanfit\toolchain-training\wiki\fixtures\animal-sniffer-annotations-1.17.jar;C:\cleanfit\toolchain-training\wiki\fixtures\asm-5.0.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\bcpkix-jdk15on-1.58.jar;C:\cleanfit\toolchain-training\wiki\fixtures\bcprov-jdk15on-1.58.jar;C:\cleanfit\toolchain-training\wiki\fixtures\browsermob-core-2.1.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\byte-buddy-1.8.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\cglib-nodep-3.3.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\checker-compat-qual-2.0.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\checker-qual-2.5.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-cli-1.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-codec-1.11.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-collections4-4.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-compress-1.18.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-exec-1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-io-2.6.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-lang3-3.8.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-logging-1.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-math3-3.6.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-net-3.6.jar;C:\cleanfit\toolchain-training\wiki\fixtures\commons-text-1.8.jar;C:\cleanfit\toolchain-training\wiki\fixtures\config-1.3.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\curvesapi-1.06.jar;C:\cleanfit\toolchain-training\wiki\fixtures\diff-1.1.11.jar;C:\cleanfit\toolchain-training\wiki\fixtures\dnsjava-2.1.8.jar;C:\cleanfit\toolchain-training\wiki\fixtures\error_prone_annotations-2.1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\error_prone_annotations-2.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\failureaccess-1.0.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\fontbox-2.0.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\freemarker-2.3.29.jar;C:\cleanfit\toolchain-training\wiki\fixtures\galen-core-2.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\galen-rainbow4j-2.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-api-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-api-services-gmail-v1-rev20190422-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-apache-2.0.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-http-client-jackson2-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-java6-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\google-oauth-client-jetty-1.28.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\googleauth-1.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\grpc-context-1.14.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\gson-2.8.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\guava-25.0-jre.jar;C:\cleanfit\toolchain-training\wiki\fixtures\guava-27.1-jre.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hamcrest-core-1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hsac-fitnesse-fixtures-4.7.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\hsac-fitnesse-fixtures-4.9.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpclient-4.5.10.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpcore-4.4.12.jar;C:\cleanfit\toolchain-training\wiki\fixtures\httpmime-4.5.10.jar;C:\cleanfit\toolchain-training\wiki\fixtures\j2objc-annotations-1.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-annotations-2.9.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-core-2.9.7.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jackson-databind-2.9.7.jar;C:\cleanfit\toolchain-training\wiki\fixtures\javax.activation-api-1.2.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-api-2.3.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-core-2.3.0.1.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jaxb-impl-2.3.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jcl-over-slf4j-1.7.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jetty-6.1.26.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jetty-util-6.1.26.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsch-0.1.55.jar;C:\cleanfit\toolchain-training\wiki\fixtures\json-path-2.4.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\json-smart-2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsr305-1.3.9.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jsr305-3.0.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\jzlib-1.1.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\cleanfit\toolchain-training\wiki\fixtures\littleproxy-1.1.0-beta-bmp-17.jar;C:\cleanfit\toolchain-training\wiki\fixtures\logback-classic-1.2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\logback-core-1.2.3.jar;C:\cleanfit\toolchain-training\wiki\fixtures\mail-1.5.0-b01.jar;C:\cleanfit\toolchain-training\wiki\fixtures\mitm-2.1.5.jar;C:\cleanfit\toolchain-training\wiki\fixtures\netty-all-4.0.51.Final.jar;C:\cleanfit\toolchain-training\wiki\fixtures\okhttp-3.11.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\okio-1.14.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\opencensus-api-0.18.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\opencensus-contrib-http-util-0.18.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\pdfbox-2.0.15.jar;C:\cleanfit\toolchain-training\wiki\fixtures\pdfcompare-1.1.40.jar;C:\cleanfit\toolchain-training\wiki\fixtures\phantomjsdriver-1.4.4.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-ooxml-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\poi-ooxml-schemas-4.1.0.jar;C:\cleanfit\toolchain-training\wiki\fixtures\rhino-1.7.7.2.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-api-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-chrome-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-edge-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-firefox-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-ie-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-java-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-opera-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-remote-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-safari-driver-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\selenium-support-3.141.59.jar;C:\cleanfit\toolchain-training\wiki\fixtures\servlet-api-2.5-20081211.jar;C:\cleanfit\toolchain-training\wiki\fixtures\slf4j-api-1.7.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\snakeyaml-1.25.jar;C:\cleanfit\toolchain-training\wiki\fixtures\toolchain-fixtures-1.16.jar;C:\cleanfit\toolchain-training\wiki\fixtures\xmlbeans-3.1.0.jar fitnesse.slim.SlimService 1
+        </command>
+        <exitCode>0</exitCode>
+        <stdOut/>
+        <stdErr>
+            SLF4J: Class path contains multiple SLF4J bindings. SLF4J: Found binding in [jar:file:/C:/cleanfit/toolchain-training/wiki/fitnesse-standalone.jar!/org/slf4j/impl/StaticLoggerBinder.class] SLF4J: Found binding in [jar:file:/C:/cleanfit/toolchain-training/wiki/fixtures/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class] SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation. SLF4J: Actual binding is of type [org.slf4j.impl.JDK14LoggerFactory] Jan 22, 2020 11:09:01 AM org.openqa.selenium.remote.DesiredCapabilities chrome INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()` Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 38765 Only local connections are allowed. Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code. [1579687745.749][WARNING]: Timed out connecting to Chrome, retrying... Jan 22, 2020 11:09:07 AM org.openqa.selenium.remote.ProtocolHandshake createSession INFO: Detected dialect: W3C [1579687754.154][WARNING]: Timed out connecting to Chrome, retrying...
+        </stdErr>
+    </executionLog>
+    <finalCounts>
+        <right>2</right>
+        <wrong>0</wrong>
+        <ignores>0</ignores>
+        <exceptions>1</exceptions>
+    </finalCounts>
+    <totalRunTimeInMillis>50255</totalRunTimeInMillis>
+</testResults>
