@@ -21,7 +21,7 @@
         <allure.maven.version>2.10.0</allure.maven.version>
         <allure.version>2.13.0</allure.version>
         <allure.fitnesse.listener>1.0.5</allure.fitnesse.listener>
-        <junit>4.12</junit>
+        <junit>4.13.1</junit>
 
         <!-- classpath that Fitnesse uses when not starting from IDE/maven -->
         <standalone.classpath>wiki/fixtures</standalone.classpath>
