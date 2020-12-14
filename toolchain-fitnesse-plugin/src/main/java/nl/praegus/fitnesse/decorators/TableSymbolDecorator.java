@@ -2,15 +2,16 @@ package nl.praegus.fitnesse.decorators;
 
 import fitnesse.wikitext.parser.Symbol;
 import fitnesse.wikitext.parser.SymbolType;
-import fitnesse.wikitext.parser.VariableSource;
+import fitnesse.wikitext.VariableSource;
 import fitnesse.wikitext.parser.decorator.ParsedSymbolDecorator;
 
 import static fitnesse.wikitext.parser.decorator.SymbolClassPropertyAppender.classPropertyAppender;
 import static fitnesse.wikitext.parser.decorator.SymbolInspector.inspect;
 
 public class TableSymbolDecorator implements ParsedSymbolDecorator {
-    public static void install() {
-        fitnesse.wikitext.parser.Table.symbolType.addDecorator(new TableSymbolDecorator());
+
+    public static void install(SymbolType symbolType) {
+        symbolType.addDecorator(new TableSymbolDecorator());
     }
 
     @Override
@@ -24,7 +25,7 @@ public class TableSymbolDecorator implements ParsedSymbolDecorator {
                 .getChildren()
                 .get(0);
         String firstCellContent = inspect(firstCell).getRawContent().toLowerCase();
-        String className = null;
+        String className;
         switch (firstCellContent) {
             case "script":
             case "conditional script":

@@ -8,7 +8,7 @@ import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
 import fitnesse.wiki.*;
-import fitnesse.wikitext.parser.SourcePage;
+import fitnesse.wikitext.SourcePage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.GracefulNamer;

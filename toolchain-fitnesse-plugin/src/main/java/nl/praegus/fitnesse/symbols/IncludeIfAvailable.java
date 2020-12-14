@@ -2,7 +2,18 @@ package nl.praegus.fitnesse.symbols;
 
 import fitnesse.wiki.PathParser;
 import fitnesse.wiki.WikiPageProperty;
-import fitnesse.wikitext.parser.*;
+import fitnesse.wikitext.ParsingPage;
+import fitnesse.wikitext.SourcePage;
+import fitnesse.wikitext.parser.Collapsible;
+import fitnesse.wikitext.parser.Matcher;
+import fitnesse.wikitext.parser.Maybe;
+import fitnesse.wikitext.parser.Parser;
+import fitnesse.wikitext.parser.Rule;
+import fitnesse.wikitext.parser.Symbol;
+import fitnesse.wikitext.parser.SymbolType;
+import fitnesse.wikitext.parser.Translation;
+import fitnesse.wikitext.parser.Translator;
+import fitnesse.wikitext.parser.WikiWord;
 
 import java.util.Collection;
 import java.util.Collections;
