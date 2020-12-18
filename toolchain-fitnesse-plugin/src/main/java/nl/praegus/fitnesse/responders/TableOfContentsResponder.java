@@ -7,30 +7,48 @@ import fitnesse.authentication.SecureResponder;
 import fitnesse.http.Request;
 import fitnesse.http.Response;
 import fitnesse.http.SimpleResponse;
-import fitnesse.wiki.*;
+import fitnesse.wiki.PageType;
+import fitnesse.wiki.WikiImportProperty;
+import fitnesse.wiki.WikiPageProperty;
+import fitnesse.wiki.WikiSourcePage;
 import fitnesse.wikitext.SourcePage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.GracefulNamer;
 
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import static nl.praegus.fitnesse.responders.WikiPageHelper.loadPage;
 
 public class TableOfContentsResponder implements SecureResponder {
 
-    private JSONArray tableOfContents = new JSONArray();
+    private static final String NAME = "name";
+    private static final String TYPE = "type";
+    private static final String HELP = "help";
+    private static final String IS_SYMLINK = "isSymlink";
+    private static final String TAGS = "tags";
+    private static final String PATH = "path";
+    private static final String CHILDREN = "children";
+    public static final String SUITE_CLASS = "suite";
+    public static final String TEST_CLASS = "test";
+    public static final String STATIC_CLASS = "static";
+    public static final String LINKED_CLASS = " linked";
+    public static final String PRUNED_CLASS = " pruned";
+
+    private final JSONArray tableOfContents = new JSONArray();
 
     @Override
     public Response makeResponse(FitNesseContext fitNesseContext, Request request) throws Exception {
         WikiSourcePage sourcePage = new WikiSourcePage(loadPage(fitNesseContext, request.getResource(), request.getMap()));
+
         return makeTableOfContentsResponse(sourcePage);
     }
 
     private SimpleResponse makeTableOfContentsResponse(SourcePage sourcePage) throws UnsupportedEncodingException {
         tableOfContents.put(getPageInfo(null, sourcePage));
-
         SimpleResponse response = new SimpleResponse();
         response.setMaxAge(0);
         response.setStatus(200);
@@ -48,43 +66,43 @@ public class TableOfContentsResponder implements SecureResponder {
 
     private JSONObject getPageInfo(SourcePage parent, SourcePage page) {
         JSONObject pageInfo = new JSONObject();
-        pageInfo.put("name", GracefulNamer.regrace(page.getName()));
-        pageInfo.put("type", getBooleanPropertiesClasses(page));
-        pageInfo.put("help", page.getProperty(WikiPageProperty.HELP));
-        String[] tags = page.getProperty(WikiPageProperty.SUITES).split(", ");
+        pageInfo.put(NAME, GracefulNamer.regrace(page.getName()));
+        pageInfo.put(TYPE, getBooleanPropertiesClasses(page));
+        pageInfo.put(HELP, page.getProperty(WikiPageProperty.HELP));
+        String[] tags = page.getProperty(WikiPageProperty.SUITES).split("\\s*,\\s*");
 
-        if (parent instanceof WikiSourcePage && ((WikiSourcePage) parent).hasSymbolicLinkChild(page.getName())) {
-            pageInfo.put("isSymlink", true);
-        } else {
-            pageInfo.put("isSymlink", false);
-        }
+        pageInfo.put(IS_SYMLINK, parent instanceof WikiSourcePage && ((WikiSourcePage) parent).hasSymbolicLinkChild(page.getName()));
 
         for (String tag : tags) {
-            if(tag.length() > 0) {
-                pageInfo.append("tags", tag);
+            if (tag.length() > 0) {
+                pageInfo.append(TAGS, tag);
             }
         }
-        pageInfo.put("path", page.getFullPath());
+
+        pageInfo.put(PATH, page.getFullPath());
+
         for (SourcePage p : getSortedChildren(page)) {
-            pageInfo.append("children", getPageInfo(page, p));
+            pageInfo.append(CHILDREN, getPageInfo(page, p));
         }
+
         return pageInfo;
     }
 
     private String getBooleanPropertiesClasses(SourcePage sourcePage) {
         String result = "";
         if (sourcePage.hasProperty(PageType.SUITE.toString())) {
-            result += "suite";
+            result += SUITE_CLASS;
         } else if (sourcePage.hasProperty(PageType.TEST.toString())) {
-            result += "test";
+            result += TEST_CLASS;
         } else {
-            result += "static";
+            result += STATIC_CLASS;
         }
+
         if (sourcePage.hasProperty(WikiImportProperty.PROPERTY_NAME)) {
-            result += " linked";
+            result += LINKED_CLASS;
         }
         if (sourcePage.hasProperty(WikiPageProperty.PRUNE)) {
-            result += " pruned";
+            result += PRUNED_CLASS;
         }
         return result;
     }

@@ -41,11 +41,11 @@ public class Fake extends SymbolType implements Rule, Translation {
 
     @Override
     public String toTarget(Translator translator, Symbol symbol) {
-        Faker faker = new Faker(new Locale(symbol.getProperty(LOCALE, "en")));
+        Faker faker = new Faker(new Locale(symbol.findProperty(LOCALE, "en")));
         String result;
         try {
-            Object category = Faker.class.getDeclaredMethod(symbol.getProperty(CATEGORY)).invoke(faker);
-            result = category.getClass().getDeclaredMethod(symbol.getProperty(ITEM)).invoke(category).toString();
+            Object category = Faker.class.getDeclaredMethod(symbol.findProperty(CATEGORY, "")).invoke(faker);
+            result = category.getClass().getDeclaredMethod(symbol.findProperty(ITEM, "")).invoke(category).toString();
         } catch (Exception e) {
             result = "ERROR_FAKING_DATA";
         }

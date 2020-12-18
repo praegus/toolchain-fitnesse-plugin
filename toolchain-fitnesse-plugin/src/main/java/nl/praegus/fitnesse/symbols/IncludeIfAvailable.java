@@ -47,22 +47,22 @@ public class IncludeIfAvailable extends SymbolType implements Rule, Translation 
         current.add(option);
         if (!next.isType(SymbolType.Text) && !next.isType(WikiWord.symbolType)) return Symbol.nothing;
 
-        String includedPageName = next.getContent();
+        StringBuilder includedPageName = new StringBuilder(next.getContent());
         while (parser.peek().isType(SymbolType.Text) || parser.peek().isType(WikiWord.symbolType)) {
             Symbol remainderOfPageName = parser.moveNext(1);
-            includedPageName += remainderOfPageName.getContent();
+            includedPageName.append(remainderOfPageName.getContent());
         }
 
         SourcePage sourcePage = parser.getPage().getNamedPage();
 
         // Record the page name anyway, since we might want to show an error if it's invalid
-        if (PathParser.isWikiPath(includedPageName)) {
-            current.add(new Symbol(new WikiWord(sourcePage), includedPageName));
+        if (PathParser.isWikiPath(includedPageName.toString())) {
+            current.add(new Symbol(new WikiWord(sourcePage), includedPageName.toString()));
         } else {
-            current.add(includedPageName);
+            current.add(includedPageName.toString());
         }
 
-        Maybe<SourcePage> includedPage = sourcePage.findIncludedPage(includedPageName);
+        Maybe<SourcePage> includedPage = sourcePage.findIncludedPage(includedPageName.toString());
         if (includedPage.isNothing()) {
             current.add(new Symbol(SymbolType.Style, "meta").add(includedPageName + " will be included when available."));
             return new Maybe<>(current);
@@ -80,7 +80,7 @@ public class IncludeIfAvailable extends SymbolType implements Rule, Translation 
                     included,
                     includedPage.getValue().getContent())
                     .parse());
-            if (option.equals("-setup")) current.evaluateVariables(setUpSymbols, parser.getVariableSource());
+            if (option.equals("-setup")) current.copyVariables(setUpSymbols, parser.getVariableSource());
         }
 
         // Remove trailing newline so we do not introduce excessive whitespace in the page.
@@ -106,13 +106,13 @@ public class IncludeIfAvailable extends SymbolType implements Rule, Translation 
             String title = "Included page: "
                     + translator.translate(symbol.childAt(1));
             Collection<String> extraCollapsibleClass =
-                    option.equals("-teardown") ? Collections.singleton(TEARDOWN) : Collections.<String>emptySet();
+                    option.equals("-teardown") ? Collections.singleton(TEARDOWN) : Collections.emptySet();
             return Collapsible.generateHtml(collapseState, title, translator.translate(symbol.childAt(3)), extraCollapsibleClass);
         }
     }
 
     private String stateForOption(String option, Symbol symbol) {
-        return ((option.equals("-setup") || option.equals("-teardown")) && symbol.getVariable("COLLAPSE_SETUP", "true").equals("true"))
+        return ((option.equals("-setup") || option.equals("-teardown")) && symbol.findProperty("COLLAPSE_SETUP", "true").equals("true"))
                 || option.equals("-c")
                 ? Collapsible.CLOSED
                 : "";

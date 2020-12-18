@@ -7,11 +7,11 @@ import java.time.ZoneId;
 
 public class TestHistoryLine {
 
-    private String pageName;
-    private int numberOfTimesPassed;
-    private int numberOfTimesFailed;
-    private LocalDateTime MostRecentRunDate;
-    private PageHistory.BarGraph barGraph;
+    private final String pageName;
+    private final int numberOfTimesPassed;
+    private final int numberOfTimesFailed;
+    private final LocalDateTime MostRecentRunDate;
+    private final PageHistory.BarGraph barGraph;
 
     public TestHistoryLine(PageHistory pageHistory){
         this.pageName = pageHistory.getFullPageName();

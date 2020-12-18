@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class ProjectDependencyInfo {
-    private List<DependencyInfo> dependenciesInfo = new ArrayList<>();
+    private final List<DependencyInfo> dependenciesInfo = new ArrayList<>();
     private final static Set<String> IGNORE_DEPENDENCIES = new HashSet<>(Arrays.asList(
             "jaxb-core",
             "jaxb-impl",

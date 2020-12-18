@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class DependencyInfo {
-    private final static String latestversionXpath = "/metadata/versioning/latest";
-    private final static String homepageUrlXpath = "/project/url";
+    private final static String LATEST_VERSION_XPATH = "/metadata/versioning/latest";
+    private final static String HOMEPAGE_URL_XPATH = "/project/url";
     private final String groupId;
     private final String artifactId;
     private final String versionInPom;
@@ -87,7 +87,7 @@ public class DependencyInfo {
         );
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new URL(url).openStream());
-            XPathExpression expr = XPathFactory.newInstance().newXPath().compile(homepageUrlXpath);
+            XPathExpression expr = XPathFactory.newInstance().newXPath().compile(HOMEPAGE_URL_XPATH);
             return expr.evaluate(doc);
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -100,7 +100,7 @@ public class DependencyInfo {
         String url = String.format(latestVersionUrl, groupId.replace(".", "/"), artifactId);
         try {
             Document doc = factory.newDocumentBuilder().parse(new URL(url).openStream());
-            XPathExpression expr = XPathFactory.newInstance().newXPath().compile(latestversionXpath);
+            XPathExpression expr = XPathFactory.newInstance().newXPath().compile(LATEST_VERSION_XPATH);
             return expr.evaluate(doc);
         } catch (Exception e) {
             System.err.println(e.getMessage());

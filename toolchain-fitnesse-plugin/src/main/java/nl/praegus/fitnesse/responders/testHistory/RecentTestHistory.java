@@ -10,8 +10,8 @@ import static java.util.Comparator.*;
 import static java.util.stream.Collectors.toList;
 
 public class RecentTestHistory {
-    private List<TestHistoryLine> testHistoryLines = new ArrayList<>();
-    private Map<String, File> pageHistoryIndex;
+    private final List<TestHistoryLine> testHistoryLines = new ArrayList<>();
+    private final Map<String, File> pageHistoryIndex;
 
     public RecentTestHistory(File historyDirectory){
         this.pageHistoryIndex = getHistoryIndex(historyDirectory);
