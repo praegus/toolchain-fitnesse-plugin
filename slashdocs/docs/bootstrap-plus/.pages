@@ -1,3 +1,5 @@
 title: "Bootstrap&plus;"
 arrange:
     - index.md
+    - side-bar.md
+    - visual-improvements.md

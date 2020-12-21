@@ -1,0 +1,5 @@
+title: "Fixtures"
+arrange:
+    - index.md
+    - ...
+    - hsac-fixtures

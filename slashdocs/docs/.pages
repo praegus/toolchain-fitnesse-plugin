@@ -1,4 +1,6 @@
 arrange:
     - index.md
     - ...
+    - bootstrap-plus
+    - fixtures
     - faq

@@ -1,0 +1,5 @@
+title: "Plug Ins"
+arrange:
+    - index.md
+    - toolchain-plugin.md
+    - hsac-plugin.md
