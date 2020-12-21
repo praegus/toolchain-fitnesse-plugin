@@ -7,7 +7,7 @@
 ## About this toolchain
 
 !!! faq "As a tester, what does this toolchain provide me with?"
-    This toolchain makes it easier to create functional- and acceptance tests for web sites and web-API's, e.g. RESTfull API's.
+    This toolchain makes it easier to create functional- and acceptance tests for web sites and web-API's, e.g. RESTful API's.
     But it even provides tools to test SOAP Web Services. 
     The autocomplete FitNesse-responder and the  [Bootstrap Plus Thema](https://github.com/praegus/fitnesse-bootstrap-plus-theme)
     makes it easier to develop these tests and en turns your browser into a fully fledged IDE!
