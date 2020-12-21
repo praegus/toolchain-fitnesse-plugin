@@ -4,6 +4,12 @@ The [HSAC FitNesse Fixtures](https://github.com/fhoeben/hsac-fitnesse-fixtures) 
 and Web-API's.
 
 
+To start FitNesse, run the following command:
+
+```
+mvn exec:exec
+```
+
 If you want to debug your test, you can use the following `FixtureDebugTest.java` as a starting point:
 
 ``` java
