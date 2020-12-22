@@ -1,0 +1,5 @@
+arrange:
+    - create-a-new-maven-project.md
+    - set-up-a-toolchain-project.md
+    - start-the-toolchain.md
+    - run-tests-from-the-command-line.md
