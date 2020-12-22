@@ -18,6 +18,7 @@ theme:
 markdown_extensions:
   - admonition
   - codehilite
+  - pymdownx.keys
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.tabbed
