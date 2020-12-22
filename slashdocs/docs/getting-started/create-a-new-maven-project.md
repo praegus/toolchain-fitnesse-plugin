@@ -1,4 +1,4 @@
-##Create a new Maven project
+# Create a new Maven project
 Before we can go ahead and set up our first Toolchain project, some basic environment setup is needed. 
 
 1. **Install the IntelliJ IDE.** We will use Intellij for easy Java SDK management, Maven project management and to run the Toolchain.
@@ -19,3 +19,4 @@ Before we can go ahead and set up our first Toolchain project, some basic enviro
 5. **Open the project** either in a new window or in the current one
    ![Name project and select folder](/images/getting-started/open-project.png)
    
+Now that our basic environment setup is done, we can proceed to [set up our Toolchain project](Set-up-a-toolchain-project.md)

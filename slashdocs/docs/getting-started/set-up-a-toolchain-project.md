@@ -2,9 +2,10 @@
 Now that a [new Maven project](Create-a-new-Maven-project.md) has been created, the next step is to create a basic Praegus Fitnesse
 Toolchain set up in our project folder. To do so perform the steps below.
 
-##  Add Toolchain project setup to project
+##  Add the Toolchain project configuration to the new project
 * First we need to update the pom.xml file created by Intellij in the previous step. 
 Replace the code in the pom.xml located in the project folder with the xml data shown below.
+
 ??? example "pom.xml"
     ``` XML
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -508,6 +509,8 @@ Replace the code in the pom.xml located in the project folder with the xml data 
         </profiles>
     </project>
     ```
+  
+## Create a Intellij run configurtion
 * After updating the pom.xml file, we need to run the Maven build tool in order to download all the dependencies, 
 compile the project and run the Toolchain. Because we are using IntelliJ this is an easy task!Go to Intellij and click the 'Add Configuration' option. 
 ![Add IntelliJ configuration](/images/getting-started/add-configuration.png)
