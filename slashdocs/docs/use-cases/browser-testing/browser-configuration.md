@@ -104,9 +104,44 @@ Some exaples of connecting to remote browsers:
     |script              |selenium driver setup                                                               |
     |connect to driver at|https://hub-cloud.browserstack.com/wd/hub|with capabilities|$browserstackCapabilites|
     ```  
+    More on <a href="https://www.browserstack.com/automate/capabilities" target="_blank">Browserstack Capabilities</a>.
 
-## Overriding browser configuration from the commandline
 
+??? note "Specific browser on Saucelabs"
+    ```
+    |script                 |map fixture                  |
+    |set value              |SAUCE_USER|for|username      |
+    |set value              |ACCESS_KEY|for|accessKey     |
+    |set value              |Windows 7 |for|platformName  |
+    |set value              |65.0      |for|browserVersion|
+    |$saucelabsCapabilities=|copy map                     |
+    
+    |script              |selenium driver setup                                                                      |
+    |connect to driver at|https://ondemand.eu-central-1.saucelabs.com/wd/hub|with capabilities|$saucelabsCapabilities|
+    ```  
+    More on <a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank">Saucelabs Capabilities</a>.
+
+
+## Overriding config from the commandline
+
+Whenever a test is run [from the command line](/TODO:LINK_HERE) using the JUnit runner, it is possible to override the Selenium
+configuration. This allows for testing with multiple browsers without the need to have different wiki pages for each run.
+
+In order to override the browser's configuration, combinations of system properties can be used. The following options are valid:
+
+ - `-DseleniumBrowser=chrome`  will start a local chrome browser, regardless of any setting in the wiki
+ - `-DseleniumGridUrl=http://localhost:4444/wd/hub -DseleniumBrowser=chrome`  will request any chrome browser from a local Selenium grid hub
+ - `-DseleniumGridUrl=http://localhost:4444/wd/hub -DseleniumCapabilities=browserName:chrome, version:64, platform=LINUX`  will request chrome 64 on Linux from a local Selenium grid hub.
+ Note that the _seleniumCapabilities_ property only accepts single key/value pairs.
+ - `-DseleniumGridUrl=http://localhost:4444/wd/hub -DseleniumJsonCapabilities={"browserName":"chrome", "args":["headless", "disable-gpu", "lang=en_EN"]}`  will request chrome in headless mode with English locale from a local Selenium grid hub.
+ 
+The last combination is the most flexible, but can get complex:
+
+??? note "Complex JSON Capabilities object"
+    ```
+    -DseleniumJsonCapabilities="{\"acceptInsecureCerts\": true,\"browserName\": \"chrome\",\"pageLoadStrategy\":\"none\",\"chromeOptions\":{\"args\":[\"window-size=1920,1080\"],\"prefs\":{\"download.default_directory\": \"/tmp/downloads\"}}}" 
+    ```
+    
 ## Stopping the browser
 
 Stopping any browser is done by calling _'stop driver'_ from Selenium driver setup. This stops the driver and exits the browser.
