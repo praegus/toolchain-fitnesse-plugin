@@ -1,6 +1,8 @@
+# API Testing
+
 API-testing is an important part of a well-balanced testing pyramid.
 
-HSAC contains fixtures for testing http(s)-based API's with e.g. JSON payloads like the following:
+Using http test (and json/xml extensions of it) from hsac-fixtures, it's quite easy to test some API's.
 
 ??? example "Blaat"
     ```JSON
