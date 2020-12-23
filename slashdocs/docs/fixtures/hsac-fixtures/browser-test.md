@@ -1,28 +1,14 @@
 # Browser Test
 
-## Configuring the browser
-
-## Configuring the browser
-
-#### Using the driver Setup Fixture
-See [Selenium Driver Setup](../selenium-driver-setup)
-#### Using the JUnit runner
-
 ## Browser commands
 
-### Browser configuration
+### Fixture configuration
 
-##### screenshot base directory &lt;directory&gt;
+#### screenshot base directory &lt;directory&gt;
 Set the base directory where screenshots will be stored to the provided directory.
 
-##### screenshot show height &lt;height&gt;
+#### screenshot show height &lt;height&gt;
 Set the height of the screenshot images that are displayed
-
-##### ensure active tab is not closed
-
-
-##### ensure only one tab
-
 
 ##### seconds before page load timeout &lt;timeout&gt;
 Sets the timeout in which the page has to be fully loaded to the value in seconds specified by timeout. After this timeout an exeption is thrown.
@@ -39,35 +25,20 @@ Returns the general timeout in seconds for browser test.
 ##### scroll elements to center of viewport
 Makes it so that the viewport of the browser is always scrolled to the center of the element on which an action is taken.
 
-##### wait milli second after scroll &lt;msToWait&gt;
+##### wait milli seconds after scroll &lt;msToWait&gt;
 Wait msToWait in milliseconds after a scroll action.
 
 ##### set continue if ready state interactive &lt;continueIfReadyStateInteractive&gt;
-
+Continue testing when the document state is interactive (as opposed to the deafult: waiting for all resources to be loaded)
 
 ##### is continue if ready state interactive
-Returns the value (boolean) of ready state interactive
-
-##### set drag distance &lt;dragDistance&gt;
-
-
-##### set drag press delay &lt;dragPressDelay&gt;
-
-
-##### clear drag setup
-
+Returns the value (boolean) of continue if ready state interactive
 
 ##### set implicit wait for angular to &lt;implicitWaitForAngular&gt;
 Sets the boolean that controls whether BrowserTest should determine whether the site being tested uses AngularJs and if so, wait for Angular to finish rendering the page (default is ‘true’).
 
 ##### is implicit wait for angular enabled
 Returns the value (boolean) that that controls whether BrowserTest should determine whether the site being tested uses AngularJs and if so, if it should wait for Angular to finish rendering the page.
-
-##### set ng browser test &lt;ngBrowserTest&gt;
-
-
-##### get ng browser test
-
 
 ##### set trim on normalize &lt;trimOnNormalize&gt;
 This command sets a boolean (trimOnNormalize) that determines if 'normalized' functions remove starting and trailing whitespaces
@@ -125,6 +96,9 @@ Switches to the next tab within the browser.
 ##### switch to previous tab
 Switches to the previous tab within the browser.
 
+##### ensure only one tab
+Sets the active tab to the current tab and closes all other tabs.
+
 ##### page content type
 Returns the content type of the page currently opened.
 
@@ -157,11 +131,8 @@ Returns the value of the (global) value symbolName.
 ##### set implicit find in frames to &lt;implicitFindInFrames&gt;
 Sets the boolean that controls whether BrowserTest should look for elements inside nested (i)frames if they cannot be found in the current frame (default is ‘true’).
 
-##### send command for control on mac
-
-
 ##### set send command for control on mac to &lt;sendCommand&gt;
-
+If set to true, when executing on a Mac, the cmd key will be sent whenever control is specified.
 
 ### Alerts
 
@@ -218,13 +189,16 @@ Optionally you can constrain the place to a container (the 'in' part), this will
 The container can be defined using a locator. When using a container the place has to be present within it, otherwise you will get a timeout.
 
 ##### scroll elements to center of viewport &lt;scrollElementsToCenterOfViewport&gt;
-Scrolls the viewport of the browser to the center of the defined 'scrollElementsToCenterOfViewport' (a locator).
+Set the scroll behaviour to scroll the wanted element to the center of the viewport instead (true) of the default behaviour (false) where
+the element is scrolled 'just into view'. This often prevents elements to be scrolled behind floating menu-bars or footers if these are present. 
 
 ##### set search context to &lt;container&gt;
 Limits searches for places by other keywords/commands to inside the container (a locator) instead of the whole page.
 This is useful in case the same place occurs multiple times on the same page, to ensure which one is found.
 All subsequent searches are limited to ‘container’ until either the ‘clear search context’, ‘refresh’ or ‘open’ command is given.
 Many commands also offer an ‘in container’ version (e.g. ‘click place in container’) to limit searching only for that row.
+
+Note that xpath locator starting with '//' will ignore any given search context.
 
 ##### refresh search context
 Refreshes the search context previously set in case it has gone stale. This is a workaround for when an element previously used for the search context has been replaced.
@@ -237,10 +211,8 @@ Click on the defined place: this place can be text/link (as visible in the brows
 Optionally you can constrain the click to a container (the 'in' part), this will result that the click happens within the container.
 The container can be defined using a locator. When using a container the place has to be present within it, otherwise you will get a timeout.
 
-##### click at &lt;place&gt; (offset &lt;xOffset&gt; xy &lt;yOffset&gt;)
-Execute a click at the center of the defined place: this place can be text/link (as visible in the browser), but also a locator (css or xpath).
-Optionally you can use an offset to click a certain distance (in pixels) from the center of the place.
-The offset defines that distance: x-axis followed by y-axis.
+##### click &lt;place&gt; at offset &lt;xOffset&gt; xy &lt;yOffset&gt;
+Execute a click at a location in pixels offset from the center of the defined place: this place can be text/link (as visible in the browser), but also a locator (css or xpath).
 
 ##### click if available &lt;place&gt; in &lt;container&gt;
 This executes a click on a place is that place is available on the page. The command doesn't throw an exception on timeout but instead returns a false.
@@ -299,6 +271,9 @@ The offset defines that distance: x-axis followed by y-axis.
 ##### html 5 drag and drop &lt;source&gt; to &lt;destination&gt;
 Drags the source (a locator) to a destination (also a locator) using the HTML5 method.
 
+##### press &lt;key&gt;
+Simulate a press of the mentioned key within the browser.
+
 ###### press enter
 Simulate a press on the button ENTER within the browser
 
@@ -307,9 +282,6 @@ Simulate a press on the button ESC within the browser
 
 ###### press tab
 Simulate a press on the button TAB within the browser
-
-##### press &lt;key&gt;
-Simulate a press of the mentioned key within the browser.
 
 ##### hover over &lt;place&gt; (in &lt;container&gt;)
 This command simulates that the mouse hovers over the defined place (a locator). This can be used to test ‘mouseover’ behavior.
@@ -328,26 +300,6 @@ The download will be executed on the link of the row number defined by rowIndex.
 ##### download from row &lt;place&gt; where &lt;selectOnColumn&gt; is &lt;selectOnValue&gt;
 This downloads the target of the link in a table defined by place (a locator).
 The download will be executed on the link of the first row of which the selectOnColumn value matches the selectOnValue.
-
-##### wait for class &lt;cssClassName&gt;
-Waits until the class with the css selector cssClassName is visible on the page.
-
-##### wait for class with &lt;cssClassName&gt; text &lt;expectedText&gt;
-Waits until the class with the css selector cssClassName contains the text expectedText.
-
-##### wait for page &lt;pageTitle&gt;
-Waits until a page with the page title pageTitle is shown.
-
-##### wait for tag with &lt;tagName&gt; text &lt;expectedText&gt;
-Waits until the tag with tagName contains the text expectedText.
-
-##### wait for visible &lt;place&gt; (in &lt;container&gt;)
-Waits until the mentioned place (a locator) is visible on the page.
-Optionally you can constrain the place to a container (the 'in' part), this will result that the browser waits until the place within the container is visible.
-The container can be defined using a locator. When using a container the place has to be present within it, otherwise you will eventually get a timeout.
-
-##### wait for x path visible &lt;xPath&gt;
-Waits until the xpath defined by xPath is visible.
 
 ##### wait milliseconds &lt;i&gt;
 Wait i milliseconds
@@ -378,7 +330,13 @@ Set the value above for the hidden input field with id or name 'idOrName'
 Simulate the keyboard to type the text above.
 
 ##### select &lt;value&gt; as &lt;place&gt; (in &lt;container&gt;)
+Select a value in a select box. If this is a multi select, this command will clear any previous selection.
 
+##### select &lt;value&gt; for &lt;place&gt; (in &lt;container&gt;)
+Select the value for the drop down box or radio buttons located using place (a locator).
+If this is a multi select, this command will append the selection to any previous selection.
+Optionally you can constrain the drop down box or radio buttons to a part of the website located using container (the 'in' part). This will result that only the drop down box or radio buttons within the container are used.
+The container can be defined using a locator. When using a container the drop down box or radio buttons have to be present within it, otherwise you will get a timeout.
 
 ##### select file &lt;fileName&gt;
 Selects a file using the first file upload control.
@@ -388,10 +346,6 @@ Selects a file using the first file upload control for the provided place (a loc
 Optionally you can constrain the place to a container (the 'in' part), this will result that the file will be selected for the place within the container.
 The container can be defined using a locator. When using a container the place has to be present within it, otherwise you will get a timeout.
 
-##### select &lt;value&gt; for &lt;place&gt; (in &lt;container&gt;)
-Select the value for the drop down box or radio buttons located using place (a locator).
-Optionally you can constrain the drop down box or radio buttons to a part of the website located using container (the 'in' part). This will result that only the drop down box or radio buttons within the container are used.
-The container can be defined using a locator. When using a container the drop down box or radio buttons have to be present within it, otherwise you will get a timeout.
 
 ##### execute script &lt;script&gt;
 Execute the provided script.
@@ -556,10 +510,10 @@ Sets the maximum number of requests sent by ‘repeat until ...’ commands. The
 Returns the maximum number of requests sent by ‘repeat until ...’ commands.
 
 ##### repeat count
-Returns the number of requests sent by the last ‘repeat until ...’ command.
+Returns the number of repeats done by the last ‘repeat until ...’ command.
 
 ##### time spent repeating
-Returns the number of milliseconds the last ‘repeat until ...’ command took.
+Returns the number of milliseconds the last ‘repeat until ...’ command took until completion.
 
 ##### refresh until &lt;place&gt; is not visible on page
 Refreshes the page within the browser until the place (a locator) is no longer visible on the page.
@@ -588,16 +542,39 @@ Execute the javascript 'script' until the value of place (a locator) no longer m
 ### Selecting
 
 ##### select all
-Select everything on the page
+Simulate 'select all' (e.g. Ctrl+A on Windows) on the active element.
 
 ##### get selection text
 Returns the text which is currently selected.
 
 ##### cut
-Simulates 'cut' (e.g. Ctrl+X on Windows) on the active element, copying the current selection to the clipboard and removing that selection.
+Simulates 'cut' (e.g. Ctrl+X on Windows) on the active selection, copying the current selection to the clipboard and removing that selection.
 
 ##### copy
-Simulates 'copy' (e.g. Ctrl+C on Windows) on the active element, copying the current selection to the clipboard.
+Simulates 'copy' (e.g. Ctrl+C on Windows) on the active selection, copying the current selection to the clipboard.
 
 ##### paste
-Simulates 'paste' (e.g. Ctrl+V on Windows) on the active element, copying the current clipboard content to the currently active element.
+Simulates 'paste' (e.g. Ctrl+V on Windows) on the active element, pasting the current clipboard content to the currently active element.
+
+### wait methods 
+These methods will stop the test when a timeout occurs
+
+##### wait for class &lt;cssClassName&gt;
+Waits until an element with the css class _cssClassName_ is visible on the page.
+
+##### wait for class with &lt;cssClassName&gt; text &lt;expectedText&gt;
+Waits until the class with the css selector cssClassName contains the text expectedText.
+
+##### wait for page &lt;pageTitle&gt;
+Waits until a page with the page title pageTitle is shown.
+
+##### wait for tag with &lt;tagName&gt; text &lt;expectedText&gt;
+Waits until the tag with tagName contains the text expectedText.
+
+##### wait for visible &lt;place&gt; (in &lt;container&gt;)
+Waits until the mentioned place (a locator) is visible on the page.
+Optionally you can constrain the place to a container (the 'in' part), this will result that the browser waits until the place within the container is visible.
+The container can be defined using a locator. When using a container the place has to be present within it, otherwise you will eventually get a timeout.
+
+##### wait for x path visible &lt;xPath&gt;
+Waits until the xpath defined by xPath is visible.
