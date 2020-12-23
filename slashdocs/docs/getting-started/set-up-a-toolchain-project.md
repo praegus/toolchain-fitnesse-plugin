@@ -99,14 +99,36 @@ Replace the code in the pom.xml located in the project folder with the xml data 
                 </exclusions>
             </dependency>
             <dependency>
+                <groupId>com.github.six42</groupId>
+                <artifactId>jdbcslim</artifactId>
+                <version>1.2.5</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.fitnesse</groupId>
+                        <artifactId>fitnesse</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.dbfit</groupId>
+                <artifactId>dbfit</artifactId>
+                <version>3.2.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.fitnesse</groupId>
+                        <artifactId>fitnesse</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.200</version>
+            </dependency>
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.orangebeard</groupId>
-                <artifactId>fitnesse-toolchain-listener</artifactId>
-                <version>1.1.0-BETA-4</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -510,7 +532,7 @@ Replace the code in the pom.xml located in the project folder with the xml data 
     </project>
     ```
   
-## Create a IntelliJ run configuration
+## Create a IntelliJ run configuration~~~~
 * After updating the pom.xml file, we need to run the Maven build tool in order to download all the dependencies, 
 compile the project and run the Toolchain. Because we are using IntelliJ this is an easy task! Go to Intellij and click the 'Add Configuration' option. 
 ![Add IntelliJ configuration](/images/getting-started/add-configuration.png)

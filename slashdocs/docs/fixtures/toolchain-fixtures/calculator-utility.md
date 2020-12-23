@@ -1,4 +1,4 @@
-Package: nl.praegus.fitnesse.slim.fixtures.util
+Package to import: _nl.praegus.fitnesse.slim.fixtures.util_
 
 Calculator is a utility fixture and will in most cases be included as a library:
 
