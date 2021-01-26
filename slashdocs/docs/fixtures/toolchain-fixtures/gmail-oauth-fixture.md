@@ -69,7 +69,7 @@ Now, activate the account with an extra instruction, providing the postfix:
 ```
 
 ## Methods
-### Receiving e-mail
+### Fixture configuration
 
 #### set client secret postfix (postfix)
 Set the postfix to use for the account
@@ -82,6 +82,8 @@ Set the maximum numer of times the fixture may poll for messages to arrive
 
 #### set message format (plain/html)
 The expected message format (defaults to plain)
+
+### Receiving e-mail
 
 #### set filter query (query)
 Set the filter for the inbox to select. For information on all possibel search operators, please refer to  
@@ -119,7 +121,9 @@ Sends the provided email. The email is expected to be a hashmap containing keys:
  - attachment (optional)
 
 This map can be constructed in FitNesse using HashTable notation:
-`!{to:!-test@mail.com-!, from:!-me@mail.com-!, subject: Test Message, body: email body text, attachment: http://files/my-attachment.pdf}`
+```
+!{to:!-test@mail.com-!, from:!-me@mail.com-!, subject: Test Message, body: email body text, attachment: http://files/my-attachment.pdf}
+```
 
 Or using [Map Fixture](/fixtures/hsac-fixtures/map-fixture/):
 ```
