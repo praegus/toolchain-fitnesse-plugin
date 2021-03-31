@@ -7,6 +7,7 @@ You can go to the [DEVELOPMENT_GUIDE.MD](./DEVELOPMENT_GUIDE.MD), for informatio
 This plug-in contains the following extensions to FitNesse (20190620 or later):
  * Bootstrap-plus theme
  * AutoComplete responder
+ * Show tags in suite report html
  * Pausing table (be sure to include toolchain-fixtures and set Pause Test Fixture as a library)
  * Conditional script table
  * Conditional scenario table

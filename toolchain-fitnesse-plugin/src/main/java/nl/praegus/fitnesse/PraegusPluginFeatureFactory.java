@@ -15,6 +15,7 @@ import nl.praegus.fitnesse.responders.TableOfContentsResponder;
 import nl.praegus.fitnesse.responders.ToolTip.TooltipResponder;
 import nl.praegus.fitnesse.responders.UpdateTagsResponder;
 import nl.praegus.fitnesse.responders.allTags.AllTagsResponder;
+import nl.praegus.fitnesse.responders.run.ToolchainSuiteResponder;
 import nl.praegus.fitnesse.responders.symbolicLink.SymbolicLinkResponder;
 import nl.praegus.fitnesse.responders.testHistory.RecentTestHistoryResponder;
 import nl.praegus.fitnesse.slim.tables.ConditionalScenarioTable;
@@ -65,6 +66,7 @@ public class PraegusPluginFeatureFactory extends PluginFeatureFactoryBase {
     public void registerResponders(ResponderFactory responderFactory) throws PluginException {
         super.registerResponders(responderFactory);
         LOG.info("[Toolchain Plugin] Registering Toolchain plugin responders.");
+        add(responderFactory, "suite", ToolchainSuiteResponder.class);
         add(responderFactory, "autoComplete", AutoCompleteResponder.class);
         add(responderFactory, "tableOfContents", TableOfContentsResponder.class);
         add(responderFactory, "updateTags", UpdateTagsResponder.class);
