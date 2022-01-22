@@ -24,9 +24,17 @@ public class MavenProjectVersionsSymbolTest {
                 "<td>20211030</td>" + System.lineSeparator() +
                 "<td class=\"Outdated\">Outdated</td>";
 
-        String expectedValue2 = "<a href=\"http://fitnesse.org/FitNesse.ReleaseNotes\" target=\"_blank\">Fitnesse</a>";
+        String expectedValue2 = "<a href=\"http://fitnesse.org/FitNesse.ReleaseNotes\" target=\"_blank\">fitnesse</a>";
 
-        assertThat(receivedValue).contains(expectedValue);
-        assertThat(receivedValue).contains(expectedValue2);
+        assertThat(receivedValue)
+                .contains(expectedValue)
+                .contains(expectedValue2);
+    }
+
+    @Test
+    public void check_If_Html_Contains_Release_Notes_Not_found() throws FileNotFoundException {
+        ProjectDependencyInfo projectDependencyInfo = new ProjectDependencyInfo("/src/test/resources/MavenVersions/pom.xml");
+        String receivedValue = MavenProjectVersionsSymbol.getVersionTableHtmlAsString(projectDependencyInfo.getDependencyInfo());
+        assertThat(receivedValue).contains("Release notes not found");
     }
 }

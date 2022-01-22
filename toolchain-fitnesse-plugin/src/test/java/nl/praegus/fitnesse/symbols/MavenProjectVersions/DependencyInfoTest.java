@@ -52,7 +52,9 @@ public class DependencyInfoTest {
                 getModel(),
                 factory);
 
-        assertThat(dependencyInfo.getReleaseNoteUrls()).containsOnly(ReleaseNotesUrl.pluginUrl, ReleaseNotesUrl.bootstrapUrl);
+        assertThat(dependencyInfo.getReleaseNoteUrls().get(0))
+                .containsEntry("label", "Plugin")
+                .containsEntry("url", "https://github.com/praegus/toolchain-fitnesse-plugin/releases");
     }
 
     @Test
