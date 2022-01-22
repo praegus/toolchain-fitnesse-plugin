@@ -70,9 +70,15 @@ public class DependencyInfo {
                 return releaseNotesUrls;
             default:
                 String homepageUrl = getHomePageFromPom();
-                if (homepageUrl != null) {
+                if (homepageUrl != null && !homepageUrl.isEmpty()) {
                     releaseNotesUrls.add("Homepage," + homepageUrl);
+
                 }
+
+                if(homepageUrl == null || homepageUrl.isEmpty()){
+                    releaseNotesUrls.add("Homepage not found, ");
+                }
+
                 return releaseNotesUrls;
         }
     }

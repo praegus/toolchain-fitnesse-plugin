@@ -21,7 +21,7 @@ public class MavenProjectVersionsSymbolTest {
 
         String expectedValue = "<tr><td>fitnesse</td>" + System.lineSeparator() +
                 "<td>20200404</td>" + System.lineSeparator() +
-                "<td>20210606</td>" + System.lineSeparator() +
+                "<td>20211030</td>" + System.lineSeparator() +
                 "<td class=\"Outdated\">Outdated</td>";
 
         String expectedValue2 = "<a href=\"http://fitnesse.org/FitNesse.ReleaseNotes\" target=\"_blank\">Fitnesse</a>";
