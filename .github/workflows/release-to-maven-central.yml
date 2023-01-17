@@ -48,4 +48,4 @@ jobs:
           mvn -B release:update-versions -DautoVersionSubmodules=true --file toolchain-fitnesse-plugin/pom.xml
           git add toolchain-fitnesse-plugin/pom.xml
           git commit -m "Update version"
-          git push origin master
+          git push origin version-update-fix
