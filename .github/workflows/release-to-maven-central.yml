@@ -3,29 +3,29 @@ on:
   release:
     types: [created]
 
-jobs:
-  maven-release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 11
-      - name: Unsnapshot version
-        run: mvn versions:set -DremoveSnapshot --file toolchain-fitnesse-plugin/pom.xml
-      - name: Release Maven package
-        uses: samuelmeuli/action-maven-publish@v1
-        with:
-          directory: toolchain-fitnesse-plugin
-          server_id: staging
-          maven_profiles: release
-          gpg_private_key: ${{ secrets.gpg_private_key }}
-          gpg_passphrase: ${{ secrets.gpg_passphrase }}
-          nexus_username: ${{ secrets.MAVEN_USERNAME }}
-          nexus_password: ${{ secrets.MAVEN_PASSWORD }}
+#jobs:
+#  maven-release:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out Git repository
+#        uses: actions/checkout@v3
+#      - name: Install Java and Maven
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: temurin
+#          java-version: 11
+#      - name: Unsnapshot version
+#        run: mvn versions:set -DremoveSnapshot --file toolchain-fitnesse-plugin/pom.xml
+#      - name: Release Maven package
+#        uses: samuelmeuli/action-maven-publish@v1
+#        with:
+#          directory: toolchain-fitnesse-plugin
+#          server_id: staging
+#          maven_profiles: release
+#          gpg_private_key: ${{ secrets.gpg_private_key }}
+#          gpg_passphrase: ${{ secrets.gpg_passphrase }}
+#          nexus_username: ${{ secrets.MAVEN_USERNAME }}
+#          nexus_password: ${{ secrets.MAVEN_PASSWORD }}
 
 
   update-version:
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: version-update-fix
       - name: Install Java and Maven
         uses: actions/setup-java@v3
         with:
