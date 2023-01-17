@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Install Java and Maven
         uses: actions/setup-java@v3
         with:
