@@ -48,28 +48,28 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
         // Start of the table
         writer.startTag("table");
-            writer.putAttribute("id", "versioncheck");
+        writer.putAttribute("id", "versioncheck");
 
-            // Table title
-            writer.startTag("tr");
-                writer.startTag("th");
-                    writer.putAttribute("colspan", "5");
-                    writer.putText("Versioncheck");
-                writer.endTag();
-            writer.endTag();
+        // Table title
+        writer.startTag("tr");
+        writer.startTag("th");
+        writer.putAttribute("colspan", "5");
+        writer.putText("Versioncheck");
+        writer.endTag();
+        writer.endTag();
 
-            // Table headers
-            List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status", "Release notes");
-            writer.startTag("tr");
-                for (String tableHeader : tableHeaders) {
-                    writer.putText(generateTableRowTdHtmlAsString(tableHeader, null));
-                }
-            writer.endTag();
+        // Table headers
+        List<String> tableHeaders = Arrays.asList("Name", "Current version", "Newest Version", "Status", "Release notes");
+        writer.startTag("tr");
+        for (String tableHeader : tableHeaders) {
+            writer.putText(generateTableRowTdHtmlAsString(tableHeader, null));
+        }
+        writer.endTag();
 
-            // Table row
-            for (DependencyInfo dependency : dependencyList) {
-                writer.putText(generateTableRowHtmlAsString(dependency));
-            }
+        // Table row
+        for (DependencyInfo dependency : dependencyList) {
+            writer.putText(generateTableRowHtmlAsString(dependency));
+        }
 
         writer.endTag();
 
@@ -82,23 +82,23 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         String status = getStatus(current, tableRowData.getVersionOnMvnCentral());
 
         writer.startTag("tr");
-            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getArtifactId(), null));
-            writer.putText(generateTableRowTdHtmlAsString(current, null));
-            writer.putText(generateTableRowTdHtmlAsString(tableRowData.getVersionOnMvnCentral(), null));
-            writer.putText(generateTableRowTdHtmlAsString(status, status));
-            writer.putText(generateReleaseNotesHtmlAsString(tableRowData));
+        writer.putText(generateTableRowTdHtmlAsString(tableRowData.getArtifactId(), null));
+        writer.putText(generateTableRowTdHtmlAsString(current, null));
+        writer.putText(generateTableRowTdHtmlAsString(tableRowData.getVersionOnMvnCentral(), null));
+        writer.putText(generateTableRowTdHtmlAsString(status, status));
+        writer.putText(generateReleaseNotesHtmlAsString(tableRowData));
         writer.endTag();
 
         return writer.toHtml();
     }
 
     private static String generateTableRowTdHtmlAsString(String text, String className) {
-        HtmlWriter writer = new HtmlWriter();
+        final HtmlWriter writer = new HtmlWriter();
         writer.startTag("td");
-            if (className != null) {
-                writer.putAttribute("class", className);
-            }
-            writer.putText(text);
+        if (className != null) {
+            writer.putAttribute("class", className);
+        }
+        writer.putText(text);
         writer.endTag();
 
         return writer.toHtml();
@@ -106,21 +106,36 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
 
     private static String generateReleaseNotesHtmlAsString(DependencyInfo tableRowData) {
         HtmlWriter writer = new HtmlWriter();
-        List<String> urls = tableRowData.getReleaseNoteUrls();
+        return writeReleaseNotes(writer, tableRowData.getReleaseNoteUrls()).toHtml().replaceAll(System.lineSeparator(), "");
+    }
 
-        writer.startTag("td");
-            for (int i = 0; i < urls.size(); i++) {
-                String[] urlArray = urls.get(i).split(",");
-                if (i > 0) writer.putText(" & ");
-                writer.startTag("a");
-                    writer.putAttribute("href", urlArray[1]);
-                    writer.putAttribute("target", "_blank");
-                    writer.putText(urlArray[0]);
-                writer.endTag();
-            }
+    private static void writeReleaseNotesNotFound(HtmlWriter writer) {
+        writer.putText("Release notes not found");
+    }
+
+    private static void writeReleaseNotesLink(HtmlWriter writer, Map<String, String> info) {
+        writer.startTag("a");
+        writer.putAttribute("href", info.get("url"));
+        writer.putAttribute("target", "_blank");
+        writer.putText(info.get("label"));
         writer.endTag();
+    }
 
-        return writer.toHtml().replaceAll(System.lineSeparator(), "");
+    private static HtmlWriter writeReleaseNotes(HtmlWriter writer, List<Map<String, String>> releaseNotesInfo) {
+        writer.startTag("td");
+        releaseNotesInfo.forEach(info -> {
+            writer.startTag("div");
+
+            if (!info.get("url").isEmpty()) {
+                writeReleaseNotesLink(writer, info);
+            }
+            if (info.get("url").isEmpty()) {
+                writeReleaseNotesNotFound(writer);
+            }
+            writer.endTag();
+        });
+        writer.endTag();
+        return writer;
     }
 
     private static String getStatus(String current, String latest) {

@@ -8,12 +8,15 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class DependencyInfo {
-    private final static String LATEST_VERSION_XPATH = "/metadata/versioning/latest";
-    private final static String HOMEPAGE_URL_XPATH = "/project/url";
+
+    private static final String HOMEPAGE_URL_XPATH = "/project/url";
+    private static final String LATEST_VERSION_XPATH = "/metadata/versioning/latest";
     private final String groupId;
     private final String artifactId;
     private final String versionInPom;
@@ -55,27 +58,34 @@ public class DependencyInfo {
         return this.versionOnMvnCentral;
     }
 
-    public List<String> getReleaseNoteUrls() {
-        List<String> releaseNotesUrls = new ArrayList<>();
+    public List<Map<String, String>> getReleaseNoteUrls() {
+        List<Map<String, String>> releaseNotesData = new ArrayList<>();
+
         switch (artifactId) {
             case "fitnesse":
-                releaseNotesUrls.add(ReleaseNotesUrl.fitnesseUrl);
-                return releaseNotesUrls;
+                releaseNotesData.add(addReleaseNoteInfo(artifactId, "http://fitnesse.org/FitNesse.ReleaseNotes"));
+                break;
             case "hsac-fitnesse-fixtures":
-                releaseNotesUrls.add(ReleaseNotesUrl.hsacUrl);
-                return releaseNotesUrls;
+                releaseNotesData.add(addReleaseNoteInfo(artifactId, "https://github.com/fhoeben/hsac-fitnesse-fixtures/releases"));
+                break;
             case "toolchain-fitnesse-plugin":
-                releaseNotesUrls.add(ReleaseNotesUrl.pluginUrl);
-                releaseNotesUrls.add(ReleaseNotesUrl.bootstrapUrl);
-                return releaseNotesUrls;
+                releaseNotesData.add(addReleaseNoteInfo("Plugin", "https://github.com/praegus/toolchain-fitnesse-plugin/releases"));
+                releaseNotesData.add(addReleaseNoteInfo("Bootstrap<sup>+</sup>", "https://github.com/praegus/fitnesse-bootstrap-plus-theme/releases"));
+                break;
             default:
-                String homepageUrl = getHomePageFromPom();
-                if (homepageUrl != null) {
-                    releaseNotesUrls.add("Homepage," + homepageUrl);
-                }
-                return releaseNotesUrls;
+                releaseNotesData.add(addReleaseNoteInfo("Homepage", getHomePageFromPom()));
+                break;
         }
+        return releaseNotesData;
     }
+
+    private Map<String, String> addReleaseNoteInfo(String dependency, String url) {
+        Map<String, String> releaseNoteInfo = new HashMap<>();
+        releaseNoteInfo.put("label", dependency);
+        releaseNoteInfo.put("url", url);
+        return releaseNoteInfo;
+    }
+
 
     private String getHomePageFromPom() {
         String url = String.format("https://repo.maven.apache.org/maven2/%s/%s/%s/%s-%s.pom",
