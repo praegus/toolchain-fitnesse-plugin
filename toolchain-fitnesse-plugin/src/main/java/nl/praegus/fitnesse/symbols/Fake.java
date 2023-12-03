@@ -1,6 +1,5 @@
 package nl.praegus.fitnesse.symbols;
 
-import com.github.javafaker.Faker;
 import fitnesse.wikitext.parser.Matcher;
 import fitnesse.wikitext.parser.Maybe;
 import fitnesse.wikitext.parser.Parser;
@@ -9,6 +8,7 @@ import fitnesse.wikitext.parser.Symbol;
 import fitnesse.wikitext.parser.SymbolType;
 import fitnesse.wikitext.parser.Translation;
 import fitnesse.wikitext.parser.Translator;
+import net.datafaker.Faker;
 
 import java.util.List;
 import java.util.Locale;
@@ -44,10 +44,11 @@ public class Fake extends SymbolType implements Rule, Translation {
         Faker faker = new Faker(new Locale(symbol.findProperty(LOCALE, "en")));
         String result;
         try {
-            Object category = Faker.class.getDeclaredMethod(symbol.findProperty(CATEGORY, "")).invoke(faker);
+            Object category = Faker.class.getMethod(symbol.findProperty(CATEGORY, "")).invoke(faker);
             result = category.getClass().getDeclaredMethod(symbol.findProperty(ITEM, "")).invoke(category).toString();
         } catch (Exception e) {
             result = "ERROR_FAKING_DATA";
+            e.printStackTrace();
         }
         return result;
     }
@@ -55,7 +56,7 @@ public class Fake extends SymbolType implements Rule, Translation {
     protected Maybe<Symbol> storeParenthesisContent(Symbol current, Parser parser, String key) {
         Maybe<Symbol> result = new Maybe<>(current);
         List<Symbol> lookAhead = parser.peek(new SymbolType[]{SymbolType.Whitespace, SymbolType.OpenParenthesis});
-        if (lookAhead.size() != 0) {
+        if (!lookAhead.isEmpty()) {
             parser.moveNext(2);
             Maybe<String> format = parser.parseToAsString(SymbolType.CloseParenthesis);
             if (format.isNothing()) {
