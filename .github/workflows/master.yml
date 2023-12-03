@@ -17,10 +17,11 @@ jobs:
           distribution: temurin
           java-version: 11
       - name: Unsnapshot version
-        run: mvn versions:set -DremoveSnapshot
+        run: mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
+          directory: toolchain-fitnesse-plugin
           server_id: staging
           maven_profiles: release
           gpg_private_key: ${{ secrets.gpg_private_key }}
@@ -39,7 +40,7 @@ jobs:
           distribution: temurin
           java-version: 11
       - name: Unsnapshot version
-        run: mvn versions:set -DremoveSnapshot
+        run: mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
       - id: get-version
         uses: JActions/maven-version@v1.0.0
       - name: Create Release
@@ -70,7 +71,7 @@ jobs:
           git config --global user.name "Praegus"
       - name: Update version
         run: |
-          mvn -B release:update-versions -DautoVersionSubmodules=true
+          mvn -B -f  toolchain-fitnesse-plugin release:update-versions -DautoVersionSubmodules=true
           git add pom.xml
           git commit -m "Update version"
           git push origin master
