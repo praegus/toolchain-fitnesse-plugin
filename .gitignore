@@ -20,3 +20,5 @@ target/
 /toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/files/downloads
 /toolchain-fitnesse-plugin-test/wiki/FitNesseRoot/files/pagesources
 /toolchain-fitnesse-plugin-test/wiki/fitnesse-standalone.jar
+
+.vscode/
