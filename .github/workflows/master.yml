@@ -3,7 +3,7 @@ name: release
 on:
   push:
     branches:
-      - 'fix-pipeline'
+      - 'master'
 
 jobs:
   maven-release:
@@ -25,19 +25,16 @@ jobs:
         id: store_release_version
         run: |
           echo "release_version=$(mvn -f toolchain-fitnesse-plugin help:evaluate -Dexpression=project.version -q -DforceStdout)" >> "$GITHUB_OUTPUT"
-      - name: debug
-        run: |
-          echo ${{ steps.store_release_version.outputs.release_version }}
-  #      - name: Release Maven package
-  #        uses: samuelmeuli/action-maven-publish@v1
-  #        with:
-  #          directory: toolchain-fitnesse-plugin
-  #          server_id: staging
-  #          maven_profiles: release
-  #          gpg_private_key: ${{ secrets.gpg_private_key }}
-  #          gpg_passphrase: ${{ secrets.gpg_passphrase }}
-  #          nexus_username: ${{ secrets.MAVEN_USERNAME }}
-  #          nexus_password: ${{ secrets.MAVEN_PASSWORD }}
+      - name: Release Maven package
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          directory: toolchain-fitnesse-plugin
+          server_id: staging
+          maven_profiles: release
+          gpg_private_key: ${{ secrets.gpg_private_key }}
+          gpg_passphrase: ${{ secrets.gpg_passphrase }}
+          nexus_username: ${{ secrets.MAVEN_USERNAME }}
+          nexus_password: ${{ secrets.MAVEN_PASSWORD }}
   github-release:
     needs: [ maven-release ]
     runs-on: ubuntu-latest
@@ -51,29 +48,26 @@ jobs:
           tag_name: ${{ needs.maven-release.outputs.release_version }}
           release_name: "Toolchain FitNesse Plugin ${{ needs.maven-release.outputs.release_version }}"
           body:
-          draft: true
+          draft: false
           prerelease: false
-      - name: debug
+  update-version:
+    needs: [ maven-release, github-release ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Java and Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 11
+      - name: Configure git
         run: |
-          echo ${{ needs.maven-release.outputs.release_version }}
-#  update-version:
-#    needs: [ maven-release, github-release ]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v3
-#      - name: Install Java and Maven
-#        uses: actions/setup-java@v4
-#        with:
-#          distribution: temurin
-#          java-version: 11
-#      - name: Configure git
-#        run: |
-#          git config --global user.email "tom.heintzberger@praegus.nl"
-#          git config --global user.name "Praegus"
-#      - name: Update version
-#        run: |
-#          mvn -B -f  toolchain-fitnesse-plugin release:update-versions -DautoVersionSubmodules=true
-#          git add pom.xml
-#          git commit -m "Update version"
-#          git push origin master
+          git config --global user.email "tom.heintzberger@praegus.nl"
+          git config --global user.name "Praegus"
+      - name: Update version
+        run: |
+          mvn -B -f  toolchain-fitnesse-plugin release:update-versions -DautoVersionSubmodules=true
+          git add pom.xml
+          git commit -m "Update version"
+          git push origin master
