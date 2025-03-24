@@ -42,7 +42,7 @@ jobs:
       - name: Unsnapshot version
         run: mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
       - id: get-version
-        uses: JActions/maven-version@v1.0.0
+        uses: JActions/maven-version@v1.2.0
       - name: Create Release
         id: createRelease
         uses: actions/create-release@v1
