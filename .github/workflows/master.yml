@@ -8,16 +8,23 @@ on:
 jobs:
   maven-release:
     runs-on: ubuntu-latest
+    outputs:
+      release_version: ${{ steps.store_release_version.outputs.release_version }}
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install Java and Maven
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11
       - name: Unsnapshot version
-        run: mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
+        run: |
+          mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
+      - name: Storing release version
+        id: store_release_version
+        run: |
+          echo "release_version=$(mvn -f toolchain-fitnesse-plugin help:evaluate -Dexpression=project.version -q -DforceStdout)" >> "$GITHUB_OUTPUT"
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
@@ -32,36 +39,25 @@ jobs:
     needs: [ maven-release ]
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 11
-      - name: Unsnapshot version
-        run: mvn -f toolchain-fitnesse-plugin versions:set -DremoveSnapshot
-      - id: get-version
-        uses: JActions/maven-version@v1.2.0
       - name: Create Release
         id: createRelease
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get-version.outputs.version }}
-          release_name: "Toolchain FitNesse Fixtures ${{ steps.get-version.outputs.version }}"
+          tag_name: ${{ needs.maven-release.outputs.release_version }}
+          release_name: "Toolchain FitNesse Plugin ${{ needs.maven-release.outputs.release_version }}"
           body:
           draft: false
           prerelease: false
   update-version:
-    needs: [maven-release, github-release]
+    needs: [ maven-release, github-release ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Install Java and Maven
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11
