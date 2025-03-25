@@ -68,6 +68,6 @@ jobs:
       - name: Update version
         run: |
           mvn -B -f  toolchain-fitnesse-plugin release:update-versions -DautoVersionSubmodules=true
-          git add pom.xml
+          git add toolchain-fitnesse-plugin/pom.xml
           git commit -m "Update version"
           git push origin master
