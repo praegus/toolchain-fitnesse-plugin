@@ -126,10 +126,10 @@ public class MavenProjectVersionsSymbol extends SymbolType implements Rule, Tran
         releaseNotesInfo.forEach(info -> {
             writer.startTag("div");
 
-            if (!info.get("url").isEmpty()) {
+            if (info.get("url")!= null && !info.get("url").isEmpty()) {
                 writeReleaseNotesLink(writer, info);
             }
-            if (info.get("url").isEmpty()) {
+            else {
                 writeReleaseNotesNotFound(writer);
             }
             writer.endTag();
