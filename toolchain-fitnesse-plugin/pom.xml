@@ -9,7 +9,7 @@
     <url>https://github.com/praegus/toolchain-fitnesse-plugin</url>
     <name>Praegus Toolchain plugin</name>
     <description>Plugin incorporating Bootstrap-plus in its optimal form</description>
-    <version>2.1.0-BETA-1-SNAPSHOT</version>
+    <version>2.1.0-BETA-2-SNAPSHOT</version>
 
     <dependencyManagement>
         <dependencies>
