@@ -21,13 +21,13 @@ jobs:
           gpg-private-key: ${{ secrets.gpg_private_key }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
       - name: Unsnapshot version
-        run: mvn versions:set -DremoveSnapshot
+        run: mvn -f ./toolchain-fitnesse-plugin versions:set -DremoveSnapshot
       - name: Configure Maven and deploy
         env:
           MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USER }}
           MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASS }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.gpg_passphrase }}
-        run: mvn -B -Prelease deploy
+        run: mvn -f ./toolchain-fitnesse-plugin -B -Prelease deploy
   
   update-version:
     needs: [ maven-release ]
@@ -47,7 +47,7 @@ jobs:
           git config --global user.name "Praegus"
       - name: Update version
         run: |
-          mvn -B release:update-versions -DautoVersionSubmodules=true
-          git add pom.xml
+          mvn -f ./toolchain-fitnesse-plugin -B release:update-versions -DautoVersionSubmodules=true
+          git add ./toolchain-fitnesse-plugin/pom.xml
           git commit -m "Update version"
           git push origin master
